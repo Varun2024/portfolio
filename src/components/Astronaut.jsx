@@ -35,29 +35,40 @@
 
 
 import React, { useEffect, useRef } from 'react'
-import { useGLTF, useAnimations } from '@react-three/drei'
+import { useGLTF, useAnimations, PositionMesh } from '@react-three/drei'
+import { useMotionValue, useSpring } from 'motion/react'
+import { useFrame } from '@react-three/fiber'
 
-export default function Model(props) {
+export default function Astronaut(props) {
     const group = useRef()
     const { nodes, materials, animations } = useGLTF('/models/among_us_character (1).glb')
+    // to initiate models inbuilt animation
     const { actions } = useAnimations(animations, group)
     useEffect(() => {
         if (animations.length > 0) {
             actions[animations[0].name]?.play()
         }
     }, [actions, animations])
+    // give it an effect of running to the side and spinginess  
+    const xPosition = useMotionValue(-5)
+    const xSpring = useSpring(xPosition,{damping:13})
+    useEffect(()=>{
+        xSpring.set(props.isMobile ? .115 : 8.115)
+    },[xSpring , props.isMobile])
+    useFrame(()=>{
+        group.current.position.x = xSpring.get()
+    })
     return (
         <group
             ref={group}
             {...props}
             dispose={null}
             scale={props.scale || .05}
-            position={props.position||[8.115, -2, -9.454]}
+            position={props.position||[8.115, -3, -9.454]}
             rotation={[-Math.PI / 2, 0, Math.PI]}>
             <group name="Sketchfab_Scene">
                 <group
                     name="Sketchfab_model"
-
                 >
                     <group name="b3faf779fc144613abde2c91592dd257fbx" rotation={[Math.PI / 2, 0, 0]}>
                         <group name="Object_2">

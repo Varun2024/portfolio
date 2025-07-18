@@ -1,5 +1,6 @@
 import Navbar from './section/navbar'
 import Hero from './section/Hero'
+import About from './section/About'
 
 const App = () => {
   return (
@@ -8,7 +9,8 @@ const App = () => {
       <Navbar />
       {/* Hero */}
       <Hero />
-      <section className='min-h-screen'></section>
+      {/* about */}
+      <About/>
       <section className='min-h-screen'></section>
       <section className='min-h-screen'></section>
       <section className='min-h-screen'></section>
