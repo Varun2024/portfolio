@@ -1,8 +1,6 @@
 import { twMerge } from "tailwind-merge";
 import React from "react";
 
-
-
 export function OrbitingCircles({
   className,
   children,
@@ -21,7 +19,7 @@ export function OrbitingCircles({
         <svg
           xmlns="http://www.w3.org/2000/svg"
           version="1.1"
-          className="pointer-events-none absolute inset-0 size-full"
+          className="absolute inset-0 pointer-events-none size-full"
         >
           <circle
             className="stroke-1 stroke-white/10"
@@ -33,20 +31,20 @@ export function OrbitingCircles({
         </svg>
       )}
       {React.Children.map(children, (child, index) => {
-        const angle = ( 360 / React.Children.count(children)) * index;
+        const angle = (360 / React.Children.count(children)) * index;
         return (
           <div
-            style={
-              {
-                "--duration": calculatedDuration,
-                "--radius": radius,
-                "--angle": angle,
-                "--icon-size": `${iconSize}px`,
-              }
-            }
+            style={{
+              "--duration": calculatedDuration,
+              "--radius": radius,
+              "--angle": angle,
+              "--icon-size": `${iconSize}px`,
+            }}
             className={twMerge(
-              `absolute flex size-[var(--icon-size)] transform-gpu animate-orbit items-center justify-center rounded-full ${ reverse ? "[animation-direction:reverse]": ""} `,
-              className,
+              `absolute flex size-[var(--icon-size)] transform-gpu animate-[var(--animate-orbit)] items-center justify-center rounded-full ${
+                reverse ? "[animation-direction:reverse]" : ""
+              }`,
+              className
             )}
             {...props}
           >

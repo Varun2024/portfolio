@@ -73,13 +73,19 @@ const About = () => {
                 <div className="grid-special-color grid-4">
                     <div className="flex flex-col items-center justify-center gap-4 size-full">
                         <p className="text-center headtext">
-                            Do you want to build together?
+                            Want to build together?
                         </p>
                         <CopyEmailButton />
                     </div>
                 </div>
                 {/* grid 5 */}
                 <div className="grid-default-color grid-5">
+                    <div className="z-10 w-[50%]">
+                        <p className="headText">
+                            Tech Stack
+                        </p>
+                        <p className="subtext">Blending code and intelligence—I craft seamless web experiences with React, elevate them with Next.js, and power them further using machine learning.</p>
+                    </div>
                     <div className="absolute inset-0 md:inset-y-9 w-full h-full start-[50%] md:scale-125 ">
                         <FrameWorks />
                     </div>
