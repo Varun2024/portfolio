@@ -1,15 +1,16 @@
+/* eslint-disable no-unused-vars */
 import React from 'react'
 
-const Project = () => {
+const Project = ({title, description,suDescription,href,image, tags}) => {
     return (
         <>
         <div className=' flex-wrap items-start justify-between py-10 space-y-14 sm:flex sm:space-y-0'>
             <div className="">
-                <p className="text-2xl">Title</p>
+                <p className="text-2xl">{title}</p>
                 <div className="flex gap-5 mt-2 text-[var(--color-sand)] ">
-                    <span>tag1</span>
-                    <span>tag2</span>
-                    <span>tag3</span>
+                    {tags.map((tag)=>(
+                        <span key={tag.id}>{tag.name}</span>
+                    ))}
                 </div>
             </div>
             <button className='flex items-center gap-1 cursor-pointer hover-animation'>
