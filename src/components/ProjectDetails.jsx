@@ -1,11 +1,15 @@
 /* eslint-disable no-unused-vars */
-
+import { motion } from "motion/react"
 
 
 const ProjectDetails = ({title , description ,subDescription ,image , tags , href , closeModal}) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center w-full h-full overflow-hidden backdrop-blur-sm">
-        <div className="realtive max-w-2xl border shadow-sm rounded-2xl bg-gradient-to-l from-[var(--color-midnight) ] to-[var(--color-navy)]">
+        <motion.div 
+        className="realtive max-w-2xl border shadow-sm rounded-2xl bg-gradient-to-l from-[var(--color-midnight) ] to-[var(--color-navy)]"
+        initial={{opacity:0 ,scale:.5}}
+        animate={{opacity:1 ,scale:1}}
+        >
             <button onClick={closeModal} className="absolute p-2 rounded-sm top-5 right-5 bg-[var(--color-midnight)]">
                 <img src="/assets/close.svg" alt="" className="w-6 h-6" />
             </button>
@@ -28,7 +32,7 @@ const ProjectDetails = ({title , description ,subDescription ,image , tags , hre
                     </a>
                 </div>
             </div>
-        </div>
+        </motion.div>
     </div>
   )
 }

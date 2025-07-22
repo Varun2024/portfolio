@@ -2,11 +2,13 @@
 import React, { useState } from 'react'
 import ProjectDetails from './ProjectDetails'
 
-const Project = ({ title, description, subDescription, href, image, tags }) => {
+const Project = ({ title, description, subDescription, href, image, tags, setPr }) => {
     const [isHidden, setIsHidden] = useState(false)
     return (
         <>
-            <div className=' flex-wrap items-start justify-between py-10 space-y-14 sm:flex sm:space-y-0'>
+            <div className=' flex-wrap items-start justify-between py-10 space-y-14 sm:flex sm:space-y-0'
+            onMouseEnter={()=>setPr(image)}
+            onMouseLeave={()=>setPr(null)}>
                 <div className="">
                     <p className="text-2xl">{title}</p>
                     <div className="flex gap-5 mt-2 text-[var(--color-sand)] ">
@@ -14,7 +16,7 @@ const Project = ({ title, description, subDescription, href, image, tags }) => {
                             <span key={tag.id}>{tag.name}</span>
                         ))}
                     </div>
-                </div>
+                </div> 
                 <button onClick={() => setIsHidden(true)} className='flex items-center gap-1 cursor-pointer hover-animation'>
                     Read More
                     <img src="assets/arrow-right.svg" />
