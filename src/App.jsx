@@ -4,6 +4,7 @@ import About from './section/About'
 import Projects from './section/Projects'
 import Exp from './section/Exp'
 import Contact from './section/Contact'
+import Footer from './section/Footer'
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
       {/* contact */}
       <Contact/>
       {/* footer */}
+      <Footer/>
     </div>
     
   )
