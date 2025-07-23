@@ -3,6 +3,7 @@ import Hero from './section/Hero'
 import About from './section/About'
 import Projects from './section/Projects'
 import Exp from './section/Exp'
+import Contact from './section/Contact'
 
 const App = () => {
   return (
@@ -17,8 +18,9 @@ const App = () => {
       <Projects />
       {/* experience */}
       <Exp/>
-      <section className='min-h-screen'></section>
-      <section className='min-h-screen'></section>
+      {/* contact */}
+      <Contact/>
+      {/* footer */}
     </div>
     
   )
