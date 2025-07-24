@@ -36,7 +36,7 @@ const HeroText = () => {
                     initial="hidden"
                     animate="visible"
                     transition={{ delay: 1.5 }}>
-                        <FlipWords words={["Secure", "Modern", "Scalable"]} className="font-black text-white text-8xl" />
+                        <FlipWords words={["Robust", "Sleek", "Scalable"]} className="font-black text-white text-8xl" />
                     </motion.div>
                     <motion.p 
                     className="text-4xl font-medium text-neutral-300"
@@ -67,7 +67,8 @@ const HeroText = () => {
                     initial="hidden"
                     animate="visible"
                     transition={{ delay: 1.5 }}>
-                        <FlipWords words={["Secure", "Modern", "Scalable"]} className="font-black text-white text-7xl" />
+                        {/* RobustSleek */}
+                        <FlipWords words={["Robust", "Sleek", "Scalable"]} className="font-black text-white text-7xl" />
                     </motion.div>
                     <motion.p className="text-4xl font-black text-neutral-300"
                     variants={variance}

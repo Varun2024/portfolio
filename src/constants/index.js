@@ -224,11 +224,12 @@ export const myProjects = [
 ];
 
 export const mySocials = [
-  {
-    name: "WhatsApp",
-    href: "",
-    icon: "/assets/socials/whatsApp.svg",
-  },
+  // twitter
+  // {
+  //   name: "WhatsApp",
+  //   href: "",
+  //   icon: "/assets/socials/whatsApp.svg",
+  // },
   {
     name: "Linkedin",
     href: "https://www.linkedin.com/in/ali-sanati/",
@@ -257,7 +258,7 @@ export const experiences = [
   {
     title: "Back-End Developer",
     job: "Car Manufacture",
-    date: "2023-2024",
+    date: "2023-2024", 
     contents: [
       "Engineered systems for large-scale data ingestion and analysis, ensuring efficient data processing and storage.",
       "Developed back-end systems enabling vehicle-to-cloud communication for telemetry, diagnostics, and remote control:",
