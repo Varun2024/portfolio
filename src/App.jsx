@@ -20,9 +20,9 @@ const App = () => {
       {/* experience */}
       <Exp/>
       {/* contact */}
-      <Contact/>
+      <Contact />
       {/* footer */}
-      <Footer/>
+      <Footer />
     </div>
     
   )

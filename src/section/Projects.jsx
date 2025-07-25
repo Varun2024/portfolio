@@ -15,7 +15,7 @@ const Projects = () => {
   }
   const [pr, setPr] = useState(null)
   return (
-    <section onMouseMove={handleMouse} className="realtive c-space section-spacing">
+    <section id="work" onMouseMove={handleMouse} className="realtive c-space section-spacing">
       <h2 className="text-heading">My Selected Projects</h2>
       {/* for the line */}
       <div className="bg-gradient-to-r from-transparent via-neutral-700 to-transparent mt-12 h-[1px] w-full " />
