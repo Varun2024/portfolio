@@ -1,60 +1,61 @@
+/* eslint-disable no-irregular-whitespace */
 export const myProjects = [
   {
     id: 1,
-    title: "E-commerce Platform",
+    title: "TedXBITD",
     description:
-      "Facilitates purchases from international websites like Amazon and eBay, allowing customers to shop from these sites and have products delivered domestically.",
+      "A dynamic and secure event website built for TEDxBITD, featuring real-time updates, user authentication, and responsive design.",
     subDescription: [
-      "Built a scalable application with ASP.NET Core MVC, integrating global platforms like Amazon for domestic delivery.",
-      "Implemented secure authentication and database management using ASP.NET Core Identity and Entity Framework Core.",
-      "Designed a responsive frontend with Tailwind CSS, enhancing user experience.",
-      "Added payment systems, localization, and product filtering for functionality improvements.",
+      "Implemented Firebase Authentication for secure login and role-based access.",
+      "Integrated Firebase Realtime Database to manage speaker profiles, team info, and event content live.",
+      "Optimized for responsiveness and performance across devices using modern frontend tools.",
+      "Deployed with CI/CD for rapid iteration and scalable user access during event peaks.",
     ],
-    href: "",
+    href: "https://tedxbitd.in/",
     logo: "",
-    image: "/assets/projects/accessories.jpg",
+    image: "/assets/tedx.png",
     tags: [
       {
         id: 1,
-        name: "C#",
-        path: "/assets/logos/csharp.svg",
+        name: "React",
+        path: "/assets/logos/react.svg",
       },
       {
         id: 2,
-        name: ".Net",
-        path: "/assets/logos/dotnet.svg",
+        name: "Framer",
+        path: "/assets/logos/framer-motion.svg",
       },
       {
         id: 3,
-        name: "Ef Core",
-        path: "/assets/logos/efcore.png",
+        name: "Firebase",
+        path: "/assets/logos/firebase.png",
       },
       {
         id: 4,
-        name: "TailwindCSS",
-        path: "/assets/logos/tailwindcss.svg",
+        name: "Stripe",
+        path: "/assets/logos/stripe.svg",
       },
     ],
   },
   {
     id: 2,
-    title: "Authentication & Authorization System",
+    title: "Health-connect",
     description:
-      "A secure authentication and authorization system using Auth0 for seamless user management.",
+      "A full-stack health services platform with secure authentication, real-time updates, and an AI-powered diagnostic chatbot.",
     subDescription: [
-      "Integrated Auth0 for authentication, supporting OAuth, JWT, and multi-factor authentication.",
-      "Implemented role-based access control (RBAC) for fine-grained user permissions.",
-      "Developed a React-based frontend with Tailwind CSS for a sleek user experience.",
-      "Connected to a secure SQLite database for user data storage.",
+      "Integrated a chatbot for preliminary health diagnosis using a rule-based or AI-driven system.",
+      "Implemented Authentication for secure user access and session management.",
+      "Leveraged MongoDB Database to sync doctor listings and dynamic content in real time.",
+      "Crafted a responsive, accessible UI with React and Tailwind CSS for seamless cross-device experience.",
     ],
-    href: "",
+    href: "https://health-connect-black.vercel.app/",
     logo: "",
-    image: "/assets/projects/auth-system.jpg",
+    image: "/assets/health.png",
     tags: [
       {
         id: 1,
-        name: "Auth0",
-        path: "/assets/logos/auth0.svg",
+        name: "Cloudinary",
+        path: "/assets/logos/cloudinary-2.svg",
       },
       {
         id: 2,
@@ -63,8 +64,8 @@ export const myProjects = [
       },
       {
         id: 3,
-        name: "SQLite",
-        path: "/assets/logos/sqlite.svg",
+        name: "Mongo",
+        path: "/assets/logos/mongodb-icon-1.svg",
       },
       {
         id: 4,
@@ -75,33 +76,72 @@ export const myProjects = [
   },
   {
     id: 3,
-    title: "Blazor Web App",
+    title: "PortFolio",
     description:
-      "A modern, interactive web application built with Blazor WebAssembly and .NET Core.",
+      "A visually immersive web experience crafted with modern 3D rendering, animations, and responsive design using cutting-edge frontend technologies.",
     subDescription: [
-      "Developed a fully interactive Single Page Application (SPA) using Blazor WebAssembly.",
-      "Implemented API interactions using .NET Core for a robust backend.",
-      "Designed responsive UI components with Tailwind CSS for an enhanced UX.",
-      "Integrated SQLite for efficient client-side database storage.",
+      "Built with React and Vite, leveraging React Three Fiber (Three.js) for performant 3D components.",
+      "Integrated Framer Motion for dynamic, fluid UI transitions and microinteractions.",
+      "Implemented Acternity (AOS) for scroll-triggered animations enhancing storytelling and visual depth.",
+      "Styled using Tailwind CSS for a clean, responsive, and scalable design system.",
+      "Optimized for deployment with production-ready build configuration and performance tuning.",
     ],
+
     href: "",
     logo: "",
-    image: "/assets/projects/blazor-app.jpg",
+    image: "/assets/Portfolio.png",
     tags: [
       {
         id: 1,
-        name: "Blazor",
-        path: "/assets/logos/blazor.svg",
+        name: "ThreeJS",
+        path: "/assets/logos/threejs.svg",
       },
       {
         id: 2,
-        name: ".NET Core",
-        path: "/assets/logos/dotnetcore.svg",
+        name: "React",
+        path: "/assets/logos/react.svg",
       },
       {
         id: 3,
-        name: "SQLite",
-        path: "/assets/logos/sqlite.svg",
+        name: "Aceternity",
+        path: "/assets/logos/ace.png",
+      },
+      {
+        id: 4,
+        name: "Tailwind",
+        path: "/assets/logos/tailwindcss.svg",
+      },
+    ],
+  },
+  {
+    id: 4,
+    title: "React-Recruit",
+    description:
+      "A web-based recruitment platform built with modern frontend, featuring secure authentication, real‑time data sync, and an AI-powered recruitment chatbot.",
+    subDescription: [
+      "Implemented Firebase Authentication for secure login and role‑based user access.",
+      "Connected to Firebase Realtime Database for instant updates to job listings, candidate data, and application statuses.",
+      "Built a conversational chatbot to guide applicants and provide pre-screening based on keywords or AI logic.",
+      "Designed with a responsive UI using React and Tailwind CSS for clean and mobile‑friendly interface.",
+    ],
+    href: "https://c-recruit.web.app/",
+    logo: "",
+    image: "/assets/recruit.png",
+    tags: [
+      {
+        id: 1,
+        name: "React",
+        path: "/assets/logos/react.svg",
+      },
+      {
+        id: 2,
+        name: "Render",
+        path: "/assets/logos/render.png",
+      },
+      {
+        id: 3,
+        name: "Json server",
+        path: "/assets/logos/json.svg",
       },
       {
         id: 4,
@@ -110,62 +150,26 @@ export const myProjects = [
       },
     ],
   },
-  {
-    id: 4,
-    title: "C++ Game Engine",
-    description:
-      "A lightweight C++ game engine designed for 2D and 3D game development.",
-    subDescription: [
-      "Built a powerful rendering engine using OpenGL and C++.",
-      "Developed a physics engine with collision detection and particle effects.",
-      "Implemented a scripting system for easy game customization.",
-      "Optimized performance with multi-threading and efficient memory management.",
-    ],
-    href: "",
-    logo: "",
-    image: "/assets/projects/game-engine.jpg",
-    tags: [
-      {
-        id: 1,
-        name: "C++",
-        path: "/assets/logos/cplusplus.svg",
-      },
-      {
-        id: 2,
-        name: "C#",
-        path: "/assets/logos/csharp.svg",
-      },
-      {
-        id: 3,
-        name: "Git",
-        path: "/assets/logos/git.svg",
-      },
-      {
-        id: 4,
-        name: "Microsoft",
-        path: "/assets/logos/microsoft.svg",
-      },
-    ],
-  },
+
   {
     id: 5,
-    title: "WordPress Custom Theme",
+    title: "Bookmark",
     description:
-      "A fully customizable WordPress theme optimized for performance and SEO.",
+      "A clean and fully responsive HTML/CSS website built using Tailwind CSS as a learning project and UI showcase.",
     subDescription: [
-      "Developed a responsive WordPress theme using HTML5, CSS3, and JavaScript.",
-      "Integrated Tailwind CSS for modern styling and UI enhancements.",
-      "Optimized SEO and page speed using Vite.js for fast builds.",
-      "Implemented custom widgets and plugin compatibility for extended functionality.",
+      "Built with utility-first Tailwind CSS for fast, responsive layouts without writing custom CSS.",
+      "Features a modern, mobile‑friendly design with navigation bar, hero section, skills, and contact form.",
+      "Demonstrates layout components including navbar, hero banner, about/skills section, and message form.",
+      "Ideal as a starter template or learning resource for responsive sites using Tailwind CSS.",
     ],
     href: "",
     logo: "",
-    image: "/assets/projects/wordpress-theme.jpg",
+    image: "/assets/bookmark.png",
     tags: [
       {
         id: 1,
-        name: "WordPress",
-        path: "/assets/logos/wordpress.svg",
+        name: "Javascript",
+        path: "/assets/logos/javascript.svg",
       },
       {
         id: 2,
@@ -186,34 +190,34 @@ export const myProjects = [
   },
   {
     id: 6,
-    title: "Online Learning Platform",
+    title: "Manage",
     description:
-      "A web application that allows users to enroll in courses, watch video lectures, and take quizzes.",
+      "A responsive and modern landing page UI built using HTML and Tailwind CSS.",
     subDescription: [
-      "Built using Blazor WebAssembly for a seamless SPA experience.",
-      "Implemented video streaming with Azure Media Services.",
-      "Added a quiz system with dynamic question generation and real-time grading.",
-      "Integrated Stripe API for secure payment processing.",
+      "Designed with Tailwind CSS for a clean, mobile-friendly layout.",
+      "Includes structured sections like hero, features, testimonials, and call-to-action.",
+      "Easily customizable for startups, SaaS products, and personal portfolios.",
+      "Optimized for fast loading and seamless user experience across devices.",
     ],
     href: "",
     logo: "",
-    image: "/assets/projects/elearning.jpg",
+    image: "/assets/manage.png",
     tags: [
       {
         id: 1,
-        name: "Blazor",
-        path: "/assets/logos/blazor.svg",
+        name: "HTML5",
+        path: "/assets/logos/html5.svg",
       },
       {
         id: 2,
-        name: "Azure",
-        path: "/assets/logos/azure.svg",
+        name: "CSS3",
+        path: "/assets/logos/css3.svg",
       },
-      {
-        id: 3,
-        name: "Stripe",
-        path: "/assets/logos/stripe.svg",
-      },
+      // {
+      //   id: 3,
+      //   name: "Stripe",
+      //   path: "/assets/logos/stripe.svg",
+      // },
       {
         id: 4,
         name: "TailwindCSS",
@@ -224,56 +228,72 @@ export const myProjects = [
 ];
 
 export const mySocials = [
-  // twitter
-  // {
-  //   name: "WhatsApp",
-  //   href: "",
-  //   icon: "/assets/socials/whatsApp.svg",
-  // },
   {
-    name: "Linkedin",
-    href: "https://www.linkedin.com/in/ali-sanati/",
-    icon: "/assets/socials/linkedIn.svg",
+    name: "Github",
+    href: "https://github.com/Varun2024",
+    icon: "/assets/logos/icons8-github-50.png",
   },
   {
     name: "Instagram",
-    href: "https://www.instagram.com/ali.sanatidev/reels/",
+    href: "https://www.instagram.com/varun_shukla619?igsh=YWkyMmxja2hjbjQx",
     icon: "/assets/socials/instagram.svg",
+  },
+  {
+    name: "Linkedin",
+    href: "https://www.linkedin.com/in/varun-shukla-codes/",
+    icon: "/assets/socials/linkedIn.svg",
+  },
+  {
+    name: "X",
+    href: "https://www.x.com/TheV_Stack/",
+    icon: "/assets/logos/twitter.png",
   },
 ];
 
 export const experiences = [
   {
-    title: "Software Developer",
-    job: "Security & Defense Projects",
-    date: "2021-2023",
+    title: "Full stack developer ",
+    job: "Grainscope",
+    date: "May-Aug,2025",
     contents: [
-      "Enhanced application security and developed new features, adhering to standards set by the Passive Defense Organization and National Cyberspace Center.",
-      "Designed and implemented intuitive map interfaces using MapsUI, enhancing user experience and enabling seamless interactive map integration.",
-      "Developed applications for industrial automation, leveraging C++ and the Fatek API for PLC communication.",
-      "Enhanced responsiveness and usability of applications using Windows Forms and WPF frameworks.",
-      "Executed XML to SVG conversions using X-DOM, ensuring dynamic and efficient data visualization.",
+      "At GrainScope, I developed a React-based web application to manage grain quality reports with advanced image processing and visualization tools.",
+      "Implemented features like canvas rendering, pagination, and interactive plotting of grains using Plotly.js.",
+      "Enabled report sharing via WhatsApp and integrated filtering, zooming, and labeling tools for better data interpretation.",
+      "Focused on improving the user experience and visual clarity of grain data through dynamic interfaces.",
+      "Combined frontend expertise with machine learning insights to support scalable and insightful agri-tech solutions.",
     ],
   },
   {
-    title: "Back-End Developer",
-    job: "Car Manufacture",
-    date: "2023-2024", 
+    title: "Tech lead",
+    job: "TEDxBITD",
+    date: "May-present,2025",
     contents: [
-      "Engineered systems for large-scale data ingestion and analysis, ensuring efficient data processing and storage.",
-      "Developed back-end systems enabling vehicle-to-cloud communication for telemetry, diagnostics, and remote control:",
-      "✅ Implemented secure APIs, following ISO 26262 automotive safety standards.",
-      "✅ Ensured data privacy for customers and partners through industry-compliant protocols.",
-      "✅ Delivered remote features like over-the-air updates, real-time tracking, and remote start capabilities.",
+      "At TEDxBITD, I worked as a web developer, responsible for building and maintaining the official event website.",
+      "Implemented responsive and visually engaging UI using modern frontend technologies.",
+      "Integrated dynamic content updates to reflect real-time event information and speaker details.",
+      "Ensured website performance, accessibility, and cross-device compatibility for a smooth user experience.",
+      "Collaborated closely with the design and content teams to bring the TEDx brand vision to life digitally.",
+    ],
+  },
+  {
+    title: "ML intern",
+    job: "IIT Bhilai",
+    date: "Feb-present,2025",
+    contents: [
+      "      At IIT Bhilai, I worked on a deep learning project to detect and classify brain tumors from MRI scans.",
+      "Used Canny edge detection for precise boundary extraction and preprocessing of tumor regions.",
+      "Trained a DenseNet-based CNN model for multiclass classification of tumor types with high accuracy.",
+      "Applied techniques like normalization and augmentation to enhance model generalization and robustness.",
+      "Focused on building an efficient, interpretable AI solution to support faster and more reliable tumor diagnosis.",
     ],
   },
   {
     title: "Freelance Developer",
     job: "Self-Employed",
-    date: "2025-Present",
+    date: "2024-Present",
     contents: [
-      "Created a personal portfolio using Three.js, React, Vite, and WebAPI to showcase technical expertise.",
-      "Continuously enhancing technical skills and expanding expertise in modern web development and back-end technologies.",
+      "Developed a personal portfolio website for an interior designer featuring a minimalistic layout and modern visual storytelling.",
+      "Integrated a clothing ecommerce section with smooth GSAP scroll animations and Framer Motion transitions for rich interactivity.",
     ],
   },
 ];
