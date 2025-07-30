@@ -23,11 +23,13 @@ const Projects = () => {
         <Project key={project.id} {...project} setPr={setPr} />
       ))}
       {/*hover preview */}
-      {pr &&
+      <div className="hidden lg:flex">
+        {pr &&
         <motion.img className="fixed top-0 left-0 z-50 object-cover h-56 rounded-lg shadow-lg pointer-events-none w-80"
           src={pr}
           style={{ x: springX, y: springY }}
         />}
+      </div>
     </section>
   )
 }
