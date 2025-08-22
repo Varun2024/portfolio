@@ -1,0 +1,23 @@
+{
+  "name": "Varun Shukla | Portfolio",
+  "short_name": "Varun Builds",
+  "description": "Portfolio of Varun Shukla — Frontend Developer skilled in React, Next.js, and Machine Learning. Showcasing projects, experiments, and builds.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "orientation": "portrait",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "/icons/icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
