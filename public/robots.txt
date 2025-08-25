@@ -1,0 +1,7 @@
+# robots.txt for https://varunxbuilds.web.app
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://varunxbuilds.web.app/sitemap.xml
