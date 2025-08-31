@@ -21,10 +21,10 @@ const App = () => {
       <Hero />
       {/* about */}
       <About />
-      {/* projects */}
-      <Projects />
       {/* experience */}
       <Exp />
+      {/* projects */}
+      <Projects />
       {/* contact */}
       <Contact />
       {/* footer */}

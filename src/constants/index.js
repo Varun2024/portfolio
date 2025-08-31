@@ -76,6 +76,45 @@ export const myProjects = [
   },
   {
     id: 3,
+    title: "Live Poll",
+    description:
+      "A real-time polling system for live feedback — teachers create polls and students vote instantly.",
+    subDescription: [
+      "Built Intervue Poll, a real-time polling platform to enhance classroom and meeting engagement.",
+      "Designed an intuitive UI for teachers to create polls with customizable options and timers.",
+      "Implemented seamless student participation with instant joining and live voting.",
+      "Integrated Socket.IO for real-time result updates and interactive feedback.",
+      "Developed with React + Vite + Firebase, ensuring a fast, scalable, and responsive user experience.",
+    ],
+
+    href: "https://intervue-poll.web.app/",
+    logo: "",
+    image: "/assets/poll.png",
+    tags: [
+      {
+        id: 1,
+        name: "Socket.IO",
+        path: "/assets/logo-dark.svg",
+      },
+      {
+        id: 2,
+        name: "React",
+        path: "/assets/logos/react.svg",
+      },
+      {
+        id: 3,
+        name: "Firebase",
+        path: "/assets/logos/firebase.png",
+      },
+      {
+        id: 4,
+        name: "Tailwind",
+        path: "/assets/logos/tailwindcss.svg",
+      },
+    ],
+  },
+  {
+    id: 4,
     title: "PortFolio",
     description:
       "A visually immersive web experience crafted with modern 3D rendering, animations, and responsive design using cutting-edge frontend technologies.",
@@ -114,7 +153,7 @@ export const myProjects = [
     ],
   },
   {
-    id: 4,
+    id: 5,
     title: "React-Recruit",
     description:
       "A web-based recruitment platform built with modern frontend, featuring secure authentication, real‑time data sync, and an AI-powered recruitment chatbot.",
@@ -152,7 +191,7 @@ export const myProjects = [
   },
 
   {
-    id: 5,
+    id: 6,
     title: "Bookmark",
     description:
       "A clean and fully responsive HTML/CSS website built using Tailwind CSS as a learning project and UI showcase.",
@@ -189,7 +228,7 @@ export const myProjects = [
     ],
   },
   {
-    id: 6,
+    id: 7,
     title: "Manage",
     description:
       "A responsive and modern landing page UI built using HTML and Tailwind CSS.",
@@ -219,7 +258,7 @@ export const myProjects = [
       //   path: "/assets/logos/stripe.svg",
       // },
       {
-        id: 4,
+        id: 3,
         name: "TailwindCSS",
         path: "/assets/logos/tailwindcss.svg",
       },
