@@ -2,6 +2,48 @@
 export const myProjects = [
   {
     id: 1,
+    title: "Sasha Store",
+    description:
+      "A dynamic and secure e-commerce platform built for Sasha Store, featuring real-time updates, user authentication, and responsive design.",
+    subDescription: [
+      "Implemented Firebase Authentication for secure login and role-based access.",
+      "Integrated Firebase Realtime Database to manage product listings, user profiles, and order history live.",
+      "Admin panel for managing products, orders, and users with real-time updates.",
+      "Deployed with CI/CD for rapid iteration and scalable user access during event peaks.",
+    ],
+    href: "https://sashastore.in/",
+    logo: "",
+    image: "/assets/sasha.png",
+    tags: [
+      {
+        id: 1,
+        name: "Cloudinary",
+        path: "/assets/logos/cloudinary-2.svg",
+      },
+      {
+        id: 2,
+        name: "Framer",
+        path: "/assets/logos/framer-motion.svg",
+      },
+      {
+        id: 3,
+        name: "Firebase",
+        path: "/assets/logos/firebase.png",
+      },
+      {
+        id: 4,
+        name: "Stripe",
+        path: "/assets/logos/stripe.svg",
+      },
+      {
+        id: 5,
+        name: "TailwindCSS",
+        path: "/assets/logos/tailwindcss.svg",
+      }
+    ],
+  },
+  {
+    id: 2,
     title: "TedXBITD",
     description:
       "A dynamic and secure event website built for TEDxBITD, featuring real-time updates, user authentication, and responsive design.",
@@ -38,7 +80,7 @@ export const myProjects = [
     ],
   },
   {
-    id: 2,
+    id: 3,
     title: "Health-connect",
     description:
       "A full-stack health services platform with secure authentication, real-time updates, and an AI-powered diagnostic chatbot.",
@@ -75,7 +117,7 @@ export const myProjects = [
     ],
   },
   {
-    id: 3,
+    id: 4,
     title: "Live Poll",
     description:
       "A real-time polling system for live feedback — teachers create polls and students vote instantly.",
@@ -114,7 +156,7 @@ export const myProjects = [
     ],
   },
   {
-    id: 4,
+    id: 5,
     title: "PortFolio",
     description:
       "A visually immersive web experience crafted with modern 3D rendering, animations, and responsive design using cutting-edge frontend technologies.",
@@ -153,7 +195,7 @@ export const myProjects = [
     ],
   },
   {
-    id: 5,
+    id: 6,
     title: "React-Recruit",
     description:
       "A web-based recruitment platform built with modern frontend, featuring secure authentication, real‑time data sync, and an AI-powered recruitment chatbot.",
@@ -191,7 +233,7 @@ export const myProjects = [
   },
 
   {
-    id: 6,
+    id: 7,
     title: "Bookmark",
     description:
       "A clean and fully responsive HTML/CSS website built using Tailwind CSS as a learning project and UI showcase.",
@@ -228,7 +270,7 @@ export const myProjects = [
     ],
   },
   {
-    id: 7,
+    id: 8,
     title: "Manage",
     description:
       "A responsive and modern landing page UI built using HTML and Tailwind CSS.",
@@ -299,7 +341,6 @@ export const experiences = [
       "Implemented features like canvas rendering, pagination, and interactive plotting of grains using Plotly.js.",
       "Enabled report sharing via WhatsApp and integrated filtering, zooming, and labeling tools for better data interpretation.",
       "Focused on improving the user experience and visual clarity of grain data through dynamic interfaces.",
-      "Combined frontend expertise with machine learning insights to support scalable and insightful agri-tech solutions.",
     ],
   },
   {
@@ -311,7 +352,6 @@ export const experiences = [
       "Implemented responsive and visually engaging UI using modern frontend technologies.",
       "Integrated dynamic content updates to reflect real-time event information and speaker details.",
       "Ensured website performance, accessibility, and cross-device compatibility for a smooth user experience.",
-      "Collaborated closely with the design and content teams to bring the TEDx brand vision to life digitally.",
     ],
   },
   {
@@ -319,11 +359,10 @@ export const experiences = [
     job: "IIT Bhilai",
     date: "Feb-present,2025",
     contents: [
-      "      At IIT Bhilai, I worked on a deep learning project to detect and classify brain tumors from MRI scans.",
+      "At IIT Bhilai, I worked on a deep learning project to detect and classify brain tumors from MRI scans.",
       "Used Canny edge detection for precise boundary extraction and preprocessing of tumor regions.",
       "Trained a DenseNet-based CNN model for multiclass classification of tumor types with high accuracy.",
       "Applied techniques like normalization and augmentation to enhance model generalization and robustness.",
-      "Focused on building an efficient, interpretable AI solution to support faster and more reliable tumor diagnosis.",
     ],
   },
   {

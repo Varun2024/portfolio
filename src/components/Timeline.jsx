@@ -30,7 +30,7 @@ export const Timeline = ({
             className="c-space section-spacing"
             ref={containerRef}>
             <h2 className="text-heading ">My work experinces</h2>
-            <div ref={ref} className="relative  pb-20">
+            <div ref={ref} className="relative pb-12 md:pb-60 mt-12">
                 {data.map((item, index) => (
                     <div key={index} className="flex justify-start pt-10 md:pt-40 md:gap-10">
                         <div
@@ -55,7 +55,7 @@ export const Timeline = ({
                                 <h3>{item.job}</h3>
                             </div>
                             {item.contents.map((content,index)=>(
-                                <p className="mb-3 font-normal text-neutral-400  " key={index}>{content}</p>
+                                <p className="mb-3 font-normal text-neutral-400 text-sm" key={index}>{content} </p>
                             ))}
                         </div>
                     </div>
