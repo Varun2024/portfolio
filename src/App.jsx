@@ -7,6 +7,8 @@ import Contact from './section/Contact'
 import Footer from './section/Footer'
 import { useRef } from 'react'
 import { ReactLenis } from 'lenis/react'
+import Testimonials from './section/Testimonial'
+import LinkedInProfilePostsWidget from './components/LinkedInPost'
 
 
 const App = () => {
@@ -25,9 +27,11 @@ const App = () => {
       <Exp />
       {/* projects */}
       <Projects />
+
       {/* contact */}
       <Contact />
       {/* footer */}
+      <LinkedInProfilePostsWidget/>
       <Footer />
     </div>
 

@@ -1,4 +1,4 @@
-/* eslint-disable no-irregular-whitespace */
+
 export const myProjects = [
   {
     id: 1,
@@ -6,10 +6,10 @@ export const myProjects = [
     description:
       "A dynamic and secure e-commerce platform built for Sasha Store, featuring real-time updates, user authentication, and responsive design.",
     subDescription: [
-      "Implemented Firebase Authentication for secure login and role-based access.",
-      "Integrated Firebase Realtime Database to manage product listings, user profiles, and order history live.",
-      "Admin panel for managing products, orders, and users with real-time updates.",
-      "Deployed with CI/CD for rapid iteration and scalable user access during event peaks.",
+      "Built a seamless login and signup experience using Firebase Authentication with secure session handling.",
+      "Integrated Firebase Realtime Database to store and sync Sasha product data, user activity, and order details instantly.",
+      "Developed an admin dashboard to manage products, user requests, and event-specific inventory in real time.",
+      "Optimized deployment with CI/CD pipelines for smooth updates, ensuring stable performance even during high-traffic event spikes.",
     ],
     href: "https://sashastore.in/",
     logo: "",
@@ -39,7 +39,7 @@ export const myProjects = [
         id: 5,
         name: "TailwindCSS",
         path: "/assets/logos/tailwindcss.svg",
-      }
+      },
     ],
   },
   {
@@ -226,81 +226,6 @@ export const myProjects = [
       },
       {
         id: 4,
-        name: "TailwindCSS",
-        path: "/assets/logos/tailwindcss.svg",
-      },
-    ],
-  },
-
-  {
-    id: 7,
-    title: "Bookmark",
-    description:
-      "A clean and fully responsive HTML/CSS website built using Tailwind CSS as a learning project and UI showcase.",
-    subDescription: [
-      "Built with utility-first Tailwind CSS for fast, responsive layouts without writing custom CSS.",
-      "Features a modern, mobile‑friendly design with navigation bar, hero section, skills, and contact form.",
-      "Demonstrates layout components including navbar, hero banner, about/skills section, and message form.",
-      "Ideal as a starter template or learning resource for responsive sites using Tailwind CSS.",
-    ],
-    href: "",
-    logo: "",
-    image: "/assets/bookmark.png",
-    tags: [
-      {
-        id: 1,
-        name: "Javascript",
-        path: "/assets/logos/javascript.svg",
-      },
-      {
-        id: 2,
-        name: "HTML5",
-        path: "/assets/logos/html5.svg",
-      },
-      {
-        id: 3,
-        name: "CSS3",
-        path: "/assets/logos/css3.svg",
-      },
-      {
-        id: 4,
-        name: "Vite.js",
-        path: "/assets/logos/vitejs.svg",
-      },
-    ],
-  },
-  {
-    id: 8,
-    title: "Manage",
-    description:
-      "A responsive and modern landing page UI built using HTML and Tailwind CSS.",
-    subDescription: [
-      "Designed with Tailwind CSS for a clean, mobile-friendly layout.",
-      "Includes structured sections like hero, features, testimonials, and call-to-action.",
-      "Easily customizable for startups, SaaS products, and personal portfolios.",
-      "Optimized for fast loading and seamless user experience across devices.",
-    ],
-    href: "",
-    logo: "",
-    image: "/assets/manage.png",
-    tags: [
-      {
-        id: 1,
-        name: "HTML5",
-        path: "/assets/logos/html5.svg",
-      },
-      {
-        id: 2,
-        name: "CSS3",
-        path: "/assets/logos/css3.svg",
-      },
-      // {
-      //   id: 3,
-      //   name: "Stripe",
-      //   path: "/assets/logos/stripe.svg",
-      // },
-      {
-        id: 3,
         name: "TailwindCSS",
         path: "/assets/logos/tailwindcss.svg",
       },

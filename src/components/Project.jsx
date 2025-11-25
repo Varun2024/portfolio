@@ -11,7 +11,7 @@ const Project = ({ title, description, subDescription, href, image, tags, setPr 
             onMouseLeave={()=>setPr(null)}>
                 <div className="">
                     <p className="text-2xl">{title}</p>
-                    <div className="flex gap-5 mt-2 text-[var(--color-sand)] ">
+                    <div className="flex gap-2 mt-2 text-[var(--color-sand)] ">
                         {tags.map((tag) => (
                             <span key={tag.id}>{tag.name}</span>
                         ))}

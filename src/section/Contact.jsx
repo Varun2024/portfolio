@@ -1,7 +1,8 @@
-import {  useState } from "react"
+import { useState } from "react"
 import emailjs from "@emailjs/browser"
 import Alert from "../components/Alert"
 import { Particles } from "../components/Particle"
+import Testimonials from "./Testimonial"
 
 const Contact = () => {
     const [formData, setFormData] = useState({
@@ -56,14 +57,16 @@ const Contact = () => {
         // template_n1sb669
     }
     return (
-        <section id="contact" className='relative flex items-center c-space section-spacing'>
+        <section id="contact" className='relative flex c-space section-spacing'>
+            <Testimonials/>
             <Particles
-            className="absolute inset-0 -z-50"
-            quantity={100}
-            ease={80}
-            color={"#ffffff"}
-            refresh
+                className="absolute inset-0 -z-100"
+                quantity={100}
+                ease={80}
+                color={"#ffffff"}
+                refresh
             />
+            {/* testimonials */}
             {showAlert && <Alert type={alertType} text={alertMessage} />}
             <div className="flex flex-col items-center justify-center max-w-md p-5 mx-auto border border-white/10 rounded-2xl bg-[var(--color-primary)]">
                 <div className="flex flex-col items-start w-full gap-5 mb-10">

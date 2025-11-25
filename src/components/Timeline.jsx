@@ -40,7 +40,7 @@ export const Timeline = ({
                                 <div
                                     className="h-4 w-4 rounded-full  bg-neutral-800 border  border-neutral-700 p-2" />
                             </div>
-                            <div className="flex-col hidden gap-2 text-xl font-bol md:flex md:pl-20 md:text-4xl text-neutral-300 ">
+                            <div className="flex-col hidden text-xl font-bol md:flex md:pl-20 md:text-4xl text-neutral-300 ">
                                 <h3 >{item.date}</h3>
                                 <h3 className="text-3xl text-neutral-400">{item.title}</h3>
                                 <h3 className="text-3xl text-neutral-500">{item.job}</h3>
