@@ -6,7 +6,7 @@ const ProjectDetails = ({title , description ,subDescription ,image , tags , hre
   return (
     <div className=" fixed inset-0 z-50 flex items-center justify-center w-full h-full overflow-hidden backdrop-blur-sm">
         <motion.div 
-        className="realtive sm:max-w-2xl max-w-[96%] border shadow-sm rounded-2xl bg-gradient-to-l from-[var(--color-midnight) ] to-[var(--color-navy)]"
+        className="relative sm:max-w-2xl max-w-[96%]  border shadow-sm rounded-2xl bg-gradient-to-l from-[var(--color-midnight) ] to-[var(--color-navy)]"
         initial={{opacity:0 ,scale:.5}}
         animate={{opacity:1 ,scale:1}}
         >
@@ -15,7 +15,7 @@ const ProjectDetails = ({title , description ,subDescription ,image , tags , hre
             </button>
             <img src={image} alt="title" className="w-full rounded-t-2xl"/>
             <div className="p-5">
-                <h5 className="mb-2 text-2xl font-bold text-white ">{title}</h5>
+                <h5 className="mb-2  sm:text-2xl font-bold text-white ">{title}</h5>
                 <p className="mb-3 font-normal text-neutral-400">{description}</p>
                 {subDescription.map((subDesc,index)=>(
                     <p className="mb-3 font-normal text-neutral-400">{subDesc}</p>

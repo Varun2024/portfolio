@@ -57,7 +57,7 @@ const Contact = () => {
         // template_n1sb669
     }
     return (
-        <section id="contact" className='relative flex c-space section-spacing'>
+        <section id="contact" className='relative flex-col sm:flex-row gap-5 sm:gap-1 flex c-space section-spacing'>
             <Testimonials/>
             <Particles
                 className="absolute inset-0 -z-100"

@@ -89,7 +89,7 @@ export default function Testimonials({
           </div>
         </div>
 
-        <div className="mt-5 relative min-h-[120px] ">
+        <div className="mt-5 relative sm:min-h-[120px] min-h-[180px] ">
           <AnimatePresence custom={1} initial={false} mode="wait">
             <motion.blockquote
               key={index}
