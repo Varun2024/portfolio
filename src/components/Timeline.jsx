@@ -32,11 +32,11 @@ export const Timeline = ({
             <h2 className="text-heading ">My work experinces</h2>
             <div ref={ref} className="relative pb-12 md:pb-60 mt-12">
                 {data.map((item, index) => (
-                    <div key={index} className="flex justify-start pt-10 md:pt-40 md:gap-10">
+                    <div key={index} className="flex justify-start pt-8 md:pt-40 md:gap-10">
                         <div
-                            className="sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">
+                            className="sticky flex flex-col md:flex-row z-40 items-center top-24 md:top-40 self-start max-w-xs lg:max-w-sm md:w-full">
                             <div
-                                className="h-10 absolute -left-[15px ] w-10 rounded-full bg-[var(--color-midnight)] flex items-center justify-center">
+                                className="h-10 absolute -left-[14px] w-10 rounded-full bg-[var(--color-midnight)] flex items-center justify-center">
                                 <div
                                     className="h-4 w-4 rounded-full  bg-neutral-800 border  border-neutral-700 p-2" />
                             </div>
@@ -49,13 +49,14 @@ export const Timeline = ({
 
 
                         {/*mobile view  */}
-                        <div className="relative pl-20 pr-4 md:pl-4 w-full">
-                            <div className="block md:hidden mb-4 text-2xl font-bold text-neutral-300">
+                        <div className="relative pl-12 pr-3 md:pl-4 md:pr-4 w-full">
+                            <div className="block md:hidden mb-3 text-xl font-bold text-neutral-300 leading-tight">
                                 <h3>{item.date}</h3>
+                                <h3 className="text-lg text-neutral-400">{item.title}</h3>
                                 <h3>{item.job}</h3>
                             </div>
                             {item.contents.map((content,index)=>(
-                                <p className="mb-3 font-normal text-neutral-400 text-sm" key={index}>{content} </p>
+                                <p className="mb-2.5 font-normal text-neutral-400 text-[15px] md:text-base leading-relaxed" key={index}>{content} </p>
                             ))}
                         </div>
                     </div>
@@ -64,7 +65,7 @@ export const Timeline = ({
                     style={{
                         height: height + "px",
                     }}
-                    className="absolute md:left-5 left-0 top-0 overflow-hidden w-[2px] bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))] from-transparent from-[0%] via-neutral-700 to-transparent to-[99%]  [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)] ">
+                    className="absolute left-[5px] md:left-5 top-0 overflow-hidden w-[2px] bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))] from-transparent from-[0%] via-neutral-700 to-transparent to-[99%] [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)]">
                     <motion.div
                         style={{
                             height: heightTransform,
