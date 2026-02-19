@@ -301,7 +301,7 @@ export const experiences = [
   },
   {
     title: "Software Engineer",
-    job: "Product Team",
+    job: "Chainframe Product Team",
     date: "22 Jan,2026 - Present",
     contents: [
       "Shipped one production-ready feature module behind a feature flag.",
