@@ -2,7 +2,7 @@ import { useState } from "react"
 import emailjs from "@emailjs/browser"
 import Alert from "../components/Alert"
 import { Particles } from "../components/Particle"
-import Testimonials from "./Testimonial"
+
 
 const Contact = () => {
     const [formData, setFormData] = useState({
@@ -58,7 +58,7 @@ const Contact = () => {
     }
     return (
         <section id="contact" className='relative flex-col sm:flex-row gap-5 sm:gap-1 flex c-space section-spacing'>
-            <Testimonials/>
+            
             <Particles
                 className="absolute inset-0 -z-100"
                 quantity={100}
