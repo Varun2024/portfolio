@@ -15,10 +15,10 @@ const Projects = () => {
   }
   const [pr, setPr] = useState(null)
   return (
-    <section id="work" onMouseMove={handleMouse} className="realtive c-space section-spacing">
+    <section id="work" onMouseMove={handleMouse} className="realtive c-space section-spacing px-1 sm:px-0">
       <h2 className="text-heading">My Selected Projects</h2>
       {/* for the line */}
-      <div className="bg-gradient-to-r from-transparent via-neutral-700 to-transparent mt-12 h-[1px] w-full " />
+      <div className="bg-gradient-to-r from-transparent via-neutral-700 to-transparent mt-8 sm:mt-12 h-[1px] w-full " />
       {myProjects.map((project) => (
         <Project key={project.id} {...project} setPr={setPr} />
       ))}
