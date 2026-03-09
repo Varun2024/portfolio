@@ -84,7 +84,7 @@ const About = () => {
                         <p className="headText">
                             Tech Stack
                         </p>
-                        <p className="subtext">Blending code and intelligence—I craft seamless web experiences with React, elevate them with Next.js, and power them further using machine learning.</p>
+                        <p className="subtext">I build performant full-stack products with modern web, cloud, and payment technologies.</p>
                     </div>
                     <div className="absolute inset-0 md:inset-y-9 w-full h-full start-[50%] md:scale-125 ">
                         <FrameWorks />

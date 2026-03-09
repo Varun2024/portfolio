@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="MongoDB logo">
+  <rect width="64" height="64" rx="10" fill="#0F172A"/>
+  <path fill="#4DB33D" d="M32 10c6 7 10 15 10 24 0 11-6 20-10 20s-10-9-10-20c0-9 4-17 10-24z"/>
+  <path fill="#86D87A" d="M32 10v44c4 0 10-9 10-20 0-9-4-17-10-24z"/>
+</svg>

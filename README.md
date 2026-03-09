@@ -21,6 +21,13 @@ npm install
 npm run dev
 ```
 
+## Firebase Setup (Testimonials)
+
+1. Copy `.env.example` to `.env`.
+2. Add your Firebase web app config values.
+3. Ensure Firebase Realtime Database is enabled.
+4. Use `testimonials` as the database node for feedback entries.
+
 ## Build
 
 ```bash

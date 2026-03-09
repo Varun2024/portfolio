@@ -1,6 +1,85 @@
 
 export const myProjects = [
   {
+    id: 5,
+    title: "NavUI Component Library",
+    description:
+      "A reusable React UI component library focused on clean APIs and polished visuals.",
+    subDescription: [
+      "Created reusable, composable UI primitives for faster product development.",
+      "Designed consistent motion patterns and accessible interaction states.",
+      "Documented components with practical usage examples and visual previews.",
+      "Built with React, Tailwind CSS, and Motion for responsive performance.",
+    ],
+    href: "https://navui-hw7m.vercel.app/",
+    logo: "",
+    image: "/assets/navui.png",
+    tags: [
+      {
+        id: 1,
+        name: "React",
+        path: "/assets/logos/react.svg",
+      },
+      {
+        id: 2,
+        name: "TypeScript",
+        path: "/assets/logos/typescript.svg",
+      },
+      {
+        id: 3,
+        name: "Motion",
+        path: "/assets/logos/framer-motion.svg",
+      },
+      {
+        id: 4,
+        name: "Tailwind",
+        path: "/assets/logos/tailwindcss.svg",
+      },
+    ],
+  },
+  {
+    id: 6,
+    title: "RentIt",
+    description:
+      "A rental marketplace with category discovery, real-time listings, and smooth checkout flows.",
+    subDescription: [
+      "Built category-based browsing for quick item discovery and filtering.",
+      "Implemented secure auth and real-time updates for listing availability.",
+      "Designed mobile-first UX for booking, vendor profiles, and order tracking.",
+      "Integrated payments and backend APIs for production-ready rental workflows.",
+    ],
+    href: "https://rentit-66e6c.web.app/categories",
+    logo: "",
+    image: "/assets/renitit.png",
+    tags: [
+      {
+        id: 1,
+        name: "Next.js",
+        path: "/assets/logos/next.svg",
+      },
+      {
+        id: 2,
+        name: "MongoDB",
+        path: "/assets/logos/mongodb-icon-1.svg",
+      },
+      {
+        id: 3,
+        name: "Razorpay",
+        path: "/assets/logos/razorpay.svg",
+      },
+      {
+        id: 4,
+        name: "Firebase",
+        path: "/assets/logos/firebase.png",
+      },
+      {
+        id: 5,
+        name: "TailwindCSS",
+        path: "/assets/logos/tailwindcss.svg",
+      },
+    ],
+  },
+  {
     id: 1,
     title: "Sasha Store",
     description:
@@ -155,82 +234,6 @@ export const myProjects = [
       },
     ],
   },
-  {
-    id: 5,
-    title: "PortFolio",
-    description:
-      "A 3D portfolio experience with smooth animations and responsive design.",
-    subDescription: [
-      "Built with React and Vite using React Three Fiber for 3D scenes.",
-      "Added Framer Motion for fluid transitions and microinteractions.",
-      "Integrated Aceternity/AOS for scroll-driven storytelling effects.",
-      "Styled with Tailwind CSS for a clean, responsive system.",
-      "Optimized builds for production performance and smooth delivery.",
-    ],
-
-    href: "",
-    logo: "",
-    image: "/assets/Portfolio.png",
-    tags: [
-      {
-        id: 1,
-        name: "ThreeJS",
-        path: "/assets/logos/threejs.svg",
-      },
-      {
-        id: 2,
-        name: "React",
-        path: "/assets/logos/react.svg",
-      },
-      {
-        id: 3,
-        name: "Aceternity",
-        path: "/assets/logos/ace.png",
-      },
-      {
-        id: 4,
-        name: "Tailwind",
-        path: "/assets/logos/tailwindcss.svg",
-      },
-    ],
-  },
-  {
-    id: 6,
-    title: "React-Recruit",
-    description:
-      "A recruitment platform with secure auth, real-time sync, and chatbot support.",
-    subDescription: [
-      "Implemented Firebase Authentication with role-based access.",
-      "Integrated Firebase Realtime Database for live jobs and application updates.",
-      "Built a chatbot to guide applicants and assist pre-screening.",
-      "Designed a clean, mobile-friendly UI with React and Tailwind CSS.",
-    ],
-    href: "https://c-recruit.web.app/",
-    logo: "",
-    image: "/assets/recruit.png",
-    tags: [
-      {
-        id: 1,
-        name: "React",
-        path: "/assets/logos/react.svg",
-      },
-      {
-        id: 2,
-        name: "Render",
-        path: "/assets/logos/render.png",
-      },
-      {
-        id: 3,
-        name: "Json server",
-        path: "/assets/logos/json.svg",
-      },
-      {
-        id: 4,
-        name: "TailwindCSS",
-        path: "/assets/logos/tailwindcss.svg",
-      },
-    ],
-  },
 ];
 
 export const mySocials = [
@@ -295,6 +298,7 @@ export const experiences = [
     job: "Self-Employed",
     date: "2025-Present",
     contents: [
+      "Built a P2P ecommerce platform for rental services across a wide variety of goods.",
       "Built a portfolio site for an interior designer with a clean, modern layout.",
       "Added a clothing ecommerce section with GSAP and Framer Motion interactions.",
     ],

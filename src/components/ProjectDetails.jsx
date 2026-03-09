@@ -13,7 +13,13 @@ const ProjectDetails = ({title , description ,subDescription ,image , tags , hre
             <button onClick={closeModal} className="absolute p-2 rounded-sm top-3 right-3 sm:top-5 sm:right-5 bg-[var(--color-midnight)]">
                 <img src="/assets/close.svg" alt="" className="w-5 h-5 sm:w-6 sm:h-6" />
             </button>
-            <img src={image} alt="title" className="w-full rounded-t-2xl"/>
+            <figure className="w-full overflow-hidden rounded-t-2xl border-b border-white/10 bg-black/20">
+                <img
+                    src={image}
+                    alt={title}
+                    className="h-52 w-full object-cover object-top sm:h-64 md:h-72"
+                />
+            </figure>
             <div className="p-4 sm:p-5">
                 <h5 className="mb-2 text-xl sm:text-2xl font-bold text-white ">{title}</h5>
                 <p className="mb-3 text-sm sm:text-base font-normal text-neutral-400">{description}</p>
@@ -27,7 +33,7 @@ const ProjectDetails = ({title , description ,subDescription ,image , tags , hre
                             <img key={tag.id} src={tag.path} alt={tag.name} className=" rounded-lg size-8 sm:size-10 hover-animation"/>
                         ))}
                     </div>
-                    <a href={href} className="inline-flex items-center gap-1 text-sm sm:text-base font-medium hover-animation cursor-pointer"> 
+                    <a href={href} target="_blank" rel="noreferrer noopener" className="inline-flex items-center gap-1 text-sm sm:text-base font-medium hover-animation cursor-pointer"> 
                     View Project <img src="assets/arrow-up.svg" className="size-4" />
                     </a>
                 </div>

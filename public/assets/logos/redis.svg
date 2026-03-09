@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Redis logo">
+  <rect width="64" height="64" rx="10" fill="#0F172A"/>
+  <g fill="#DC382D">
+    <path d="M9 18 32 10l23 8-23 8z"/>
+    <path d="M9 30l23 8 23-8-23-8z" opacity=".9"/>
+    <path d="M9 42l23 8 23-8-23-8z" opacity=".8"/>
+  </g>
+</svg>
