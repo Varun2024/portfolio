@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Barba.js logo">
+  <rect width="64" height="64" rx="10" fill="#111827"/>
+  <path fill="#E5E7EB" d="M18 20h14c6 0 10 3 10 8 0 3-2 5-5 6 4 1 6 3 6 7 0 6-5 9-12 9H18V20zm12 13c3 0 5-1 5-4s-2-4-5-4h-6v8h6zm1 13c4 0 6-1 6-4 0-4-3-5-7-5h-6v9h7z"/>
+</svg>

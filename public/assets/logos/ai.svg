@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="AI SDK icon">
+  <rect width="64" height="64" rx="10" fill="#0F172A"/>
+  <path fill="#7A57DB" d="M18 44 28 18h8l10 26h-6l-2.1-6h-11.8L24 44h-6zm9.6-11h8.8L32 21.2 27.6 33z"/>
+  <circle cx="46" cy="20" r="4" fill="#33C2CC"/>
+</svg>

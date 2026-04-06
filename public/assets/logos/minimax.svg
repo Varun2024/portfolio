@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="MiniMax LLM logo">
+  <rect width="64" height="64" rx="10" fill="#111827"/>
+  <path fill="#F59E0B" d="M14 42 24 18h8l10 24h-6l-2-5h-12l-2 5h-6zm11-9h8l-4-10-4 10z"/>
+  <path fill="#FBBF24" d="M40 18h6l4 7 4-7h6l-7 12 7 12h-6l-4-7-4 7h-6l7-12-7-12z"/>
+</svg>

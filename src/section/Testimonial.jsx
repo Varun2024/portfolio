@@ -237,7 +237,7 @@ export default function Testimonials({ autoRotate = true, rotateInterval = 6000 
       <div className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-6 lg:grid-cols-5">
         <div className="rounded-2xl border-2 border-gray-800/80 bg-[var(--color-primary)] p-4 shadow-sm sm:p-6 lg:col-span-3">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
-            <h3 className="text-xl font-semibold leading-snug text-gray-100 sm:text-2xl md:text-3xl">
+            <h3 className="text-lg font-semibold leading-snug text-gray-100 sm:text-2xl md:text-3xl">
               What people say about me
             </h3>
             <div className="flex items-center gap-2 self-end sm:self-auto">
@@ -284,7 +284,7 @@ export default function Testimonials({ autoRotate = true, rotateInterval = 6000 
             </div>
           </div>
 
-          <div className="relative mt-5 min-h-[170px] sm:min-h-[120px]">
+          <div className="mt-5">
             <AnimatePresence initial={false} mode="wait">
               <Motion.blockquote
                 key={`${activeTestimonial.name}-${activeTestimonial.createdAt}`}
@@ -292,27 +292,30 @@ export default function Testimonials({ autoRotate = true, rotateInterval = 6000 
                 initial="enter"
                 animate="center"
                 exit="exit"
-                className="absolute inset-0"
+                className="w-full"
               >
-                <div className="flex items-start gap-3 sm:gap-4">
+                <div className="flex items-start gap-2.5 sm:gap-4">
                   <img
                     src={activeTestimonial.avatar || "/assets/logos/user.svg"}
                     alt={activeTestimonial.name}
-                    className="h-12 w-12 rounded-full object-cover ring-1 ring-gray-800 sm:h-14 sm:w-14"
+                    onError={(event) => {
+                      event.currentTarget.src = "/assets/logos/user.svg";
+                    }}
+                    className="h-10 w-10 rounded-full object-cover ring-1 ring-gray-800 sm:h-14 sm:w-14"
                   />
 
                   <div>
-                    <p className="text-sm leading-relaxed text-gray-200 sm:text-base">
+                    <p className="text-[15px] leading-7 text-gray-200 sm:text-base sm:leading-relaxed">
                       "{activeTestimonial.quote}"
                     </p>
-                    <div className="mt-2.5 text-sm text-gray-400 sm:mt-3">
-                      <div className="font-medium text-gray-100">{activeTestimonial.name}</div>
+                    <div className="mt-2 text-sm text-gray-400 sm:mt-3">
+                      <div className="text-base font-medium text-gray-100 sm:text-base">{activeTestimonial.name}</div>
                       <div className="text-xs">{activeTestimonial.role}</div>
                     </div>
                     <button
                       type="button"
                       onClick={shareFeedback}
-                      className="mt-3 inline-flex items-center rounded-md border border-white/15 px-3 py-1.5 text-xs font-semibold tracking-wide text-white hover:bg-white/10"
+                      className="mt-2.5 inline-flex items-center rounded-md border border-white/15 px-3 py-1.5 text-xs font-semibold tracking-wide text-white hover:bg-white/10"
                     >
                       Share Feedback
                     </button>
@@ -322,7 +325,7 @@ export default function Testimonials({ autoRotate = true, rotateInterval = 6000 
             </AnimatePresence>
           </div>
 
-          <div className="mt-6 flex items-center justify-center gap-2">
+          <div className="mt-4 flex items-center justify-center gap-2 sm:mt-6">
             {testimonials.map((item, currentIndex) => (
               <button
                 key={`${item.name}-${item.createdAt}-${currentIndex}`}
