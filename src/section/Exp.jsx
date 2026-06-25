@@ -21,7 +21,7 @@ const ExperienceCard = ({ exp, className, accentClass = "grid-default-color", hi
 )
 
 const Exp = () => {
-    const [current, freelance, ml, tedx, grain] = experiences
+    const [current, chainframe, freelance, ml, tedx, grain] = experiences
 
     return (
         <section id="experience" className="c-space section-spacing">
@@ -36,6 +36,11 @@ const Exp = () => {
                     accentClass="grid-deep-purple"
                     className="md:col-span-3 md:row-span-2 md:h-full"
                     highlights={5}
+                />
+                <ExperienceCard
+                    exp={chainframe}
+                    accentClass="grid-default-color"
+                    className="md:col-span-3 md:h-full"
                 />
                 <ExperienceCard
                     exp={freelance}
@@ -55,7 +60,8 @@ const Exp = () => {
                 <ExperienceCard
                     exp={grain}
                     accentClass="grid-default-color"
-                    className="md:col-span-3 md:h-full"
+                    className="md:col-span-6"
+                    highlights={4}
                 />
             </div>
         </section>

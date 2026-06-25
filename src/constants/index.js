@@ -317,9 +317,21 @@ export const mySocials = [
 
 export const experiences = [
   {
+    title: "SDE — Full-stack & AI Engineer",
+    job: "Flux Fortify",
+    date: "Apr 2026 - Present",
+    contents: [
+      "Building full-stack product surfaces with AI-driven features end-to-end.",
+      "Designing backend APIs with validation, auth, and observability baked in.",
+      "Integrating LLM workflows into core product flows for real user value.",
+      "Shipping responsive frontends aligned with the product design system.",
+      "Owning features from spec through deploy with tests and docs.",
+    ],
+  },
+  {
     title: "Software Engineer",
     job: "Chainframe Product Team",
-    date: "22 Jan,2026 - Present",
+    date: "Jan 2026 - Apr 2026",
     contents: [
       "Shipped one production-ready feature module behind a feature flag.",
       "Built backend APIs with validation, auth checks, and basic audit logging.",

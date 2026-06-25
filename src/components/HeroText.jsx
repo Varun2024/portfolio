@@ -36,9 +36,9 @@ const HeroText = () => {
                     transition={{ delay: 0.75, duration: 0.6 }}
                     className="max-w-md text-sm sm:text-base text-neutral-300/90 leading-relaxed"
                 >
-                    Software engineer crafting performant web apps and ML-driven
-                    features end-to-end. Currently shipping product surfaces at
-                    Chainframe.
+                    Software engineer crafting performant web apps and AI-driven
+                    features end-to-end. Currently building full-stack &amp; AI
+                    systems at Flux Fortify.
                 </motion.p>
 
                 <motion.div
