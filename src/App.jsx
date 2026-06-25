@@ -3,6 +3,7 @@ import Hero from './section/Hero'
 import { lazy, Suspense, useRef } from 'react'
 import { ReactLenis } from 'lenis/react'
 import SectionLoader from './components/SectionLoader'
+import GameLauncher from './components/GameLauncher'
 
 const About = lazy(() => import('./section/About'))
 const Exp = lazy(() => import('./section/Exp'))
@@ -37,6 +38,7 @@ const App = () => {
         {/* footer */}
         <Footer />
       </Suspense>
+      <GameLauncher />
     </div>
 
   )

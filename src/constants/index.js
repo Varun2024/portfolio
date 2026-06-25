@@ -1,5 +1,25 @@
-
 export const myProjects = [
+  {
+    id: 10,
+    title: "Earth-NASA",
+    description:
+      "An interactive Earth visualizer that surfaces NASA imagery and live planetary data in a clean, story-driven UI.",
+    subDescription: [
+      "Built a Next.js app that pulls and renders NASA open data on demand.",
+      "Designed a calm, exploratory interface around imagery, dates, and context.",
+      "Optimized fetch and caching paths so first paint stays fast under slow networks.",
+      "Shipped a deployed live URL for one-tap access to the experience.",
+    ],
+    href: "https://earth-nasa.vercel.app",
+    logo: "",
+    image: "/assets/earth-nasa.png",
+    tags: [
+      { id: 1, name: "Next.js", path: "/assets/logos/next.svg" },
+      { id: 2, name: "TypeScript", path: "/assets/logos/typescript.svg" },
+      { id: 3, name: "NASA API", path: "/assets/logo-dark.svg" },
+      { id: 4, name: "Tailwind", path: "/assets/logos/tailwindcss.svg" },
+    ],
+  },
   {
     id: 5,
     title: "NavUI Component Library",
@@ -34,6 +54,80 @@ export const myProjects = [
         id: 4,
         name: "Tailwind",
         path: "/assets/logos/tailwindcss.svg",
+      },
+    ],
+  },
+  {
+    id: 7,
+    title: "BB-Bot",
+    description:
+      "An AI basketball assistant that turns playbook data into drills, scouting, and live team strategy.",
+    subDescription: [
+      "Built tactical breakdowns for cleaner coaching workflows.",
+      "Added a chat-first interface for quick drill and strategy prompts.",
+      "Included team sync tools for sharing outputs across groups.",
+      "Designed with a fast, mobile-friendly UI for sideline use.",
+    ],
+    href: "https://bb-bot.vercel.app/",
+    logo: "",
+    image: "/assets/bb-bot-hero.png",
+    tags: [
+      {
+        id: 1,
+        name: "Next.js",
+        path: "/assets/logos/next.svg",
+      },
+      {
+        id: 2,
+        name: "Neon",
+        path: "/assets/logos/neon.svg",
+      },
+      {
+        id: 3,
+        name: "PostgreSQL",
+        path: "/assets/logos/postgres.svg",
+      },
+      {
+        id: 4,
+        name: "MiniMax LLM",
+        path: "/assets/logos/minimax.svg",
+      },
+    ],
+  },
+  {
+    id: 8,
+    title: "Lumino",
+    description:
+      "A handcrafted candle storefront with curated collections, cart flow, and brand storytelling.",
+    subDescription: [
+      "Designed a polished shop experience for scent discovery and browsing.",
+      "Built product collection and detail flows with a calm editorial feel.",
+      "Added cart and about pages to support a complete commerce journey.",
+      "Kept the experience responsive and visually warm across devices.",
+    ],
+    href: "https://lumino-mef9.vercel.app/",
+    logo: "",
+    image: "/assets/lumino-hero.png",
+    tags: [
+      {
+        id: 1,
+        name: "Next.js",
+        path: "/assets/logos/next.svg",
+      },
+      {
+        id: 2,
+        name: "Barba.js",
+        path: "/assets/logos/barba.svg",
+      },
+      {
+        id: 3,
+        name: "GSAP",
+        path: "/assets/logos/gsap.svg",
+      },
+      {
+        id: 4,
+        name: "Framer Motion",
+        path: "/assets/logos/framer-motion.svg",
       },
     ],
   },
@@ -159,80 +253,6 @@ export const myProjects = [
     ],
   },
   {
-    id: 7,
-    title: "BB-Bot",
-    description:
-      "An AI basketball assistant that turns playbook data into drills, scouting, and live team strategy.",
-    subDescription: [
-      "Built tactical breakdowns for cleaner coaching workflows.",
-      "Added a chat-first interface for quick drill and strategy prompts.",
-      "Included team sync tools for sharing outputs across groups.",
-      "Designed with a fast, mobile-friendly UI for sideline use.",
-    ],
-    href: "https://bb-bot.vercel.app/",
-    logo: "",
-    image: "/assets/bb-bot-hero.png",
-    tags: [
-      {
-        id: 1,
-        name: "Next.js",
-        path: "/assets/logos/next.svg",
-      },
-      {
-        id: 2,
-        name: "Neon",
-        path: "/assets/logos/neon.svg",
-      },
-      {
-        id: 3,
-        name: "PostgreSQL",
-        path: "/assets/logos/postgres.svg",
-      },
-      {
-        id: 4,
-        name: "MiniMax LLM",
-        path: "/assets/logos/minimax.svg",
-      },
-    ],
-  },
-  {
-    id: 8,
-    title: "Lumino",
-    description:
-      "A handcrafted candle storefront with curated collections, cart flow, and brand storytelling.",
-    subDescription: [
-      "Designed a polished shop experience for scent discovery and browsing.",
-      "Built product collection and detail flows with a calm editorial feel.",
-      "Added cart and about pages to support a complete commerce journey.",
-      "Kept the experience responsive and visually warm across devices.",
-    ],
-    href: "https://lumino-mef9.vercel.app/",
-    logo: "",
-    image: "/assets/lumino-hero.png",
-    tags: [
-      {
-        id: 1,
-        name: "Next.js",
-        path: "/assets/logos/next.svg",
-      },
-      {
-        id: 2,
-        name: "Barba.js",
-        path: "/assets/logos/barba.svg",
-      },
-      {
-        id: 3,
-        name: "GSAP",
-        path: "/assets/logos/gsap.svg",
-      },
-      {
-        id: 4,
-        name: "Framer Motion",
-        path: "/assets/logos/framer-motion.svg",
-      },
-    ],
-  },
-  {
     id: 4,
     title: "Live Poll",
     description:
@@ -244,7 +264,6 @@ export const myProjects = [
       "Integrated Socket.IO for real-time results and feedback.",
       "Developed with React, Vite, and Firebase for scalable performance.",
     ],
-
     href: "https://intervue-poll.web.app/",
     logo: "",
     image: "/assets/poll.png",
@@ -353,6 +372,7 @@ export const experiences = [
     ],
   },
 ];
+
 export const reviews = [
   {
     name: "Jack",

@@ -1,7 +1,9 @@
 import { useState } from "react"
 import emailjs from "@emailjs/browser"
+import { AnimatePresence } from "motion/react"
 import Alert from "../components/Alert"
 import { Particles } from "../components/Particle"
+import SendSuccess from "../components/SendSuccess"
 
 
 const Contact = () => {
@@ -14,6 +16,7 @@ const Contact = () => {
     const [showAlert, setShowAlert] = useState(false)
     const [alertType, setAlertType] = useState("Success")
     const [alertMessage, setAlertMessage] = useState("")
+    const [justSent, setJustSent] = useState(false)
     const handleChange = (e) => {
         // the name of the input field and its value being set all together
         setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -30,7 +33,6 @@ const Contact = () => {
         e.preventDefault()
         setIsLoading(true)
         try {
-            console.log("Form: ", formData)
             await emailjs.send(
                 "service_s82efv6",
                 "template_dxtsiva",
@@ -38,27 +40,25 @@ const Contact = () => {
                     from_name: formData.name,
                     to_name: "Varun",
                     from_email: formData.email,
+                    reply_to: formData.email,
                     to_email: "varunshukla747@gmail.com",
-                    message: formData.message
+                    message: formData.message,
                 },
-                "4_L5n38NNzezqZfrA"
+                { publicKey: "4_L5n38NNzezqZfrA" }
             )
-            setIsLoading(false)
             setFormData({ name: "", email: "", message: "" })
-            showAlertMessage("success", "Your message has been sent")
-            // eslint-disable-next-line no-unused-vars
+            setJustSent(true)
         } catch (error) {
+            const detail = error?.text || error?.message || "Unknown error"
+            console.error("EmailJS send failed:", error)
+            showAlertMessage("danger", `Could not send: ${detail}`)
+        } finally {
             setIsLoading(false)
-            showAlertMessage("danger", "Something went wrong")
-
         }
-
-        // service_s82efv6
-        // template_n1sb669
     }
     return (
-        <section id="contact" className='relative flex-col sm:flex-row gap-5 sm:gap-1 flex c-space section-spacing'>
-            
+        <section id="contact" className='relative flex flex-col items-center justify-center gap-5 c-space mt-20 md:mt-30 min-h-[60vh]'>
+
             <Particles
                 className="absolute inset-0 -z-100"
                 quantity={100}
@@ -68,11 +68,17 @@ const Contact = () => {
             />
             {/* testimonials */}
             {showAlert && <Alert type={alertType} text={alertMessage} />}
-            <div className="flex flex-col items-center justify-center max-w-md p-5 mx-auto border border-white/10 rounded-2xl bg-[var(--color-primary)]">
-                <div className="flex flex-col items-start w-full gap-5 mb-10">
+            <div className="relative mx-auto w-full max-w-lg">
+                <div className="pointer-events-none absolute -inset-px rounded-2xl bg-gradient-to-br from-[var(--color-lavender)]/30 via-white/5 to-[var(--color-aqua)]/20 opacity-60 blur-[1px]" />
+                <div className="relative flex flex-col items-center justify-center p-6 sm:p-8 rounded-2xl border border-white/10 bg-gradient-to-b from-[var(--color-storm)] to-[var(--color-indigo)] shadow-[0_20px_60px_-30px_rgba(122,87,219,0.4)] min-h-[520px]">
+                <AnimatePresence>
+                    {justSent && <SendSuccess onDone={() => setJustSent(false)} />}
+                </AnimatePresence>
+                <div className="flex flex-col items-start w-full gap-3 mb-8">
+                    <span className="text-xs uppercase tracking-[0.22em] text-[var(--color-sand)]">Get in touch</span>
                     <h2 className='text-heading'>Let's Connect</h2>
-                    <p className='font-normal text-neutral-400'>
-                        From building fresh websites to enhancing existing platforms or launching innovative projects — I’ve got you covered.
+                    <p className='font-normal text-neutral-300/90 text-sm md:text-base'>
+                        From building fresh websites to enhancing existing platforms or launching innovative projects — I&rsquo;ve got you covered.
                     </p>
                 </div>
                 <form onSubmit={handleSubmit} className='w-full'>
@@ -97,7 +103,7 @@ const Contact = () => {
                             Email
                         </label>
                         <input
-                            type="text"
+                            type="email"
                             id='email'
                             name='email'
                             className='field-input field-input-focus'
@@ -131,6 +137,7 @@ const Contact = () => {
                         {!isLoading ? "Send" : "Sending..."}
                     </button>
                 </form>
+                </div>
             </div>
         </section>
     )

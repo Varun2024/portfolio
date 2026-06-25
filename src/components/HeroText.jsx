@@ -1,81 +1,69 @@
 /* eslint-disable no-unused-vars */
 import { FlipWords } from "./FlipWords"
 import { motion } from "motion/react"
+
 const HeroText = () => {
     const variance = {
-        hidden:{opacity: 0, x: -50},
-        visible:{opacity: 1, x: 0}
+        hidden: { opacity: 0, y: 24 },
+        visible: { opacity: 1, y: 0 },
     }
+
     return (
-        <div className="z-10 mt-20 text-center md:mt-40 md:text-left rounded-3xl bg-clip-text">
-            {/* Desktop view */}
-            <div className="flex-col hidden md:flex c-space"> 
+        <div className="z-10 mt-28 md:mt-40 text-left c-space w-full">
+            <div className="flex flex-col items-start gap-5 md:gap-7 max-w-xl md:max-w-2xl">
                 <motion.h1
-                    className="text-4xl font-medium"
                     variants={variance}
                     initial="hidden"
                     animate="visible"
-                    transition={{ delay: 1 }}
+                    transition={{ delay: 0.4, duration: 0.7 }}
+                    className="text-4xl sm:text-6xl md:text-7xl font-semibold leading-[1.05] tracking-tight"
                 >
-                    Hi I'm Varun
+                    Hi, I&rsquo;m <span className="text-white">Varun</span>.<br />
+                    I build{" "}
+                    <span className="inline-block align-bottom">
+                        <FlipWords
+                            words={["robust", "elegant", "scalable"]}
+                            className="font-semibold bg-gradient-to-r from-[var(--color-lavender)] to-[var(--color-aqua)] bg-clip-text text-transparent"
+                        />
+                    </span>{" "}
+                    products.
                 </motion.h1>
-                <div className="flex flex-col items-start">
-                    <motion.p 
-                    className="text-5xl font-medium text-neutral-300"
+
+                <motion.p
                     variants={variance}
                     initial="hidden"
                     animate="visible"
-                    
-                    transition={{ delay: 1.2 }}
+                    transition={{ delay: 0.75, duration: 0.6 }}
+                    className="max-w-md text-sm sm:text-base text-neutral-300/90 leading-relaxed"
+                >
+                    Software engineer crafting performant web apps and ML-driven
+                    features end-to-end. Currently shipping product surfaces at
+                    Chainframe.
+                </motion.p>
+
+                <motion.div
+                    variants={variance}
+                    initial="hidden"
+                    animate="visible"
+                    transition={{ delay: 1.0, duration: 0.6 }}
+                    className="flex flex-wrap items-center gap-3"
+                >
+                    <a
+                        href="#work"
+                        className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[var(--color-royal)] to-[var(--color-lavender)] px-5 py-2.5 text-sm font-medium text-white shadow-[0_10px_40px_-10px_rgba(122,87,219,0.5)] transition hover:scale-[1.02]"
                     >
-                        A Developer <br />Dedicated to Crafting
-                    </motion.p>
-                    {/* <div className="">get flip word from aceternity</div> */}
-                    <motion.div
-                    variants={variance}
-                    initial="hidden"
-                    animate="visible"
-                    transition={{ delay: 1.5 }}>
-                        <FlipWords words={["Robust", "Sleek", "Scalable"]} className="font-black text-white text-8xl" />
-                    </motion.div>
-                    <motion.p 
-                    className="text-4xl font-medium text-neutral-300"
-                    variants={variance}
-                    initial="hidden"
-                    animate="visible"
-                    transition={{ delay: 1.8 }}
+                        See selected work
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="transition-transform group-hover:translate-x-0.5">
+                            <path d="M5 12h14M13 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                    </a>
+                    <a
+                        href="#contact"
+                        className="inline-flex items-center gap-2 rounded-full border border-white/15 px-5 py-2.5 text-sm font-medium text-neutral-100 transition hover:border-white/35 hover:bg-white/5"
                     >
-                        Web Solutions
-                    </motion.p>
-                </div>
-            </div>
-            {/* Mobile view */}
-            <div className="flex flex-col space-y-6 md:hidden">
-                <motion.p className="text-4xl font-medium "
-                variants={variance}
-                    initial="hidden"
-                    animate="visible"
-                    transition={{ delay: 1 }}>Hi,I'm Varun</motion.p>
-                <div className="">
-                    <motion.p className="text-5xl font-black text-neutral-300"
-                    variants={variance}
-                    initial="hidden"
-                    animate="visible"
-                    transition={{ delay: 1.2 }}>Building</motion.p>
-                    <motion.div
-                    variants={variance}
-                    initial="hidden"
-                    animate="visible"
-                    transition={{ delay: 1.5 }}>
-                        {/* RobustSleek */}
-                        <FlipWords words={["Robust", "Sleek", "Scalable"]} className="font-black text-white text-7xl" />
-                    </motion.div>
-                    <motion.p className="text-4xl font-black text-neutral-300"
-                    variants={variance}
-                    initial="hidden"
-                    animate="visible"
-                    transition={{ delay: 1.8 }}>Web application</motion.p>
-                </div>
+                        Get in touch
+                    </a>
+                </motion.div>
             </div>
         </div>
     )

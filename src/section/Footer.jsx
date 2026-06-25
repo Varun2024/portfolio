@@ -3,7 +3,7 @@ import { mySocials } from '../constants'
 
 const Footer = () => {
   return (
-    <section className='flex flex-wrap items-center justify-between gap-5 pb-3 text-sm text-neutral-400 c-space'>
+    <section className='flex flex-wrap items-center justify-between gap-5 pt-20 md:pt-32 pb-6 mt-10 text-sm text-neutral-400 c-space'>
         <div className="bg-gradient-to-r from-transparent via-neutral-700 to to-transparent h-[1px] w-full" />
         <div className="flex gap-2"> 
             <p>Term & Condition</p>

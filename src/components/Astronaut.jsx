@@ -35,9 +35,13 @@
 
 
 import React, { useEffect, useRef } from 'react'
-import { useGLTF, useAnimations, PositionMesh } from '@react-three/drei'
+import { useGLTF, useAnimations } from '@react-three/drei'
 import { useMotionValue, useSpring } from 'motion/react'
 import { useFrame } from '@react-three/fiber'
+
+const BASE_Z_ROTATION = Math.PI
+const MAX_YAW = 1.1
+const MAX_TILT = 0.65
 
 export default function Astronaut(props) {
     const group = useRef()
@@ -49,14 +53,44 @@ export default function Astronaut(props) {
             actions[animations[0].name]?.play()
         }
     }, [actions, animations])
-    // give it an effect of running to the side and spinginess  
+    // give it an effect of running to the side and spinginess
     const xPosition = useMotionValue(-5)
-    const xSpring = useSpring(xPosition,{damping:13})
-    useEffect(()=>{
+    const xSpring = useSpring(xPosition, { damping: 13 })
+    useEffect(() => {
         xSpring.set(props.isMobile ? .115 : 8.115)
-    },[xSpring , props.isMobile])
-    useFrame(()=>{
+    }, [xSpring, props.isMobile])
+
+    // pointer-driven interactive tilt
+    const pointerYaw = useMotionValue(0)
+    const pointerTilt = useMotionValue(0)
+    const yawSpring = useSpring(pointerYaw, { damping: 16, stiffness: 130 })
+    const tiltSpring = useSpring(pointerTilt, { damping: 16, stiffness: 130 })
+
+    useEffect(() => {
+        if (typeof window === 'undefined') return
+        const handleMove = (e) => {
+            const nx = (e.clientX / window.innerWidth) * 2 - 1
+            const ny = (e.clientY / window.innerHeight) * 2 - 1
+            pointerYaw.set(nx * MAX_YAW)
+            pointerTilt.set(ny * MAX_TILT)
+        }
+        const handleLeave = () => {
+            pointerYaw.set(0)
+            pointerTilt.set(0)
+        }
+        window.addEventListener('pointermove', handleMove)
+        window.addEventListener('pointerleave', handleLeave)
+        return () => {
+            window.removeEventListener('pointermove', handleMove)
+            window.removeEventListener('pointerleave', handleLeave)
+        }
+    }, [pointerYaw, pointerTilt])
+
+    useFrame(() => {
+        if (!group.current) return
         group.current.position.x = xSpring.get()
+        group.current.rotation.z = BASE_Z_ROTATION + yawSpring.get()
+        group.current.rotation.x = -Math.PI / 2 + tiltSpring.get()
     })
     return (
         <group
@@ -104,4 +138,4 @@ export default function Astronaut(props) {
     )
 }
 
-useGLTF.preload('/among_us_character (1).glb')
+useGLTF.preload('/models/among_us_character (1).glb')

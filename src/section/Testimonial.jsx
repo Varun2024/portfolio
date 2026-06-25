@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion as Motion } from "motion/react";
 import { onValue, push, query, ref, limitToLast } from "firebase/database";
 import Alert from "../components/Alert";
@@ -47,6 +47,8 @@ export default function Testimonials({ autoRotate = true, rotateInterval = 6000 
   const [alertType, setAlertType] = useState("success");
   const [alertMessage, setAlertMessage] = useState("");
   const [remoteTestimonials, setRemoteTestimonials] = useState([]);
+  const [feedbackOpen, setFeedbackOpen] = useState(false);
+  const firstFieldRef = useRef(null);
 
   const testimonials = useMemo(() => {
     if (!remoteTestimonials.length) {
@@ -235,11 +237,14 @@ export default function Testimonials({ autoRotate = true, rotateInterval = 6000 
       {showAlert && <Alert type={alertType} text={alertMessage} />}
 
       <div className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-6 lg:grid-cols-5">
-        <div className="rounded-2xl border-2 border-gray-800/80 bg-[var(--color-primary)] p-4 shadow-sm sm:p-6 lg:col-span-3">
+        <div className="relative rounded-2xl border border-white/10 bg-gradient-to-b from-[var(--color-storm)] to-[var(--color-indigo)] p-5 sm:p-7 lg:col-span-3 shadow-[0_20px_60px_-30px_rgba(122,87,219,0.35)]">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
-            <h3 className="text-lg font-semibold leading-snug text-gray-100 sm:text-2xl md:text-3xl">
-              What people say about me
-            </h3>
+            <div>
+              <span className="text-xs uppercase tracking-[0.22em] text-[var(--color-sand)]">Testimonials</span>
+              <h3 className="mt-2 text-xl font-semibold leading-snug text-gray-100 sm:text-2xl md:text-3xl">
+                What people say about me
+              </h3>
+            </div>
             <div className="flex items-center gap-2 self-end sm:self-auto">
               <button
                 aria-label="Previous testimonial"
@@ -339,91 +344,165 @@ export default function Testimonials({ autoRotate = true, rotateInterval = 6000 
           </div>
         </div>
 
-        <aside className="rounded-2xl border border-white/10 bg-gradient-to-b from-[var(--color-indigo)] to-[var(--color-primary)] p-4 sm:p-6 lg:col-span-2">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-aqua)]">
-            Feedback CTA
-          </p>
-          <h4 className="mt-2 text-2xl font-semibold text-white">Leave your testimonial</h4>
-          <p className="mt-2 text-sm text-neutral-300">
-            Share your experience in a few lines. It goes live in the testimonial feed.
-          </p>
-          <button
-            type="button"
-            onClick={shareFeedbackForm}
-            className="mt-4 inline-flex w-full items-center justify-center rounded-md border border-[var(--color-aqua)]/60 px-3 py-2 text-sm font-semibold text-[var(--color-aqua)] hover:bg-[var(--color-aqua)]/10"
-          >
-            Share Feedback Form Link
-          </button>
+        <aside className="relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-[#2a1158] via-[#1a0a3d] to-[#0f0729] p-6 sm:p-7 lg:col-span-2 shadow-[0_20px_60px_-30px_rgba(122,87,219,0.4)]">
+          <div className="pointer-events-none absolute -top-10 -right-6 text-[10rem] leading-none font-serif text-white/[0.04] select-none">
+            &ldquo;
+          </div>
+          <div className="pointer-events-none absolute -bottom-32 -left-20 size-64 rounded-full bg-[var(--color-lavender)]/15 blur-3xl" />
 
-          <form onSubmit={handleSubmit} className="mt-5 space-y-3">
-            <div>
-              <label htmlFor="feedback-name" className="field-label">
-                Name
-              </label>
-              <input
-                id="feedback-name"
-                name="name"
-                type="text"
-                className="field-input"
-                placeholder="Your name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor="feedback-role" className="field-label">
-                Role
-              </label>
-              <input
-                id="feedback-role"
-                name="role"
-                type="text"
-                className="field-input"
-                placeholder="Founder, Developer, Recruiter..."
-                value={formData.role}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor="feedback-quote" className="field-label">
-                Feedback
-              </label>
-              <textarea
-                id="feedback-quote"
-                name="quote"
-                rows={4}
-                className="field-input"
-                placeholder="Write your testimonial..."
-                value={formData.quote}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor="feedback-avatar" className="field-label">
-                Avatar URL (optional)
-              </label>
-              <input
-                id="feedback-avatar"
-                name="avatar"
-                type="url"
-                className="field-input"
-                placeholder="https://..."
-                value={formData.avatar}
-                onChange={handleChange}
-              />
-            </div>
+          <AnimatePresence mode="wait" initial={false}>
+            {!feedbackOpen ? (
+              <Motion.div
+                key="cta"
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.3 }}
+                className="relative flex h-full flex-col"
+              >
+                <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-[var(--color-sand)]">
+                  <span className="inline-block size-1.5 rounded-full bg-[var(--color-sand)]" />
+                  Worked with me?
+                </div>
+                <h4 className="mt-3 text-2xl sm:text-3xl font-semibold text-white leading-tight">
+                  Leave a kind word.
+                </h4>
+                <p className="mt-3 text-sm text-neutral-300/90 leading-relaxed">
+                  Two minutes is all it takes. Your note joins the rotating
+                  feed above and you get a shareable link back.
+                </p>
 
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="w-full rounded-md bg-radial from-[var(--color-lavender)] to-[var(--color-royal)] px-1 py-3 text-lg text-center cursor-pointer hover-animation disabled:cursor-not-allowed disabled:opacity-70"
-            >
-              {isSubmitting ? "Publishing..." : "Publish Feedback"}
-            </button>
-          </form>
+                <div className="mt-5 flex items-center gap-2">
+                  <div className="flex -space-x-2">
+                    {testimonials.slice(0, 3).map((t) => (
+                      <img
+                        key={t.id}
+                        src={t.avatar || "/assets/logos/user.svg"}
+                        alt=""
+                        onError={(e) => { e.currentTarget.src = "/assets/logos/user.svg" }}
+                        className="size-7 rounded-full border-2 border-[#1a0a3d] object-cover"
+                      />
+                    ))}
+                  </div>
+                  <span className="text-xs text-neutral-400">
+                    {testimonials.length} {testimonials.length === 1 ? "person has" : "people have"} shared so far
+                  </span>
+                </div>
+
+                <div className="mt-auto pt-6 flex flex-col gap-2">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setFeedbackOpen(true)
+                      setTimeout(() => firstFieldRef.current?.focus(), 300)
+                    }}
+                    className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[var(--color-royal)] to-[var(--color-lavender)] px-5 py-3 text-sm font-medium text-white shadow-[0_10px_40px_-10px_rgba(122,87,219,0.5)] transition hover:scale-[1.02]"
+                  >
+                    Write a testimonial
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="transition-transform group-hover:translate-x-0.5">
+                      <path d="M5 12h14M13 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={shareFeedbackForm}
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/15 px-5 py-2.5 text-xs font-medium text-neutral-300 hover:border-white/35 hover:bg-white/5 transition"
+                  >
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                    Copy form link
+                  </button>
+                </div>
+              </Motion.div>
+            ) : (
+              <Motion.form
+                key="form"
+                onSubmit={handleSubmit}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.3 }}
+                className="relative space-y-3"
+              >
+                <div className="flex items-center justify-between">
+                  <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[var(--color-sand)]">
+                    Your testimonial
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => setFeedbackOpen(false)}
+                    className="text-xs text-neutral-400 hover:text-white transition"
+                  >
+                    ← back
+                  </button>
+                </div>
+
+                <div>
+                  <label htmlFor="feedback-name" className="field-label">Name</label>
+                  <input
+                    id="feedback-name"
+                    ref={firstFieldRef}
+                    name="name"
+                    type="text"
+                    className="field-input"
+                    placeholder="Your name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                <div>
+                  <label htmlFor="feedback-role" className="field-label">Role</label>
+                  <input
+                    id="feedback-role"
+                    name="role"
+                    type="text"
+                    className="field-input"
+                    placeholder="Founder, Developer, Recruiter..."
+                    value={formData.role}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                <div>
+                  <label htmlFor="feedback-quote" className="field-label">Feedback</label>
+                  <textarea
+                    id="feedback-quote"
+                    name="quote"
+                    rows={4}
+                    className="field-input"
+                    placeholder="Write your testimonial..."
+                    value={formData.quote}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                <details className="text-xs text-neutral-400">
+                  <summary className="cursor-pointer hover:text-neutral-200 transition select-none">
+                    Add avatar URL (optional)
+                  </summary>
+                  <input
+                    id="feedback-avatar"
+                    name="avatar"
+                    type="url"
+                    className="field-input mt-2"
+                    placeholder="https://..."
+                    value={formData.avatar}
+                    onChange={handleChange}
+                  />
+                </details>
+
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full rounded-full bg-gradient-to-r from-[var(--color-royal)] to-[var(--color-lavender)] px-5 py-3 text-sm font-medium text-white shadow-[0_10px_40px_-10px_rgba(122,87,219,0.5)] transition hover:scale-[1.01] disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:scale-100"
+                >
+                  {isSubmitting ? "Publishing..." : "Publish testimonial"}
+                </button>
+              </Motion.form>
+            )}
+          </AnimatePresence>
         </aside>
       </div>
     </section>
