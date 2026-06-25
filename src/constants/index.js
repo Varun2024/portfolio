@@ -362,17 +362,6 @@ export const experiences = [
     ],
   },
   {
-    title: "Tech lead",
-    job: "TEDxBITD",
-    date: "May-Aug,2025",
-    contents: [
-      "Built and maintained the official TEDxBITD event website.",
-      "Delivered a responsive and engaging UI with modern frontend tools.",
-      "Integrated live content updates for speakers and event details.",
-      "Improved performance, accessibility, and cross-device experience.",
-    ],
-  },
-  {
     title: "Full stack developer ",
     job: "Grainscope",
     date: "May-Aug,2025",
