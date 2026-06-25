@@ -1,6 +1,6 @@
 import { Suspense, lazy, useEffect, useState } from "react"
 
-const StarCatcher = lazy(() => import("./MiniGame"))
+const AsteroidDodger = lazy(() => import("./MiniGame"))
 
 const HINT_DISMISSED_KEY = "varun.portfolio.starcatcher.hint"
 
@@ -47,7 +47,7 @@ const GameLauncher = () => {
                         >
                             ×
                         </button>
-                        Take a quick break — catch some stars.
+                        Take a quick break — dodge some asteroids.
                     </div>
                 )}
                 <button
@@ -65,7 +65,7 @@ const GameLauncher = () => {
 
             {open && (
                 <Suspense fallback={null}>
-                    <StarCatcher onClose={() => setOpen(false)} />
+                    <AsteroidDodger onClose={() => setOpen(false)} />
                 </Suspense>
             )}
         </>
