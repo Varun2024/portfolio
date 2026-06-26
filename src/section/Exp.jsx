@@ -55,8 +55,7 @@ const Exp = () => {
                 <ExperienceCard
                     exp={grain}
                     accentClass="grid-default-color"
-                    className="md:col-span-6"
-                    highlights={4}
+                    className="md:col-span-3 md:h-full"
                 />
             </div>
         </section>
