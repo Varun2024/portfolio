@@ -3,6 +3,7 @@ import { AnimatePresence, motion as Motion } from "motion/react";
 import { onValue, push, query, ref, limitToLast } from "firebase/database";
 import Alert from "../components/Alert";
 import { database } from "../lib/firebase";
+import { buildDefaultAvatar, resolveAvatar } from "../lib/avatar";
 
 const fallbackTestimonials = [
   {
@@ -69,14 +70,18 @@ export default function Testimonials({ autoRotate = true, rotateInterval = 6000 
       }
 
       const parsed = Object.entries(value)
-        .map(([id, item]) => ({
-          id,
-          name: item?.name || "Anonymous",
-          role: item?.role || "Guest",
-          quote: item?.quote || "",
-          avatar: item?.avatar || "/assets/logos/user.svg",
-          createdAt: Number(item?.createdAt) || 0,
-        }))
+        .map(([id, item]) => {
+          const name = item?.name || "Anonymous"
+          const seed = name || id
+          return {
+            id,
+            name,
+            role: item?.role || "Guest",
+            quote: item?.quote || "",
+            avatar: resolveAvatar(item?.avatar, seed),
+            createdAt: Number(item?.createdAt) || 0,
+          }
+        })
         .filter((item) => item.quote)
         .sort((a, b) => b.createdAt - a.createdAt);
 
@@ -301,12 +306,15 @@ export default function Testimonials({ autoRotate = true, rotateInterval = 6000 
               >
                 <div className="flex items-start gap-2.5 sm:gap-4">
                   <img
-                    src={activeTestimonial.avatar || "/assets/logos/user.svg"}
+                    src={activeTestimonial.avatar || buildDefaultAvatar(activeTestimonial.name)}
                     alt={activeTestimonial.name}
                     onError={(event) => {
-                      event.currentTarget.src = "/assets/logos/user.svg";
+                      const fallback = buildDefaultAvatar(activeTestimonial.name)
+                      if (event.currentTarget.src !== fallback) {
+                        event.currentTarget.src = fallback
+                      }
                     }}
-                    className="h-10 w-10 rounded-full object-cover ring-1 ring-gray-800 sm:h-14 sm:w-14"
+                    className="h-10 w-10 rounded-full object-cover ring-1 ring-gray-800 sm:h-14 sm:w-14 bg-[var(--color-indigo)]"
                   />
 
                   <div>
@@ -377,10 +385,13 @@ export default function Testimonials({ autoRotate = true, rotateInterval = 6000 
                     {testimonials.slice(0, 3).map((t) => (
                       <img
                         key={t.id}
-                        src={t.avatar || "/assets/logos/user.svg"}
+                        src={t.avatar || buildDefaultAvatar(t.name || t.id)}
                         alt=""
-                        onError={(e) => { e.currentTarget.src = "/assets/logos/user.svg" }}
-                        className="size-7 rounded-full border-2 border-[#1a0a3d] object-cover"
+                        onError={(e) => {
+                          const fallback = buildDefaultAvatar(t.name || t.id)
+                          if (e.currentTarget.src !== fallback) e.currentTarget.src = fallback
+                        }}
+                        className="size-7 rounded-full border-2 border-[#1a0a3d] object-cover bg-[var(--color-indigo)]"
                       />
                     ))}
                   </div>
