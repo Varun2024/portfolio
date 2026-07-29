@@ -51,7 +51,7 @@ const Contact = () => {
         } catch (error) {
             const detail = error?.text || error?.message || "Unknown error"
             console.error("EmailJS send failed:", error)
-            showAlertMessage("danger", `Could not send: ${detail}`)
+            showAlertMessage("danger", `Transmission failed: ${detail}`)
         } finally {
             setIsLoading(false)
         }
@@ -75,23 +75,23 @@ const Contact = () => {
                     {justSent && <SendSuccess onDone={() => setJustSent(false)} />}
                 </AnimatePresence>
                 <div className="flex flex-col items-start w-full gap-3 mb-8">
-                    <span className="text-xs uppercase tracking-[0.22em] text-[var(--color-sand)]">Get in touch</span>
-                    <h2 className='text-heading'>Let's Connect</h2>
+                    <span className="text-xs uppercase tracking-[0.22em] text-[var(--color-sand)]">Open Channel</span>
+                    <h2 className='text-heading'>Establish Comms</h2>
                     <p className='font-normal text-neutral-300/90 text-sm md:text-base'>
-                        From building fresh websites to enhancing existing platforms or launching innovative projects — I&rsquo;ve got you covered.
+                        New builds, existing platforms, or ambitious launches — dial in and we&rsquo;ll plot a course together.
                     </p>
                 </div>
                 <form onSubmit={handleSubmit} className='w-full'>
                     <div className="mb-5">
                         <label htmlFor="name" className='field-label '>
-                            Full name
+                            Callsign
                         </label>
                         <input
                             type="text"
                             id='name'
                             name='name'
                             className='field-input field-input-focus'
-                            placeholder='Salmon bhoi'
+                            placeholder='Commander Salmon'
                             autoComplete='name'
                             value={formData.name}
                             onChange={handleChange}
@@ -100,7 +100,7 @@ const Contact = () => {
                     </div>
                     <div className="mb-5">
                         <label htmlFor="email" className='field-label '>
-                            Email
+                            Frequency
                         </label>
                         <input
                             type="email"
@@ -116,7 +116,7 @@ const Contact = () => {
                     </div>
                     <div className="mb-5">
                         <label htmlFor="message" className='field-label '>
-                            Message
+                            Transmission
                         </label>
                         <textarea
                             type="text"
@@ -124,7 +124,7 @@ const Contact = () => {
                             name='message'
                             rows={4}
                             className='field-input field-input-focus'
-                            placeholder='How can I Help you...'
+                            placeholder='Send your transmission...'
                             autoComplete='message'
                             value={formData.message}
                             onChange={handleChange}
@@ -134,7 +134,7 @@ const Contact = () => {
                     <button
                         type="submit"
                         className="w-full px-1 py-3 text-lg text-center rounded-md cursor-pointer bg-radial from-[var(--color-lavender)] to-[var(--color-royal)] hover-animation">
-                        {!isLoading ? "Send" : "Sending..."}
+                        {!isLoading ? "Transmit" : "Transmitting..."}
                     </button>
                 </form>
                 </div>

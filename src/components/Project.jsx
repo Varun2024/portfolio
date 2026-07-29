@@ -28,7 +28,7 @@ const Project = ({ title, description, subDescription, href, image, tags, setPr 
                     onClick={() => setIsHidden(true)}
                     className='flex items-center gap-1.5 cursor-pointer hover-animation text-sm sm:text-base transition-transform duration-300 group-hover:-translate-x-1'
                 >
-                    Read More
+                    Scan craft
                     <img src="assets/arrow-right.svg" className='size-4 sm:size-5 transition-transform duration-300 group-hover:translate-x-1' />
                 </button>
             </div>

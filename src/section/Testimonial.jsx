@@ -164,11 +164,11 @@ export default function Testimonials({ autoRotate = true, rotateInterval = 6000 
       const shareLink = `${window.location.origin}${window.location.pathname}?testimonial=${newFeedbackRef.key}#testimonials`;
 
       setFormData({ name: "", role: "", quote: "", avatar: "" });
-      showAlertMessage("success", `Published. Share link: ${shareLink}`);
+      showAlertMessage("success", `Signal received. Rebroadcast link: ${shareLink}`);
     } catch {
       showAlertMessage(
         "danger",
-        "Unable to submit feedback right now. Please try again shortly."
+        "Comms interference — try transmitting again shortly."
       );
     } finally {
       setIsSubmitting(false);
@@ -220,9 +220,9 @@ export default function Testimonials({ autoRotate = true, rotateInterval = 6000 
 
     try {
       await navigator.clipboard.writeText(shareLink);
-      showAlertMessage("success", "Share link copied to clipboard.");
+      showAlertMessage("success", "Channel link copied. Rebroadcast anywhere.");
     } catch {
-      showAlertMessage("danger", "Unable to copy the share link on this device.");
+      showAlertMessage("danger", "Unable to copy the channel link on this device.");
     }
   };
 
@@ -231,9 +231,9 @@ export default function Testimonials({ autoRotate = true, rotateInterval = 6000 
 
     try {
       await navigator.clipboard.writeText(formLink);
-      showAlertMessage("success", "Feedback form link copied. Share it anywhere.");
+      showAlertMessage("success", "Channel link copied. Share it anywhere.");
     } catch {
-      showAlertMessage("danger", "Could not copy form link on this device.");
+      showAlertMessage("danger", "Could not copy channel link on this device.");
     }
   };
 
@@ -245,14 +245,14 @@ export default function Testimonials({ autoRotate = true, rotateInterval = 6000 
         <div className="relative rounded-2xl border border-white/10 bg-gradient-to-b from-[var(--color-storm)] to-[var(--color-indigo)] p-5 sm:p-7 lg:col-span-3 shadow-[0_20px_60px_-30px_rgba(122,87,219,0.35)]">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
             <div>
-              <span className="text-xs uppercase tracking-[0.22em] text-[var(--color-sand)]">Testimonials</span>
+              <span className="text-xs uppercase tracking-[0.22em] text-[var(--color-sand)]">Signals</span>
               <h3 className="mt-2 text-xl font-semibold leading-snug text-gray-100 sm:text-2xl md:text-3xl">
-                What people say about me
+                Incoming transmissions
               </h3>
             </div>
             <div className="flex items-center gap-2 self-end sm:self-auto">
               <button
-                aria-label="Previous testimonial"
+                aria-label="Previous transmission"
                 onClick={handlePrev}
                 className="rounded-md p-2.5 hover:bg-gray-800/60 focus:outline-none focus:ring-2 focus:ring-gray-700"
               >
@@ -272,7 +272,7 @@ export default function Testimonials({ autoRotate = true, rotateInterval = 6000 
                 </svg>
               </button>
               <button
-                aria-label="Next testimonial"
+                aria-label="Next transmission"
                 onClick={handleNext}
                 className="rounded-md p-2.5 hover:bg-gray-800/60 focus:outline-none focus:ring-2 focus:ring-gray-700"
               >
@@ -330,7 +330,7 @@ export default function Testimonials({ autoRotate = true, rotateInterval = 6000 
                       onClick={shareFeedback}
                       className="mt-2.5 inline-flex items-center rounded-md border border-white/15 px-3 py-1.5 text-xs font-semibold tracking-wide text-white hover:bg-white/10"
                     >
-                      Share Feedback
+                      Rebroadcast
                     </button>
                   </div>
                 </div>
@@ -343,7 +343,7 @@ export default function Testimonials({ autoRotate = true, rotateInterval = 6000 
               <button
                 key={`${item.name}-${item.createdAt}-${currentIndex}`}
                 onClick={() => setIndex(currentIndex)}
-                aria-label={`Show testimonial ${currentIndex + 1}`}
+                aria-label={`Show transmission ${currentIndex + 1}`}
                 className={`h-1.5 rounded-full transition-all duration-200 ${
                   currentIndex === index ? "w-8 bg-gray-100" : "w-4 bg-gray-700"
                 }`}
@@ -370,14 +370,14 @@ export default function Testimonials({ autoRotate = true, rotateInterval = 6000 
               >
                 <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-[var(--color-sand)]">
                   <span className="inline-block size-1.5 rounded-full bg-[var(--color-sand)]" />
-                  Worked with me?
+                  Crewed with me?
                 </div>
                 <h4 className="mt-3 text-2xl sm:text-3xl font-semibold text-white leading-tight">
-                  Leave a kind word.
+                  Send a transmission.
                 </h4>
                 <p className="mt-3 text-sm text-neutral-300/90 leading-relaxed">
-                  Two minutes is all it takes. Your note joins the rotating
-                  feed above and you get a shareable link back.
+                  Two minutes is all it takes. Your signal joins the rotating
+                  feed above — you get a shareable link back.
                 </p>
 
                 <div className="mt-5 flex items-center gap-2">
@@ -396,7 +396,7 @@ export default function Testimonials({ autoRotate = true, rotateInterval = 6000 
                     ))}
                   </div>
                   <span className="text-xs text-neutral-400">
-                    {testimonials.length} {testimonials.length === 1 ? "person has" : "people have"} shared so far
+                    {testimonials.length} {testimonials.length === 1 ? "signal" : "signals"} received so far
                   </span>
                 </div>
 
@@ -409,7 +409,7 @@ export default function Testimonials({ autoRotate = true, rotateInterval = 6000 
                     }}
                     className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[var(--color-royal)] to-[var(--color-lavender)] px-5 py-3 text-sm font-medium text-white shadow-[0_10px_40px_-10px_rgba(122,87,219,0.5)] transition hover:scale-[1.02]"
                   >
-                    Write a testimonial
+                    Open a channel
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="transition-transform group-hover:translate-x-0.5">
                       <path d="M5 12h14M13 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
@@ -422,7 +422,7 @@ export default function Testimonials({ autoRotate = true, rotateInterval = 6000 
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
-                    Copy form link
+                    Copy channel link
                   </button>
                 </div>
               </Motion.div>
@@ -438,7 +438,7 @@ export default function Testimonials({ autoRotate = true, rotateInterval = 6000 
               >
                 <div className="flex items-center justify-between">
                   <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[var(--color-sand)]">
-                    Your testimonial
+                    Your transmission
                   </p>
                   <button
                     type="button"
@@ -450,21 +450,21 @@ export default function Testimonials({ autoRotate = true, rotateInterval = 6000 
                 </div>
 
                 <div>
-                  <label htmlFor="feedback-name" className="field-label">Name</label>
+                  <label htmlFor="feedback-name" className="field-label">Callsign</label>
                   <input
                     id="feedback-name"
                     ref={firstFieldRef}
                     name="name"
                     type="text"
                     className="field-input"
-                    placeholder="Your name"
+                    placeholder="Your callsign"
                     value={formData.name}
                     onChange={handleChange}
                     required
                   />
                 </div>
                 <div>
-                  <label htmlFor="feedback-role" className="field-label">Role</label>
+                  <label htmlFor="feedback-role" className="field-label">Role in the fleet</label>
                   <input
                     id="feedback-role"
                     name="role"
@@ -477,13 +477,13 @@ export default function Testimonials({ autoRotate = true, rotateInterval = 6000 
                   />
                 </div>
                 <div>
-                  <label htmlFor="feedback-quote" className="field-label">Feedback</label>
+                  <label htmlFor="feedback-quote" className="field-label">Signal</label>
                   <textarea
                     id="feedback-quote"
                     name="quote"
                     rows={4}
                     className="field-input"
-                    placeholder="Write your testimonial..."
+                    placeholder="Broadcast your message..."
                     value={formData.quote}
                     onChange={handleChange}
                     required
@@ -509,7 +509,7 @@ export default function Testimonials({ autoRotate = true, rotateInterval = 6000 
                   disabled={isSubmitting}
                   className="w-full rounded-full bg-gradient-to-r from-[var(--color-royal)] to-[var(--color-lavender)] px-5 py-3 text-sm font-medium text-white shadow-[0_10px_40px_-10px_rgba(122,87,219,0.5)] transition hover:scale-[1.01] disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:scale-100"
                 >
-                  {isSubmitting ? "Publishing..." : "Publish testimonial"}
+                  {isSubmitting ? "Transmitting..." : "Transmit"}
                 </button>
               </Motion.form>
             )}

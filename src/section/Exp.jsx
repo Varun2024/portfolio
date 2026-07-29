@@ -25,9 +25,9 @@ const Exp = () => {
 
     return (
         <section id="experience" className="c-space section-spacing">
-            <h2 className="text-heading">Experience</h2>
+            <h2 className="text-heading">Mission Log</h2>
             <p className="mt-3 max-w-xl text-sm text-neutral-400 md:text-base">
-                Roles and projects across product, research, and freelance work — most recent first.
+                Deployments across product, research, and freelance space — most recent orbit first.
             </p>
 
             <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-6 md:auto-rows-[18rem]">

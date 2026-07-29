@@ -12,8 +12,12 @@ const GameLauncher = () => {
         try {
             if (localStorage.getItem(HINT_DISMISSED_KEY)) return
         } catch { /* ignore */ }
-        const t = setTimeout(() => setShowHint(true), 6000)
-        return () => clearTimeout(t)
+        const showTimer = setTimeout(() => setShowHint(true), 6000)
+        const hideTimer = setTimeout(() => setShowHint(false), 6000 + 8000)
+        return () => {
+            clearTimeout(showTimer)
+            clearTimeout(hideTimer)
+        }
     }, [])
 
     useEffect(() => {
@@ -47,19 +51,19 @@ const GameLauncher = () => {
                         >
                             ×
                         </button>
-                        Take a quick break — dodge some asteroids.
+                        Asteroid field ahead. Engage pilot mode?
                     </div>
                 )}
                 <button
                     onClick={handleOpen}
                     className="group relative flex items-center gap-2 rounded-full border border-white/10 bg-gradient-to-r from-[var(--color-royal)]/90 to-[var(--color-lavender)]/90 px-4 py-2.5 text-sm font-medium text-white shadow-[0_10px_40px_-10px_rgba(122,87,219,0.6)] transition hover:scale-[1.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
-                    aria-label="Open mini game"
+                    aria-label="Launch pilot mode"
                 >
                     <span className="absolute inset-0 -z-10 rounded-full bg-gradient-to-r from-[var(--color-royal)] to-[var(--color-lavender)] opacity-60 blur-md transition group-hover:opacity-90" />
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                         <path d="M12 2.5l2.6 6.2 6.7.5-5.1 4.4 1.6 6.6L12 16.8l-5.8 3.4 1.6-6.6L2.7 9.2l6.7-.5L12 2.5z" />
                     </svg>
-                    <span>Play</span>
+                    <span>Launch</span>
                 </button>
             </div>
 

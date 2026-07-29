@@ -11,6 +11,17 @@ const HeroText = () => {
     return (
         <div className="z-10 mt-28 md:mt-40 text-left c-space w-full">
             <div className="flex flex-col items-start gap-5 md:gap-7 max-w-xl md:max-w-2xl">
+                <motion.div
+                    variants={variance}
+                    initial="hidden"
+                    animate="visible"
+                    transition={{ delay: 0.25, duration: 0.5 }}
+                    className="flex items-center gap-2 text-[10px] sm:text-xs font-mono uppercase tracking-[0.28em] text-[var(--color-sand)]"
+                >
+                    <span className="inline-block size-1.5 rounded-full bg-[var(--color-aqua)] animate-pulse" />
+                    Pilot ID // Varun-01 · Comm log active
+                </motion.div>
+
                 <motion.h1
                     variants={variance}
                     initial="hidden"
@@ -36,9 +47,9 @@ const HeroText = () => {
                     transition={{ delay: 0.75, duration: 0.6 }}
                     className="max-w-md text-sm sm:text-base text-neutral-300/90 leading-relaxed"
                 >
-                    Software engineer crafting performant web apps and AI-driven
-                    features end-to-end. Currently building full-stack &amp; AI
-                    systems at Flux Fortify.
+                    Software engineer shipping performant web apps and AI-driven
+                    features end-to-end. Currently orbiting Flux Fortify —
+                    building full-stack &amp; AI systems.
                 </motion.p>
 
                 <motion.div
@@ -52,7 +63,7 @@ const HeroText = () => {
                         href="#work"
                         className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[var(--color-royal)] to-[var(--color-lavender)] px-5 py-2.5 text-sm font-medium text-white shadow-[0_10px_40px_-10px_rgba(122,87,219,0.5)] transition hover:scale-[1.02]"
                     >
-                        See selected work
+                        View the fleet
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="transition-transform group-hover:translate-x-0.5">
                             <path d="M5 12h14M13 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
@@ -61,7 +72,7 @@ const HeroText = () => {
                         href="#contact"
                         className="inline-flex items-center gap-2 rounded-full border border-white/15 px-5 py-2.5 text-sm font-medium text-neutral-100 transition hover:border-white/35 hover:bg-white/5"
                     >
-                        Get in touch
+                        Open channel
                     </a>
                 </motion.div>
             </div>

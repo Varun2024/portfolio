@@ -62,7 +62,7 @@ const SendSuccess = ({ onDone }) => {
                 transition={{ delay: 0.7, duration: 0.45 }}
                 className="mt-6 text-xl font-semibold text-white"
             >
-                Message sent
+                Transmission received
             </motion.p>
             <motion.p
                 initial={{ y: 10, opacity: 0 }}
@@ -70,7 +70,7 @@ const SendSuccess = ({ onDone }) => {
                 transition={{ delay: 0.85, duration: 0.45 }}
                 className="mt-1 text-sm text-neutral-300"
             >
-                I&rsquo;ll get back within 24 hours.
+                Response en route within 24 hours.
             </motion.p>
 
             <motion.button
@@ -80,7 +80,7 @@ const SendSuccess = ({ onDone }) => {
                 onClick={onDone}
                 className="mt-6 rounded-full border border-white/15 px-5 py-2 text-sm text-neutral-200 hover:border-white/35 hover:bg-white/5 transition"
             >
-                Send another
+                Send another signal
             </motion.button>
         </motion.div>
     )

@@ -8,7 +8,7 @@ const About = () => {
     const grid2Container = useRef()
     return (
         <section id="about" className='c-space section-spacing'>
-            <h2 className="text-heading">About Me</h2>
+            <h2 className="text-heading">Origin Log</h2>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-6 md:auto-rows-[18rem] mt-12">
                 {/* grid 1 */}
                 <div className="flex items-end grid-default-color grid-1">
@@ -18,7 +18,7 @@ const About = () => {
                     />
                     <div className="z-10">
                         <p className='headtext'>Hi, I'm Varun Shukla </p>
-                        <p className='subtext'>Web developer skilled in React, Next.js, and machine learning—building fast, user-friendly web apps with smart, data-driven features that solve real business problems effectively.</p>
+                        <p className='subtext'>Full-stack pilot fluent in React, Next.js, and machine learning — shipping fast, user-friendly product surfaces with smart, data-driven systems onboard.</p>
                     </div>
                     <div className="absolute inset-x-0 pointer-events-none -bottom-4 h-1/2 sm:h-1/3 bg-gradient-to-t from-[#1f1e39]"></div>
                 </div>
@@ -62,8 +62,8 @@ const About = () => {
                 {/* grid 3 */}
                 <div className="grid-black-color grid-3">
                     <div className="z-10 w-[50%]">
-                        <p className="headtext">Time zone</p>
-                        <p className='subtext'>I'm based in India, and open to remote worldwide </p>
+                        <p className="headtext">Coordinates</p>
+                        <p className='subtext'>Broadcasting from Sector IN-3 · Raipur. Open to remote worldwide.</p>
                     </div>
                     <figure className='absolute left-[30%] top-[10%]'>
                         <Globe />
@@ -73,7 +73,7 @@ const About = () => {
                 <div className="grid-special-color grid-4">
                     <div className="flex flex-col items-center justify-center gap-4 size-full">
                         <p className="text-center headtext">
-                            Want to build together?
+                            Ready to launch something?
                         </p>
                         <CopyEmailButton />
                     </div>
@@ -82,9 +82,9 @@ const About = () => {
                 <div className="grid-default-color grid-5">
                     <div className="z-10 w-[50%]">
                         <p className="headText">
-                            Tech Stack
+                            Loadout
                         </p>
-                        <p className="subtext">I build performant full-stack products with modern web, cloud, and payment technologies.</p>
+                        <p className="subtext">Systems onboard for performant full-stack builds — modern web, cloud, and payments, all wired.</p>
                     </div>
                     <div className="absolute inset-0 md:inset-y-9 w-full h-full start-[50%] md:scale-125 ">
                         <FrameWorks />

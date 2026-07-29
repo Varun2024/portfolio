@@ -33,7 +33,7 @@ const CopyEmailButton = () => {
                         transition={{ duration: 0.1, ease: "easeInOut" }}
                     >
                         <img src="assets/copy-done.svg" className="w-5" alt="copy icon" />
-                        Email copied!
+                        Frequency locked!
                     </motion.p>
                 ) : (
                     <motion.p
@@ -45,7 +45,7 @@ const CopyEmailButton = () => {
                         transition={{ duration: 0.1 }}
                     >
                         <img src="assets/copy.svg" className="w-5" />
-                        Copy Email Address
+                        Copy frequency
                     </motion.p>)}
             </AnimatePresence>
         </motion.button>

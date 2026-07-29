@@ -5,12 +5,12 @@ import { motion, AnimatePresence } from 'motion/react'
 const RESUME_LINK = "https://drive.google.com/file/d/1rHC_X1fZdNJ0AeQ6GkN-_pTfVSX-fVma/view?usp=sharing"
 
 const links = [
-    { label: "Home", href: "#home" },
-    { label: "About", href: "#about" },
-    { label: "Experience", href: "#experience" },
-    { label: "Work", href: "#work" },
-    { label: "Testimonials", href: "#testimonials" },
-    { label: "Contact", href: "#contact" },
+    { label: "Bridge", href: "#home" },
+    { label: "Origin", href: "#about" },
+    { label: "Missions", href: "#experience" },
+    { label: "Fleet", href: "#work" },
+    { label: "Signals", href: "#testimonials" },
+    { label: "Comms", href: "#contact" },
 ]
 
 const useActiveSection = () => {
@@ -99,7 +99,7 @@ const Navbar = () => {
                                 rel="noreferrer"
                                 className="hidden sm:inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-[var(--color-royal)] to-[var(--color-lavender)] px-4 py-1.5 text-sm font-medium text-white shadow-[0_6px_24px_-8px_rgba(122,87,219,0.6)] transition hover:scale-[1.03]"
                             >
-                                Resume
+                                Dossier
                                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                     <path d="M7 17L17 7M9 7h8v8" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>
@@ -133,7 +133,7 @@ const Navbar = () => {
                                         onClick={() => setIsOpen(false)}
                                         className="mt-3 inline-flex w-full items-center justify-center rounded-full bg-gradient-to-r from-[var(--color-royal)] to-[var(--color-lavender)] px-4 py-2 text-sm font-medium text-white"
                                     >
-                                        Resume
+                                        Dossier
                                     </a>
                                 </nav>
                             </motion.div>
