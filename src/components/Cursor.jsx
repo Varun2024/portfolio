@@ -1,6 +1,4 @@
-/* eslint-disable no-unused-vars */
-import { useEffect, useState } from "react"
-import { motion, useMotionValue, useSpring } from "motion/react"
+import { useEffect, useRef, useState } from "react"
 
 const INTERACTIVE_SELECTOR = 'a, button, [role="button"], input, textarea, select, label, summary, [data-cursor="hover"]'
 
@@ -24,15 +22,17 @@ const useIsPointerDevice = () => {
 
 const Cursor = () => {
     const enabled = useIsPointerDevice()
-    const [hovering, setHovering] = useState(false)
-    const [pressed, setPressed] = useState(false)
-    const [visible, setVisible] = useState(false)
-    const [tag, setTag] = useState("")
-
-    const x = useMotionValue(-100)
-    const y = useMotionValue(-100)
-    const ringX = useSpring(x, { stiffness: 380, damping: 32, mass: 0.35 })
-    const ringY = useSpring(y, { stiffness: 380, damping: 32, mass: 0.35 })
+    const dotRef = useRef(null)
+    const ringRef = useRef(null)
+    const tagRef = useRef(null)
+    const stateRef = useRef({
+        tx: -100, ty: -100,        // target (mouse)
+        rx: -100, ry: -100,        // ring (lagged)
+        hovering: false,
+        pressed: false,
+        visible: false,
+        tag: "",
+    })
 
     useEffect(() => {
         if (!enabled) return
@@ -42,89 +42,104 @@ const Cursor = () => {
 
     useEffect(() => {
         if (!enabled) return
+        const s = stateRef.current
+        let raf = 0
 
         const onMove = (e) => {
-            x.set(e.clientX)
-            y.set(e.clientY)
-            if (!visible) setVisible(true)
+            s.tx = e.clientX
+            s.ty = e.clientY
+            if (!s.visible) {
+                s.visible = true
+                if (dotRef.current) dotRef.current.style.opacity = "1"
+                if (ringRef.current) ringRef.current.style.opacity = "1"
+            }
         }
-        const onDown = () => setPressed(true)
-        const onUp = () => setPressed(false)
-        const onLeave = () => setVisible(false)
-        const onEnter = () => setVisible(true)
-
+        const onDown = () => { s.pressed = true }
+        const onUp = () => { s.pressed = false }
+        const onLeave = () => {
+            s.visible = false
+            if (dotRef.current) dotRef.current.style.opacity = "0"
+            if (ringRef.current) ringRef.current.style.opacity = "0"
+            if (tagRef.current) tagRef.current.style.opacity = "0"
+        }
         const onOver = (e) => {
             const el = e.target?.closest?.(INTERACTIVE_SELECTOR)
-            if (el) {
-                setHovering(true)
-                setTag(el.getAttribute("data-cursor-tag") || "")
-            } else {
-                setHovering(false)
-                setTag("")
+            const nextHover = !!el
+            const nextTag = el?.getAttribute("data-cursor-tag") || ""
+            if (nextHover === s.hovering && nextTag === s.tag) return
+            s.hovering = nextHover
+            s.tag = nextTag
+            if (tagRef.current) {
+                tagRef.current.textContent = nextTag
+                tagRef.current.style.opacity = nextTag ? "1" : "0"
             }
         }
 
+        const tick = () => {
+            // ease ring toward mouse
+            s.rx += (s.tx - s.rx) * 0.22
+            s.ry += (s.ty - s.ry) * 0.22
+
+            const ringScale = s.pressed ? 0.75 : s.hovering ? 1.9 : 1
+            const dotScale = s.pressed ? 1.4 : s.hovering ? 0.4 : 1
+
+            if (dotRef.current) {
+                dotRef.current.style.transform = `translate3d(${s.tx}px, ${s.ty}px, 0) translate(-50%, -50%) scale(${dotScale})`
+            }
+            if (ringRef.current) {
+                ringRef.current.style.transform = `translate3d(${s.rx}px, ${s.ry}px, 0) translate(-50%, -50%) scale(${ringScale})`
+            }
+            if (tagRef.current && s.tag) {
+                tagRef.current.style.transform = `translate3d(${s.rx + 22}px, ${s.ry - 2}px, 0)`
+            }
+
+            raf = requestAnimationFrame(tick)
+        }
+
         window.addEventListener("mousemove", onMove, { passive: true })
-        window.addEventListener("mousedown", onDown)
-        window.addEventListener("mouseup", onUp)
-        window.addEventListener("mouseover", onOver)
-        document.addEventListener("mouseleave", onLeave)
-        document.addEventListener("mouseenter", onEnter)
+        window.addEventListener("mousedown", onDown, { passive: true })
+        window.addEventListener("mouseup", onUp, { passive: true })
+        window.addEventListener("mouseover", onOver, { passive: true })
+        document.documentElement.addEventListener("mouseleave", onLeave, { passive: true })
+        raf = requestAnimationFrame(tick)
 
         return () => {
+            cancelAnimationFrame(raf)
             window.removeEventListener("mousemove", onMove)
             window.removeEventListener("mousedown", onDown)
             window.removeEventListener("mouseup", onUp)
             window.removeEventListener("mouseover", onOver)
-            document.removeEventListener("mouseleave", onLeave)
-            document.removeEventListener("mouseenter", onEnter)
+            document.documentElement.removeEventListener("mouseleave", onLeave)
         }
-    }, [enabled, visible, x, y])
+    }, [enabled])
 
     if (!enabled) return null
 
-    const ringScale = pressed ? 0.75 : hovering ? 1.9 : 1
-    const dotScale = pressed ? 1.4 : hovering ? 0.4 : 1
-
     return (
         <>
-            <motion.div
+            <div
+                ref={ringRef}
                 aria-hidden="true"
-                className="pointer-events-none fixed left-0 top-0 z-[9999] mix-blend-difference"
-                style={{ x: ringX, y: ringY, opacity: visible ? 1 : 0 }}
-            >
-                <motion.div
-                    animate={{ scale: ringScale }}
-                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                    className="-translate-x-1/2 -translate-y-1/2 size-9 rounded-full border border-white/70"
-                />
-            </motion.div>
-
-            <motion.div
+                className="pointer-events-none fixed left-0 top-0 z-[9999] size-9 rounded-full border border-white/40"
+                style={{ opacity: 0, transition: "opacity 200ms, border-color 200ms", willChange: "transform" }}
+            />
+            <div
+                ref={dotRef}
                 aria-hidden="true"
-                className="pointer-events-none fixed left-0 top-0 z-[9999]"
-                style={{ x, y, opacity: visible ? 1 : 0 }}
-            >
-                <motion.div
-                    animate={{ scale: dotScale }}
-                    transition={{ type: "spring", stiffness: 500, damping: 28 }}
-                    className="-translate-x-1/2 -translate-y-1/2 size-1.5 rounded-full bg-[var(--color-aqua)] shadow-[0_0_12px_rgba(51,194,204,0.9)]"
-                />
-            </motion.div>
-
-            {tag && (
-                <motion.div
-                    aria-hidden="true"
-                    initial={{ opacity: 0, y: 4 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="pointer-events-none fixed left-0 top-0 z-[9999] font-mono text-[10px] uppercase tracking-[0.22em] text-white/90"
-                    style={{ x: ringX, y: ringY }}
-                >
-                    <span className="ml-6 -mt-0.5 inline-block rounded-full border border-white/20 bg-black/60 px-2 py-0.5 backdrop-blur">
-                        {tag}
-                    </span>
-                </motion.div>
-            )}
+                className="pointer-events-none fixed left-0 top-0 z-[9999] size-1.5 rounded-full bg-[var(--color-aqua)]"
+                style={{
+                    opacity: 0,
+                    boxShadow: "0 0 10px rgba(51,194,204,0.7)",
+                    transition: "opacity 200ms",
+                    willChange: "transform",
+                }}
+            />
+            <div
+                ref={tagRef}
+                aria-hidden="true"
+                className="pointer-events-none fixed left-0 top-0 z-[9999] rounded-full border border-white/15 bg-black/60 px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.22em] text-white/90 backdrop-blur"
+                style={{ opacity: 0, transition: "opacity 150ms", willChange: "transform" }}
+            />
         </>
     )
 }
