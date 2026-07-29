@@ -63,6 +63,10 @@ body.cursor-none * {
   cursor: none !important;
 }
 
+body.boot-lock {
+  overflow: hidden;
+}
+
 .c-space {
   padding-left: 1.25rem; /* px-5 */
   padding-right: 1.25rem; /* px-5 */

@@ -5,6 +5,7 @@ import { ReactLenis } from 'lenis/react'
 import SectionLoader from './components/SectionLoader'
 import GameLauncher from './components/GameLauncher'
 import Cursor from './components/Cursor'
+import BootLoader from './components/BootLoader'
 
 const About = lazy(() => import('./section/About'))
 const Exp = lazy(() => import('./section/Exp'))
@@ -41,6 +42,7 @@ const App = () => {
       </Suspense>
       <GameLauncher />
       <Cursor />
+      <BootLoader />
     </div>
 
   )
