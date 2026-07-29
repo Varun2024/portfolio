@@ -58,6 +58,11 @@ body {
   overflow-x: hidden;
 }
 
+body.cursor-none,
+body.cursor-none * {
+  cursor: none !important;
+}
+
 .c-space {
   padding-left: 1.25rem; /* px-5 */
   padding-right: 1.25rem; /* px-5 */

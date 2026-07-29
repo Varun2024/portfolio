@@ -61,6 +61,7 @@ const HeroText = () => {
                 >
                     <a
                         href="#work"
+                        data-cursor-tag="Fleet"
                         className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[var(--color-royal)] to-[var(--color-lavender)] px-5 py-2.5 text-sm font-medium text-white shadow-[0_10px_40px_-10px_rgba(122,87,219,0.5)] transition hover:scale-[1.02]"
                     >
                         View the fleet
@@ -70,6 +71,7 @@ const HeroText = () => {
                     </a>
                     <a
                         href="#contact"
+                        data-cursor-tag="Comms"
                         className="inline-flex items-center gap-2 rounded-full border border-white/15 px-5 py-2.5 text-sm font-medium text-neutral-100 transition hover:border-white/35 hover:bg-white/5"
                     >
                         Open channel

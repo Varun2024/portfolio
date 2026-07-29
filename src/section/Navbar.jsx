@@ -97,6 +97,7 @@ const Navbar = () => {
                                 href={RESUME_LINK}
                                 target="_blank"
                                 rel="noreferrer"
+                                data-cursor-tag="Read"
                                 className="hidden sm:inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-[var(--color-royal)] to-[var(--color-lavender)] px-4 py-1.5 text-sm font-medium text-white shadow-[0_6px_24px_-8px_rgba(122,87,219,0.6)] transition hover:scale-[1.03]"
                             >
                                 Dossier

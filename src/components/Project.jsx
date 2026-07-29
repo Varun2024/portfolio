@@ -26,6 +26,7 @@ const Project = ({ title, description, subDescription, href, image, tags, setPr 
                 </div>
                 <button
                     onClick={() => setIsHidden(true)}
+                    data-cursor-tag="Scan"
                     className='flex items-center gap-1.5 cursor-pointer hover-animation text-sm sm:text-base transition-transform duration-300 group-hover:-translate-x-1'
                 >
                     Scan craft
