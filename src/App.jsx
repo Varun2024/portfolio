@@ -6,6 +6,7 @@ import SectionLoader from './components/SectionLoader'
 import GameLauncher from './components/GameLauncher'
 import Cursor from './components/Cursor'
 import BootLoader from './components/BootLoader'
+import Starfield from './components/Starfield'
 
 const About = lazy(() => import('./section/About'))
 const Exp = lazy(() => import('./section/Exp'))
@@ -23,6 +24,7 @@ const App = () => {
     <div className='container mx-auto max-w-7xl '>
       {/* navbar */}
       <ReactLenis root ref={lenisRef} />
+      <Starfield />
       <Navbar />
       {/* Hero */}
       <Hero />
