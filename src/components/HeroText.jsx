@@ -23,7 +23,7 @@ const HeroText = () => {
                     <span className="inline-block align-bottom">
                         <FlipWords
                             words={["robust", "elegant", "scalable"]}
-                            className="font-semibold bg-gradient-to-r from-[var(--color-lavender)] to-[var(--color-aqua)] bg-clip-text text-transparent"
+                            className="font-semibold text-white"
                         />
                     </span>{" "}
                     products.
