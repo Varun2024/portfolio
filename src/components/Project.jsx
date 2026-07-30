@@ -30,7 +30,7 @@ const Project = ({ title, description, subDescription, href, image, tags, setPr 
                     className='flex items-center gap-1.5 cursor-pointer hover-animation text-sm sm:text-base transition-transform duration-300 group-hover:-translate-x-1'
                 >
                     Scan craft
-                    <img src="assets/arrow-right.svg" className='size-4 sm:size-5 transition-transform duration-300 group-hover:translate-x-1' />
+                    <img src="assets/arrow-right.svg" alt="" aria-hidden="true" className='size-4 sm:size-5 transition-transform duration-300 group-hover:translate-x-1' />
                 </button>
             </div>
             <div className='bg-gradient-to-r from-transparent via-neutral-700 to-transparent h-[1px] w-full' />

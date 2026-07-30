@@ -44,7 +44,7 @@ const CopyEmailButton = () => {
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.1 }}
                     >
-                        <img src="assets/copy.svg" className="w-4" />
+                        <img src="assets/copy.svg" className="w-4" alt="" aria-hidden="true" />
                         [ copy frequency ]
                     </motion.p>)}
             </AnimatePresence>

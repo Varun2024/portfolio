@@ -70,6 +70,25 @@ body.cursor-none * {
   cursor: none !important;
 }
 
+/* a11y: visible focus ring on any interactive element that opts in via focus-visible */
+:where(a, button, input, textarea, select, [role="button"], summary):focus-visible {
+  outline: 2px solid var(--color-aqua);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* a11y: honour prefers-reduced-motion for any animation/transition that didn't already opt in */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 body.boot-lock {
   overflow: hidden;
 }

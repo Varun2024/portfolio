@@ -34,7 +34,7 @@ const ProjectDetails = ({title , description ,subDescription ,image , tags , hre
                         ))}
                     </div>
                     <a href={href} target="_blank" rel="noreferrer noopener" className="inline-flex items-center gap-1 text-sm sm:text-base font-medium hover-animation cursor-pointer"> 
-                    View Project <img src="assets/arrow-up.svg" className="size-4" />
+                    View Project <img src="assets/arrow-up.svg" alt="" aria-hidden="true" className="size-4" />
                     </a>
                 </div>
             </div>

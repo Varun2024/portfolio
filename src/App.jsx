@@ -25,6 +25,12 @@ const App = () => {
 
   return (
     <div className='container mx-auto max-w-7xl '>
+      <a
+        href="#home"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[10001] focus:rounded-md focus:border focus:border-[var(--color-aqua)]/60 focus:bg-[var(--color-midnight)] focus:px-3 focus:py-2 focus:font-mono focus:text-sm focus:text-[var(--color-aqua)]"
+      >
+        Skip to content
+      </a>
       {/* navbar */}
       <ReactLenis root ref={lenisRef} />
       <Starfield />

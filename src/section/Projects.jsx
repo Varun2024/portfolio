@@ -35,6 +35,8 @@ const Projects = () => {
         {pr &&
         <motion.img className="fixed top-0 left-0 z-50 object-cover h-56 rounded-lg shadow-lg pointer-events-none w-80"
           src={pr}
+          alt=""
+          aria-hidden="true"
           style={{ x: springX, y: springY }}
         />}
       </div>
