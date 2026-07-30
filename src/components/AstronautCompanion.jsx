@@ -77,7 +77,7 @@ const AstronautCompanion = () => {
                 className="relative grid size-12 place-items-center rounded-full border border-white/10 bg-[var(--color-midnight)]/70 backdrop-blur shadow-[0_10px_40px_-10px_rgba(0,0,0,0.7)] sm:size-14"
                 style={{ willChange: "transform" }}
             >
-                <span className="pointer-events-none absolute inset-0 -z-10 rounded-full bg-[var(--color-royal)]/25 blur-lg animate-pulse" />
+                <span className="pointer-events-none absolute inset-0 -z-10 rounded-full bg-[var(--color-aqua)]/20 blur-lg animate-pulse" />
                 <AstronautGlyph />
             </div>
         </div>

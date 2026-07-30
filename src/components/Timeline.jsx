@@ -46,7 +46,7 @@ export const Timeline = ({ data }) => {
 
                 <motion.div
                     style={{ height: smoothProgressHeight }}
-                    className="absolute left-[0.5px] top-0 w-px bg-gradient-to-b from-[var(--color-aqua)] via-[var(--color-lavender)] to-transparent"
+                    className="absolute left-[0.5px] top-0 w-px bg-gradient-to-b from-[var(--color-aqua)] via-[var(--color-aqua)]/40 to-transparent"
                     aria-hidden="true"
                 />
 

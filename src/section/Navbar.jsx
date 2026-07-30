@@ -84,13 +84,13 @@ const Navbar = () => {
                 className="w-full max-w-5xl"
             >
                 <div className="relative">
-                    <div className="pointer-events-none absolute -inset-px rounded-full bg-gradient-to-r from-[var(--color-lavender)]/30 via-white/5 to-[var(--color-aqua)]/30 opacity-60 blur-[2px]" />
+                    <div className="pointer-events-none absolute -inset-px rounded-full bg-gradient-to-r from-transparent via-[var(--color-aqua)]/20 to-transparent opacity-60 blur-[2px]" />
                     <div className="relative flex items-center justify-between gap-3 rounded-full border border-white/10 bg-[var(--color-primary)]/70 px-3 sm:pl-5 sm:pr-3 py-2 backdrop-blur-xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.6)]">
                         <a
                             href="#home"
                             className="flex items-center gap-2 text-sm font-semibold text-white"
                         >
-                            <span className="grid size-7 place-items-center rounded-full bg-gradient-to-br from-[var(--color-royal)] to-[var(--color-lavender)] text-xs font-bold text-white shadow-[0_4px_20px_-4px_rgba(122,87,219,0.6)]">
+                            <span className="grid size-7 place-items-center rounded-md border border-[var(--color-aqua)]/40 bg-[var(--color-aqua)]/10 font-mono text-xs font-bold text-[var(--color-aqua)]">
                                 V
                             </span>
                             <span className="hidden sm:inline tracking-wide">Varun</span>
@@ -107,7 +107,7 @@ const Navbar = () => {
                                 target="_blank"
                                 rel="noreferrer"
                                 data-cursor-tag="Read"
-                                className="hidden sm:inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-[var(--color-royal)] to-[var(--color-lavender)] px-4 py-1.5 text-sm font-medium text-white shadow-[0_6px_24px_-8px_rgba(122,87,219,0.6)] transition hover:scale-[1.03]"
+                                className="hidden sm:inline-flex items-center gap-1.5 rounded-md border border-[var(--color-aqua)]/40 bg-[var(--color-aqua)]/10 px-4 py-1.5 font-mono text-sm text-[var(--color-aqua)] transition hover:border-[var(--color-aqua)]/70 hover:bg-[var(--color-aqua)]/20"
                             >
                                 Dossier
                                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -141,7 +141,7 @@ const Navbar = () => {
                                         onClick={openDossier}
                                         target="_blank"
                                         rel="noreferrer"
-                                        className="mt-3 inline-flex w-full items-center justify-center rounded-full bg-gradient-to-r from-[var(--color-royal)] to-[var(--color-lavender)] px-4 py-2 text-sm font-medium text-white"
+                                        className="mt-3 inline-flex w-full items-center justify-center rounded-md border border-[var(--color-aqua)]/40 bg-[var(--color-aqua)]/10 px-4 py-2 font-mono text-sm text-[var(--color-aqua)]"
                                     >
                                         Dossier
                                     </a>

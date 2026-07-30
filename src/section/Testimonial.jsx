@@ -242,7 +242,7 @@ export default function Testimonials({ autoRotate = true, rotateInterval = 6000 
       {showAlert && <Alert type={alertType} text={alertMessage} />}
 
       <div className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-6 lg:grid-cols-5">
-        <div className="relative rounded-2xl border border-white/10 bg-gradient-to-b from-[var(--color-storm)] to-[var(--color-indigo)] p-5 sm:p-7 lg:col-span-3 shadow-[0_20px_60px_-30px_rgba(122,87,219,0.35)]">
+        <div className="relative rounded-2xl border border-white/10 bg-gradient-to-b from-[var(--color-storm)] to-[var(--color-indigo)] p-5 sm:p-7 lg:col-span-3 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.6)]">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
             <div>
               <h3 className="text-xl font-semibold leading-snug text-gray-100 sm:text-2xl md:text-3xl">
@@ -351,11 +351,11 @@ export default function Testimonials({ autoRotate = true, rotateInterval = 6000 
           </div>
         </div>
 
-        <aside className="relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-[#2a1158] via-[#1a0a3d] to-[#0f0729] p-6 sm:p-7 lg:col-span-2 shadow-[0_20px_60px_-30px_rgba(122,87,219,0.4)]">
+        <aside className="relative overflow-hidden rounded-2xl border border-white/10 bg-[var(--color-midnight)]/85 p-6 sm:p-7 lg:col-span-2 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.6)]">
           <div className="pointer-events-none absolute -top-10 -right-6 text-[10rem] leading-none font-serif text-white/[0.04] select-none">
             &ldquo;
           </div>
-          <div className="pointer-events-none absolute -bottom-32 -left-20 size-64 rounded-full bg-[var(--color-lavender)]/15 blur-3xl" />
+          <div className="pointer-events-none absolute -bottom-32 -left-20 size-64 rounded-full bg-[var(--color-aqua)]/10 blur-3xl" />
 
           <AnimatePresence mode="wait" initial={false}>
             {!feedbackOpen ? (
@@ -402,9 +402,9 @@ export default function Testimonials({ autoRotate = true, rotateInterval = 6000 
                       setFeedbackOpen(true)
                       setTimeout(() => firstFieldRef.current?.focus(), 300)
                     }}
-                    className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[var(--color-royal)] to-[var(--color-lavender)] px-5 py-3 text-sm font-medium text-white shadow-[0_10px_40px_-10px_rgba(122,87,219,0.5)] transition hover:scale-[1.02]"
+                    className="group inline-flex w-full items-center justify-center gap-2 rounded-md border border-[var(--color-aqua)]/40 bg-[var(--color-aqua)]/10 px-5 py-3 font-mono text-sm text-[var(--color-aqua)] transition hover:border-[var(--color-aqua)]/70 hover:bg-[var(--color-aqua)]/20"
                   >
-                    Open a channel
+                    [ open a channel ]
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="transition-transform group-hover:translate-x-0.5">
                       <path d="M5 12h14M13 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
@@ -499,9 +499,9 @@ export default function Testimonials({ autoRotate = true, rotateInterval = 6000 
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full rounded-full bg-gradient-to-r from-[var(--color-royal)] to-[var(--color-lavender)] px-5 py-3 text-sm font-medium text-white shadow-[0_10px_40px_-10px_rgba(122,87,219,0.5)] transition hover:scale-[1.01] disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:scale-100"
+                  className="w-full rounded-md border border-[var(--color-aqua)]/40 bg-[var(--color-aqua)]/10 px-5 py-3 font-mono text-sm text-[var(--color-aqua)] transition hover:border-[var(--color-aqua)]/70 hover:bg-[var(--color-aqua)]/20 disabled:cursor-not-allowed disabled:opacity-60"
                 >
-                  {isSubmitting ? "Transmitting..." : "Transmit"}
+                  {isSubmitting ? "[ transmitting... ]" : "[ transmit ]"}
                 </button>
               </Motion.form>
             )}

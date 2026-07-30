@@ -103,7 +103,7 @@ const Contact = () => {
             {/* testimonials */}
             {showAlert && <Alert type={alertType} text={alertMessage} />}
             <div className="relative mx-auto w-full max-w-xl">
-                <div className="pointer-events-none absolute -inset-px rounded-xl bg-gradient-to-br from-[var(--color-aqua)]/25 via-white/5 to-[var(--color-royal)]/25 opacity-60 blur-[1px]" />
+                <div className="pointer-events-none absolute -inset-px rounded-xl bg-gradient-to-br from-[var(--color-aqua)]/20 via-white/5 to-[var(--color-aqua)]/5 opacity-60 blur-[1px]" />
                 <div className="relative rounded-xl border border-white/10 bg-[#04070f]/95 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.8)] min-h-[520px]">
                     {/* terminal title bar */}
                     <div className="flex items-center gap-2 border-b border-white/10 px-4 py-2.5">

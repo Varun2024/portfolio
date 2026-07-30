@@ -56,15 +56,14 @@ const GameLauncher = () => {
                 )}
                 <button
                     onClick={handleOpen}
-                    className="group relative flex items-center gap-2 rounded-full border border-white/10 bg-gradient-to-r from-[var(--color-royal)]/90 to-[var(--color-lavender)]/90 px-4 py-2.5 text-sm font-medium text-white shadow-[0_10px_40px_-10px_rgba(122,87,219,0.6)] transition hover:scale-[1.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+                    className="group relative flex items-center gap-2 rounded-md border border-[var(--color-aqua)]/40 bg-[var(--color-aqua)]/10 px-4 py-2.5 font-mono text-sm text-[var(--color-aqua)] transition hover:border-[var(--color-aqua)]/70 hover:bg-[var(--color-aqua)]/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-aqua)]/40"
                     aria-label="Launch pilot mode"
                     data-cursor-tag="Launch"
                 >
-                    <span className="absolute inset-0 -z-10 rounded-full bg-gradient-to-r from-[var(--color-royal)] to-[var(--color-lavender)] opacity-60 blur-md transition group-hover:opacity-90" />
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                         <path d="M12 2.5l2.6 6.2 6.7.5-5.1 4.4 1.6 6.6L12 16.8l-5.8 3.4 1.6-6.6L2.7 9.2l6.7-.5L12 2.5z" />
                     </svg>
-                    <span>Launch</span>
+                    <span>[ launch ]</span>
                 </button>
             </div>
 

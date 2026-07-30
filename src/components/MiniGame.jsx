@@ -342,9 +342,9 @@ const AsteroidDodger = ({ onClose }) => {
                             </p>
                             <button
                                 onClick={handleStart}
-                                className="rounded-full bg-gradient-to-r from-[var(--color-royal)] to-[var(--color-lavender)] px-6 py-2 text-sm font-medium hover-animation"
+                                className="rounded-md border border-[var(--color-aqua)]/40 bg-[var(--color-aqua)]/10 px-6 py-2 font-mono text-sm text-[var(--color-aqua)] hover:border-[var(--color-aqua)]/70 hover:bg-[var(--color-aqua)]/20 transition"
                             >
-                                Launch
+                                [ launch ]
                             </button>
                         </div>
                     )}
@@ -356,9 +356,9 @@ const AsteroidDodger = ({ onClose }) => {
                             <div className="flex gap-2 mt-1">
                                 <button
                                     onClick={handleStart}
-                                    className="rounded-full bg-gradient-to-r from-[var(--color-royal)] to-[var(--color-lavender)] px-5 py-2 text-sm font-medium hover-animation"
+                                    className="rounded-md border border-[var(--color-aqua)]/40 bg-[var(--color-aqua)]/10 px-5 py-2 font-mono text-sm text-[var(--color-aqua)] hover:border-[var(--color-aqua)]/70 hover:bg-[var(--color-aqua)]/20 transition"
                                 >
-                                    Try again
+                                    [ try again ]
                                 </button>
                                 <button
                                     onClick={onClose}

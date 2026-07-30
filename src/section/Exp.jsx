@@ -13,7 +13,7 @@ const ExperienceCard = ({ exp, className, accentClass = "grid-default-color", hi
         <ul className="z-10 mt-4 flex flex-col gap-1.5 text-sm text-neutral-300/90">
             {exp.contents.slice(0, highlights).map((line, i) => (
                 <li key={i} className="flex gap-2 leading-snug">
-                    <span className="mt-1.5 inline-block size-1 shrink-0 rounded-full bg-[var(--color-lavender)]" />
+                    <span className="mt-1.5 inline-block size-1 shrink-0 rounded-full bg-[var(--color-aqua)]" />
                     <span>{line}</span>
                 </li>
             ))}

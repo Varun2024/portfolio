@@ -18,7 +18,7 @@ const CopyEmailButton = () => {
             onClick={copyToClipboard}
             whileHover={{ y: -5 }}
             whileTap={{scale: 1.05}}
-            className="relative px-1 py-4 text-sm text-center rounded-full font-extralight bg-[#030412] w-[12rem] cursor-pointer overflow-hidden"
+            className="relative px-4 py-3 font-mono text-sm text-center rounded-md border border-[var(--color-aqua)]/40 bg-[var(--color-aqua)]/10 text-[var(--color-aqua)] w-[14rem] cursor-pointer overflow-hidden hover:border-[var(--color-aqua)]/70 hover:bg-[var(--color-aqua)]/20 transition"
         >
             {/* since usestate cant be tracked normal animation we will use this which tracks the state through a key */}
             <AnimatePresence mode="wait">
@@ -32,8 +32,8 @@ const CopyEmailButton = () => {
                         exit={{ opacity: 0, y: -10 }}
                         transition={{ duration: 0.1, ease: "easeInOut" }}
                     >
-                        <img src="assets/copy-done.svg" className="w-5" alt="copy icon" />
-                        Frequency locked!
+                        <img src="assets/copy-done.svg" className="w-4" alt="copy icon" />
+                        [ locked ]
                     </motion.p>
                 ) : (
                     <motion.p
@@ -44,8 +44,8 @@ const CopyEmailButton = () => {
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.1 }}
                     >
-                        <img src="assets/copy.svg" className="w-5" />
-                        Copy frequency
+                        <img src="assets/copy.svg" className="w-4" />
+                        [ copy frequency ]
                     </motion.p>)}
             </AnimatePresence>
         </motion.button>
