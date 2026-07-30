@@ -7,6 +7,7 @@ import GameLauncher from './components/GameLauncher'
 import Cursor from './components/Cursor'
 import BootLoader from './components/BootLoader'
 import Starfield from './components/Starfield'
+import AstronautCompanion from './components/AstronautCompanion'
 
 const About = lazy(() => import('./section/About'))
 const Exp = lazy(() => import('./section/Exp'))
@@ -43,6 +44,7 @@ const App = () => {
         <Footer />
       </Suspense>
       <GameLauncher />
+      <AstronautCompanion />
       <Cursor />
       <BootLoader />
     </div>
