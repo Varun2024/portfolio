@@ -3,12 +3,13 @@ import Cards from '../components/Cards'
 import { Globe } from '../components/Globe'
 import CopyEmailButton from '../components/CopyEmailButton'
 import { FrameWorks } from '../components/FrameWorks'
+import SectionHeading from '../components/SectionHeading'
 // twmerge is somthing new
 const About = () => {
     const grid2Container = useRef()
     return (
         <section id="about" className='c-space section-spacing'>
-            <h2 className="text-heading">Origin Log</h2>
+            <SectionHeading>Origin Log</SectionHeading>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-6 md:auto-rows-[18rem] mt-12">
                 {/* grid 1 */}
                 <div className="flex items-end grid-default-color grid-1">

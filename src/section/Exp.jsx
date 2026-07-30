@@ -1,4 +1,5 @@
 import { experiences } from "../constants"
+import SectionHeading from "../components/SectionHeading"
 
 const ExperienceCard = ({ exp, className, accentClass = "grid-default-color", highlights = 3 }) => (
     <div className={`${accentClass} ${className} flex flex-col justify-between`}>
@@ -25,7 +26,7 @@ const Exp = () => {
 
     return (
         <section id="experience" className="c-space section-spacing">
-            <h2 className="text-heading">Mission Log</h2>
+            <SectionHeading>Mission Log</SectionHeading>
             <p className="mt-3 max-w-xl text-sm text-neutral-400 md:text-base">
                 Deployments across product, research, and freelance space — most recent orbit first.
             </p>

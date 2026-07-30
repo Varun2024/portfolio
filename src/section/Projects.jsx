@@ -2,6 +2,7 @@
 import { useState } from "react"
 import Project from "../components/Project"
 import { myProjects } from "../constants"
+import SectionHeading from "../components/SectionHeading"
 import { motion, useMotionValue, useSpring } from "motion/react"
 
 const Projects = () => {
@@ -16,7 +17,7 @@ const Projects = () => {
   const [pr, setPr] = useState(null)
   return (
     <section id="work" onMouseMove={handleMouse} className="realtive c-space section-spacing px-1 sm:px-0">
-      <h2 className="text-heading">The Fleet</h2>
+      <SectionHeading>The Fleet</SectionHeading>
       {/* for the line */}
       <div className="bg-gradient-to-r from-transparent via-neutral-700 to-transparent mt-8 sm:mt-12 h-[1px] w-full " />
       {myProjects.map((project) => (
