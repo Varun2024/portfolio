@@ -91,7 +91,7 @@ const Contact = () => {
         }
     }
     return (
-        <section id="contact" className='relative flex flex-col items-center gap-5 c-space section-spacing'>
+        <section id="contact" className='relative flex flex-col items-center gap-5 c-space mt-8 md:mt-12'>
 
             <Particles
                 className="absolute inset-0 -z-100"

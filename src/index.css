@@ -146,7 +146,6 @@ body.boot-lock {
 }
 
 .section-spacing {
-  min-height: 100vh;
   margin-top: 5rem; /* mt-20 */
 }
 @media (min-width: 768px) {

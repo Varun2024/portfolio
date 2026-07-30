@@ -242,58 +242,37 @@ export default function Testimonials({ autoRotate = true, rotateInterval = 6000 
       {showAlert && <Alert type={alertType} text={alertMessage} />}
 
       <div className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-6 lg:grid-cols-5">
-        <div className="relative rounded-2xl border border-white/10 bg-gradient-to-b from-[var(--color-storm)] to-[var(--color-indigo)] p-5 sm:p-7 lg:col-span-3 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.6)]">
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
-            <div>
-              <h3 className="text-xl font-semibold leading-snug text-gray-100 sm:text-2xl md:text-3xl">
-                Incoming transmissions
-              </h3>
+        <div className="relative rounded-xl border border-white/10 bg-[var(--color-midnight)] p-5 sm:p-7 lg:col-span-3 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.6)]">
+          <div className="mb-4 flex items-center justify-between gap-3 border-b border-white/5 pb-3">
+            <div className="flex items-center gap-2 font-mono text-[10px] text-white/40">
+              <span className="inline-block size-1.5 rounded-full bg-[var(--color-aqua)]/60" />
+              ~/signals.log
             </div>
-            <div className="flex items-center gap-2 self-end sm:self-auto">
+            <div className="flex items-center gap-1">
               <button
                 aria-label="Previous transmission"
                 onClick={handlePrev}
-                className="rounded-md p-2.5 hover:bg-gray-800/60 focus:outline-none focus:ring-2 focus:ring-gray-700"
+                data-cursor-tag="Prev"
+                className="rounded-md border border-white/10 p-1.5 text-white/60 hover:border-[var(--color-aqua)]/40 hover:text-[var(--color-aqua)] transition"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 text-gray-300"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M15 19l-7-7 7-7"
-                  />
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
                 </svg>
               </button>
               <button
                 aria-label="Next transmission"
                 onClick={handleNext}
-                className="rounded-md p-2.5 hover:bg-gray-800/60 focus:outline-none focus:ring-2 focus:ring-gray-700"
+                data-cursor-tag="Next"
+                className="rounded-md border border-white/10 p-1.5 text-white/60 hover:border-[var(--color-aqua)]/40 hover:text-[var(--color-aqua)] transition"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 text-gray-300"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M9 5l7 7-7 7"
-                  />
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
                 </svg>
               </button>
             </div>
           </div>
 
-          <div className="mt-5">
+          <div>
             <AnimatePresence initial={false} mode="wait">
               <Motion.blockquote
                 key={`${activeTestimonial.name}-${activeTestimonial.createdAt}`}
@@ -303,7 +282,7 @@ export default function Testimonials({ autoRotate = true, rotateInterval = 6000 
                 exit="exit"
                 className="w-full"
               >
-                <div className="flex items-start gap-2.5 sm:gap-4">
+                <div className="flex items-start gap-3 sm:gap-4">
                   <img
                     src={activeTestimonial.avatar || buildDefaultAvatar(activeTestimonial.name)}
                     alt={activeTestimonial.name}
@@ -313,23 +292,28 @@ export default function Testimonials({ autoRotate = true, rotateInterval = 6000 
                         event.currentTarget.src = fallback
                       }
                     }}
-                    className="h-10 w-10 rounded-full object-cover ring-1 ring-gray-800 sm:h-14 sm:w-14 bg-[var(--color-indigo)]"
+                    className="h-10 w-10 rounded-md object-cover ring-1 ring-[var(--color-aqua)]/30 sm:h-12 sm:w-12 bg-[var(--color-midnight)]"
                   />
 
-                  <div>
-                    <p className="text-[15px] leading-7 text-gray-200 sm:text-base sm:leading-relaxed">
-                      "{activeTestimonial.quote}"
+                  <div className="flex-1">
+                    <div className="font-mono text-[10px] text-white/40 mb-1">
+                      <span className="text-[var(--color-aqua)]">$</span> incoming {String(index + 1).padStart(2, "0")}/{String(testimonials.length).padStart(2, "0")}
+                    </div>
+                    <p className="text-[15px] leading-7 text-white/90 sm:text-base sm:leading-relaxed">
+                      <span className="text-[var(--color-aqua)] mr-1">&gt;</span>
+                      {activeTestimonial.quote}
                     </p>
-                    <div className="mt-2 text-sm text-gray-400 sm:mt-3">
-                      <div className="text-base font-medium text-gray-100 sm:text-base">{activeTestimonial.name}</div>
-                      <div className="text-xs">{activeTestimonial.role}</div>
+                    <div className="mt-3 font-mono text-[11px]">
+                      <div className="text-white/85">{activeTestimonial.name}</div>
+                      <div className="text-white/40">{activeTestimonial.role}</div>
                     </div>
                     <button
                       type="button"
                       onClick={shareFeedback}
-                      className="mt-2.5 inline-flex items-center rounded-md border border-white/15 px-3 py-1.5 text-xs font-semibold tracking-wide text-white hover:bg-white/10"
+                      data-cursor-tag="Broadcast"
+                      className="mt-3 inline-flex items-center rounded-md border border-[var(--color-aqua)]/30 bg-[var(--color-aqua)]/5 px-3 py-1.5 font-mono text-[11px] text-[var(--color-aqua)] hover:border-[var(--color-aqua)]/60 hover:bg-[var(--color-aqua)]/15 transition"
                     >
-                      Rebroadcast
+                      [ rebroadcast ]
                     </button>
                   </div>
                 </div>
@@ -337,21 +321,21 @@ export default function Testimonials({ autoRotate = true, rotateInterval = 6000 
             </AnimatePresence>
           </div>
 
-          <div className="mt-4 flex items-center justify-center gap-2 sm:mt-6">
+          <div className="mt-5 flex items-center justify-center gap-1.5">
             {testimonials.map((item, currentIndex) => (
               <button
                 key={`${item.name}-${item.createdAt}-${currentIndex}`}
                 onClick={() => setIndex(currentIndex)}
                 aria-label={`Show transmission ${currentIndex + 1}`}
-                className={`h-1.5 rounded-full transition-all duration-200 ${
-                  currentIndex === index ? "w-8 bg-gray-100" : "w-4 bg-gray-700"
+                className={`h-1 rounded-full transition-all duration-200 ${
+                  currentIndex === index ? "w-6 bg-[var(--color-aqua)]" : "w-2 bg-white/20 hover:bg-white/40"
                 }`}
               />
             ))}
           </div>
         </div>
 
-        <aside className="relative overflow-hidden rounded-2xl border border-white/10 bg-[var(--color-midnight)]/85 p-6 sm:p-7 lg:col-span-2 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.6)]">
+        <aside className="relative overflow-hidden rounded-xl border border-white/10 bg-[var(--color-midnight)] p-6 sm:p-7 lg:col-span-2 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.6)]">
           <div className="pointer-events-none absolute -top-10 -right-6 text-[10rem] leading-none font-serif text-white/[0.04] select-none">
             &ldquo;
           </div>
@@ -386,7 +370,7 @@ export default function Testimonials({ autoRotate = true, rotateInterval = 6000 
                           const fallback = buildDefaultAvatar(t.name || t.id)
                           if (e.currentTarget.src !== fallback) e.currentTarget.src = fallback
                         }}
-                        className="size-7 rounded-full border-2 border-[#1a0a3d] object-cover bg-[var(--color-indigo)]"
+                        className="size-7 rounded-md border-2 border-[var(--color-midnight)] object-cover bg-[var(--color-storm)]"
                       />
                     ))}
                   </div>
@@ -412,7 +396,7 @@ export default function Testimonials({ autoRotate = true, rotateInterval = 6000 
                   <button
                     type="button"
                     onClick={shareFeedbackForm}
-                    className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/15 px-5 py-2.5 text-xs font-medium text-neutral-300 hover:border-white/35 hover:bg-white/5 transition"
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-md border border-white/15 px-5 py-2.5 font-mono text-xs text-white/70 hover:border-white/35 hover:bg-white/5 transition"
                   >
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71" strokeLinecap="round" strokeLinejoin="round" />

@@ -10,11 +10,6 @@ const HeroText = () => {
 
     return (
         <div className="relative z-10 mt-28 md:mt-40 text-left c-space w-full">
-            {/* mobile-only scrim: keeps hero text legible over the astronaut behind on small viewports */}
-            <div
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-x-0 -top-24 h-[85vh] md:hidden bg-gradient-to-r from-[var(--color-primary)] via-[var(--color-primary)]/85 to-transparent"
-            />
             <div className="relative flex flex-col items-start gap-5 md:gap-7 max-w-xl md:max-w-2xl">
                 <motion.h1
                     variants={variance}

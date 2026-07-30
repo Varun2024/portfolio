@@ -1,34 +1,29 @@
-// Avatar URL normalization + deterministic default-avatar selection.
+// Avatar URL normalization + terminal-style monogram default.
 // Handles Google Drive share links, Dropbox, GitHub blob URLs, and bare URLs.
-// Falls back to a stable, name-seeded DiceBear avatar when none is provided.
+// Falls back to an inline SVG monogram (initials + scanner corner ticks) when
+// none is provided — no external API, no pastel cartoon avatars.
 
-const DEFAULT_AVATAR_STYLES = [
-  "avataaars",
-  "bottts-neutral",
-  "lorelei",
-  "fun-emoji",
-]
+const escapeXml = (s) =>
+  String(s).replace(/[<>&"']/g, (c) => ({ "<": "&lt;", ">": "&gt;", "&": "&amp;", '"': "&quot;", "'": "&#39;" }[c]))
 
-const DEFAULT_BG_PALETTE = "1f1e39,282b4b,7a57db,33c2cc"
-
-const hashSeed = (input) => {
-  const value = String(input ?? "guest")
-  let hash = 0
-  for (let i = 0; i < value.length; i += 1) {
-    hash = ((hash << 5) - hash + value.charCodeAt(i)) | 0
-  }
-  return Math.abs(hash)
+const initialsOf = (seed) => {
+  const parts = String(seed || "").trim().split(/\s+/).filter(Boolean)
+  if (parts.length === 0) return "??"
+  if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase()
+  return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase()
 }
 
 export const buildDefaultAvatar = (seed = "guest") => {
-  const cleanSeed = String(seed).trim() || "guest"
-  const style = DEFAULT_AVATAR_STYLES[hashSeed(cleanSeed) % DEFAULT_AVATAR_STYLES.length]
-  const params = new URLSearchParams({
-    seed: cleanSeed,
-    backgroundColor: DEFAULT_BG_PALETTE,
-    radius: "50",
-  })
-  return `https://api.dicebear.com/9.x/${style}/svg?${params.toString()}`
+  const initials = initialsOf(seed)
+  const svg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'>
+    <rect width='64' height='64' fill='#0b0d13' rx='8'/>
+    <path d='M6 6 L14 6 M6 6 L6 14' stroke='#7dd3fc' stroke-opacity='0.55' stroke-width='1.5' fill='none' stroke-linecap='round'/>
+    <path d='M58 6 L50 6 M58 6 L58 14' stroke='#7dd3fc' stroke-opacity='0.55' stroke-width='1.5' fill='none' stroke-linecap='round'/>
+    <path d='M6 58 L14 58 M6 58 L6 50' stroke='#7dd3fc' stroke-opacity='0.55' stroke-width='1.5' fill='none' stroke-linecap='round'/>
+    <path d='M58 58 L50 58 M58 58 L58 50' stroke='#7dd3fc' stroke-opacity='0.55' stroke-width='1.5' fill='none' stroke-linecap='round'/>
+    <text x='32' y='40' text-anchor='middle' font-family='ui-monospace, SFMono-Regular, Menlo, monospace' font-size='22' font-weight='700' fill='#7dd3fc'>${escapeXml(initials)}</text>
+  </svg>`
+  return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`
 }
 
 const matchDrive = (url) => {
