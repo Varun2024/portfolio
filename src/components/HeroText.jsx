@@ -11,17 +11,6 @@ const HeroText = () => {
     return (
         <div className="z-10 mt-28 md:mt-40 text-left c-space w-full">
             <div className="flex flex-col items-start gap-5 md:gap-7 max-w-xl md:max-w-2xl">
-                <motion.div
-                    variants={variance}
-                    initial="hidden"
-                    animate="visible"
-                    transition={{ delay: 0.25, duration: 0.5 }}
-                    className="flex items-center gap-2 text-[10px] sm:text-xs font-mono uppercase tracking-[0.28em] text-[var(--color-sand)]"
-                >
-                    <span className="inline-block size-1.5 rounded-full bg-[var(--color-aqua)] animate-pulse" />
-                    Pilot ID // Varun-01 · Comm log active
-                </motion.div>
-
                 <motion.h1
                     variants={variance}
                     initial="hidden"

@@ -75,7 +75,6 @@ const Contact = () => {
                     {justSent && <SendSuccess onDone={() => setJustSent(false)} />}
                 </AnimatePresence>
                 <div className="flex flex-col items-start w-full gap-3 mb-8">
-                    <span className="text-xs uppercase tracking-[0.22em] text-[var(--color-sand)]">Open Channel</span>
                     <h2 className='text-heading'>Establish Comms</h2>
                     <p className='font-normal text-neutral-300/90 text-sm md:text-base'>
                         New builds, existing platforms, or ambitious launches — dial in and we&rsquo;ll plot a course together.

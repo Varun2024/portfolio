@@ -103,10 +103,6 @@ const BootLoader = () => {
             }}
         >
             <div className="w-full max-w-md px-6">
-                <div className="mb-6 flex items-center gap-2 text-[10px] uppercase tracking-[0.28em] text-[var(--color-sand)]">
-                    <span className="inline-block size-1.5 rounded-full bg-[var(--color-aqua)] animate-pulse" />
-                    Varun-01 · boot
-                </div>
                 <div className="space-y-1.5 leading-relaxed">
                     {visibleLines.map((line, i) => (
                         <div key={i} className="whitespace-pre">
@@ -117,7 +113,7 @@ const BootLoader = () => {
                         </div>
                     ))}
                 </div>
-                <div className="mt-8 text-[10px] uppercase tracking-[0.28em] text-white/30">
+                <div className="mt-8 text-xs text-white/30">
                     tap or press any key to skip
                 </div>
             </div>

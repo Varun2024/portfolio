@@ -245,8 +245,7 @@ export default function Testimonials({ autoRotate = true, rotateInterval = 6000 
         <div className="relative rounded-2xl border border-white/10 bg-gradient-to-b from-[var(--color-storm)] to-[var(--color-indigo)] p-5 sm:p-7 lg:col-span-3 shadow-[0_20px_60px_-30px_rgba(122,87,219,0.35)]">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
             <div>
-              <span className="text-xs uppercase tracking-[0.22em] text-[var(--color-sand)]">Signals</span>
-              <h3 className="mt-2 text-xl font-semibold leading-snug text-gray-100 sm:text-2xl md:text-3xl">
+              <h3 className="text-xl font-semibold leading-snug text-gray-100 sm:text-2xl md:text-3xl">
                 Incoming transmissions
               </h3>
             </div>
@@ -368,12 +367,8 @@ export default function Testimonials({ autoRotate = true, rotateInterval = 6000 
                 transition={{ duration: 0.3 }}
                 className="relative flex h-full flex-col"
               >
-                <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-[var(--color-sand)]">
-                  <span className="inline-block size-1.5 rounded-full bg-[var(--color-sand)]" />
-                  Crewed with me?
-                </div>
-                <h4 className="mt-3 text-2xl sm:text-3xl font-semibold text-white leading-tight">
-                  Send a transmission.
+                <h4 className="text-2xl sm:text-3xl font-semibold text-white leading-tight">
+                  Crewed with me? Send a transmission.
                 </h4>
                 <p className="mt-3 text-sm text-neutral-300/90 leading-relaxed">
                   Two minutes is all it takes. Your signal joins the rotating
@@ -436,10 +431,7 @@ export default function Testimonials({ autoRotate = true, rotateInterval = 6000 
                 transition={{ duration: 0.3 }}
                 className="relative space-y-3"
               >
-                <div className="flex items-center justify-between">
-                  <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[var(--color-sand)]">
-                    Your transmission
-                  </p>
+                <div className="flex items-center justify-end">
                   <button
                     type="button"
                     onClick={() => setFeedbackOpen(false)}
