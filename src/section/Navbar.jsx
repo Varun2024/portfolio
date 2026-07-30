@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
+import DossierModal from '../components/DossierModal'
 
 const RESUME_LINK = "https://drive.google.com/file/d/1rHC_X1fZdNJ0AeQ6GkN-_pTfVSX-fVma/view?usp=sharing"
 
@@ -65,7 +66,14 @@ const NavLinks = ({ active, onSelect }) => (
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false)
+    const [dossierOpen, setDossierOpen] = useState(false)
     const active = useActiveSection()
+
+    const openDossier = (e) => {
+        e.preventDefault()
+        setDossierOpen(true)
+        setIsOpen(false)
+    }
 
     return (
         <div className="fixed inset-x-0 top-3 sm:top-5 z-40 flex justify-center px-3">
@@ -95,6 +103,7 @@ const Navbar = () => {
                         <div className="flex items-center gap-2">
                             <a
                                 href={RESUME_LINK}
+                                onClick={openDossier}
                                 target="_blank"
                                 rel="noreferrer"
                                 data-cursor-tag="Read"
@@ -129,9 +138,9 @@ const Navbar = () => {
                                     <NavLinks active={active} onSelect={() => setIsOpen(false)} />
                                     <a
                                         href={RESUME_LINK}
+                                        onClick={openDossier}
                                         target="_blank"
                                         rel="noreferrer"
-                                        onClick={() => setIsOpen(false)}
                                         className="mt-3 inline-flex w-full items-center justify-center rounded-full bg-gradient-to-r from-[var(--color-royal)] to-[var(--color-lavender)] px-4 py-2 text-sm font-medium text-white"
                                     >
                                         Dossier
@@ -142,6 +151,7 @@ const Navbar = () => {
                     </AnimatePresence>
                 </div>
             </motion.div>
+            <DossierModal open={dossierOpen} onClose={() => setDossierOpen(false)} downloadHref={RESUME_LINK} />
         </div>
     )
 }
