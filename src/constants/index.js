@@ -95,43 +95,6 @@ export const myProjects = [
     ],
   },
   {
-    id: 8,
-    title: "Lumino",
-    description:
-      "A handcrafted candle storefront with curated collections, cart flow, and brand storytelling.",
-    subDescription: [
-      "Designed a polished shop experience for scent discovery and browsing.",
-      "Built product collection and detail flows with a calm editorial feel.",
-      "Added cart and about pages to support a complete commerce journey.",
-      "Kept the experience responsive and visually warm across devices.",
-    ],
-    href: "https://lumino-mef9.vercel.app/",
-    logo: "",
-    image: "/assets/lumino-hero.png",
-    tags: [
-      {
-        id: 1,
-        name: "Next.js",
-        path: "/assets/logos/next.svg",
-      },
-      {
-        id: 2,
-        name: "Barba.js",
-        path: "/assets/logos/barba.svg",
-      },
-      {
-        id: 3,
-        name: "GSAP",
-        path: "/assets/logos/gsap.svg",
-      },
-      {
-        id: 4,
-        name: "Framer Motion",
-        path: "/assets/logos/framer-motion.svg",
-      },
-    ],
-  },
-  {
     id: 6,
     title: "RentIt",
     description:
@@ -249,44 +212,6 @@ export const myProjects = [
         id: 4,
         name: "Stripe",
         path: "/assets/logos/stripe.svg",
-      },
-    ],
-  },
-  {
-    id: 4,
-    title: "Live Poll",
-    description:
-      "A live polling app where teachers create polls and students vote instantly.",
-    subDescription: [
-      "Built a real-time polling tool for classrooms and meetings.",
-      "Designed a simple UI for poll creation, options, and timers.",
-      "Implemented instant student join and live voting.",
-      "Integrated Socket.IO for real-time results and feedback.",
-      "Developed with React, Vite, and Firebase for scalable performance.",
-    ],
-    href: "https://intervue-poll.web.app/",
-    logo: "",
-    image: "/assets/poll.png",
-    tags: [
-      {
-        id: 1,
-        name: "Socket.IO",
-        path: "/assets/logo-dark.svg",
-      },
-      {
-        id: 2,
-        name: "React",
-        path: "/assets/logos/react.svg",
-      },
-      {
-        id: 3,
-        name: "Firebase",
-        path: "/assets/logos/firebase.png",
-      },
-      {
-        id: 4,
-        name: "Tailwind",
-        path: "/assets/logos/tailwindcss.svg",
       },
     ],
   },

@@ -67,6 +67,26 @@ body.boot-lock {
   overflow: hidden;
 }
 
+@keyframes radar-sweep {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.radar-sweep-anim {
+  animation: radar-sweep 3.2s linear infinite;
+}
+
+@keyframes radar-blip {
+  0%, 90% { opacity: 0.35; r: 1.1; }
+  92% { opacity: 1; r: 1.8; }
+  100% { opacity: 0.35; r: 1.1; }
+}
+.radar-blip-anim {
+  animation: radar-blip 3.2s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .radar-sweep-anim, .radar-blip-anim { animation: none; }
+}
+
 .c-space {
   padding-left: 1.25rem; /* px-5 */
   padding-right: 1.25rem; /* px-5 */

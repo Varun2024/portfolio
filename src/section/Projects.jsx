@@ -3,6 +3,7 @@ import { useState } from "react"
 import Project from "../components/Project"
 import { myProjects } from "../constants"
 import SectionHeading from "../components/SectionHeading"
+import Radar from "../components/Radar"
 import { motion, useMotionValue, useSpring } from "motion/react"
 
 const Projects = () => {
@@ -17,7 +18,13 @@ const Projects = () => {
   const [pr, setPr] = useState(null)
   return (
     <section id="work" onMouseMove={handleMouse} className="realtive c-space section-spacing px-1 sm:px-0">
-      <SectionHeading>The Fleet</SectionHeading>
+      <div className="flex items-start justify-between gap-4">
+        <SectionHeading>The Fleet</SectionHeading>
+        <div className="mt-1 shrink-0 flex items-center gap-2">
+          <span className="hidden sm:block font-mono text-[10px] text-white/40">scanning · {myProjects.length} craft</span>
+          <Radar blipCount={myProjects.length} className="size-16 sm:size-20" />
+        </div>
+      </div>
       {/* for the line */}
       <div className="bg-gradient-to-r from-transparent via-neutral-700 to-transparent mt-8 sm:mt-12 h-[1px] w-full " />
       {myProjects.map((project) => (
