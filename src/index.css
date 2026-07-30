@@ -75,6 +75,13 @@ body.boot-lock {
   animation: radar-sweep 3.2s linear infinite;
 }
 
+@keyframes konami-fade {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
 @keyframes radar-blip {
   0%, 90% { opacity: 0.35; r: 1.1; }
   92% { opacity: 1; r: 1.8; }

@@ -9,6 +9,7 @@ import BootLoader from './components/BootLoader'
 import Starfield from './components/Starfield'
 import AstronautCompanion from './components/AstronautCompanion'
 import SystemsHUD from './components/SystemsHUD'
+import Konami from './components/Konami'
 
 const About = lazy(() => import('./section/About'))
 const Exp = lazy(() => import('./section/Exp'))
@@ -49,6 +50,7 @@ const App = () => {
       <SystemsHUD />
       <Cursor />
       <BootLoader />
+      <Konami />
     </div>
 
   )
