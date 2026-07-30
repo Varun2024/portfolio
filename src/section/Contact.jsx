@@ -5,6 +5,40 @@ import Alert from "../components/Alert"
 import { Particles } from "../components/Particle"
 import SendSuccess from "../components/SendSuccess"
 
+const ConsoleField = ({ id, label, value, onChange, placeholder, autoComplete, type = "text", textarea = false }) => {
+    const inputCls = "block w-full bg-transparent font-mono text-[13px] text-white placeholder:text-white/25 focus:outline-none border-b border-white/10 focus:border-[var(--color-aqua)]/60 transition-colors py-2"
+    return (
+        <label htmlFor={id} className="block">
+            <span className="mb-1 block font-mono text-[11px] text-white/40">{'>'} {label}:</span>
+            {textarea ? (
+                <textarea
+                    id={id}
+                    name={id}
+                    rows={4}
+                    className={inputCls + " resize-none"}
+                    placeholder={placeholder}
+                    autoComplete={autoComplete}
+                    value={value}
+                    onChange={onChange}
+                    required
+                />
+            ) : (
+                <input
+                    id={id}
+                    name={id}
+                    type={type}
+                    className={inputCls}
+                    placeholder={placeholder}
+                    autoComplete={autoComplete}
+                    value={value}
+                    onChange={onChange}
+                    required
+                />
+            )}
+        </label>
+    )
+}
+
 
 const Contact = () => {
     const [formData, setFormData] = useState({
@@ -68,74 +102,68 @@ const Contact = () => {
             />
             {/* testimonials */}
             {showAlert && <Alert type={alertType} text={alertMessage} />}
-            <div className="relative mx-auto w-full max-w-lg">
-                <div className="pointer-events-none absolute -inset-px rounded-2xl bg-gradient-to-br from-[var(--color-lavender)]/30 via-white/5 to-[var(--color-aqua)]/20 opacity-60 blur-[1px]" />
-                <div className="relative flex flex-col items-center justify-center p-6 sm:p-8 rounded-2xl border border-white/10 bg-gradient-to-b from-[var(--color-storm)] to-[var(--color-indigo)] shadow-[0_20px_60px_-30px_rgba(122,87,219,0.4)] min-h-[520px]">
-                <AnimatePresence>
-                    {justSent && <SendSuccess onDone={() => setJustSent(false)} />}
-                </AnimatePresence>
-                <div className="flex flex-col items-start w-full gap-3 mb-8">
-                    <h2 className='text-heading'>Establish Comms</h2>
-                    <p className='font-normal text-neutral-300/90 text-sm md:text-base'>
-                        New builds, existing platforms, or ambitious launches — dial in and we&rsquo;ll plot a course together.
-                    </p>
-                </div>
-                <form onSubmit={handleSubmit} className='w-full'>
-                    <div className="mb-5">
-                        <label htmlFor="name" className='field-label '>
-                            Callsign
-                        </label>
-                        <input
-                            type="text"
-                            id='name'
-                            name='name'
-                            className='field-input field-input-focus'
-                            placeholder='Commander Salmon'
-                            autoComplete='name'
-                            value={formData.name}
-                            onChange={handleChange}
-                            required
-                        />
+            <div className="relative mx-auto w-full max-w-xl">
+                <div className="pointer-events-none absolute -inset-px rounded-xl bg-gradient-to-br from-[var(--color-aqua)]/25 via-white/5 to-[var(--color-royal)]/25 opacity-60 blur-[1px]" />
+                <div className="relative rounded-xl border border-white/10 bg-[#04070f]/95 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.8)] min-h-[520px]">
+                    {/* terminal title bar */}
+                    <div className="flex items-center gap-2 border-b border-white/10 px-4 py-2.5">
+                        <span className="size-2.5 rounded-full bg-white/15" />
+                        <span className="size-2.5 rounded-full bg-white/15" />
+                        <span className="size-2.5 rounded-full bg-white/15" />
+                        <span className="ml-2 font-mono text-[11px] text-white/40">comms.exe — /dev/varun</span>
                     </div>
-                    <div className="mb-5">
-                        <label htmlFor="email" className='field-label '>
-                            Frequency
-                        </label>
-                        <input
-                            type="email"
-                            id='email'
-                            name='email'
-                            className='field-input field-input-focus'
-                            placeholder='salmonbhoi@gmail.com'
-                            autoComplete='email'
-                            value={formData.email}
-                            onChange={handleChange}
-                            required
-                        />
+
+                    <AnimatePresence>
+                        {justSent && <SendSuccess onDone={() => setJustSent(false)} />}
+                    </AnimatePresence>
+
+                    <div className="px-5 py-6 sm:px-7 sm:py-8">
+                        <h2 className="sr-only">Establish Comms</h2>
+                        <div className="mb-6 font-mono text-[13px] leading-relaxed text-[var(--color-aqua)]">
+                            <div>{'>'} init comms.exe</div>
+                            <div>{'>'} channel status: <span className="text-[var(--color-mint)]">open</span></div>
+                            <div>{'>'} awaiting transmission_</div>
+                        </div>
+
+                        <form onSubmit={handleSubmit} className='w-full space-y-4 font-mono'>
+                            <ConsoleField
+                                id="name"
+                                label="callsign"
+                                value={formData.name}
+                                onChange={handleChange}
+                                placeholder="commander salmon"
+                                autoComplete="name"
+                                type="text"
+                            />
+                            <ConsoleField
+                                id="email"
+                                label="frequency"
+                                value={formData.email}
+                                onChange={handleChange}
+                                placeholder="salmonbhoi@gmail.com"
+                                autoComplete="email"
+                                type="email"
+                            />
+                            <ConsoleField
+                                id="message"
+                                label="transmission"
+                                value={formData.message}
+                                onChange={handleChange}
+                                placeholder="send your transmission..."
+                                autoComplete="off"
+                                textarea
+                            />
+
+                            <button
+                                type="submit"
+                                disabled={isLoading}
+                                data-cursor-tag="Transmit"
+                                className="mt-2 w-full rounded-md border border-[var(--color-aqua)]/40 bg-[var(--color-aqua)]/10 px-4 py-3 text-center font-mono text-sm text-[var(--color-aqua)] transition hover:bg-[var(--color-aqua)]/20 hover:border-[var(--color-aqua)]/70 disabled:opacity-60 disabled:cursor-not-allowed"
+                            >
+                                {isLoading ? "[ transmitting... ]" : "[ transmit ]"}
+                            </button>
+                        </form>
                     </div>
-                    <div className="mb-5">
-                        <label htmlFor="message" className='field-label '>
-                            Transmission
-                        </label>
-                        <textarea
-                            type="text"
-                            id='message'
-                            name='message'
-                            rows={4}
-                            className='field-input field-input-focus'
-                            placeholder='Send your transmission...'
-                            autoComplete='message'
-                            value={formData.message}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                    <button
-                        type="submit"
-                        className="w-full px-1 py-3 text-lg text-center rounded-md cursor-pointer bg-radial from-[var(--color-lavender)] to-[var(--color-royal)] hover-animation">
-                        {!isLoading ? "Transmit" : "Transmitting..."}
-                    </button>
-                </form>
                 </div>
             </div>
         </section>
