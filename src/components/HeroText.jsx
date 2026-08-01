@@ -51,9 +51,9 @@ const HeroText = () => {
                     <a
                         href="#work"
                         data-cursor-tag="Fleet"
-                        className="group inline-flex items-center gap-2 rounded-md border border-[var(--color-aqua)]/40 bg-[var(--color-aqua)]/10 px-5 py-2.5 font-mono text-sm text-[var(--color-aqua)] transition hover:border-[var(--color-aqua)]/70 hover:bg-[var(--color-aqua)]/20"
+                        className="group inline-flex items-center gap-2 rounded-md border border-[var(--color-aqua)]/80 bg-[var(--color-aqua)]/25 backdrop-blur-sm px-5 py-2.5 font-mono text-sm font-medium text-[var(--color-aqua)] shadow-[0_0_20px_-6px_rgba(125,211,252,0.5)] transition hover:border-[var(--color-aqua)] hover:bg-[var(--color-aqua)]/35"
                     >
-                        View the fleet
+                        [ view the fleet ]
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="transition-transform group-hover:translate-x-0.5">
                             <path d="M5 12h14M13 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
@@ -61,9 +61,9 @@ const HeroText = () => {
                     <a
                         href="#contact"
                         data-cursor-tag="Comms"
-                        className="inline-flex items-center gap-2 rounded-md border border-white/15 px-5 py-2.5 font-mono text-sm text-white/80 transition hover:border-white/35 hover:bg-white/5"
+                        className="inline-flex items-center gap-2 rounded-md border border-white/40 bg-black/30 backdrop-blur-sm px-5 py-2.5 font-mono text-sm text-white transition hover:border-white/70 hover:bg-black/50"
                     >
-                        Open channel
+                        [ open channel ]
                     </a>
                 </motion.div>
             </div>
