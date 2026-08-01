@@ -23,3 +23,11 @@ dist-ssr
 *.sln
 *.sw?
 .env
+
+# audit / test artifacts
+.playwright-mcp/
+/*.jpeg
+/*.png
+
+# firebase deploy cache (regenerated on every deploy)
+.firebase/

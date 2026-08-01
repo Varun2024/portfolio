@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { motion } from "motion/react"
 
 const PARTICLES = Array.from({ length: 14 })

@@ -18,10 +18,10 @@ const Alert = ({ type, text }) => {
                 variants={alertVarients}
                 transition={{ duration: 0.3, ease: easeInOut }}
             >
-                <div className={`p-2 ${type === "danger" ? "bg-red-800" : "bg-[var(--color-royal)]"} items-center text-[var(--color-indigo)]-100 leading-none lg:rounded-full flex lg:inline-flex rounded-md p-5 `}
+                <div className={`p-2 ${type === "danger" ? "bg-[var(--color-coral)]/90" : "bg-[var(--color-midnight)] border border-[var(--color-aqua)]/40"} items-center text-white leading-none flex rounded-md p-5 font-mono text-sm`}
                 >
-                    <p className={`flex rounded-full ${type === "danger" ? "bg-red-500" : "bg-[var(--color-lavender)] "} uppercase px-2 py-1 text-xs font-semibold mr-3`}>
-                        {type === "danger" ? "Failed " : "Success "}
+                    <p className={`flex rounded-md ${type === "danger" ? "bg-white/20" : "bg-[var(--color-aqua)]/20 text-[var(--color-aqua)]"} px-2 py-1 text-xs font-semibold mr-3`}>
+                        {type === "danger" ? "FAIL" : "OK"}
                     </p>
                     <p className='mr-2 text-left'>
                         {text}
