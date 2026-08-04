@@ -4,7 +4,10 @@ import { useEffect, useRef, useState } from "react"
 // a thin scanner line sweeps from left to right underneath. One-shot per
 // section; skips animation entirely on prefers-reduced-motion.
 
-const SectionHeading = ({ children, className = "" }) => {
+const SectionHeading = ({ children, className = "", size = "default" }) => {
+    const sizeCls = size === "hero"
+        ? "font-display text-4xl sm:text-5xl md:text-6xl leading-[1]"
+        : "text-heading"
     const ref = useRef(null)
     const [revealed, setRevealed] = useState(false)
 
@@ -38,7 +41,7 @@ const SectionHeading = ({ children, className = "" }) => {
     return (
         <div ref={ref} className={`inline-flex flex-col items-start ${className}`}>
             <h2
-                className="text-heading"
+                className={sizeCls}
                 style={{
                     opacity: revealed ? 1 : 0,
                     transform: revealed ? "translateY(0) blur(0)" : "translateY(8px)",

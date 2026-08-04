@@ -238,13 +238,13 @@ export default function Testimonials({ autoRotate = true, rotateInterval = 6000 
   };
 
   return (
-    <section id="testimonials" className="c-space section-spacing">
+    <section id="testimonials" className="c-space mt-32 md:mt-48">
       {showAlert && <Alert type={alertType} text={alertMessage} />}
 
       <div className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-6 lg:grid-cols-5">
         <div className="relative rounded-xl border border-white/10 bg-[var(--color-midnight)] p-5 sm:p-7 lg:col-span-3 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.6)]">
           <div className="mb-4 flex items-center justify-between gap-3 border-b border-white/5 pb-3">
-            <div className="flex items-center gap-2 font-mono text-[10px] text-white/40">
+            <div className="flex items-center gap-2 font-mono text-[10px] text-white/60">
               <span className="inline-block size-1.5 rounded-full bg-[var(--color-aqua)]/60" />
               ~/signals.log
             </div>
@@ -296,7 +296,7 @@ export default function Testimonials({ autoRotate = true, rotateInterval = 6000 
                   />
 
                   <div className="flex-1">
-                    <div className="font-mono text-[10px] text-white/40 mb-1">
+                    <div className="font-mono text-[10px] text-white/60 mb-1">
                       <span className="text-[var(--color-aqua)]">$</span> incoming {String(index + 1).padStart(2, "0")}/{String(testimonials.length).padStart(2, "0")}
                     </div>
                     <p className="text-[15px] leading-7 text-white/90 sm:text-base sm:leading-relaxed">
@@ -305,7 +305,7 @@ export default function Testimonials({ autoRotate = true, rotateInterval = 6000 
                     </p>
                     <div className="mt-3 font-mono text-[11px]">
                       <div className="text-white/85">{activeTestimonial.name}</div>
-                      <div className="text-white/40">{activeTestimonial.role}</div>
+                      <div className="text-white/60">{activeTestimonial.role}</div>
                     </div>
                     <button
                       type="button"
@@ -375,7 +375,8 @@ export default function Testimonials({ autoRotate = true, rotateInterval = 6000 
                     ))}
                   </div>
                   <span className="text-xs text-neutral-400">
-                    {testimonials.length} {testimonials.length === 1 ? "signal" : "signals"} received so far
+                    <span className="font-mono text-sm font-semibold text-[var(--color-mint)]">{testimonials.length}</span>{" "}
+                    {testimonials.length === 1 ? "signal" : "signals"} received so far
                   </span>
                 </div>
 

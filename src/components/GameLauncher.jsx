@@ -7,18 +7,36 @@ const HINT_DISMISSED_KEY = "varun.portfolio.starcatcher.hint"
 const GameLauncher = () => {
     const [open, setOpen] = useState(false)
     const [showHint, setShowHint] = useState(false)
+    const [revealed, setRevealed] = useState(false)
+
+    // Only surface the launcher once the visitor has earned attention
+    // (past experience section). Reduces first-scroll cognitive load.
+    useEffect(() => {
+        const check = () => {
+            const anchor = document.getElementById("work")
+            if (!anchor) return
+            if (anchor.getBoundingClientRect().top < window.innerHeight) {
+                setRevealed(true)
+                window.removeEventListener("scroll", check)
+            }
+        }
+        check()
+        window.addEventListener("scroll", check, { passive: true })
+        return () => window.removeEventListener("scroll", check)
+    }, [])
 
     useEffect(() => {
+        if (!revealed) return
         try {
             if (localStorage.getItem(HINT_DISMISSED_KEY)) return
         } catch { /* ignore */ }
-        const showTimer = setTimeout(() => setShowHint(true), 6000)
-        const hideTimer = setTimeout(() => setShowHint(false), 6000 + 8000)
+        const showTimer = setTimeout(() => setShowHint(true), 3000)
+        const hideTimer = setTimeout(() => setShowHint(false), 3000 + 8000)
         return () => {
             clearTimeout(showTimer)
             clearTimeout(hideTimer)
         }
-    }, [])
+    }, [revealed])
 
     useEffect(() => {
         if (!open) return
@@ -38,6 +56,8 @@ const GameLauncher = () => {
         dismissHint()
         setOpen(true)
     }
+
+    if (!revealed) return null
 
     return (
         <>

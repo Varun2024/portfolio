@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Instrument+Serif:ital@0;1&display=swap");
 @import "tailwindcss";
 
 :root {
@@ -88,6 +88,11 @@ body.boot-lock {
   overflow: hidden;
 }
 
+@keyframes float {
+  0%, 100% { transform: translateY(-50%) rotate(-2deg); }
+  50%      { transform: translateY(calc(-50% - 6px)) rotate(2deg); }
+}
+
 @keyframes radar-sweep {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
@@ -130,6 +135,12 @@ body.boot-lock {
     padding-left: 3.75rem; /* lg:px-15 */
     padding-right: 3.75rem; /* lg:px-15 */
   }
+}
+
+.font-display {
+  font-family: "Instrument Serif", "Funnel Display", serif;
+  font-weight: 400;
+  letter-spacing: -0.02em;
 }
 
 .hover-animation {
@@ -228,10 +239,16 @@ body.boot-lock {
 .grid-default-color {
   padding: 1.5rem;
   background: var(--color-midnight);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 0.75rem;
   position: relative;
   overflow: hidden;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  transition: border-color 200ms, box-shadow 200ms;
+}
+.grid-default-color:hover {
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 12px 30px -20px rgba(125, 211, 252, 0.15);
 }
 
 .grid-special-color {
@@ -254,11 +271,16 @@ body.boot-lock {
 .grid-deep-purple {
   padding: 1.5rem;
   background: var(--color-midnight);
-  border: 1px solid rgba(125, 211, 252, 0.18);
+  border: 1px solid rgba(125, 211, 252, 0.22);
   border-radius: 0.75rem;
   position: relative;
   overflow: hidden;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 20px 40px -30px rgba(125, 211, 252, 0.2);
+  transition: border-color 200ms, box-shadow 200ms;
+}
+.grid-deep-purple:hover {
+  border-color: rgba(125, 211, 252, 0.35);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 24px 50px -25px rgba(125, 211, 252, 0.3);
 }
 
 /* Contact Section*/

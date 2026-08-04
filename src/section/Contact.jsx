@@ -2,14 +2,13 @@ import { useState } from "react"
 import emailjs from "@emailjs/browser"
 import { AnimatePresence } from "motion/react"
 import Alert from "../components/Alert"
-import { Particles } from "../components/Particle"
 import SendSuccess from "../components/SendSuccess"
 
 const ConsoleField = ({ id, label, value, onChange, placeholder, autoComplete, type = "text", textarea = false }) => {
     const inputCls = "block w-full bg-transparent font-mono text-[13px] text-white placeholder:text-white/25 focus:outline-none border-b border-white/10 focus:border-[var(--color-aqua)]/60 transition-colors py-2"
     return (
         <label htmlFor={id} className="block">
-            <span className="mb-1 block font-mono text-[11px] text-white/40">{'>'} {label}:</span>
+            <span className="mb-1 block font-mono text-[11px] text-white/60">{'>'} {label}:</span>
             {textarea ? (
                 <textarea
                     id={id}
@@ -92,14 +91,6 @@ const Contact = () => {
     }
     return (
         <section id="contact" className='relative flex flex-col items-center gap-5 c-space mt-8 md:mt-12'>
-
-            <Particles
-                className="absolute inset-0 -z-100"
-                quantity={100}
-                ease={80}
-                color={"#ffffff"}
-                refresh
-            />
             {/* testimonials */}
             {showAlert && <Alert type={alertType} text={alertMessage} />}
             <div className="relative mx-auto w-full max-w-xl">
@@ -110,7 +101,7 @@ const Contact = () => {
                         <span className="size-2.5 rounded-full bg-white/15" />
                         <span className="size-2.5 rounded-full bg-white/15" />
                         <span className="size-2.5 rounded-full bg-white/15" />
-                        <span className="ml-2 font-mono text-[11px] text-white/40">comms.exe — /dev/varun</span>
+                        <span className="ml-2 font-mono text-[11px] text-white/60">comms.exe — /dev/varun</span>
                     </div>
 
                     <AnimatePresence>
@@ -162,6 +153,9 @@ const Contact = () => {
                             >
                                 {isLoading ? "[ transmitting... ]" : "[ transmit ]"}
                             </button>
+                            <p className="mt-3 text-center font-mono text-[11px] text-white/60">
+                                {'>'} avg. response time: <span className="text-[var(--color-mint)]">~24h</span>
+                            </p>
                         </form>
                     </div>
                 </div>

@@ -16,17 +16,17 @@ const HeroText = () => {
                     initial="hidden"
                     animate="visible"
                     transition={{ delay: 0.4, duration: 0.7 }}
-                    className="text-4xl sm:text-6xl md:text-7xl font-semibold leading-[1.05] tracking-tight"
+                    className="font-display text-5xl sm:text-7xl md:text-8xl leading-[1] tracking-tight"
                 >
-                    Hi, I&rsquo;m <span className="text-white">Varun</span>.<br />
-                    I build{" "}
-                    <span className="inline-block align-bottom">
+                    Hi, I&rsquo;m <span className="text-white">Varun</span> —<br />
+                    a full-stack engineer<br />
+                    who{" "}
+                    <span className="inline-flex min-w-[5.5ch] sm:min-w-[6ch] align-baseline">
                         <FlipWords
-                            words={["robust", "elegant", "scalable"]}
-                            className="font-semibold text-white"
+                            words={["ships", "tests", "learns"]}
+                            className="font-semibold text-[var(--color-aqua)]"
                         />
-                    </span>{" "}
-                    products.
+                    </span>
                 </motion.h1>
 
                 <motion.p
@@ -34,11 +34,10 @@ const HeroText = () => {
                     initial="hidden"
                     animate="visible"
                     transition={{ delay: 0.75, duration: 0.6 }}
-                    className="max-w-md text-sm sm:text-base text-neutral-300/90 leading-relaxed"
+                    className="max-w-md text-base sm:text-lg text-neutral-300/90 leading-relaxed"
                 >
-                    Software engineer shipping performant web apps and AI-driven
-                    features end-to-end. Currently orbiting Flux Fortify —
-                    building full-stack &amp; AI systems.
+                    Building AI-native product surfaces at Flux Fortify —
+                    full-stack, LLM-integrated, shipped end-to-end.
                 </motion.p>
 
                 <motion.div

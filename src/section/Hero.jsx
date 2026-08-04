@@ -21,9 +21,23 @@ const usePrefersReducedMotion = () => {
     return prefers
 }
 
+const useLowPowerMode = () => {
+    const [low, setLow] = useState(false)
+    useEffect(() => {
+        if (typeof navigator === "undefined") return
+        const conn = navigator.connection
+        const saveData = conn?.saveData === true
+        const slowEffective = conn?.effectiveType && /2g|slow-2g/.test(conn.effectiveType)
+        const lowCores = (navigator.hardwareConcurrency ?? 8) <= 2
+        setLow(Boolean(saveData || slowEffective || lowCores))
+    }, [])
+    return low
+}
+
 const Hero = () => {
     const isMobile = useMediaQuery({ maxWidth: 768 })
     const reducedMotion = usePrefersReducedMotion()
+    const lowPower = useLowPowerMode()
     const figureRef = useRef(null)
     const [inView, setInView] = useState(false)
     const [shouldMount, setShouldMount] = useState(false)
@@ -46,7 +60,7 @@ const Hero = () => {
         return () => io.disconnect()
     }, [])
 
-    const showCanvas = shouldMount && !reducedMotion
+    const showCanvas = shouldMount && !reducedMotion && !isMobile && !lowPower
 
     return (
         <section

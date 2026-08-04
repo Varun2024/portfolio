@@ -106,12 +106,12 @@ const DossierModal = ({ open, onClose, downloadHref }) => {
                     <span className="size-2.5 rounded-full bg-white/15" />
                     <span className="size-2.5 rounded-full bg-white/15" />
                     <span className="size-2.5 rounded-full bg-white/15" />
-                    <span className="ml-2 font-mono text-[11px] text-white/40">dossier.exe — /var/varun</span>
+                    <span className="ml-2 font-mono text-[11px] text-white/60">dossier.exe — /var/varun</span>
                     <button
                         onClick={onClose}
                         aria-label="Close dossier"
                         data-cursor-tag="Close"
-                        className="ml-auto text-white/40 hover:text-white transition"
+                        className="ml-auto text-white/60 hover:text-white transition"
                     >
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                             <path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" />

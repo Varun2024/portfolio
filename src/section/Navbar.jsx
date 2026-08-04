@@ -6,12 +6,12 @@ import DossierModal from '../components/DossierModal'
 const RESUME_LINK = "https://drive.google.com/file/d/1rHC_X1fZdNJ0AeQ6GkN-_pTfVSX-fVma/view?usp=sharing"
 
 const links = [
-    { label: "Bridge", href: "#home" },
-    { label: "Origin", href: "#about" },
-    { label: "Missions", href: "#experience" },
-    { label: "Fleet", href: "#work" },
-    { label: "Signals", href: "#testimonials" },
-    { label: "Comms", href: "#contact" },
+    { label: "Bridge", plain: "Home", href: "#home" },
+    { label: "Origin", plain: "About", href: "#about" },
+    { label: "Missions", plain: "Experience", href: "#experience" },
+    { label: "Fleet", plain: "Projects", href: "#work" },
+    { label: "Signals", plain: "Testimonials", href: "#testimonials" },
+    { label: "Comms", plain: "Contact", href: "#contact" },
 ]
 
 const useActiveSection = () => {
@@ -41,10 +41,12 @@ const NavLinks = ({ active, onSelect }) => (
             const id = l.href.slice(1)
             const isActive = active === id
             return (
-                <li key={l.href} className="w-full sm:w-auto">
+                <li key={l.href} className="group relative w-full sm:w-auto">
                     <a
                         href={l.href}
                         onClick={onSelect}
+                        title={l.plain}
+                        aria-label={`${l.label} · ${l.plain}`}
                         className={`relative block sm:inline-block px-3 py-1.5 text-sm rounded-full transition-colors ${
                             isActive ? "text-white" : "text-neutral-400 hover:text-white"
                         }`}
@@ -58,6 +60,9 @@ const NavLinks = ({ active, onSelect }) => (
                         )}
                         {l.label}
                     </a>
+                    <span className="pointer-events-none absolute left-1/2 top-full z-30 mt-1 -translate-x-1/2 whitespace-nowrap rounded-md border border-white/10 bg-[var(--color-midnight)]/95 px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--color-aqua)] opacity-0 backdrop-blur-md transition-opacity duration-150 group-hover:opacity-100 hidden sm:block">
+                        {l.plain}
+                    </span>
                 </li>
             )
         })}
@@ -66,12 +71,12 @@ const NavLinks = ({ active, onSelect }) => (
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false)
-    const [dossierOpen, setDossierOpen] = useState(false)
+    const [dossierOpen, setResumeOpen] = useState(false)
     const active = useActiveSection()
 
-    const openDossier = (e) => {
+    const openResume = (e) => {
         e.preventDefault()
-        setDossierOpen(true)
+        setResumeOpen(true)
         setIsOpen(false)
     }
 
@@ -103,13 +108,13 @@ const Navbar = () => {
                         <div className="flex items-center gap-2">
                             <a
                                 href={RESUME_LINK}
-                                onClick={openDossier}
+                                onClick={openResume}
                                 target="_blank"
                                 rel="noreferrer"
                                 data-cursor-tag="Read"
                                 className="hidden sm:inline-flex items-center gap-1.5 rounded-md border border-[var(--color-aqua)]/40 bg-[var(--color-aqua)]/10 px-4 py-1.5 font-mono text-sm text-[var(--color-aqua)] transition hover:border-[var(--color-aqua)]/70 hover:bg-[var(--color-aqua)]/20"
                             >
-                                Dossier
+                                Resume
                                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                     <path d="M7 17L17 7M9 7h8v8" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>
@@ -138,12 +143,12 @@ const Navbar = () => {
                                     <NavLinks active={active} onSelect={() => setIsOpen(false)} />
                                     <a
                                         href={RESUME_LINK}
-                                        onClick={openDossier}
+                                        onClick={openResume}
                                         target="_blank"
                                         rel="noreferrer"
                                         className="mt-3 inline-flex w-full items-center justify-center rounded-md border border-[var(--color-aqua)]/40 bg-[var(--color-aqua)]/10 px-4 py-2 font-mono text-sm text-[var(--color-aqua)]"
                                     >
-                                        Dossier
+                                        Resume
                                     </a>
                                 </nav>
                             </motion.div>
@@ -151,7 +156,7 @@ const Navbar = () => {
                     </AnimatePresence>
                 </div>
             </motion.div>
-            <DossierModal open={dossierOpen} onClose={() => setDossierOpen(false)} downloadHref={RESUME_LINK} />
+            <DossierModal open={dossierOpen} onClose={() => setResumeOpen(false)} downloadHref={RESUME_LINK} />
         </div>
     )
 }

@@ -10,6 +10,8 @@ import Starfield from './components/Starfield'
 import AstronautCompanion from './components/AstronautCompanion'
 import SystemsHUD from './components/SystemsHUD'
 import Konami from './components/Konami'
+import NotFoundBanner from './components/NotFoundBanner'
+import MetricsRibbon from './components/MetricsRibbon'
 
 const About = lazy(() => import('./section/About'))
 const Exp = lazy(() => import('./section/Exp'))
@@ -37,6 +39,7 @@ const App = () => {
       <Navbar />
       {/* Hero */}
       <Hero />
+      <MetricsRibbon />
       <Suspense fallback={sectionFallback}>
         {/* about */}
         <About />
@@ -57,6 +60,7 @@ const App = () => {
       <Cursor />
       <BootLoader />
       <Konami />
+      <NotFoundBanner />
     </div>
 
   )

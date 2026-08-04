@@ -1,6 +1,30 @@
 export const myProjects = [
   {
+    id: 11,
+    role: "Solo",
+    title: "Bounty Index",
+    description:
+      "Every public bug bounty program across five platforms — unified, filterable, sorted by max payout.",
+    subDescription: [
+      "Indexed 1,160+ programs from HackerOne, Bugcrowd, Intigriti, YesWeHack, and Federacy into one live table.",
+      "Built a scope-lookup search that resolves a domain to every in-scope program it appears in.",
+      "Shipped keyboard-first navigation (`/`, `j`/`k`, `↵`) and URL-driven filters for asset type and min payout.",
+      "Automated daily ingest via authenticated Vercel cron pulling from the arkadiyt bounty-targets-data source.",
+    ],
+    href: "https://bounty-index.vercel.app",
+    logo: "",
+    image: "/assets/bounty-index.png",
+    tags: [
+      { id: 1, name: "Next.js 16", path: "/assets/logos/next.svg" },
+      { id: 2, name: "TypeScript", path: "/assets/logos/typescript.svg" },
+      { id: 3, name: "Drizzle + Neon", path: "/assets/logos/postgres.svg" },
+      { id: 4, name: "Tailwind 4", path: "/assets/logos/tailwindcss.svg" },
+      { id: 5, name: "Vercel Cron", path: "/assets/logo-dark.svg" },
+    ],
+  },
+  {
     id: 10,
+    role: "Solo",
     title: "Earth-NASA",
     description:
       "An interactive Earth visualizer that surfaces NASA imagery and live planetary data in a clean, story-driven UI.",
@@ -22,6 +46,7 @@ export const myProjects = [
   },
   {
     id: 5,
+    role: "Solo",
     title: "NavUI Component Library",
     description:
       "A reusable React UI component library focused on clean APIs and polished visuals.",
@@ -59,6 +84,7 @@ export const myProjects = [
   },
   {
     id: 7,
+    role: "Solo",
     title: "BB-Bot",
     description:
       "An AI basketball assistant that turns playbook data into drills, scouting, and live team strategy.",
@@ -94,50 +120,10 @@ export const myProjects = [
       },
     ],
   },
-  {
-    id: 6,
-    title: "RentIt",
-    description:
-      "A rental marketplace with category discovery, real-time listings, and smooth checkout flows.",
-    subDescription: [
-      "Built category-based browsing for quick item discovery and filtering.",
-      "Implemented secure auth and real-time updates for listing availability.",
-      "Designed mobile-first UX for booking, vendor profiles, and order tracking.",
-      "Integrated payments and backend APIs for production-ready rental workflows.",
-    ],
-    href: "https://rentit-66e6c.web.app/categories",
-    logo: "",
-    image: "/assets/renitit.png",
-    tags: [
-      {
-        id: 1,
-        name: "Next.js",
-        path: "/assets/logos/next.svg",
-      },
-      {
-        id: 2,
-        name: "MongoDB",
-        path: "/assets/logos/mongodb-icon-1.svg",
-      },
-      {
-        id: 3,
-        name: "Razorpay",
-        path: "/assets/logos/razorpay.svg",
-      },
-      {
-        id: 4,
-        name: "Firebase",
-        path: "/assets/logos/firebase.png",
-      },
-      {
-        id: 5,
-        name: "TailwindCSS",
-        path: "/assets/logos/tailwindcss.svg",
-      },
-    ],
-  },
+  
   {
     id: 1,
+    role: "Solo",
     title: "Sasha Store",
     description:
       "A secure ecommerce platform with real-time updates, auth, and responsive UX.",
@@ -179,7 +165,51 @@ export const myProjects = [
     ],
   },
   {
+    id: 6,
+    role: "Solo",
+    title: "RentIt",
+    description:
+      "A rental marketplace with category discovery, real-time listings, and smooth checkout flows.",
+    subDescription: [
+      "Built category-based browsing for quick item discovery and filtering.",
+      "Implemented secure auth and real-time updates for listing availability.",
+      "Designed mobile-first UX for booking, vendor profiles, and order tracking.",
+      "Integrated payments and backend APIs for production-ready rental workflows.",
+    ],
+    href: "https://rentit-66e6c.web.app/categories",
+    logo: "",
+    image: "/assets/renitit.png",
+    tags: [
+      {
+        id: 1,
+        name: "Next.js",
+        path: "/assets/logos/next.svg",
+      },
+      {
+        id: 2,
+        name: "MongoDB",
+        path: "/assets/logos/mongodb-icon-1.svg",
+      },
+      {
+        id: 3,
+        name: "Razorpay",
+        path: "/assets/logos/razorpay.svg",
+      },
+      {
+        id: 4,
+        name: "Firebase",
+        path: "/assets/logos/firebase.png",
+      },
+      {
+        id: 5,
+        name: "TailwindCSS",
+        path: "/assets/logos/tailwindcss.svg",
+      },
+    ],
+  },
+  {
     id: 2,
+    role: "Team",
     title: "TedXBITD",
     description:
       "A responsive event website with secure auth and live content updates.",
