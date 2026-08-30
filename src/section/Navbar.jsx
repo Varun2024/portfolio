@@ -51,6 +51,7 @@ const NavLinks = ({ active, onSelect, pathname }) => {
                 const pillClass = `relative block sm:inline-block px-3 py-1.5 text-sm rounded-full transition-colors ${
                     isActive ? "text-white" : "text-neutral-400 hover:text-white"
                 }`
+                const showPing = isRoute && !isActive
                 const inner = (
                     <>
                         {isActive && (
@@ -61,6 +62,15 @@ const NavLinks = ({ active, onSelect, pathname }) => {
                             />
                         )}
                         {l.label}
+                        {showPing && (
+                            <span
+                                aria-hidden="true"
+                                className="pointer-events-none absolute -right-0.5 -top-0.5 inline-flex h-1.5 w-1.5"
+                            >
+                                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--color-aqua)] opacity-80" />
+                                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[var(--color-aqua)]" />
+                            </span>
+                        )}
                     </>
                 )
                 return (

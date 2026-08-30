@@ -16,6 +16,7 @@ import MetricsRibbon from './components/MetricsRibbon'
 const About = lazy(() => import('./section/About'))
 const Exp = lazy(() => import('./section/Exp'))
 const Projects = lazy(() => import('./section/Projects'))
+const LogsTeaser = lazy(() => import('./section/LogsTeaser'))
 const Testimonials = lazy(() => import('./section/Testimonial'))
 const Contact = lazy(() => import('./section/Contact'))
 const Footer = lazy(() => import('./section/Footer'))
@@ -47,6 +48,8 @@ const App = () => {
         <Exp />
         {/* projects */}
         <Projects />
+        {/* build logs teaser */}
+        <LogsTeaser />
         {/* testimonials */}
         <Testimonials />
         {/* contact */}
