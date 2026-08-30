@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
+import { Link, useLocation } from 'react-router-dom'
 import DossierModal from '../components/DossierModal'
 
 const RESUME_LINK = "https://drive.google.com/file/d/1rHC_X1fZdNJ0AeQ6GkN-_pTfVSX-fVma/view?usp=sharing"
@@ -12,13 +13,14 @@ const links = [
     { label: "Fleet", plain: "Projects", href: "#work" },
     { label: "Signals", plain: "Testimonials", href: "#testimonials" },
     { label: "Comms", plain: "Contact", href: "#contact" },
+    { label: "Logs", plain: "Build Logs", href: "/logs", route: true },
 ]
 
 const useActiveSection = () => {
     const [active, setActive] = useState("home")
     useEffect(() => {
         if (typeof window === "undefined") return
-        const ids = links.map((l) => l.href.slice(1))
+        const ids = links.filter((l) => !l.route).map((l) => l.href.slice(1))
         const handler = () => {
             const offset = window.scrollY + 140
             let current = ids[0]
@@ -35,22 +37,22 @@ const useActiveSection = () => {
     return active
 }
 
-const NavLinks = ({ active, onSelect }) => (
-    <ul className="flex flex-col sm:flex-row items-center gap-1 sm:gap-0.5">
-        {links.map((l) => {
-            const id = l.href.slice(1)
-            const isActive = active === id
-            return (
-                <li key={l.href} className="group relative w-full sm:w-auto">
-                    <a
-                        href={l.href}
-                        onClick={onSelect}
-                        title={l.plain}
-                        aria-label={`${l.label} · ${l.plain}`}
-                        className={`relative block sm:inline-block px-3 py-1.5 text-sm rounded-full transition-colors ${
-                            isActive ? "text-white" : "text-neutral-400 hover:text-white"
-                        }`}
-                    >
+const NavLinks = ({ active, onSelect, pathname }) => {
+    const onHome = pathname === "/"
+    return (
+        <ul className="flex flex-col sm:flex-row items-center gap-1 sm:gap-0.5">
+            {links.map((l) => {
+                const isRoute = l.route
+                const id = isRoute ? null : l.href.slice(1)
+                const isActive = isRoute
+                    ? pathname.startsWith(l.href)
+                    : onHome && active === id
+                const href = isRoute ? l.href : (onHome ? l.href : `/${l.href}`)
+                const pillClass = `relative block sm:inline-block px-3 py-1.5 text-sm rounded-full transition-colors ${
+                    isActive ? "text-white" : "text-neutral-400 hover:text-white"
+                }`
+                const inner = (
+                    <>
                         {isActive && (
                             <motion.span
                                 layoutId="nav-pill"
@@ -59,20 +61,46 @@ const NavLinks = ({ active, onSelect }) => (
                             />
                         )}
                         {l.label}
-                    </a>
-                    <span className="pointer-events-none absolute left-1/2 top-full z-30 mt-1 -translate-x-1/2 whitespace-nowrap rounded-md border border-white/10 bg-[var(--color-midnight)]/95 px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--color-aqua)] opacity-0 backdrop-blur-md transition-opacity duration-150 group-hover:opacity-100 hidden sm:block">
-                        {l.plain}
-                    </span>
-                </li>
-            )
-        })}
-    </ul>
-)
+                    </>
+                )
+                return (
+                    <li key={l.href} className="group relative w-full sm:w-auto">
+                        {isRoute ? (
+                            <Link
+                                to={href}
+                                onClick={onSelect}
+                                title={l.plain}
+                                aria-label={`${l.label} · ${l.plain}`}
+                                className={pillClass}
+                            >
+                                {inner}
+                            </Link>
+                        ) : (
+                            <a
+                                href={href}
+                                onClick={onSelect}
+                                title={l.plain}
+                                aria-label={`${l.label} · ${l.plain}`}
+                                className={pillClass}
+                            >
+                                {inner}
+                            </a>
+                        )}
+                        <span className="pointer-events-none absolute left-1/2 top-full z-30 mt-1 -translate-x-1/2 whitespace-nowrap rounded-md border border-white/10 bg-[var(--color-midnight)]/95 px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--color-aqua)] opacity-0 backdrop-blur-md transition-opacity duration-150 group-hover:opacity-100 hidden sm:block">
+                            {l.plain}
+                        </span>
+                    </li>
+                )
+            })}
+        </ul>
+    )
+}
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false)
     const [dossierOpen, setResumeOpen] = useState(false)
     const active = useActiveSection()
+    const { pathname } = useLocation()
 
     const openResume = (e) => {
         e.preventDefault()
@@ -102,7 +130,7 @@ const Navbar = () => {
                         </a>
 
                         <nav className="hidden md:flex">
-                            <NavLinks active={active} />
+                            <NavLinks active={active} pathname={pathname} />
                         </nav>
 
                         <div className="flex items-center gap-2">
@@ -140,7 +168,7 @@ const Navbar = () => {
                                 className="md:hidden absolute left-1/2 -translate-x-1/2 mt-2 w-[calc(100%-1rem)] max-w-md rounded-2xl border border-white/10 bg-[var(--color-primary)]/95 backdrop-blur-xl shadow-2xl"
                             >
                                 <nav className="px-3 py-3">
-                                    <NavLinks active={active} onSelect={() => setIsOpen(false)} />
+                                    <NavLinks active={active} pathname={pathname} onSelect={() => setIsOpen(false)} />
                                     <a
                                         href={RESUME_LINK}
                                         onClick={openResume}

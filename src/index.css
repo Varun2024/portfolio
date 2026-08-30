@@ -317,3 +317,81 @@ body.boot-lock {
   box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
   border-color: rgba(255, 255, 255, 0.2);
 }
+
+/* Build log prose — used by /logs/:slug */
+.log-prose {
+  color: rgb(212, 212, 216);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+}
+.log-prose > * + * { margin-top: 1.25em; }
+.log-prose h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #fff;
+  margin-top: 2.5em;
+  margin-bottom: 0.6em;
+  letter-spacing: -0.01em;
+}
+.log-prose h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #fff;
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+}
+.log-prose p { color: rgb(212, 212, 216); }
+.log-prose a {
+  color: var(--color-aqua);
+  text-decoration: underline;
+  text-decoration-color: rgba(125, 211, 252, 0.35);
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.15s;
+}
+.log-prose a:hover { text-decoration-color: var(--color-aqua); }
+.log-prose strong { color: #fff; font-weight: 600; }
+.log-prose em { color: #e5e5e5; }
+.log-prose ul, .log-prose ol {
+  padding-left: 1.4em;
+  color: rgb(212, 212, 216);
+}
+.log-prose ul { list-style: disc; }
+.log-prose ol { list-style: decimal; }
+.log-prose li { margin-top: 0.4em; }
+.log-prose li::marker { color: rgba(125, 211, 252, 0.6); }
+.log-prose code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+  font-size: 0.9em;
+  background: rgba(125, 211, 252, 0.1);
+  color: var(--color-aqua);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  border: 1px solid rgba(125, 211, 252, 0.15);
+}
+.log-prose pre {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 1rem 1.15rem;
+  overflow-x: auto;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+.log-prose pre code {
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: rgb(228, 228, 231);
+  font-size: inherit;
+}
+.log-prose blockquote {
+  border-left: 2px solid var(--color-aqua);
+  padding-left: 1rem;
+  color: #a3a3a3;
+  font-style: italic;
+}
+.log-prose hr {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 2.5em 0;
+}
