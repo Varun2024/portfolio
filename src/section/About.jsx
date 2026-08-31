@@ -3,6 +3,22 @@ import CopyEmailButton from '../components/CopyEmailButton'
 import { FrameWorks } from '../components/FrameWorks'
 import SectionHeading from '../components/SectionHeading'
 
+// ghchart.rshah.org gives us one color param (contribution cells) but bakes
+// empty cells as light gray #ebedf0 — which looks off on the dark surface.
+// CORS blocks server-side fetch/recolor, so we lean on CSS:
+//   1. Feed the endpoint a WARM tone that survives inversion into aqua.
+//   2. invert(1) flips the light-gray empty cells to dark, and the warm
+//      contribution cells to their aqua-side complement.
+// Net: empty → near-black (blends into panel), filled → site aqua.
+const CommitGraph = ({ user }) => (
+    <img
+        src={`https://ghchart.rshah.org/822c03/${user}`}
+        alt={`GitHub contribution graph for ${user} — last 12 months`}
+        loading="lazy"
+        className="w-full [filter:invert(1)_hue-rotate(0deg)_saturate(1.05)_brightness(1)_drop-shadow(0_0_10px_rgba(125,211,252,0.2))]"
+    />
+)
+
 // Small terminal-style panel header with a filename tag.
 const PanelTag = ({ children }) => (
     <div className="mb-3 flex items-center gap-2 font-mono text-[10px] text-white/60">
@@ -21,9 +37,9 @@ const About = () => {
                 <span className="text-white/25">·</span>
                 <span><span className="text-[var(--color-aqua)]">›</span> React · Next · Node · Python</span>
                 <span className="text-white/25">·</span>
-                <span><span className="text-[var(--color-aqua)]">›</span> Raipur, IN <span className="text-white/40">(UTC+5:30)</span></span>
+                <span><span className="text-[var(--color-aqua)]">›</span> Raipur, IN <span className="text-white/40">(UTC+5:30 · overlaps EU + US-east AM)</span></span>
                 <span className="text-white/25">·</span>
-                <span className="inline-flex items-center gap-1.5"><span className="relative flex size-1.5"><span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--color-mint)] opacity-70" /><span className="relative inline-flex size-1.5 rounded-full bg-[var(--color-mint)]" /></span><span className="text-[var(--color-mint)]">open to remote</span></span>
+                <span className="inline-flex items-center gap-1.5"><span className="relative flex size-1.5"><span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--color-mint)] opacity-70" /><span className="relative inline-flex size-1.5 rounded-full bg-[var(--color-mint)]" /></span><span className="text-[var(--color-mint)]">open to remote · async-first</span></span>
             </div>
 
             <div className="grid grid-cols-1 gap-4 md:grid-cols-6 md:auto-rows-[18rem] mt-8">
@@ -113,27 +129,50 @@ const About = () => {
             </div>
 
             {/* Commit graph — real proof-of-work strip below the bento */}
-            <div className="grid-default-color mt-4 md:col-span-6 overflow-hidden">
-                <div className="flex items-center justify-between gap-3">
-                    <PanelTag>~/commits.log</PanelTag>
-                    <a
-                        href="https://github.com/Varun2024"
-                        target="_blank"
-                        rel="noreferrer"
-                        className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--color-aqua)]/80 hover:text-[var(--color-aqua)]"
-                    >
-                        @Varun2024 ↗
-                    </a>
-                </div>
-                <p className="mt-1 font-mono text-[11px] text-white/60">
-                    {'>'} last 12 months of public commits
-                </p>
-                <img
-                    src="https://ghchart.rshah.org/22c55e/Varun2024"
-                    alt="Varun's GitHub contribution graph — last 12 months"
-                    loading="lazy"
-                    className="mt-4 w-full opacity-95"
+            <div className="grid-default-color relative mt-4 md:col-span-6 overflow-hidden">
+                <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-0 opacity-40"
+                    style={{
+                        backgroundImage:
+                            "linear-gradient(rgba(125,211,252,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(125,211,252,0.05) 1px, transparent 1px)",
+                        backgroundSize: "24px 24px",
+                        maskImage: "radial-gradient(ellipse at center, black 55%, transparent 90%)",
+                    }}
                 />
+                <div className="relative">
+                    <div className="flex items-center justify-between gap-3">
+                        <PanelTag>~/commits.log</PanelTag>
+                        <a
+                            href="https://github.com/Varun2024"
+                            target="_blank"
+                            rel="noreferrer"
+                            className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--color-aqua)]/80 hover:text-[var(--color-aqua)]"
+                        >
+                            @Varun2024 ↗
+                        </a>
+                    </div>
+                    <p className="mt-1 font-mono text-[11px] text-white/60">
+                        {'>'} last 12 months of public commits
+                    </p>
+                    <div className="relative mt-4 rounded-md border border-[var(--color-aqua)]/15 bg-black/30 p-3 shadow-[0_0_40px_-20px_rgba(125,211,252,0.6)_inset]">
+                        <span aria-hidden="true" className="pointer-events-none absolute left-3 right-3 top-0 h-px bg-gradient-to-r from-transparent via-[var(--color-aqua)]/60 to-transparent" />
+                        <CommitGraph user="Varun2024" />
+                    </div>
+                    <div className="mt-3 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.18em] text-white/50">
+                        <span>less</span>
+                        <div className="flex items-center gap-1">
+                            {[0.12, 0.28, 0.5, 0.75, 1].map((a) => (
+                                <span
+                                    key={a}
+                                    className="inline-block size-2.5 rounded-[2px]"
+                                    style={{ backgroundColor: `rgba(125, 211, 252, ${a})`, boxShadow: `0 0 8px rgba(125,211,252,${a * 0.4})` }}
+                                />
+                            ))}
+                        </div>
+                        <span>more</span>
+                    </div>
+                </div>
             </div>
         </section>
     )

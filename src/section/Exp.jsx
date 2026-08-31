@@ -34,10 +34,15 @@ const ExperienceCard = ({ exp, className, accentClass = "grid-default-color", hi
                     portrait doubles as "here's the human behind the role". */}
                 <img
                     src="/assets/avatar-varun.svg"
-                    alt="Varun — sketch portrait"
+                    alt=""
                     aria-hidden="true"
                     loading="lazy"
-                    className="pointer-events-none absolute -right-6 top-1/2 -translate-y-1/2 z-0 h-64 w-64 opacity-90 [filter:invert(88%)_sepia(19%)_saturate(556%)_hue-rotate(151deg)_brightness(105%)_contrast(93%)] motion-safe:animate-[float_6s_ease-in-out_infinite]"
+                    className="pointer-events-none absolute inset-0 z-0 h-full w-full opacity-[0.22] [filter:invert(88%)_sepia(19%)_saturate(556%)_hue-rotate(151deg)_brightness(105%)_contrast(93%)]"
+                    style={{ objectFit: "cover", objectPosition: "70% 30%", transform: "scale(2.2)", transformOrigin: "70% 30%" }}
+                />
+                <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-r from-black/85 via-black/55 to-black/20"
                 />
             </>
         )}

@@ -2,7 +2,7 @@
 import { motion } from "motion/react"
 
 
-const ProjectDetails = ({title , description ,subDescription ,image , tags , href , closeModal}) => {
+const ProjectDetails = ({title , description ,subDescription ,image , tags , href , sourceHref , closeModal}) => {
   return (
     <div className=" fixed inset-0 z-50 flex items-center justify-center w-full h-full overflow-hidden backdrop-blur-sm p-2 sm:p-4">
         <motion.div 
@@ -33,9 +33,16 @@ const ProjectDetails = ({title , description ,subDescription ,image , tags , hre
                             <img key={tag.id} src={tag.path} alt={tag.name} className=" rounded-lg size-8 sm:size-10 hover-animation"/>
                         ))}
                     </div>
-                    <a href={href} target="_blank" rel="noreferrer noopener" className="inline-flex items-center gap-1 text-sm sm:text-base font-medium hover-animation cursor-pointer"> 
-                    View Project <img src="assets/arrow-up.svg" alt="" aria-hidden="true" className="size-4" />
-                    </a>
+                    <div className="flex items-center gap-4">
+                        {sourceHref && (
+                            <a href={sourceHref} target="_blank" rel="noreferrer noopener" className="inline-flex items-center gap-1 font-mono text-xs uppercase tracking-[0.14em] text-neutral-400 hover:text-[var(--color-aqua)] transition-colors">
+                                Source ↗
+                            </a>
+                        )}
+                        <a href={href} target="_blank" rel="noreferrer noopener" className="inline-flex items-center gap-1 text-sm sm:text-base font-medium hover-animation cursor-pointer">
+                        View Project <img src="assets/arrow-up.svg" alt="" aria-hidden="true" className="size-4" />
+                        </a>
+                    </div>
                 </div>
             </div>
         </motion.div>

@@ -16,7 +16,7 @@ const HeroText = () => {
                     initial="hidden"
                     animate="visible"
                     transition={{ delay: 0.4, duration: 0.7 }}
-                    className="font-display text-5xl sm:text-7xl md:text-8xl leading-[1] tracking-tight"
+                    className="font-semibold text-4xl sm:text-5xl md:text-6xl leading-[1.05] tracking-tight"
                 >
                     Hi, I&rsquo;m <span className="text-white">Varun</span> —<br />
                     a full-stack engineer<br />
@@ -34,10 +34,18 @@ const HeroText = () => {
                     initial="hidden"
                     animate="visible"
                     transition={{ delay: 0.75, duration: 0.6 }}
-                    className="max-w-md text-base sm:text-lg text-neutral-300/90 leading-relaxed"
+                    className="max-w-md text-base sm:text-lg text-white leading-relaxed [text-shadow:0_1px_12px_rgba(0,0,0,0.65)]"
                 >
-                    Building AI-native product surfaces at Flux Fortify —
-                    full-stack, LLM-integrated, shipped end-to-end.
+                    Shipping AI-native product at Flux Fortify. Latest side ship:{" "}
+                    <a
+                        href="https://bountyindex.in"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-[var(--color-aqua)] underline decoration-[var(--color-aqua)]/40 underline-offset-4 hover:decoration-[var(--color-aqua)]"
+                    >
+                        Bounty Index
+                    </a>{" "}
+                    — 1,160+ programs across 5 platforms, live-indexed daily.
                 </motion.p>
 
                 <motion.div

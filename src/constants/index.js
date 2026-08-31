@@ -11,7 +11,8 @@ export const myProjects = [
       "Shipped keyboard-first navigation (`/`, `j`/`k`, `↵`) and URL-driven filters for asset type and min payout.",
       "Automated daily ingest via authenticated Vercel cron pulling from the arkadiyt bounty-targets-data source.",
     ],
-    href: "https://bounty-index.vercel.app",
+    href: "https://bountyindex.in",
+    sourceHref: "https://github.com/Varun2024/Bounty-index",
     logo: "",
     image: "/assets/bounty-index.png",
     tags: [
@@ -29,12 +30,12 @@ export const myProjects = [
     description:
       "An interactive Earth visualizer that surfaces NASA imagery and live planetary data in a clean, story-driven UI.",
     subDescription: [
-      "Built a Next.js app that pulls and renders NASA open data on demand.",
-      "Designed a calm, exploratory interface around imagery, dates, and context.",
-      "Optimized fetch and caching paths so first paint stays fast under slow networks.",
-      "Shipped a deployed live URL for one-tap access to the experience.",
+      "Pulls NASA open data on demand and renders it in a calm, exploratory UI built around imagery, dates, and context.",
+      "Tuned fetch + cache paths so first paint stays fast on slow networks.",
+      "Deployed live for one-tap access — no setup, no signup.",
     ],
     href: "https://earth-nasa.vercel.app",
+    sourceHref: "https://github.com/Varun2024/Earth-NASA",
     logo: "",
     image: "/assets/earth-nasa.png",
     tags: [
@@ -51,12 +52,12 @@ export const myProjects = [
     description:
       "A reusable React UI component library focused on clean APIs and polished visuals.",
     subDescription: [
-      "Created reusable, composable UI primitives for faster product development.",
-      "Designed consistent motion patterns and accessible interaction states.",
-      "Documented components with practical usage examples and visual previews.",
-      "Built with React, Tailwind CSS, and Motion for responsive performance.",
+      "Composable navbar primitives with a clean API — drop-in for Next.js projects.",
+      "Consistent motion and accessible interaction states across every variant.",
+      "Documented with live previews and copy-paste snippets.",
     ],
     href: "https://navui-hw7m.vercel.app/",
+    sourceHref: "https://github.com/Varun2024/navui",
     logo: "",
     image: "/assets/navui.png",
     tags: [
@@ -89,12 +90,12 @@ export const myProjects = [
     description:
       "An AI basketball assistant that turns playbook data into drills, scouting, and live team strategy.",
     subDescription: [
-      "Built tactical breakdowns for cleaner coaching workflows.",
-      "Added a chat-first interface for quick drill and strategy prompts.",
-      "Included team sync tools for sharing outputs across groups.",
-      "Designed with a fast, mobile-friendly UI for sideline use.",
+      "Chat-first coaching assistant — drills, scouting, and strategy prompts backed by MiniMax LLM.",
+      "Neon + Postgres for team playbooks and sync across groups.",
+      "Sideline-ready mobile UI: fast, low-tap, glanceable.",
     ],
     href: "https://bb-bot.vercel.app/",
+    sourceHref: "https://github.com/Varun2024/BB-bot",
     logo: "",
     image: "/assets/bb-bot-hero.png",
     tags: [
@@ -128,12 +129,13 @@ export const myProjects = [
     description:
       "A secure ecommerce platform with real-time updates, auth, and responsive UX.",
     subDescription: [
-      "Built secure login and signup with Firebase Authentication.",
-      "Integrated Firebase Realtime Database for live product and order sync.",
-      "Developed an admin dashboard for products, requests, and inventory.",
-      "Optimized CI/CD pipelines for reliable peak-traffic releases.",
+      "Freelance client project — live at sashastore.in, handles real orders end-to-end.",
+      "Firebase auth + realtime DB for live product/order sync, Stripe for payments.",
+      "Admin dashboard for products, requests, and inventory in one surface.",
+      "CI/CD tuned for peak-traffic drops.",
     ],
     href: "https://sashastore.in/",
+    sourceHref: "https://github.com/Varun2024/Sasha-ecom",
     logo: "",
     image: "/assets/sasha.png",
     tags: [

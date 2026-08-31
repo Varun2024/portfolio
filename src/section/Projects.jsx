@@ -19,7 +19,7 @@ const Projects = () => {
   return (
     <section id="work" onMouseMove={handleMouse} className="realtive c-space section-spacing px-1 sm:px-0">
       <div className="flex items-start justify-between gap-4">
-        <SectionHeading size="hero">The Fleet</SectionHeading>
+        <SectionHeading>The Fleet</SectionHeading>
         <div className="mt-1 shrink-0 flex items-center gap-2">
           <span className="hidden sm:block font-mono text-xs uppercase tracking-[0.18em] text-[var(--color-aqua)]">scanning · {myProjects.length} craft</span>
           <Radar blipCount={myProjects.length} className="size-16 sm:size-20" />

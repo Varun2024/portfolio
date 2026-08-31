@@ -90,7 +90,7 @@ const Contact = () => {
         }
     }
     return (
-        <section id="contact" className='relative flex flex-col items-center gap-5 c-space mt-8 md:mt-12'>
+        <section id="contact" className='relative flex flex-col items-center gap-5 c-space section-spacing'>
             {/* testimonials */}
             {showAlert && <Alert type={alertType} text={alertMessage} />}
             <div className="relative mx-auto w-full max-w-xl">
@@ -155,6 +155,15 @@ const Contact = () => {
                             </button>
                             <p className="mt-3 text-center font-mono text-[11px] text-white/60">
                                 {'>'} avg. response time: <span className="text-[var(--color-mint)]">~24h</span>
+                            </p>
+                            <p className="mt-1 text-center font-mono text-[11px] text-white/50">
+                                {'>'} or direct:{" "}
+                                <a
+                                    href="mailto:varunshukla747@gmail.com"
+                                    className="text-[var(--color-aqua)] hover:text-[var(--color-mint)] transition-colors"
+                                >
+                                    varunshukla747@gmail.com
+                                </a>
                             </p>
                         </form>
                     </div>

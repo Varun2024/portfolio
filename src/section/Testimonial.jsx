@@ -238,7 +238,7 @@ export default function Testimonials({ autoRotate = true, rotateInterval = 6000 
   };
 
   return (
-    <section id="testimonials" className="c-space mt-32 md:mt-48">
+    <section id="testimonials" className="c-space section-spacing">
       {showAlert && <Alert type={alertType} text={alertMessage} />}
 
       <div className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-6 lg:grid-cols-5">

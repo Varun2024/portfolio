@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import ProjectDetails from './ProjectDetails'
 
-const Project = ({ title, description, subDescription, href, image, tags, role, setPr }) => {
+const Project = ({ title, description, subDescription, href, sourceHref, image, tags, role, setPr }) => {
     const [isHidden, setIsHidden] = useState(false)
     return (
         <>
@@ -42,14 +42,28 @@ const Project = ({ title, description, subDescription, href, image, tags, role, 
                     </div>
                 </div>
                 </div>
-                <button
-                    onClick={() => setIsHidden(true)}
-                    data-cursor-tag="Scan"
-                    className='flex items-center gap-1.5 cursor-pointer hover-animation text-sm sm:text-base transition-transform duration-300 group-hover:-translate-x-1'
-                >
-                    Scan craft
-                    <img src="assets/arrow-right.svg" alt="" aria-hidden="true" className='size-4 sm:size-5 transition-transform duration-300 group-hover:translate-x-1' />
-                </button>
+                <div className="flex items-center gap-3 sm:gap-4">
+                    {sourceHref && (
+                        <a
+                            href={sourceHref}
+                            target="_blank"
+                            rel="noreferrer noopener"
+                            onClick={(e) => e.stopPropagation()}
+                            data-cursor-tag="Source"
+                            className="font-mono text-[11px] uppercase tracking-[0.16em] text-neutral-400 hover:text-[var(--color-aqua)] transition-colors"
+                        >
+                            [ src ]
+                        </a>
+                    )}
+                    <button
+                        onClick={() => setIsHidden(true)}
+                        data-cursor-tag="Scan"
+                        className='flex items-center gap-1.5 cursor-pointer hover-animation text-sm sm:text-base transition-transform duration-300 group-hover:-translate-x-1'
+                    >
+                        Scan craft
+                        <img src="assets/arrow-right.svg" alt="" aria-hidden="true" className='size-4 sm:size-5 transition-transform duration-300 group-hover:translate-x-1' />
+                    </button>
+                </div>
             </div>
             <div className='bg-gradient-to-r from-transparent via-neutral-700 to-transparent h-[1px] w-full' />
             {isHidden &&
@@ -60,6 +74,7 @@ const Project = ({ title, description, subDescription, href, image, tags, role, 
                     image={image}
                     tags={tags}
                     href={href}
+                    sourceHref={sourceHref}
                     closeModal={() => setIsHidden(false)}
                 />
             }
