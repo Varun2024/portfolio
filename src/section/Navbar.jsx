@@ -4,16 +4,13 @@ import { motion, AnimatePresence } from 'motion/react'
 import { Link, useLocation } from 'react-router-dom'
 import DossierModal from '../components/DossierModal'
 
-const RESUME_LINK = "https://drive.google.com/file/d/1rHC_X1fZdNJ0AeQ6GkN-_pTfVSX-fVma/view?usp=sharing"
+const RESUME_LINK = "https://drive.google.com/file/d/14fX7TGKZUr5l_bSzgPzfNryGpIvuoQUW/view?usp=sharing"
 
 const links = [
-    { label: "Bridge", plain: "Home", href: "#home" },
-    { label: "Origin", plain: "About", href: "#about" },
-    { label: "Missions", plain: "Experience", href: "#experience" },
-    { label: "Fleet", plain: "Projects", href: "#work" },
-    { label: "Signals", plain: "Testimonials", href: "#testimonials" },
-    { label: "Comms", plain: "Contact", href: "#contact" },
+    { label: "Work", plain: "Projects", href: "#work" },
     { label: "Logs", plain: "Build Logs", href: "/logs", route: true },
+    { label: "About", plain: "About", href: "#about" },
+    { label: "Contact", plain: "Contact", href: "#contact" },
 ]
 
 const useActiveSection = () => {
