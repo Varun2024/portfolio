@@ -36,8 +36,30 @@ const fallbackTestimonials = [
 ]
 
 const COUNT_WORDS = ["none", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve"]
-
 const asWord = (n) => COUNT_WORDS[n] ? `${COUNT_WORDS[n][0].toUpperCase()}${COUNT_WORDS[n].slice(1)}` : `${n}`
+
+// Marquee: horizontal infinite scroll using keyframes from index.css
+// (--animate-marquee + --gap custom prop). Repeats children so the loop
+// stays filled on wide viewports. pauseOnHover halts the whole track.
+const Marquee = ({ children, reverse = false, repeat = 3, pauseOnHover = true, className = "" }) => (
+  <div
+    className={`group flex overflow-hidden [--gap:1.25rem] ${className}`}
+    style={{ gap: "var(--gap)" }}
+  >
+    {Array.from({ length: repeat }).map((_, i) => (
+      <div
+        key={i}
+        className={`flex shrink-0 justify-around ${pauseOnHover ? "group-hover:[animation-play-state:paused]" : ""}`}
+        style={{
+          gap: "var(--gap)",
+          animation: `marquee 48s linear infinite${reverse ? " reverse" : ""}`,
+        }}
+      >
+        {children}
+      </div>
+    ))}
+  </div>
+)
 
 export default function Testimonials() {
   const [formData, setFormData] = useState({ name: "", role: "", quote: "", avatar: "" })
@@ -115,26 +137,16 @@ export default function Testimonials() {
     }
   }
 
-  const shareOne = async (t) => {
-    const link = `${window.location.origin}${window.location.pathname}?testimonial=${t.id}#testimonials`
-    if (navigator.share) {
-      try {
-        await navigator.share({ title: `Feedback from ${t.name}`, text: t.quote, url: link })
-        return
-      } catch { /* fall through */ }
-    }
-    try {
-      await navigator.clipboard.writeText(link)
-      showAlertMessage("success", "Link copied.")
-    } catch {
-      showAlertMessage("danger", "Could not copy link on this device.")
-    }
-  }
-
   const openForm = () => {
     setFeedbackOpen(true)
     setTimeout(() => firstFieldRef.current?.focus(), 300)
   }
+
+  // Split testimonials across two tracks so each row has unique content.
+  // With few items, each half still gets at least one entry.
+  const half = Math.ceil(testimonials.length / 2)
+  const firstTrack = testimonials.slice(0, half)
+  const secondTrack = testimonials.slice(half).length ? testimonials.slice(half) : testimonials
 
   return (
     <section id="testimonials" className="c-space section-spacing">
@@ -150,10 +162,23 @@ export default function Testimonials() {
           </div>
         </div>
 
-        <div className="mt-8 columns-1 md:columns-2 gap-6 sm:gap-7 [column-fill:_balance]">
-          {testimonials.map((t) => (
-            <QuoteCard key={t.id} t={t} onShare={() => shareOne(t)} />
-          ))}
+        <div className="relative mt-10">
+          {/* Edge fades */}
+          <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 sm:w-32 bg-gradient-to-r from-[var(--color-primary)] to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 sm:w-32 bg-gradient-to-l from-[var(--color-primary)] to-transparent" />
+
+          <div className="flex flex-col gap-5 sm:gap-6">
+            <Marquee>
+              {firstTrack.map((t) => (
+                <QuoteCard key={`a-${t.id}`} t={t} />
+              ))}
+            </Marquee>
+            <Marquee reverse>
+              {secondTrack.map((t) => (
+                <QuoteCard key={`b-${t.id}`} t={t} />
+              ))}
+            </Marquee>
+          </div>
         </div>
 
         <div className="mt-10 border-t border-white/10 pt-6">
@@ -277,18 +302,18 @@ export default function Testimonials() {
   )
 }
 
-const QuoteCard = ({ t, onShare }) => (
-  <figure className="relative mb-6 sm:mb-7 break-inside-avoid rounded-xl border border-white/10 bg-[var(--color-midnight)]/60 px-6 py-7 sm:px-7 sm:py-8">
+const QuoteCard = ({ t }) => (
+  <figure className="relative w-[18rem] sm:w-[22rem] shrink-0 rounded-xl border border-white/10 bg-[var(--color-midnight)]/70 px-5 py-6 backdrop-blur-sm hover:border-white/25 hover:bg-[var(--color-midnight)] transition-colors">
     <span
       aria-hidden="true"
-      className="pointer-events-none absolute left-4 top-0 font-display text-[6rem] leading-none text-white/[0.07] select-none"
+      className="pointer-events-none absolute left-3 top-0 font-display text-[4.5rem] leading-none text-white/[0.08] select-none"
     >
       &ldquo;
     </span>
-    <blockquote className="relative text-[15px] leading-relaxed text-white/85 sm:text-base sm:leading-[1.7]">
+    <blockquote className="relative text-[14px] leading-relaxed text-white/85 line-clamp-5">
       {t.quote}
     </blockquote>
-    <figcaption className="mt-6 flex items-center gap-3 border-t border-white/5 pt-4">
+    <figcaption className="mt-5 flex items-center gap-3 border-t border-white/5 pt-3">
       <img
         src={t.avatar || buildDefaultAvatar(t.name)}
         alt=""
@@ -297,22 +322,12 @@ const QuoteCard = ({ t, onShare }) => (
           const fallback = buildDefaultAvatar(t.name)
           if (event.currentTarget.src !== fallback) event.currentTarget.src = fallback
         }}
-        className="size-9 shrink-0 rounded-full object-cover ring-1 ring-white/15 bg-[var(--color-storm)]"
+        className="size-8 shrink-0 rounded-full object-cover ring-1 ring-white/15 bg-[var(--color-storm)]"
       />
       <div className="min-w-0 flex-1">
         <div className="text-[13px] font-medium text-white truncate">{t.name}</div>
         <div className="text-[11px] text-white/50 truncate">{t.role}</div>
       </div>
-      <button
-        type="button"
-        onClick={onShare}
-        aria-label={`Share ${t.name}'s quote`}
-        className="shrink-0 rounded-md p-1.5 text-white/35 hover:text-white hover:bg-white/5 transition"
-      >
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      </button>
     </figcaption>
   </figure>
 )
