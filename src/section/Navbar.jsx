@@ -146,7 +146,7 @@ const Navbar = () => {
                                 onClick={openResume}
                                 target="_blank"
                                 rel="noreferrer"
-                                data-cursor-tag="Read"
+
                                 className="hidden sm:inline-flex items-center gap-1.5 rounded-md bg-white px-4 py-1.5 text-sm font-semibold text-[var(--color-midnight)] transition hover:bg-white/90"
                             >
                                 Resume

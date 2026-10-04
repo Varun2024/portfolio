@@ -4,7 +4,6 @@ import { lazy, Suspense, useRef } from 'react'
 import { ReactLenis } from 'lenis/react'
 import SectionLoader from './components/SectionLoader'
 import GameLauncher from './components/GameLauncher'
-import Cursor from './components/Cursor'
 import BootLoader from './components/BootLoader'
 import Starfield from './components/Starfield'
 import AstronautCompanion from './components/AstronautCompanion'
@@ -60,7 +59,6 @@ const App = () => {
       <GameLauncher />
       <AstronautCompanion />
       <SystemsHUD />
-      <Cursor />
       <BootLoader />
       <Konami />
       <NotFoundBanner />

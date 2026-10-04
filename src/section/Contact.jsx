@@ -140,7 +140,7 @@ const Contact = () => {
                             <button
                                 type="submit"
                                 disabled={isLoading}
-                                data-cursor-tag="Send"
+
                                 className="mt-4 w-full rounded-md bg-white px-4 py-3 text-center text-sm font-semibold text-[var(--color-midnight)] transition hover:bg-white/90 disabled:opacity-60 disabled:cursor-not-allowed"
                             >
                                 {isLoading ? "Sending…" : "Send message"}

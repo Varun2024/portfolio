@@ -249,7 +249,7 @@ export default function Testimonials({ autoRotate = true, rotateInterval = 6000 
               <button
                 aria-label="Previous transmission"
                 onClick={handlePrev}
-                data-cursor-tag="Prev"
+
                 className="rounded-md border border-white/10 p-1.5 text-white/60 hover:border-[var(--color-aqua)]/40 hover:text-[var(--color-aqua)] transition"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -259,7 +259,7 @@ export default function Testimonials({ autoRotate = true, rotateInterval = 6000 
               <button
                 aria-label="Next transmission"
                 onClick={handleNext}
-                data-cursor-tag="Next"
+
                 className="rounded-md border border-white/10 p-1.5 text-white/60 hover:border-[var(--color-aqua)]/40 hover:text-[var(--color-aqua)] transition"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -307,7 +307,7 @@ export default function Testimonials({ autoRotate = true, rotateInterval = 6000 
                     <button
                       type="button"
                       onClick={shareFeedback}
-                      data-cursor-tag="Broadcast"
+
                       className="mt-3 inline-flex items-center rounded-md border border-[var(--color-aqua)]/30 bg-[var(--color-aqua)]/5 px-3 py-1.5 font-mono text-[11px] text-[var(--color-aqua)] hover:border-[var(--color-aqua)]/60 hover:bg-[var(--color-aqua)]/15 transition"
                     >
                       [ rebroadcast ]

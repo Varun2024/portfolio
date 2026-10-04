@@ -78,7 +78,7 @@ const GameLauncher = () => {
                     onClick={handleOpen}
                     className="group relative flex items-center gap-2 rounded-full border border-white/15 bg-[var(--color-midnight)]/90 px-4 py-2 text-sm text-white/85 backdrop-blur transition hover:border-white/40 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
                     aria-label="Open typing speedrun"
-                    data-cursor-tag="Game"
+
                 >
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                         <polyline points="4 17 10 11 4 5" strokeLinecap="round" strokeLinejoin="round" />

@@ -60,10 +60,6 @@ body {
   overflow-x: hidden;
 }
 
-body.cursor-none,
-body.cursor-none * {
-  cursor: none !important;
-}
 
 /* a11y: visible focus ring on any interactive element that opts in via focus-visible */
 :where(a, button, input, textarea, select, [role="button"], summary):focus-visible {

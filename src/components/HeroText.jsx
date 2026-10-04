@@ -59,7 +59,7 @@ const HeroText = () => {
                 >
                     <a
                         href="#work"
-                        data-cursor-tag="Projects"
+
                         className="group inline-flex items-center gap-2 rounded-md bg-white px-5 py-2.5 text-sm font-semibold text-[var(--color-midnight)] transition hover:bg-white/90"
                     >
                         See projects
@@ -69,7 +69,7 @@ const HeroText = () => {
                     </a>
                     <a
                         href="#contact"
-                        data-cursor-tag="Contact"
+
                         className="inline-flex items-center gap-2 rounded-md border border-white/30 px-5 py-2.5 text-sm text-white transition hover:border-white/60"
                     >
                         Get in touch

@@ -1,88 +1,89 @@
-
-import React, { useState } from 'react'
+import { useState } from 'react'
 import ProjectDetails from './ProjectDetails'
 
-const Project = ({ title, description, subDescription, href, sourceHref, image, tags, role, setPr }) => {
+const Project = ({ title, description, subDescription, href, sourceHref, image, tags, role }) => {
     const [isHidden, setIsHidden] = useState(false)
+    const stop = (e) => e.stopPropagation()
+
     return (
         <>
-            <div
-                className='group flex flex-col sm:flex-row flex-wrap items-start justify-between py-8 sm:py-10 space-y-4 sm:space-y-0 gap-4 transition-colors duration-300 hover:bg-white/[0.015] -mx-3 sm:-mx-4 px-3 sm:px-4 rounded-lg'
-                onMouseEnter={() => setPr(image)}
-                onMouseLeave={() => setPr(null)}
-            >
-                <div className="flex flex-col gap-3 sm:contents">
+            <div className='group relative py-6 sm:py-7 transition-colors duration-200 hover:bg-white/[0.02] -mx-3 sm:-mx-4 px-3 sm:px-4 rounded-lg'>
+                {href && (
+                    <a
+                        href={href}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        aria-label={`Open ${title} (live)`}
+                        className="absolute inset-0 z-0 rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-white/60"
+                    />
+                )}
+                <div className="relative z-10 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 pointer-events-none">
                     {image && (
                         <img
                             src={image}
                             alt=""
                             aria-hidden="true"
                             loading="lazy"
-                            className="sm:hidden h-32 w-full rounded-md border border-white/10 object-cover"
+                            className="h-32 w-full sm:h-16 sm:w-24 rounded-md border border-white/10 object-cover shrink-0"
                         />
                     )}
-                <div>
-                    <div className="flex flex-wrap items-center gap-3">
-                        <p className="text-xl sm:text-2xl leading-snug transition-transform duration-300 group-hover:translate-x-1">
-                            {title}
-                        </p>
-                        {role && (
-                            <span className="inline-flex items-center rounded-full border border-white/15 bg-white/5 px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.16em] text-neutral-300">
-                                {role}
-                            </span>
+
+                    <div className="flex-1 min-w-0">
+                        <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                            <h3 className="text-lg sm:text-xl font-medium leading-snug text-white inline-flex items-center gap-1.5">
+                                {title}
+                                {href && (
+                                    <svg
+                                        width="12" height="12" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" strokeWidth="2"
+                                        className="text-white/40 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-white"
+                                        aria-hidden="true"
+                                    >
+                                        <path d="M7 17L17 7M9 7h8v8" strokeLinecap="round" strokeLinejoin="round" />
+                                    </svg>
+                                )}
+                            </h3>
+                            {role && (
+                                <span className="inline-flex items-center rounded-full border border-white/15 bg-white/5 px-2 py-0.5 text-[10px] uppercase tracking-[0.14em] text-neutral-300">
+                                    {role}
+                                </span>
+                            )}
+                        </div>
+                        <div className="flex flex-wrap gap-x-2 gap-y-1 mt-1.5 text-[13px] text-white/55">
+                            {tags.map((tag, i) => (
+                                <span key={tag.id} className="inline-flex items-center">
+                                    {i > 0 && <span className="mr-2 opacity-40">·</span>}
+                                    {tag.name}
+                                </span>
+                            ))}
+                        </div>
+                    </div>
+
+                    <div className="flex items-center gap-4 shrink-0 self-end sm:self-center pointer-events-auto">
+                        {sourceHref && (
+                            <a
+                                href={sourceHref}
+                                target="_blank"
+                                rel="noreferrer noopener"
+                                onClick={stop}
+                                className="text-[12px] text-neutral-400 hover:text-white transition-colors"
+                            >
+                                Source
+                            </a>
                         )}
-                    </div>
-                    <div className="flex flex-wrap gap-x-2 gap-y-1 mt-2 text-sm sm:text-base text-[var(--color-sand)]">
-                        {tags.map((tag, i) => (
-                            <span key={tag.id} className="inline-flex items-center">
-                                {i > 0 && <span className="mr-2 opacity-40">·</span>}
-                                {tag.name}
-                            </span>
-                        ))}
-                    </div>
-                </div>
-                </div>
-                <div className="flex items-center gap-3 sm:gap-4">
-                    {href && (
-                        <a
-                            href={href}
-                            target="_blank"
-                            rel="noreferrer noopener"
-                            onClick={(e) => e.stopPropagation()}
-                            data-cursor-tag="Live"
-                            className="inline-flex items-center gap-1.5 rounded-md border border-white/25 bg-white/5 px-2.5 py-1 text-[12px] font-medium text-white/90 hover:border-white/60 hover:bg-white/10 transition"
+                        <button
+                            type="button"
+                            onClick={(e) => { stop(e); setIsHidden(true) }}
+                            className='text-[12px] text-neutral-400 hover:text-white transition-colors'
                         >
-                            Live
-                            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                                <path d="M7 17L17 7M9 7h8v8" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-                        </a>
-                    )}
-                    {sourceHref && (
-                        <a
-                            href={sourceHref}
-                            target="_blank"
-                            rel="noreferrer noopener"
-                            onClick={(e) => e.stopPropagation()}
-                            data-cursor-tag="Source"
-                            className="text-[12px] text-neutral-400 hover:text-white transition-colors"
-                        >
-                            Source
-                        </a>
-                    )}
-                    <button
-                        onClick={() => setIsHidden(true)}
-                        data-cursor-tag="Details"
-                        className='flex items-center gap-1.5 cursor-pointer hover-animation text-sm sm:text-base transition-transform duration-300 group-hover:-translate-x-1'
-                    >
-                        Details
-                        <img src="assets/arrow-right.svg" alt="" aria-hidden="true" className='size-4 sm:size-5 transition-transform duration-300 group-hover:translate-x-1' />
-                    </button>
+                            Details
+                        </button>
+                    </div>
                 </div>
             </div>
-            <div className='bg-gradient-to-r from-transparent via-neutral-700 to-transparent h-[1px] w-full' />
+            <div className='h-px w-full bg-white/[0.06]' />
             {isHidden &&
-                < ProjectDetails
+                <ProjectDetails
                     title={title}
                     description={description}
                     subDescription={subDescription}
