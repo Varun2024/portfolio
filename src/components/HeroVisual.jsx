@@ -28,7 +28,7 @@ const HeroVisual = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="pointer-events-none hidden md:block absolute right-6 lg:right-12 top-1/2 -translate-y-1/2 z-[3] w-[22rem] lg:w-[26rem]"
+            className="pointer-events-none hidden md:block relative z-[3] w-full"
             aria-hidden="true"
         >
             {/* ambient glow */}

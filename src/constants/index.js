@@ -1,7 +1,7 @@
 export const myProjects = [
   {
     id: 11,
-    role: "Solo",
+    role: "Live product",
     title: "Bounty Index",
     description:
       "2,000 weekly hunters use this to find bug bounty programs. One table, five platforms, sorted by max payout.",
@@ -25,7 +25,7 @@ export const myProjects = [
   },
   {
     id: 10,
-    role: "Solo",
+    role: "Weekend build",
     title: "Earth-NASA",
     description:
       "Pick a date, see Earth from orbit that day. Pulls from NASA open data; no login, no setup.",
@@ -47,7 +47,7 @@ export const myProjects = [
   },
   {
     id: 5,
-    role: "Solo",
+    role: "Open source",
     title: "NavUI Component Library",
     description:
       "Drop-in React navbar primitives for Next.js. Copy the snippet, tweak the props, ship.",
@@ -85,7 +85,7 @@ export const myProjects = [
   },
   {
     id: 7,
-    role: "Solo",
+    role: "Prototype",
     title: "BB-Bot",
     description:
       "AI coaching assistant for basketball teams. Ask the playbook, get drills and scouting back.",
@@ -124,7 +124,7 @@ export const myProjects = [
   
   {
     id: 1,
-    role: "Solo",
+    role: "Freelance",
     title: "Sasha Store",
     description:
       "A live Shopify-style storefront I built for sashastore.in. Takes real orders every week.",
@@ -167,7 +167,7 @@ export const myProjects = [
   },
   {
     id: 6,
-    role: "Solo",
+    role: "Side project",
     title: "RentIt",
     description:
       "A peer-to-peer rental marketplace. List what you own, rent what you need, pay via Razorpay.",
@@ -238,10 +238,11 @@ export const experiences = [
     job: "Flux Fortify",
     date: "Apr 2026 - Present",
     contents: [
-      "Owning features end to end on an AI-native product — spec, backend, UI, deploy.",
-      "TypeScript APIs on Postgres; LLM calls wired in where they actually earn their cost.",
-      "React work on top of the team's design system; focus on the states nobody designs for.",
-      "Writing enough tests to sleep at night, and docs the next engineer actually reads.",
+      "Shipping features on an AI-native product — spec through deploy, backend to UI.",
+      "Backend in TypeScript on Postgres. LLM calls earn their cost against a cheap fallback, or they get ripped out.",
+      "Frontend on React + the team's design system. I write the loading, empty, and error states nobody designs on round one.",
+      "Rolling features behind flags, watching the dashboard, then promoting. Easier than apologising for a rollback.",
+      "A test suite I'd trust at 2am and docs the next engineer actually reads.",
     ],
   },
   {

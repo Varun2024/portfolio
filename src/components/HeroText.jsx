@@ -9,8 +9,8 @@ const HeroText = () => {
     }
 
     return (
-        <div className="relative z-10 mt-28 md:mt-40 text-left c-space w-full">
-            <div className="relative flex flex-col items-start gap-5 md:gap-7 max-w-xl md:max-w-2xl">
+        <div className="relative z-10 text-left w-full">
+            <div className="relative flex flex-col items-start gap-5 md:gap-7 max-w-xl md:max-w-none">
                 <motion.h1
                     variants={variance}
                     initial="hidden"
