@@ -7,11 +7,13 @@ const Hero = () => {
     return (
         <section
             id="home"
-            className="relative flex items-start justify-center md:items-start md:justify-start min-h-screen overflow-hidden c-space"
+            className="relative mx-[calc(50%-50vw)] w-screen flex items-start justify-center md:justify-start min-h-screen overflow-hidden"
         >
-            <HeroText />
             <ParallexBackground />
-            <HeroVisual />
+            <div className="relative w-full max-w-7xl mx-auto c-space">
+                <HeroText />
+                <HeroVisual />
+            </div>
         </section>
     )
 }

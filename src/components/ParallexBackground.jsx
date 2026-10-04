@@ -31,7 +31,7 @@ const ParallexBackground = () => {
     const backgroundImage = useMotionTemplate`radial-gradient(300% 130% at 0% 100%, #020617 50%, ${color})`;
 
     return (
-        <motion.section className='absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-screen'
+        <motion.section className='absolute inset-0'
             style={{ backgroundImage ,zIndex:"1"}}
         >
             <div className="relative h-screen overflow-y-hidden bg-black/30">

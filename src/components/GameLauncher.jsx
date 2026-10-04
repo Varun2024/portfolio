@@ -1,8 +1,8 @@
 import { Suspense, lazy, useEffect, useState } from "react"
 
-const AsteroidDodger = lazy(() => import("./MiniGame"))
+const TerminalTyper = lazy(() => import("./MiniGame"))
 
-const HINT_DISMISSED_KEY = "varun.portfolio.starcatcher.hint"
+const HINT_DISMISSED_KEY = "varun.portfolio.terminaltyper.hint"
 
 const GameLauncher = () => {
     const [open, setOpen] = useState(false)
@@ -71,25 +71,26 @@ const GameLauncher = () => {
                         >
                             ×
                         </button>
-                        Asteroid field ahead. Engage pilot mode?
+                        Need a break? Try the typing speedrun.
                     </div>
                 )}
                 <button
                     onClick={handleOpen}
-                    className="group relative flex items-center gap-2 rounded-md border border-[var(--color-aqua)]/40 bg-[var(--color-aqua)]/10 px-4 py-2.5 font-mono text-sm text-[var(--color-aqua)] transition hover:border-[var(--color-aqua)]/70 hover:bg-[var(--color-aqua)]/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-aqua)]/40"
-                    aria-label="Launch pilot mode"
-                    data-cursor-tag="Launch"
+                    className="group relative flex items-center gap-2 rounded-full border border-white/15 bg-[var(--color-midnight)]/90 px-4 py-2 text-sm text-white/85 backdrop-blur transition hover:border-white/40 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+                    aria-label="Open typing speedrun"
+                    data-cursor-tag="Game"
                 >
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                        <path d="M12 2.5l2.6 6.2 6.7.5-5.1 4.4 1.6 6.6L12 16.8l-5.8 3.4 1.6-6.6L2.7 9.2l6.7-.5L12 2.5z" />
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                        <polyline points="4 17 10 11 4 5" strokeLinecap="round" strokeLinejoin="round" />
+                        <line x1="12" y1="19" x2="20" y2="19" strokeLinecap="round" />
                     </svg>
-                    <span>[ launch ]</span>
+                    <span>typing speedrun</span>
                 </button>
             </div>
 
             {open && (
                 <Suspense fallback={null}>
-                    <AsteroidDodger onClose={() => setOpen(false)} />
+                    <TerminalTyper onClose={() => setOpen(false)} />
                 </Suspense>
             )}
         </>

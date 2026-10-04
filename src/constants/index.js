@@ -210,44 +210,6 @@ export const myProjects = [
       },
     ],
   },
-  {
-    id: 2,
-    role: "Team",
-    title: "TedXBITD",
-    description:
-      "A responsive event website with secure auth and live content updates.",
-    subDescription: [
-      "Implemented Firebase Authentication with role-based access.",
-      "Integrated Firebase Realtime Database for speaker and event updates.",
-      "Optimized responsiveness and performance across devices.",
-      "Deployed via CI/CD for fast, stable event-time releases.",
-    ],
-    href: "https://tedxbitd.in/",
-    logo: "",
-    image: "/assets/tedx.webp",
-    tags: [
-      {
-        id: 1,
-        name: "React",
-        path: "/assets/logos/react.svg",
-      },
-      {
-        id: 2,
-        name: "Framer",
-        path: "/assets/logos/framer-motion.svg",
-      },
-      {
-        id: 3,
-        name: "Firebase",
-        path: "/assets/logos/firebase.png",
-      },
-      {
-        id: 4,
-        name: "Stripe",
-        path: "/assets/logos/stripe.svg",
-      },
-    ],
-  },
 ];
 
 export const mySocials = [
