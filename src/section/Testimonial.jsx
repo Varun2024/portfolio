@@ -244,10 +244,7 @@ export default function Testimonials({ autoRotate = true, rotateInterval = 6000 
       <div className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-6 lg:grid-cols-5">
         <div className="relative rounded-xl border border-white/10 bg-[var(--color-midnight)] p-5 sm:p-7 lg:col-span-3 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.6)]">
           <div className="mb-4 flex items-center justify-between gap-3 border-b border-white/5 pb-3">
-            <div className="flex items-center gap-2 font-mono text-[10px] text-white/60">
-              <span className="inline-block size-1.5 rounded-full bg-[var(--color-aqua)]/60" />
-              ~/signals.log <span className="text-white/40">— testimonials</span>
-            </div>
+            <h3 className="text-sm font-medium text-white/80 tracking-wide">What people say</h3>
             <div className="flex items-center gap-1">
               <button
                 aria-label="Previous transmission"

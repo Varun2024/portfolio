@@ -5,10 +5,10 @@ import Alert from "../components/Alert"
 import SendSuccess from "../components/SendSuccess"
 
 const ConsoleField = ({ id, label, value, onChange, placeholder, autoComplete, type = "text", textarea = false }) => {
-    const inputCls = "block w-full bg-transparent font-mono text-[13px] text-white placeholder:text-white/25 focus:outline-none border-b border-white/10 focus:border-[var(--color-aqua)]/60 transition-colors py-2"
+    const inputCls = "block w-full bg-transparent text-[15px] text-white placeholder:text-white/25 focus:outline-none border-b border-white/15 focus:border-white/70 transition-colors py-2"
     return (
         <label htmlFor={id} className="block">
-            <span className="mb-1 block font-mono text-[11px] text-white/60">{'>'} {label}:</span>
+            <span className="mb-1 block text-[11px] uppercase tracking-[0.14em] text-white/50">{label}</span>
             {textarea ? (
                 <textarea
                     id={id}
@@ -96,51 +96,43 @@ const Contact = () => {
             <div className="relative mx-auto w-full max-w-xl">
                 <div className="pointer-events-none absolute -inset-px rounded-xl bg-gradient-to-br from-[var(--color-aqua)]/20 via-white/5 to-[var(--color-aqua)]/5 opacity-60 blur-[1px]" />
                 <div className="relative rounded-xl border border-white/10 bg-[#04070f]/95 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.8)] min-h-[520px]">
-                    {/* terminal title bar */}
-                    <div className="flex items-center gap-2 border-b border-white/10 px-4 py-2.5">
-                        <span className="size-2.5 rounded-full bg-white/15" />
-                        <span className="size-2.5 rounded-full bg-white/15" />
-                        <span className="size-2.5 rounded-full bg-white/15" />
-                        <span className="ml-2 font-mono text-[11px] text-white/60">comms.exe — contact</span>
-                    </div>
-
                     <AnimatePresence>
                         {justSent && <SendSuccess onDone={() => setJustSent(false)} />}
                     </AnimatePresence>
 
                     <div className="px-5 py-6 sm:px-7 sm:py-8">
-                        <h2 className="sr-only">Establish Comms</h2>
-                        <div className="mb-6 font-mono text-[13px] leading-relaxed text-[var(--color-aqua)]">
-                            <div>{'>'} init comms.exe</div>
-                            <div>{'>'} channel status: <span className="text-[var(--color-mint)]">open</span></div>
-                            <div>{'>'} awaiting transmission_</div>
+                        <div className="mb-6">
+                            <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-white">Get in touch</h2>
+                            <p className="mt-2 text-sm text-white/60">
+                                Open to interesting problems. Typical reply within 24h.
+                            </p>
                         </div>
 
-                        <form onSubmit={handleSubmit} className='w-full space-y-4 font-mono'>
+                        <form onSubmit={handleSubmit} className='w-full space-y-4'>
                             <ConsoleField
                                 id="name"
-                                label="callsign"
+                                label="Name"
                                 value={formData.name}
                                 onChange={handleChange}
-                                placeholder="commander salmon"
+                                placeholder="Your name"
                                 autoComplete="name"
                                 type="text"
                             />
                             <ConsoleField
                                 id="email"
-                                label="frequency"
+                                label="Email"
                                 value={formData.email}
                                 onChange={handleChange}
-                                placeholder="salmonbhoi@gmail.com"
+                                placeholder="you@example.com"
                                 autoComplete="email"
                                 type="email"
                             />
                             <ConsoleField
                                 id="message"
-                                label="transmission"
+                                label="Message"
                                 value={formData.message}
                                 onChange={handleChange}
-                                placeholder="send your transmission..."
+                                placeholder="What are you building?"
                                 autoComplete="off"
                                 textarea
                             />
@@ -148,19 +140,16 @@ const Contact = () => {
                             <button
                                 type="submit"
                                 disabled={isLoading}
-                                data-cursor-tag="Transmit"
-                                className="mt-2 w-full rounded-md border border-[var(--color-aqua)]/40 bg-[var(--color-aqua)]/10 px-4 py-3 text-center font-mono text-sm text-[var(--color-aqua)] transition hover:bg-[var(--color-aqua)]/20 hover:border-[var(--color-aqua)]/70 disabled:opacity-60 disabled:cursor-not-allowed"
+                                data-cursor-tag="Send"
+                                className="mt-4 w-full rounded-md bg-white px-4 py-3 text-center text-sm font-semibold text-[var(--color-midnight)] transition hover:bg-white/90 disabled:opacity-60 disabled:cursor-not-allowed"
                             >
-                                {isLoading ? "[ transmitting... ]" : "[ transmit ]"}
+                                {isLoading ? "Sending…" : "Send message"}
                             </button>
-                            <p className="mt-3 text-center font-mono text-[11px] text-white/60">
-                                {'>'} avg. response time: <span className="text-[var(--color-mint)]">~24h</span>
-                            </p>
-                            <p className="mt-1 text-center font-mono text-[11px] text-white/50">
-                                {'>'} or direct:{" "}
+                            <p className="mt-4 text-center text-[12px] text-white/50">
+                                Or email directly:{" "}
                                 <a
                                     href="mailto:varunshukla747@gmail.com"
-                                    className="text-[var(--color-aqua)] hover:text-[var(--color-mint)] transition-colors"
+                                    className="text-white/80 underline underline-offset-4 decoration-white/20 hover:decoration-white/60 transition"
                                 >
                                     varunshukla747@gmail.com
                                 </a>

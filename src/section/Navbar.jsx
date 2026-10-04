@@ -48,7 +48,7 @@ const NavLinks = ({ active, onSelect, pathname }) => {
                 const pillClass = `relative block sm:inline-block px-3 py-1.5 text-sm rounded-full transition-colors ${
                     isActive ? "text-white" : "text-neutral-400 hover:text-white"
                 }`
-                const showPing = isRoute && !isActive
+                const showPing = false
                 const inner = (
                     <>
                         {isActive && (
@@ -130,21 +130,10 @@ const Navbar = () => {
                             href="#home"
                             className="flex items-center gap-2.5 text-sm font-semibold text-white"
                         >
-                            <span className="grid size-7 place-items-center rounded-md border border-[var(--color-aqua)]/40 bg-[var(--color-aqua)]/10 font-mono text-xs font-bold text-[var(--color-aqua)]">
+                            <span className="grid size-7 place-items-center rounded-md border border-white/15 bg-white/5 text-xs font-bold text-white">
                                 V
                             </span>
                             <span className="hidden sm:inline tracking-wide">Varun</span>
-                            <span
-                                aria-label="Open to opportunities"
-                                title="Open to opportunities"
-                                className="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-[var(--color-mint)]/40 bg-[var(--color-mint)]/10 px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-mint)]"
-                            >
-                                <span className="relative inline-flex size-1.5">
-                                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--color-mint)] opacity-70" />
-                                    <span className="relative inline-flex size-1.5 rounded-full bg-[var(--color-mint)]" />
-                                </span>
-                                open to work
-                            </span>
                         </a>
 
                         <nav className="hidden md:flex">
@@ -153,19 +142,12 @@ const Navbar = () => {
 
                         <div className="flex items-center gap-2">
                             <a
-                                href="#contact"
-                                data-cursor-tag="Hire"
-                                className="hidden md:inline-flex items-center gap-1.5 rounded-md border border-white/15 bg-white/5 px-3 py-1.5 font-mono text-sm text-neutral-300 transition hover:border-white/40 hover:text-white"
-                            >
-                                Hire
-                            </a>
-                            <a
                                 href={RESUME_LINK}
                                 onClick={openResume}
                                 target="_blank"
                                 rel="noreferrer"
                                 data-cursor-tag="Read"
-                                className="hidden sm:inline-flex items-center gap-1.5 rounded-md border border-[var(--color-aqua)] bg-[var(--color-aqua)]/15 px-4 py-1.5 font-mono text-sm font-semibold text-[var(--color-aqua)] shadow-[0_0_18px_-6px_var(--color-aqua)] transition hover:bg-[var(--color-aqua)]/25"
+                                className="hidden sm:inline-flex items-center gap-1.5 rounded-md bg-white px-4 py-1.5 text-sm font-semibold text-[var(--color-midnight)] transition hover:bg-white/90"
                             >
                                 Resume
                                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">

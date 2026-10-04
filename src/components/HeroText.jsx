@@ -18,16 +18,16 @@ const HeroText = () => {
                     transition={{ delay: 0.4, duration: 0.7 }}
                     className="font-semibold text-4xl sm:text-5xl md:text-6xl leading-[1.05] tracking-tight"
                 >
-                    Shipping <span className="text-[var(--color-aqua)]">AI-native</span><br />
+                    I build <span className="italic font-display">AI-native</span><br />
                     product that{" "}
                     <span className="inline-flex min-w-[5.5ch] sm:min-w-[6ch] align-baseline">
                         <FlipWords
                             words={["ships", "scales", "earns"]}
-                            className="font-semibold text-[var(--color-aqua)]"
+                            className="font-semibold text-white"
                         />
                     </span><br />
-                    <span className="text-white/80 text-2xl sm:text-3xl md:text-4xl font-normal">
-                        I&rsquo;m Varun — full-stack engineer.
+                    <span className="text-white/60 text-xl sm:text-2xl md:text-3xl font-normal tracking-normal">
+                        Varun Shukla · full-stack engineer, Raipur IN.
                     </span>
                 </motion.h1>
 
@@ -38,12 +38,12 @@ const HeroText = () => {
                     transition={{ delay: 0.75, duration: 0.6 }}
                     className="max-w-md text-base sm:text-lg text-white leading-relaxed [text-shadow:0_1px_12px_rgba(0,0,0,0.65)]"
                 >
-                    Currently at Flux Fortify. Latest side ship:{" "}
+                    Currently at Flux Fortify. On the side, I run{" "}
                     <a
                         href="https://bountyindex.in"
                         target="_blank"
                         rel="noreferrer"
-                        className="text-[var(--color-aqua)] underline decoration-[var(--color-aqua)]/40 underline-offset-4 hover:decoration-[var(--color-aqua)]"
+                        className="text-white underline decoration-white/30 underline-offset-4 hover:decoration-white/80 transition"
                     >
                         Bounty Index
                     </a>{" "}
@@ -59,20 +59,20 @@ const HeroText = () => {
                 >
                     <a
                         href="#work"
-                        data-cursor-tag="Fleet"
-                        className="group inline-flex items-center gap-2 rounded-md border border-[var(--color-aqua)]/80 bg-[var(--color-aqua)]/25 backdrop-blur-sm px-5 py-2.5 font-mono text-sm font-medium text-[var(--color-aqua)] shadow-[0_0_20px_-6px_rgba(125,211,252,0.5)] transition hover:border-[var(--color-aqua)] hover:bg-[var(--color-aqua)]/35"
+                        data-cursor-tag="Projects"
+                        className="group inline-flex items-center gap-2 rounded-md bg-white px-5 py-2.5 text-sm font-semibold text-[var(--color-midnight)] transition hover:bg-white/90"
                     >
-                        [ view the fleet ]
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="transition-transform group-hover:translate-x-0.5">
+                        See projects
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="transition-transform group-hover:translate-x-0.5">
                             <path d="M5 12h14M13 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                     </a>
                     <a
                         href="#contact"
-                        data-cursor-tag="Comms"
-                        className="inline-flex items-center gap-2 rounded-md border border-white/40 bg-black/30 backdrop-blur-sm px-5 py-2.5 font-mono text-sm text-white transition hover:border-white/70 hover:bg-black/50"
+                        data-cursor-tag="Contact"
+                        className="inline-flex items-center gap-2 rounded-md border border-white/30 px-5 py-2.5 text-sm text-white transition hover:border-white/60"
                     >
-                        [ open channel ]
+                        Get in touch
                     </a>
                 </motion.div>
             </div>

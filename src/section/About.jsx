@@ -19,10 +19,8 @@ const CommitGraph = ({ user }) => (
     />
 )
 
-// Small terminal-style panel header with a filename tag.
 const PanelTag = ({ children }) => (
-    <div className="mb-3 flex items-center gap-2 font-mono text-[10px] text-white/60">
-        <span className="inline-block size-1.5 rounded-full bg-[var(--color-aqua)]/60" />
+    <div className="mb-3 text-[10px] uppercase tracking-[0.18em] text-white/45">
         {children}
     </div>
 )
@@ -30,23 +28,26 @@ const PanelTag = ({ children }) => (
 const About = () => {
     return (
         <section id="about" className='c-space mt-16 md:mt-24'>
-            <SectionHeading>Origin Log <span className="text-neutral-500 font-normal text-[0.5em] align-middle ml-2 tracking-wide">/ About</span></SectionHeading>
+            <SectionHeading>About</SectionHeading>
 
-            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 font-mono text-[11px] uppercase tracking-[0.18em] text-neutral-400">
-                <span><span className="text-[var(--color-aqua)]">›</span> 2+ yr shipping</span>
-                <span className="text-white/25">·</span>
-                <span><span className="text-[var(--color-aqua)]">›</span> React · Next · Node · Python</span>
-                <span className="text-white/25">·</span>
-                <span><span className="text-[var(--color-aqua)]">›</span> Raipur, IN <span className="text-white/40">(UTC+5:30 · overlaps EU + US-east AM)</span></span>
-                <span className="text-white/25">·</span>
-                <span className="inline-flex items-center gap-1.5"><span className="relative flex size-1.5"><span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--color-mint)] opacity-70" /><span className="relative inline-flex size-1.5 rounded-full bg-[var(--color-mint)]" /></span><span className="text-[var(--color-mint)]">open to remote · async-first</span></span>
+            <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-white/60">
+                <span>2+ yr shipping</span>
+                <span className="text-white/20">·</span>
+                <span>React · Next · Node · Python</span>
+                <span className="text-white/20">·</span>
+                <span>Raipur, IN <span className="text-white/35">(UTC+5:30)</span></span>
+                <span className="text-white/20">·</span>
+                <span className="inline-flex items-center gap-2 text-[var(--color-mint)]">
+                    <span className="size-1.5 rounded-full bg-[var(--color-mint)]" />
+                    Open to remote
+                </span>
             </div>
 
             <div className="grid grid-cols-1 gap-4 md:grid-cols-6 md:auto-rows-[18rem] mt-8">
 
                 {/* grid 1 — PILOT ID */}
                 <div className="flex flex-col grid-default-color grid-1">
-                    <PanelTag>~/pilot.dat</PanelTag>
+                    <PanelTag>profile</PanelTag>
                     <img
                         src="assets/971.webp"
                         alt=""
@@ -55,14 +56,14 @@ const About = () => {
                     />
                     <div className="z-10 mt-auto">
                         <p className='headtext'>Hi, I'm Varun Shukla</p>
-                        <p className='subtext'>Full-stack pilot fluent in React, Next.js, and machine learning — shipping fast, user-friendly product surfaces with smart, data-driven systems onboard.</p>
+                        <p className='subtext'>Full-stack engineer fluent in React, Next.js, and machine learning. I ship fast, user-friendly product surfaces backed by smart, data-driven systems.</p>
                     </div>
                     <div className="absolute inset-x-0 pointer-events-none -bottom-4 h-1/2 sm:h-1/3 bg-gradient-to-t from-[var(--color-midnight)]"></div>
                 </div>
 
                 {/* grid 2 — PRINCIPLES */}
                 <div className="grid-default-color grid-2 flex flex-col">
-                    <PanelTag>~/manifesto.md</PanelTag>
+                    <PanelTag>what i build</PanelTag>
                     <div className="font-mono text-[13px] leading-relaxed">
                         <div className="text-white/60">$ cat manifesto.md</div>
                         <div className="mt-3 text-white/90"># crafted, not just coded</div>
@@ -82,14 +83,13 @@ const About = () => {
 
                 {/* grid 3 — COORDINATES */}
                 <div className="grid-black-color grid-3">
-                    <PanelTag>~/coords</PanelTag>
+                    <PanelTag>location</PanelTag>
                     <div className="z-10 w-[50%]">
-                        <p className="headtext">Coordinates</p>
-                        <p className='subtext'>Broadcasting from Sector IN-3 · Raipur. Open to remote worldwide.</p>
-                        <div className="mt-3 font-mono text-[11px] text-white/60">
-                            <div>LAT  21.2514° N</div>
-                            <div>LONG 81.6296° E</div>
-                            <div>UTC  +05:30</div>
+                        <p className="headtext">Based in Raipur</p>
+                        <p className='subtext'>Working remote worldwide.</p>
+                        <div className="mt-3 font-mono text-[11px] text-white/50">
+                            <div>21.25° N  ·  81.63° E</div>
+                            <div>UTC +05:30</div>
                         </div>
                     </div>
                     <figure className='absolute left-[30%] top-[10%]'>
@@ -99,7 +99,7 @@ const About = () => {
 
                 {/* grid 4 — CHANNEL */}
                 <div className="grid-special-color grid-4">
-                    <PanelTag>~/comms</PanelTag>
+                    <PanelTag>contact</PanelTag>
                     <div className="flex flex-col items-center justify-center gap-4 size-full">
                         <p className="text-center headtext">
                             Ready to launch something?
@@ -110,15 +110,14 @@ const About = () => {
 
                 {/* grid 5 — LOADOUT */}
                 <div className="grid-default-color grid-5">
-                    <PanelTag>~/loadout</PanelTag>
+                    <PanelTag>stack</PanelTag>
                     <div className="z-10 w-[55%]">
-                        <p className="headtext">Loadout</p>
+                        <p className="headtext">Stack</p>
                         <div className="mt-3 space-y-1.5 font-mono text-[11px] leading-relaxed">
-                            <div><span className="text-[var(--color-aqua)]">frontend</span>  <span className="text-white/50">›</span> <span className="text-white/85">React · Next · TS · Tailwind · Motion</span></div>
-                            <div><span className="text-[var(--color-aqua)]">3d/webgl</span>  <span className="text-white/50">›</span> <span className="text-white/85">Three.js · R3F · Drei</span></div>
-                            <div><span className="text-[var(--color-aqua)]">backend</span>   <span className="text-white/50">›</span> <span className="text-white/85">Node · Python · Postgres · Drizzle · Neon</span></div>
-                            <div><span className="text-[var(--color-aqua)]">ai/ml</span>     <span className="text-white/50">›</span> <span className="text-white/85">LLM APIs · YOLO · OpenCV · PyTorch</span></div>
-                            <div><span className="text-[var(--color-aqua)]">cloud</span>     <span className="text-white/50">›</span> <span className="text-white/85">Firebase · Vercel · Serverless</span></div>
+                            <div><span className="text-white/55">frontend</span>  <span className="text-white/30">·</span> <span className="text-white/90">React · Next · TS · Tailwind · Motion</span></div>
+                            <div><span className="text-white/55">backend</span>   <span className="text-white/30">·</span> <span className="text-white/90">Node · Python · Postgres · Drizzle · Neon</span></div>
+                            <div><span className="text-white/55">ai/ml</span>     <span className="text-white/30">·</span> <span className="text-white/90">LLM APIs · YOLO · OpenCV · PyTorch</span></div>
+                            <div><span className="text-white/55">cloud</span>     <span className="text-white/30">·</span> <span className="text-white/90">Firebase · Vercel · Serverless</span></div>
                         </div>
                     </div>
                     <div className="absolute inset-0 md:inset-y-9 w-full h-full start-[50%] md:scale-125 ">
@@ -142,7 +141,7 @@ const About = () => {
                 />
                 <div className="relative">
                     <div className="flex items-center justify-between gap-3">
-                        <PanelTag>~/commits.log</PanelTag>
+                        <PanelTag>activity</PanelTag>
                         <a
                             href="https://github.com/Varun2024"
                             target="_blank"

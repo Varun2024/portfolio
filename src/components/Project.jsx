@@ -50,7 +50,7 @@ const Project = ({ title, description, subDescription, href, sourceHref, image, 
                             rel="noreferrer noopener"
                             onClick={(e) => e.stopPropagation()}
                             data-cursor-tag="Live"
-                            className="inline-flex items-center gap-1.5 rounded-md border border-[var(--color-aqua)]/50 bg-[var(--color-aqua)]/10 px-2.5 py-1 font-mono text-[11px] uppercase tracking-[0.16em] text-[var(--color-aqua)] hover:border-[var(--color-aqua)] hover:bg-[var(--color-aqua)]/20 transition"
+                            className="inline-flex items-center gap-1.5 rounded-md border border-white/25 bg-white/5 px-2.5 py-1 text-[12px] font-medium text-white/90 hover:border-white/60 hover:bg-white/10 transition"
                         >
                             Live
                             <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -65,17 +65,17 @@ const Project = ({ title, description, subDescription, href, sourceHref, image, 
                             rel="noreferrer noopener"
                             onClick={(e) => e.stopPropagation()}
                             data-cursor-tag="Source"
-                            className="font-mono text-[11px] uppercase tracking-[0.16em] text-neutral-400 hover:text-[var(--color-aqua)] transition-colors"
+                            className="text-[12px] text-neutral-400 hover:text-white transition-colors"
                         >
-                            [ src ]
+                            Source
                         </a>
                     )}
                     <button
                         onClick={() => setIsHidden(true)}
-                        data-cursor-tag="Scan"
+                        data-cursor-tag="Details"
                         className='flex items-center gap-1.5 cursor-pointer hover-animation text-sm sm:text-base transition-transform duration-300 group-hover:-translate-x-1'
                     >
-                        Scan craft
+                        Details
                         <img src="assets/arrow-right.svg" alt="" aria-hidden="true" className='size-4 sm:size-5 transition-transform duration-300 group-hover:translate-x-1' />
                     </button>
                 </div>
