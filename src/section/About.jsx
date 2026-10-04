@@ -30,7 +30,7 @@ const PanelTag = ({ children }) => (
 const About = () => {
     return (
         <section id="about" className='c-space mt-16 md:mt-24'>
-            <SectionHeading>Origin Log</SectionHeading>
+            <SectionHeading>Origin Log <span className="text-neutral-500 font-normal text-[0.5em] align-middle ml-2 tracking-wide">/ About</span></SectionHeading>
 
             <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 font-mono text-[11px] uppercase tracking-[0.18em] text-neutral-400">
                 <span><span className="text-[var(--color-aqua)]">›</span> 2+ yr shipping</span>
@@ -48,7 +48,7 @@ const About = () => {
                 <div className="flex flex-col grid-default-color grid-1">
                     <PanelTag>~/pilot.dat</PanelTag>
                     <img
-                        src="assets/971.jpg"
+                        src="assets/971.webp"
                         alt=""
                         aria-hidden="true"
                         className='absolute scale-[1.75] -right-[5rem] -top-[1rem] md:scale-[3] md:left-50 md:inset-y-10 lg:scale-[2.5rem] opacity-80'

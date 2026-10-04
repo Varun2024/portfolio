@@ -71,7 +71,7 @@ const Exp = () => {
 
     return (
         <section id="experience" className="c-space section-spacing">
-            <SectionHeading>Mission Log</SectionHeading>
+            <SectionHeading>Mission Log <span className="text-neutral-500 font-normal text-[0.5em] align-middle ml-2 tracking-wide">/ Experience</span></SectionHeading>
             <p className="mt-3 max-w-xl text-sm text-neutral-400 md:text-base">
                 Deployments across product, research, and freelance space — most recent orbit first.
             </p>

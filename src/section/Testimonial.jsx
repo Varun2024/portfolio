@@ -12,7 +12,7 @@ const fallbackTestimonials = [
     role: "Owner, Sasha",
     quote:
       "Ecom made easy work of what used to be a tedious process. The support is top-notch.",
-    avatar: "/assets/sasha.png",
+    avatar: "/assets/sasha.webp",
     createdAt: 1,
   },
   {
@@ -21,7 +21,7 @@ const fallbackTestimonials = [
     role: "Event Organiser, TEDxBITD",
     quote:
       "Real-time updates during peak traffic saved us hours. The admin UX is minimal but powerful.",
-    avatar: "/assets/tedx.png",
+    avatar: "/assets/tedx.webp",
     createdAt: 2,
   },
   {
@@ -246,7 +246,7 @@ export default function Testimonials({ autoRotate = true, rotateInterval = 6000 
           <div className="mb-4 flex items-center justify-between gap-3 border-b border-white/5 pb-3">
             <div className="flex items-center gap-2 font-mono text-[10px] text-white/60">
               <span className="inline-block size-1.5 rounded-full bg-[var(--color-aqua)]/60" />
-              ~/signals.log
+              ~/signals.log <span className="text-white/40">— testimonials</span>
             </div>
             <div className="flex items-center gap-1">
               <button

@@ -16,7 +16,7 @@ const Footer = () => {
                     <img src={social.icon} className='w-5 h-5' alt={social.name}  />
                 </a>))}
         </div>
-        <p>©️ 2025 Varun. All rights reserved</p>
+        <p>©️ {new Date().getFullYear()} Varun. All rights reserved</p>
     </section>
   )
 }

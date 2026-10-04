@@ -128,12 +128,23 @@ const Navbar = () => {
                     <div className="relative flex items-center justify-between gap-3 rounded-full border border-white/10 bg-[var(--color-primary)]/70 px-3 sm:pl-5 sm:pr-3 py-2 backdrop-blur-xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.6)]">
                         <a
                             href="#home"
-                            className="flex items-center gap-2 text-sm font-semibold text-white"
+                            className="flex items-center gap-2.5 text-sm font-semibold text-white"
                         >
                             <span className="grid size-7 place-items-center rounded-md border border-[var(--color-aqua)]/40 bg-[var(--color-aqua)]/10 font-mono text-xs font-bold text-[var(--color-aqua)]">
                                 V
                             </span>
                             <span className="hidden sm:inline tracking-wide">Varun</span>
+                            <span
+                                aria-label="Open to opportunities"
+                                title="Open to opportunities"
+                                className="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-[var(--color-mint)]/40 bg-[var(--color-mint)]/10 px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-mint)]"
+                            >
+                                <span className="relative inline-flex size-1.5">
+                                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--color-mint)] opacity-70" />
+                                    <span className="relative inline-flex size-1.5 rounded-full bg-[var(--color-mint)]" />
+                                </span>
+                                open to work
+                            </span>
                         </a>
 
                         <nav className="hidden md:flex">
@@ -142,15 +153,22 @@ const Navbar = () => {
 
                         <div className="flex items-center gap-2">
                             <a
+                                href="#contact"
+                                data-cursor-tag="Hire"
+                                className="hidden md:inline-flex items-center gap-1.5 rounded-md border border-white/15 bg-white/5 px-3 py-1.5 font-mono text-sm text-neutral-300 transition hover:border-white/40 hover:text-white"
+                            >
+                                Hire
+                            </a>
+                            <a
                                 href={RESUME_LINK}
                                 onClick={openResume}
                                 target="_blank"
                                 rel="noreferrer"
                                 data-cursor-tag="Read"
-                                className="hidden sm:inline-flex items-center gap-1.5 rounded-md border border-[var(--color-aqua)]/40 bg-[var(--color-aqua)]/10 px-4 py-1.5 font-mono text-sm text-[var(--color-aqua)] transition hover:border-[var(--color-aqua)]/70 hover:bg-[var(--color-aqua)]/20"
+                                className="hidden sm:inline-flex items-center gap-1.5 rounded-md border border-[var(--color-aqua)] bg-[var(--color-aqua)]/15 px-4 py-1.5 font-mono text-sm font-semibold text-[var(--color-aqua)] shadow-[0_0_18px_-6px_var(--color-aqua)] transition hover:bg-[var(--color-aqua)]/25"
                             >
                                 Resume
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                                     <path d="M7 17L17 7M9 7h8v8" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>
                             </a>

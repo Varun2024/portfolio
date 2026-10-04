@@ -4,8 +4,9 @@ export const myProjects = [
     role: "Solo",
     title: "Bounty Index",
     description:
-      "Every public bug bounty program across five platforms — unified, filterable, sorted by max payout.",
+      "Every public bug bounty program across five platforms — unified, filterable, sorted by max payout. 2,000+ weekly hunters.",
     subDescription: [
+      "Live product — 2,000+ weekly bug bounty hunters hitting the index.",
       "Indexed 1,160+ programs from HackerOne, Bugcrowd, Intigriti, YesWeHack, and Federacy into one live table.",
       "Built a scope-lookup search that resolves a domain to every in-scope program it appears in.",
       "Shipped keyboard-first navigation (`/`, `j`/`k`, `↵`) and URL-driven filters for asset type and min payout.",
@@ -14,7 +15,7 @@ export const myProjects = [
     href: "https://bountyindex.in",
     sourceHref: "https://github.com/Varun2024/Bounty-index",
     logo: "",
-    image: "/assets/bounty-index.png",
+    image: "/assets/bounty-index.webp",
     tags: [
       { id: 1, name: "Next.js 16", path: "/assets/logos/next.svg" },
       { id: 2, name: "TypeScript", path: "/assets/logos/typescript.svg" },
@@ -37,7 +38,7 @@ export const myProjects = [
     href: "https://earth-nasa.vercel.app",
     sourceHref: "https://github.com/Varun2024/Earth-NASA",
     logo: "",
-    image: "/assets/earth-nasa.png",
+    image: "/assets/earth-nasa.webp",
     tags: [
       { id: 1, name: "Next.js", path: "/assets/logos/next.svg" },
       { id: 2, name: "TypeScript", path: "/assets/logos/typescript.svg" },
@@ -59,7 +60,7 @@ export const myProjects = [
     href: "https://navui-hw7m.vercel.app/",
     sourceHref: "https://github.com/Varun2024/navui",
     logo: "",
-    image: "/assets/navui.png",
+    image: "/assets/navui.webp",
     tags: [
       {
         id: 1,
@@ -97,7 +98,7 @@ export const myProjects = [
     href: "https://bb-bot.vercel.app/",
     sourceHref: "https://github.com/Varun2024/BB-bot",
     logo: "",
-    image: "/assets/bb-bot-hero.png",
+    image: "/assets/bb-bot-hero.webp",
     tags: [
       {
         id: 1,
@@ -137,7 +138,7 @@ export const myProjects = [
     href: "https://sashastore.in/",
     sourceHref: "https://github.com/Varun2024/Sasha-ecom",
     logo: "",
-    image: "/assets/sasha.png",
+    image: "/assets/sasha.webp",
     tags: [
       {
         id: 1,
@@ -180,7 +181,7 @@ export const myProjects = [
     ],
     href: "https://rentit-66e6c.web.app/categories",
     logo: "",
-    image: "/assets/renitit.png",
+    image: "/assets/renitit.webp",
     tags: [
       {
         id: 1,
@@ -223,7 +224,7 @@ export const myProjects = [
     ],
     href: "https://tedxbitd.in/",
     logo: "",
-    image: "/assets/tedx.png",
+    image: "/assets/tedx.webp",
     tags: [
       {
         id: 1,

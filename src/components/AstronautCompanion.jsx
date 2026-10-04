@@ -89,41 +89,27 @@ const AstronautGlyph = () => (
         viewBox="0 0 40 40"
         className="size-8 sm:size-9"
         aria-hidden="true"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        style={{ color: "var(--color-aqua)" }}
     >
-        {/* body */}
-        <path
-            d="M13 18 C 13 12 27 12 27 18 L 27 30 C 27 33 24 33 20 33 C 16 33 13 33 13 30 Z"
-            fill="#e74c3c"
-        />
-        {/* leg */}
-        <path
-            d="M22 33 L 28 33 L 28 36 L 22 36 Z"
-            fill="#c93727"
-        />
-        {/* backpack */}
-        <path
-            d="M27 20 L 30 20 L 30 26 L 27 26 Z"
-            fill="#c93727"
-        />
-        {/* helmet visor */}
-        <ellipse
-            cx="21"
-            cy="18"
-            rx="6"
-            ry="4.5"
-            fill="#0f3d54"
-        />
-        <ellipse
-            cx="22"
-            cy="17"
-            rx="2.2"
-            ry="1.5"
-            fill="#4bb6cf"
-            opacity="0.9"
-        />
-        {/* antenna */}
-        <rect x="16" y="9" width="2" height="4" fill="#f4f4f4" />
-        <rect x="14.5" y="8" width="5" height="2" fill="#e0e0e0" />
+        <circle cx="20" cy="20" r="13" opacity="0.35" />
+        <circle cx="20" cy="20" r="8" opacity="0.6" />
+        <circle cx="20" cy="20" r="2.2" fill="currentColor" stroke="none" />
+        <path d="M20 20 L 31 13" opacity="0.9">
+            <animateTransform
+                attributeName="transform"
+                type="rotate"
+                from="0 20 20"
+                to="360 20 20"
+                dur="3.2s"
+                repeatCount="indefinite"
+            />
+        </path>
+        <path d="M7 20 L 10 20 M30 20 L 33 20 M20 7 L 20 10 M20 30 L 20 33" opacity="0.7" />
     </svg>
 )
 

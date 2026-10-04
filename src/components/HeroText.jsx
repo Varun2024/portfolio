@@ -18,14 +18,16 @@ const HeroText = () => {
                     transition={{ delay: 0.4, duration: 0.7 }}
                     className="font-semibold text-4xl sm:text-5xl md:text-6xl leading-[1.05] tracking-tight"
                 >
-                    Hi, I&rsquo;m <span className="text-white">Varun</span> —<br />
-                    a full-stack engineer<br />
-                    who{" "}
+                    Shipping <span className="text-[var(--color-aqua)]">AI-native</span><br />
+                    product that{" "}
                     <span className="inline-flex min-w-[5.5ch] sm:min-w-[6ch] align-baseline">
                         <FlipWords
-                            words={["ships", "tests", "learns"]}
+                            words={["ships", "scales", "earns"]}
                             className="font-semibold text-[var(--color-aqua)]"
                         />
+                    </span><br />
+                    <span className="text-white/80 text-2xl sm:text-3xl md:text-4xl font-normal">
+                        I&rsquo;m Varun — full-stack engineer.
                     </span>
                 </motion.h1>
 
@@ -36,7 +38,7 @@ const HeroText = () => {
                     transition={{ delay: 0.75, duration: 0.6 }}
                     className="max-w-md text-base sm:text-lg text-white leading-relaxed [text-shadow:0_1px_12px_rgba(0,0,0,0.65)]"
                 >
-                    Shipping AI-native product at Flux Fortify. Latest side ship:{" "}
+                    Currently at Flux Fortify. Latest side ship:{" "}
                     <a
                         href="https://bountyindex.in"
                         target="_blank"
@@ -45,7 +47,7 @@ const HeroText = () => {
                     >
                         Bounty Index
                     </a>{" "}
-                    — 1,160+ programs across 5 platforms, live-indexed daily.
+                    — 2,000+ weekly hunters, 1,160+ programs across 5 platforms.
                 </motion.p>
 
                 <motion.div

@@ -101,7 +101,7 @@ const Contact = () => {
                         <span className="size-2.5 rounded-full bg-white/15" />
                         <span className="size-2.5 rounded-full bg-white/15" />
                         <span className="size-2.5 rounded-full bg-white/15" />
-                        <span className="ml-2 font-mono text-[11px] text-white/60">comms.exe — /dev/varun</span>
+                        <span className="ml-2 font-mono text-[11px] text-white/60">comms.exe — contact</span>
                     </div>
 
                     <AnimatePresence>

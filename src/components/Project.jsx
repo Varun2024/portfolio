@@ -43,6 +43,21 @@ const Project = ({ title, description, subDescription, href, sourceHref, image, 
                 </div>
                 </div>
                 <div className="flex items-center gap-3 sm:gap-4">
+                    {href && (
+                        <a
+                            href={href}
+                            target="_blank"
+                            rel="noreferrer noopener"
+                            onClick={(e) => e.stopPropagation()}
+                            data-cursor-tag="Live"
+                            className="inline-flex items-center gap-1.5 rounded-md border border-[var(--color-aqua)]/50 bg-[var(--color-aqua)]/10 px-2.5 py-1 font-mono text-[11px] uppercase tracking-[0.16em] text-[var(--color-aqua)] hover:border-[var(--color-aqua)] hover:bg-[var(--color-aqua)]/20 transition"
+                        >
+                            Live
+                            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                                <path d="M7 17L17 7M9 7h8v8" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </a>
+                    )}
                     {sourceHref && (
                         <a
                             href={sourceHref}
