@@ -61,23 +61,19 @@ const About = () => {
                     <div className="absolute inset-x-0 pointer-events-none -bottom-4 h-1/2 sm:h-1/3 bg-gradient-to-t from-[var(--color-midnight)]"></div>
                 </div>
 
-                {/* grid 2 — PRINCIPLES */}
+                {/* grid 2 — OPINIONS */}
                 <div className="grid-default-color grid-2 flex flex-col">
-                    <PanelTag>what i build</PanelTag>
-                    <div className="font-mono text-[13px] leading-relaxed">
-                        <div className="text-white/60">$ cat manifesto.md</div>
-                        <div className="mt-3 text-white/90"># crafted, not just coded</div>
-                        <div className="mt-3 space-y-1 text-white/70">
-                            <div><span className="text-[var(--color-aqua)]">-</span> SRP    · one job per module</div>
-                            <div><span className="text-[var(--color-aqua)]">-</span> SOLID  · design integrity</div>
-                            <div><span className="text-[var(--color-aqua)]">-</span> DRY    · repeat only intentionally</div>
-                            <div><span className="text-[var(--color-aqua)]">-</span> KISS   · simple beats clever</div>
-                            <div><span className="text-[var(--color-aqua)]">-</span> YAGNI  · ship what earns its spot</div>
-                        </div>
-                        <div className="mt-4 flex items-center gap-1 text-white/60">
-                            <span>$</span>
-                            <span className="inline-block h-3.5 w-1.5 -mb-0.5 bg-[var(--color-aqua)] animate-pulse" />
-                        </div>
+                    <PanelTag>opinions</PanelTag>
+                    <div className="flex flex-col gap-4 text-[14px] leading-relaxed">
+                        <p className="text-white/85">
+                            Ship it rough, then make it good. The second version is cheaper when there's a user complaining about the first.
+                        </p>
+                        <p className="text-white/70">
+                            A specific error message beats a <code className="font-mono text-[12px] text-white/80">try/catch</code> that swallows the problem. If I can't name what failed, I can't fix it.
+                        </p>
+                        <p className="text-white/70">
+                            Delete more code than you add. Dead branches are where bugs sleep.
+                        </p>
                     </div>
                 </div>
 
