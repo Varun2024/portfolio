@@ -6,10 +6,8 @@ import Footer from '../section/Footer'
 import Starfield from '../components/Starfield'
 import { getPostBySlug, posts } from '../content/logs/index.js'
 
-const formatDate = (iso) => {
-    const d = new Date(iso)
-    return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
-}
+const formatDate = (iso) =>
+    new Date(iso).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
 
 marked.setOptions({ gfm: true, breaks: false })
 
@@ -22,7 +20,12 @@ const LogPost = () => {
         if (post) document.title = `${post.title} — Varun`
     }, [post])
 
-    const html = useMemo(() => (post ? marked.parse(post.content) : ''), [post])
+    const html = useMemo(() => {
+        if (!post) return ''
+        // Strip leading '# Title' since the page header already renders it.
+        const stripped = post.content.replace(/^#\s+.*\n+/, '')
+        return marked.parse(stripped)
+    }, [post])
 
     if (!post) return <Navigate to="/logs" replace />
 
@@ -34,24 +37,24 @@ const LogPost = () => {
         <div className="container mx-auto max-w-7xl">
             <Starfield />
             <Navbar />
-            <main className="px-4 sm:px-6 pt-32 pb-24 min-h-screen">
+            <main className="c-space pt-32 pb-24 min-h-screen">
                 <article className="mx-auto max-w-2xl">
                     <Link
                         to="/logs"
-                        className="inline-flex items-center gap-1.5 font-mono text-xs text-neutral-400 hover:text-[var(--color-aqua)] transition-colors"
+                        className="inline-flex items-center gap-1.5 text-[13px] text-white/50 hover:text-white transition-colors"
                     >
-                        <span aria-hidden="true">←</span> all logs
+                        <span aria-hidden="true">←</span> All logs
                     </Link>
 
-                    <header className="mt-8">
-                        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[11px] uppercase tracking-[0.18em] text-neutral-500">
+                    <header className="mt-8 border-b border-white/10 pb-6">
+                        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[12px] text-white/45">
                             <time dateTime={post.date}>{formatDate(post.date)}</time>
-                            <span aria-hidden="true">·</span>
-                            <span className="text-[var(--color-aqua)]/80">{post.project}</span>
-                            <span aria-hidden="true">·</span>
+                            <span aria-hidden="true" className="text-white/20">·</span>
+                            <span>{post.project}</span>
+                            <span aria-hidden="true" className="text-white/20">·</span>
                             <span>{post.readMinutes} min read</span>
                         </div>
-                        <h1 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-semibold text-white leading-[1.1]">
+                        <h1 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl text-white leading-[1.1] tracking-tight">
                             {post.title}
                         </h1>
                     </header>
@@ -61,14 +64,14 @@ const LogPost = () => {
                         dangerouslySetInnerHTML={{ __html: html }}
                     />
 
-                    <nav className="mt-16 flex flex-col sm:flex-row gap-4 justify-between border-t border-white/10 pt-8">
+                    <nav className="mt-16 border-t border-white/10 pt-6 flex flex-col sm:flex-row gap-3 justify-between">
                         {prev ? (
                             <Link
                                 to={`/logs/${prev.slug}`}
-                                className="group flex-1 rounded-lg border border-white/10 p-4 hover:border-[var(--color-aqua)]/40 transition"
+                                className="group flex-1 py-3 sm:py-4 -mx-3 px-3 rounded-md hover:bg-white/[0.02] transition-colors"
                             >
-                                <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-neutral-500">Older</div>
-                                <div className="mt-1 text-sm text-white group-hover:text-[var(--color-aqua)] transition-colors">
+                                <div className="text-[11px] text-white/40">← Older</div>
+                                <div className="mt-1 text-sm text-white/85 group-hover:text-white transition-colors line-clamp-1">
                                     {prev.title}
                                 </div>
                             </Link>
@@ -76,10 +79,10 @@ const LogPost = () => {
                         {next ? (
                             <Link
                                 to={`/logs/${next.slug}`}
-                                className="group flex-1 rounded-lg border border-white/10 p-4 hover:border-[var(--color-aqua)]/40 transition sm:text-right"
+                                className="group flex-1 py-3 sm:py-4 -mx-3 px-3 rounded-md hover:bg-white/[0.02] transition-colors sm:text-right"
                             >
-                                <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-neutral-500">Newer</div>
-                                <div className="mt-1 text-sm text-white group-hover:text-[var(--color-aqua)] transition-colors">
+                                <div className="text-[11px] text-white/40">Newer →</div>
+                                <div className="mt-1 text-sm text-white/85 group-hover:text-white transition-colors line-clamp-1">
                                     {next.title}
                                 </div>
                             </Link>

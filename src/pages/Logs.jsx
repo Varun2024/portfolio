@@ -3,13 +3,10 @@ import { useEffect } from 'react'
 import Navbar from '../section/Navbar'
 import Footer from '../section/Footer'
 import Starfield from '../components/Starfield'
-import SectionHeading from '../components/SectionHeading'
 import { posts } from '../content/logs/index.js'
 
-const formatDate = (iso) => {
-    const d = new Date(iso)
-    return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
-}
+const formatDate = (iso) =>
+    new Date(iso).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
 
 const Logs = () => {
     useEffect(() => {
@@ -20,41 +17,55 @@ const Logs = () => {
         <div className="container mx-auto max-w-7xl">
             <Starfield />
             <Navbar />
-            <main className="px-4 sm:px-6 pt-32 pb-24 min-h-screen">
+            <main className="c-space pt-32 pb-24 min-h-screen">
                 <div className="mx-auto max-w-3xl">
-                    <div className="mb-3 font-mono text-xs uppercase tracking-[0.28em] text-[var(--color-aqua)]/70">
-                        {`// mission_logs`}
-                    </div>
-                    <SectionHeading size="hero">Build logs</SectionHeading>
-                    <p className="mt-6 text-neutral-400 max-w-xl leading-relaxed">
-                        Notes from shipping real things. Decisions, tradeoffs, and the occasional
-                        gotcha — one entry per feature or notable call.
-                    </p>
+                    <header className="border-b border-white/10 pb-6">
+                        <h1 className="font-display text-4xl sm:text-5xl md:text-6xl text-white leading-none tracking-tight">
+                            Build logs
+                        </h1>
+                        <p className="mt-5 text-[15px] sm:text-base text-white/60 max-w-xl leading-relaxed">
+                            Notes from shipping real things. Decisions, tradeoffs, and the occasional
+                            gotcha — one entry per feature or notable call.
+                        </p>
+                        <div className="mt-5 text-[12px] text-white/40">
+                            {posts.length} entries
+                        </div>
+                    </header>
 
-                    <ul className="mt-14 space-y-6">
+                    <ul className="mt-6 divide-y divide-white/[0.06]">
                         {posts.map((post) => (
                             <li key={post.slug}>
                                 <Link
                                     to={`/logs/${post.slug}`}
-                                    className="group block rounded-lg border border-white/10 bg-white/[0.02] p-6 transition hover:border-[var(--color-aqua)]/40 hover:bg-white/[0.04]"
+                                    className="group flex items-start gap-5 sm:gap-6 py-6 -mx-3 sm:-mx-4 px-3 sm:px-4 rounded-lg transition-colors duration-200 hover:bg-white/[0.02]"
                                 >
-                                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[11px] uppercase tracking-[0.18em] text-neutral-500">
-                                        <time dateTime={post.date}>{formatDate(post.date)}</time>
-                                        <span aria-hidden="true">·</span>
-                                        <span className="text-[var(--color-aqua)]/80">{post.project}</span>
-                                        <span aria-hidden="true">·</span>
-                                        <span>{post.readMinutes} min read</span>
+                                    <time
+                                        dateTime={post.date}
+                                        className="shrink-0 w-20 sm:w-24 pt-1 font-mono text-[11px] uppercase tracking-[0.12em] text-white/40"
+                                    >
+                                        {formatDate(post.date)}
+                                    </time>
+                                    <div className="min-w-0 flex-1">
+                                        <h2 className="text-base sm:text-lg font-medium text-white leading-snug">
+                                            {post.title}
+                                        </h2>
+                                        <p className="mt-1 text-[14px] text-white/55 leading-relaxed line-clamp-2">
+                                            {post.excerpt}
+                                        </p>
+                                        <div className="mt-2 flex items-center gap-3 text-[11px] text-white/35">
+                                            <span>{post.project}</span>
+                                            <span aria-hidden="true" className="text-white/20">·</span>
+                                            <span>{post.readMinutes} min read</span>
+                                        </div>
                                     </div>
-                                    <h3 className="mt-3 text-xl sm:text-2xl font-semibold text-white group-hover:text-[var(--color-aqua)] transition-colors">
-                                        {post.title}
-                                    </h3>
-                                    <p className="mt-2 text-neutral-400 leading-relaxed">
-                                        {post.excerpt}
-                                    </p>
-                                    <div className="mt-4 inline-flex items-center gap-1.5 font-mono text-xs text-[var(--color-aqua)]/80 group-hover:text-[var(--color-aqua)]">
-                                        Read log
-                                        <span aria-hidden="true" className="transition-transform group-hover:translate-x-0.5">→</span>
-                                    </div>
+                                    <svg
+                                        width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" strokeWidth="2"
+                                        className="shrink-0 mt-2 text-white/25 transition-all duration-200 group-hover:translate-x-1 group-hover:text-white"
+                                        aria-hidden="true"
+                                    >
+                                        <path d="M9 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
+                                    </svg>
                                 </Link>
                             </li>
                         ))}
