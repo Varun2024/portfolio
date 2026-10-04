@@ -1,9 +1,9 @@
-import { useEffect, useMemo, useRef, useState } from "react";
-import { AnimatePresence, motion as Motion } from "motion/react";
-import { onValue, push, query, ref, limitToLast } from "firebase/database";
-import Alert from "../components/Alert";
-import { database } from "../lib/firebase";
-import { buildDefaultAvatar, resolveAvatar } from "../lib/avatar";
+import { useEffect, useMemo, useRef, useState } from "react"
+import { AnimatePresence, motion as Motion } from "motion/react"
+import { onValue, push, query, ref, limitToLast } from "firebase/database"
+import Alert from "../components/Alert"
+import { database } from "../lib/firebase"
+import { buildDefaultAvatar, resolveAvatar } from "../lib/avatar"
 
 const fallbackTestimonials = [
   {
@@ -33,125 +33,69 @@ const fallbackTestimonials = [
     avatar: "/assets/logos/user.svg",
     createdAt: 3,
   },
-];
+]
 
-export default function Testimonials({ autoRotate = true, rotateInterval = 6000 }) {
-  const [index, setIndex] = useState(0);
-  const [formData, setFormData] = useState({
-    name: "",
-    role: "",
-    quote: "",
-    avatar: "",
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [showAlert, setShowAlert] = useState(false);
-  const [alertType, setAlertType] = useState("success");
-  const [alertMessage, setAlertMessage] = useState("");
-  const [remoteTestimonials, setRemoteTestimonials] = useState([]);
-  const [feedbackOpen, setFeedbackOpen] = useState(false);
-  const firstFieldRef = useRef(null);
+const COUNT_WORDS = ["none", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve"]
 
-  const testimonials = useMemo(() => {
-    if (!remoteTestimonials.length) {
-      return fallbackTestimonials;
-    }
-    return remoteTestimonials;
-  }, [remoteTestimonials]);
+const asWord = (n) => COUNT_WORDS[n] ? `${COUNT_WORDS[n][0].toUpperCase()}${COUNT_WORDS[n].slice(1)}` : `${n}`
+
+export default function Testimonials() {
+  const [formData, setFormData] = useState({ name: "", role: "", quote: "", avatar: "" })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [showAlert, setShowAlert] = useState(false)
+  const [alertType, setAlertType] = useState("success")
+  const [alertMessage, setAlertMessage] = useState("")
+  const [remoteTestimonials, setRemoteTestimonials] = useState([])
+  const [feedbackOpen, setFeedbackOpen] = useState(false)
+  const firstFieldRef = useRef(null)
+
+  const testimonials = useMemo(
+    () => (remoteTestimonials.length ? remoteTestimonials : fallbackTestimonials),
+    [remoteTestimonials],
+  )
 
   useEffect(() => {
-    const testimonialsRef = query(ref(database, "testimonials"), limitToLast(12));
-
+    const testimonialsRef = query(ref(database, "testimonials"), limitToLast(12))
     const unsubscribe = onValue(testimonialsRef, (snapshot) => {
-      const value = snapshot.val();
-
+      const value = snapshot.val()
       if (!value) {
-        setRemoteTestimonials([]);
-        return;
+        setRemoteTestimonials([])
+        return
       }
-
       const parsed = Object.entries(value)
         .map(([id, item]) => {
           const name = item?.name || "Anonymous"
-          const seed = name || id
           return {
             id,
             name,
             role: item?.role || "Guest",
             quote: item?.quote || "",
-            avatar: resolveAvatar(item?.avatar, seed),
+            avatar: resolveAvatar(item?.avatar, name || id),
             createdAt: Number(item?.createdAt) || 0,
           }
         })
         .filter((item) => item.quote)
-        .sort((a, b) => b.createdAt - a.createdAt);
-
-      setRemoteTestimonials(parsed);
-    });
-
-    return () => unsubscribe();
-  }, []);
-
-  useEffect(() => {
-    if (index >= testimonials.length) {
-      setIndex(0);
-    }
-  }, [index, testimonials.length]);
-
-  useEffect(() => {
-    if (!testimonials.length) {
-      return;
-    }
-
-    const params = new URLSearchParams(window.location.search);
-    const selectedId = params.get("testimonial");
-    if (!selectedId) {
-      return;
-    }
-
-    const selectedIndex = testimonials.findIndex((item) => item.id === selectedId);
-    if (selectedIndex >= 0) {
-      setIndex(selectedIndex);
-    }
-  }, [testimonials]);
-
-  useEffect(() => {
-    if (!autoRotate || testimonials.length <= 1) {
-      return;
-    }
-
-    const id = setInterval(() => {
-      setIndex((i) => (i + 1) % testimonials.length);
-    }, rotateInterval);
-
-    return () => clearInterval(id);
-  }, [autoRotate, rotateInterval, testimonials.length]);
+        .sort((a, b) => b.createdAt - a.createdAt)
+      setRemoteTestimonials(parsed)
+    })
+    return () => unsubscribe()
+  }, [])
 
   const showAlertMessage = (type, message) => {
-    setAlertType(type);
-    setAlertMessage(message);
-    setShowAlert(true);
-    setTimeout(() => {
-      setShowAlert(false);
-    }, 4500);
-  };
-
-  const handlePrev = () => {
-    setIndex((i) => (i - 1 + testimonials.length) % testimonials.length);
-  };
-
-  const handleNext = () => {
-    setIndex((i) => (i + 1) % testimonials.length);
-  };
+    setAlertType(type)
+    setAlertMessage(message)
+    setShowAlert(true)
+    setTimeout(() => setShowAlert(false), 4500)
+  }
 
   const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
+    const { name, value } = event.target
+    setFormData((prev) => ({ ...prev, [name]: value }))
+  }
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
-    setIsSubmitting(true);
-
+    event.preventDefault()
+    setIsSubmitting(true)
     try {
       const newFeedbackRef = await push(ref(database, "testimonials"), {
         name: formData.name.trim(),
@@ -159,261 +103,105 @@ export default function Testimonials({ autoRotate = true, rotateInterval = 6000 
         quote: formData.quote.trim(),
         avatar: formData.avatar.trim(),
         createdAt: Date.now(),
-      });
-
-      const shareLink = `${window.location.origin}${window.location.pathname}?testimonial=${newFeedbackRef.key}#testimonials`;
-
-      setFormData({ name: "", role: "", quote: "", avatar: "" });
-      showAlertMessage("success", `Thanks — your note is in. Share link: ${shareLink}`);
+      })
+      const shareLink = `${window.location.origin}${window.location.pathname}?testimonial=${newFeedbackRef.key}#testimonials`
+      setFormData({ name: "", role: "", quote: "", avatar: "" })
+      setFeedbackOpen(false)
+      showAlertMessage("success", `Thanks — your note is in. Share link: ${shareLink}`)
     } catch {
-      showAlertMessage(
-        "danger",
-        "Could not send — try again shortly."
-      );
+      showAlertMessage("danger", "Could not send — try again shortly.")
     } finally {
-      setIsSubmitting(false);
+      setIsSubmitting(false)
     }
-  };
+  }
 
-  const slideVariants = {
-    enter: {
-      x: 40,
-      opacity: 0,
-      scale: 0.995,
-    },
-    center: {
-      x: 0,
-      opacity: 1,
-      scale: 1,
-      transition: { duration: 0.45 },
-    },
-    exit: {
-      x: -40,
-      opacity: 0,
-      scale: 0.995,
-      transition: { duration: 0.35 },
-    },
-  };
-
-  const activeTestimonial = testimonials[index] || fallbackTestimonials[0];
-
-  const buildShareLink = (testimonialId) => {
-    const currentPath = `${window.location.origin}${window.location.pathname}`;
-    return `${currentPath}?testimonial=${testimonialId}#testimonials`;
-  };
-
-  const shareFeedback = async () => {
-    const shareLink = buildShareLink(activeTestimonial.id);
-
+  const shareOne = async (t) => {
+    const link = `${window.location.origin}${window.location.pathname}?testimonial=${t.id}#testimonials`
     if (navigator.share) {
       try {
-        await navigator.share({
-          title: `Feedback from ${activeTestimonial.name}`,
-          text: activeTestimonial.quote,
-          url: shareLink,
-        });
-        return;
-      } catch {
-        // User canceled share modal or share failed; fallback to clipboard.
-      }
+        await navigator.share({ title: `Feedback from ${t.name}`, text: t.quote, url: link })
+        return
+      } catch { /* fall through */ }
     }
-
     try {
-      await navigator.clipboard.writeText(shareLink);
-      showAlertMessage("success", "Channel link copied. Rebroadcast anywhere.");
+      await navigator.clipboard.writeText(link)
+      showAlertMessage("success", "Link copied.")
     } catch {
-      showAlertMessage("danger", "Unable to copy the channel link on this device.");
+      showAlertMessage("danger", "Could not copy link on this device.")
     }
-  };
+  }
 
-  const shareFeedbackForm = async () => {
-    const formLink = `${window.location.origin}${window.location.pathname}#testimonials`;
-
-    try {
-      await navigator.clipboard.writeText(formLink);
-      showAlertMessage("success", "Channel link copied. Share it anywhere.");
-    } catch {
-      showAlertMessage("danger", "Could not copy channel link on this device.");
-    }
-  };
+  const openForm = () => {
+    setFeedbackOpen(true)
+    setTimeout(() => firstFieldRef.current?.focus(), 300)
+  }
 
   return (
     <section id="testimonials" className="c-space section-spacing">
       {showAlert && <Alert type={alertType} text={alertMessage} />}
 
-      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-6 lg:grid-cols-5">
-        <div className="relative rounded-xl border border-white/10 bg-[var(--color-midnight)] p-5 sm:p-7 lg:col-span-3 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.6)]">
-          <div className="mb-4 flex items-center justify-between gap-3 border-b border-white/5 pb-3">
-            <h3 className="text-sm font-medium text-white/80 tracking-wide">What people say</h3>
-            <div className="flex items-center gap-1">
-              <button
-                aria-label="Previous testimonial"
-                onClick={handlePrev}
-
-                className="rounded-md border border-white/10 p-1.5 text-white/60 hover:border-[var(--color-aqua)]/40 hover:text-[var(--color-aqua)] transition"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
-                </svg>
-              </button>
-              <button
-                aria-label="Next testimonial"
-                onClick={handleNext}
-
-                className="rounded-md border border-white/10 p-1.5 text-white/60 hover:border-[var(--color-aqua)]/40 hover:text-[var(--color-aqua)] transition"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
-            </div>
-          </div>
-
-          <div>
-            <AnimatePresence initial={false} mode="wait">
-              <Motion.blockquote
-                key={`${activeTestimonial.name}-${activeTestimonial.createdAt}`}
-                variants={slideVariants}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                className="w-full"
-              >
-                <div className="flex items-start gap-3 sm:gap-4">
-                  <img
-                    src={activeTestimonial.avatar || buildDefaultAvatar(activeTestimonial.name)}
-                    alt={activeTestimonial.name}
-                    onError={(event) => {
-                      const fallback = buildDefaultAvatar(activeTestimonial.name)
-                      if (event.currentTarget.src !== fallback) {
-                        event.currentTarget.src = fallback
-                      }
-                    }}
-                    className="h-10 w-10 rounded-md object-cover ring-1 ring-[var(--color-aqua)]/30 sm:h-12 sm:w-12 bg-[var(--color-midnight)]"
-                  />
-
-                  <div className="flex-1 border-l-2 border-white/15 pl-4">
-                    <p className="text-[15px] leading-7 text-white/90 sm:text-base sm:leading-relaxed">
-                      {activeTestimonial.quote}
-                    </p>
-                    <div className="mt-4">
-                      <div className="text-[13px] font-medium text-white/90">{activeTestimonial.name}</div>
-                      <div className="text-[12px] text-white/55">{activeTestimonial.role}</div>
-                    </div>
-                    <button
-                      type="button"
-                      onClick={shareFeedback}
-                      className="mt-4 inline-flex items-center gap-1 text-[11px] text-white/50 hover:text-white/85 transition"
-                    >
-                      Share this quote
-                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <path d="M7 17L17 7M9 7h8v8" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-              </Motion.blockquote>
-            </AnimatePresence>
-          </div>
-
-          <div className="mt-5 flex items-center justify-center gap-1.5">
-            {testimonials.map((item, currentIndex) => (
-              <button
-                key={`${item.name}-${item.createdAt}-${currentIndex}`}
-                onClick={() => setIndex(currentIndex)}
-                aria-label={`Show testimonial ${currentIndex + 1}`}
-                className={`h-1 rounded-full transition-all duration-200 ${
-                  currentIndex === index ? "w-6 bg-[var(--color-aqua)]" : "w-2 bg-white/20 hover:bg-white/40"
-                }`}
-              />
-            ))}
+      <div className="mx-auto w-full max-w-6xl">
+        <div className="flex items-end justify-between gap-6 border-b border-white/10 pb-4">
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl text-white leading-none tracking-tight">
+            What people say
+          </h2>
+          <div className="text-[11px] uppercase tracking-[0.22em] text-white/40 pb-1">
+            {asWord(testimonials.length)} so far
           </div>
         </div>
 
-        <aside className="relative overflow-hidden rounded-xl border border-white/10 bg-[var(--color-midnight)] p-6 sm:p-7 lg:col-span-2 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.6)]">
+        <div className="mt-8 columns-1 md:columns-2 gap-6 sm:gap-7 [column-fill:_balance]">
+          {testimonials.map((t) => (
+            <QuoteCard key={t.id} t={t} onShare={() => shareOne(t)} />
+          ))}
+        </div>
+
+        <div className="mt-10 border-t border-white/10 pt-6">
           <AnimatePresence mode="wait" initial={false}>
             {!feedbackOpen ? (
               <Motion.div
                 key="cta"
-                initial={{ opacity: 0, y: 8 }}
+                initial={{ opacity: 0, y: 4 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
-                transition={{ duration: 0.3 }}
-                className="relative flex h-full flex-col"
+                exit={{ opacity: 0, y: -4 }}
+                transition={{ duration: 0.25 }}
+                className="flex flex-wrap items-center justify-between gap-4"
               >
-                <h4 className="text-2xl sm:text-3xl font-semibold text-white leading-tight">
-                  Worked with me? Add a line.
-                </h4>
-                <p className="mt-3 text-sm text-neutral-300/90 leading-relaxed">
-                  Two minutes, lands in the rotation above, you get a link back.
+                <p className="text-sm text-white/55">
+                  Worked with me?{" "}
+                  <span className="text-white/80">Add your line.</span>
                 </p>
-
-                <div className="mt-5 flex items-center gap-2">
-                  <div className="flex -space-x-2">
-                    {testimonials.slice(0, 3).map((t) => (
-                      <img
-                        key={t.id}
-                        src={t.avatar || buildDefaultAvatar(t.name || t.id)}
-                        alt=""
-                        onError={(e) => {
-                          const fallback = buildDefaultAvatar(t.name || t.id)
-                          if (e.currentTarget.src !== fallback) e.currentTarget.src = fallback
-                        }}
-                        className="size-7 rounded-md border-2 border-[var(--color-midnight)] object-cover bg-[var(--color-storm)]"
-                      />
-                    ))}
-                  </div>
-                  <span className="text-xs text-neutral-400">
-                    joining {testimonials.length} others
-                  </span>
-                </div>
-
-                <div className="mt-auto pt-6 flex flex-col gap-2">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setFeedbackOpen(true)
-                      setTimeout(() => firstFieldRef.current?.focus(), 300)
-                    }}
-                    className="group inline-flex w-full items-center justify-center gap-2 rounded-md bg-white px-5 py-3 text-sm font-semibold text-[var(--color-midnight)] transition hover:bg-white/90"
-                  >
-                    Share your take
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="transition-transform group-hover:translate-x-0.5">
-                      <path d="M5 12h14M13 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </button>
-                  <button
-                    type="button"
-                    onClick={shareFeedbackForm}
-                    className="inline-flex w-full items-center justify-center gap-2 rounded-md border border-white/15 px-5 py-2.5 text-xs text-white/70 hover:border-white/35 hover:bg-white/5 transition"
-                  >
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                    Copy share link
-                  </button>
-                </div>
+                <button
+                  type="button"
+                  onClick={openForm}
+                  className="group inline-flex items-center gap-2 rounded-md border border-white/20 bg-white/5 px-4 py-2 text-sm text-white/90 hover:border-white/50 hover:bg-white/10 transition"
+                >
+                  Share your take
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="transition-transform group-hover:translate-x-0.5">
+                    <path d="M5 12h14M13 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </button>
               </Motion.div>
             ) : (
               <Motion.form
                 key="form"
                 onSubmit={handleSubmit}
-                initial={{ opacity: 0, y: 8 }}
+                initial={{ opacity: 0, y: 4 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
-                transition={{ duration: 0.3 }}
-                className="relative space-y-3"
+                exit={{ opacity: 0, y: -4 }}
+                transition={{ duration: 0.25 }}
+                className="mx-auto max-w-xl space-y-4"
               >
-                <div className="flex items-center justify-end">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-base font-medium text-white/85">Share your take</h3>
                   <button
                     type="button"
                     onClick={() => setFeedbackOpen(false)}
-                    className="text-xs text-neutral-400 hover:text-white transition"
+                    className="text-xs text-white/50 hover:text-white transition"
                   >
-                    ← back
+                    Cancel
                   </button>
                 </div>
-
                 <div>
                   <label htmlFor="feedback-name" className="field-label">Name</label>
                   <input
@@ -440,10 +228,14 @@ export default function Testimonials({ autoRotate = true, rotateInterval = 6000 
                     onChange={handleChange}
                     required
                   />
-                  <p className="mt-1 text-[11px] text-white/40">If your current title doesn't show your tech background, add it here.</p>
+                  <p className="mt-1 text-[11px] text-white/40">
+                    If your current title doesn't show your tech background, add it here.
+                  </p>
                 </div>
                 <div>
-                  <label htmlFor="feedback-quote" className="field-label">What was it like working together?</label>
+                  <label htmlFor="feedback-quote" className="field-label">
+                    What was it like working together?
+                  </label>
                   <textarea
                     id="feedback-quote"
                     name="quote"
@@ -455,8 +247,8 @@ export default function Testimonials({ autoRotate = true, rotateInterval = 6000 
                     required
                   />
                 </div>
-                <details className="text-xs text-neutral-400">
-                  <summary className="cursor-pointer hover:text-neutral-200 transition select-none">
+                <details className="text-xs text-white/50">
+                  <summary className="cursor-pointer hover:text-white/80 transition select-none">
                     Add avatar URL (optional)
                   </summary>
                   <input
@@ -469,7 +261,6 @@ export default function Testimonials({ autoRotate = true, rotateInterval = 6000 
                     onChange={handleChange}
                   />
                 </details>
-
                 <button
                   type="submit"
                   disabled={isSubmitting}
@@ -480,8 +271,48 @@ export default function Testimonials({ autoRotate = true, rotateInterval = 6000 
               </Motion.form>
             )}
           </AnimatePresence>
-        </aside>
+        </div>
       </div>
     </section>
-  );
+  )
 }
+
+const QuoteCard = ({ t, onShare }) => (
+  <figure className="relative mb-6 sm:mb-7 break-inside-avoid rounded-xl border border-white/10 bg-[var(--color-midnight)]/60 px-6 py-7 sm:px-7 sm:py-8">
+    <span
+      aria-hidden="true"
+      className="pointer-events-none absolute left-4 top-0 font-display text-[6rem] leading-none text-white/[0.07] select-none"
+    >
+      &ldquo;
+    </span>
+    <blockquote className="relative text-[15px] leading-relaxed text-white/85 sm:text-base sm:leading-[1.7]">
+      {t.quote}
+    </blockquote>
+    <figcaption className="mt-6 flex items-center gap-3 border-t border-white/5 pt-4">
+      <img
+        src={t.avatar || buildDefaultAvatar(t.name)}
+        alt=""
+        aria-hidden="true"
+        onError={(event) => {
+          const fallback = buildDefaultAvatar(t.name)
+          if (event.currentTarget.src !== fallback) event.currentTarget.src = fallback
+        }}
+        className="size-9 shrink-0 rounded-full object-cover ring-1 ring-white/15 bg-[var(--color-storm)]"
+      />
+      <div className="min-w-0 flex-1">
+        <div className="text-[13px] font-medium text-white truncate">{t.name}</div>
+        <div className="text-[11px] text-white/50 truncate">{t.role}</div>
+      </div>
+      <button
+        type="button"
+        onClick={onShare}
+        aria-label={`Share ${t.name}'s quote`}
+        className="shrink-0 rounded-md p-1.5 text-white/35 hover:text-white hover:bg-white/5 transition"
+      >
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </button>
+    </figcaption>
+  </figure>
+)
