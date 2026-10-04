@@ -1,9 +1,13 @@
+import { useState } from "react"
 import Project from "../components/Project"
+import ProjectDetails from "../components/ProjectDetails"
 import { myProjects } from "../constants"
 import SectionHeading from "../components/SectionHeading"
 import Radar from "../components/Radar"
 
 const Projects = () => {
+  const featured = myProjects.find(p => p.id === 11)
+  const rest = myProjects.filter(p => p.id !== 11)
   return (
     <section id="work" className="relative c-space section-spacing px-1 sm:px-0">
       <div className="flex items-start justify-between gap-4">
@@ -13,98 +17,103 @@ const Projects = () => {
           <Radar blipCount={myProjects.length} className="size-16 sm:size-20" />
         </div>
       </div>
-      {/* featured case study */}
-      <BountyIndexCaseStudy />
-      {/* divider */}
-      <div className="bg-gradient-to-r from-transparent via-neutral-700 to-transparent mt-8 sm:mt-12 h-px w-full" />
-      {myProjects.filter(p => p.id !== 11).map((project) => (
+      <div className="mt-8 sm:mt-12 h-px w-full bg-gradient-to-r from-transparent via-neutral-700 to-transparent" />
+      {featured && <FeaturedRow project={featured} />}
+      <div className="h-px w-full bg-white/[0.06]" />
+      {rest.map((project) => (
         <Project key={project.id} {...project} />
       ))}
     </section>
   )
 }
 
-const BountyIndexCaseStudy = () => (
-  <article className="mt-10 sm:mt-14 rounded-xl border border-[var(--color-aqua)]/25 bg-gradient-to-br from-[var(--color-midnight)] via-[var(--color-primary)]/60 to-[var(--color-midnight)] p-5 sm:p-8 shadow-[0_30px_80px_-40px_rgba(125,211,252,0.25)]">
-    <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/5 pb-4">
-      <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--color-aqua)]">
-        <span className="inline-block size-1.5 rounded-full bg-[var(--color-aqua)] shadow-[0_0_8px_var(--color-aqua)]" />
-        featured case study
-      </div>
-      <div className="flex items-center gap-2">
+const FeaturedRow = ({ project }) => {
+  const [open, setOpen] = useState(false)
+  const stop = (e) => e.stopPropagation()
+  return (
+    <>
+      <div className='group relative py-8 sm:py-10 transition-colors duration-200 hover:bg-white/[0.02] -mx-3 sm:-mx-4 px-3 sm:px-4 rounded-lg'>
         <a
-          href="https://bountyindex.in"
+          href={project.href}
           target="_blank"
           rel="noreferrer noopener"
-
-          className="inline-flex items-center gap-1.5 rounded-md border border-[var(--color-aqua)]/60 bg-[var(--color-aqua)]/15 px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.16em] text-[var(--color-aqua)] hover:border-[var(--color-aqua)] hover:bg-[var(--color-aqua)]/25 transition"
-        >
-          Live
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-            <path d="M7 17L17 7M9 7h8v8" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </a>
-        <a
-          href="https://github.com/Varun2024/Bounty-index"
-          target="_blank"
-          rel="noreferrer noopener"
-          className="font-mono text-[11px] uppercase tracking-[0.16em] text-neutral-400 hover:text-[var(--color-aqua)] transition"
-        >
-          [ src ]
-        </a>
-      </div>
-    </div>
-
-    <h3 className="mt-5 text-2xl sm:text-3xl md:text-4xl font-semibold leading-tight tracking-tight">
-      Bounty Index
-      <span className="block mt-1 text-sm sm:text-base font-normal text-neutral-400">
-        Every public bug bounty program across five platforms — one live table.
-      </span>
-    </h3>
-
-    <div className="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
-      {[
-        { v: "2,000+", l: "weekly hunters" },
-        { v: "1,160+", l: "programs indexed" },
-        { v: "5", l: "platforms unified" },
-        { v: "daily", l: "automated ingest" },
-      ].map((s) => (
-        <div key={s.l} className="rounded-md border border-white/10 bg-white/[0.02] p-3 sm:p-4">
-          <div className="font-mono text-xl sm:text-2xl text-[var(--color-aqua)]">{s.v}</div>
-          <div className="mt-1 text-[11px] uppercase tracking-[0.14em] text-neutral-500">{s.l}</div>
+          aria-label={`Open ${project.title} (live)`}
+          className="absolute inset-0 z-0 rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-white/60"
+        />
+        <div className="relative z-10 flex flex-col sm:flex-row items-start gap-5 sm:gap-7 pointer-events-none">
+          <img
+            src={project.image}
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+            className="h-40 w-full sm:h-28 sm:w-40 rounded-md border border-white/10 object-cover shrink-0"
+          />
+          <div className="flex-1 min-w-0">
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+              <h3 className="text-xl sm:text-2xl font-medium leading-snug text-white inline-flex items-center gap-1.5">
+                {project.title}
+                <svg
+                  width="14" height="14" viewBox="0 0 24 24"
+                  fill="none" stroke="currentColor" strokeWidth="2"
+                  className="text-white/40 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-white"
+                  aria-hidden="true"
+                >
+                  <path d="M7 17L17 7M9 7h8v8" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </h3>
+              <span className="inline-flex items-center rounded-full border border-white/20 bg-white/5 px-2 py-0.5 text-[10px] uppercase tracking-[0.14em] text-white/70">
+                Live · 2k weekly users
+              </span>
+            </div>
+            <p className="mt-3 max-w-2xl text-[14px] sm:text-[15px] leading-relaxed text-white/75">
+              2,000 hunters a week use this to find bug bounty programs. A nightly Vercel cron pulls{" "}
+              <code className="font-mono text-[13px] text-white/85">arkadiyt/bounty-targets-data</code>, normalizes 1,160+ programs from HackerOne, Bugcrowd, Intigriti, YesWeHack and Federacy into one Neon Postgres table, and the UI is keyboard-first because hunters live in Vim.
+            </p>
+            <div className="flex flex-wrap gap-x-2 gap-y-1 mt-3 text-[13px] text-white/55">
+              {project.tags.map((tag, i) => (
+                <span key={tag.id} className="inline-flex items-center">
+                  {i > 0 && <span className="mr-2 opacity-40">·</span>}
+                  {tag.name}
+                </span>
+              ))}
+            </div>
+          </div>
+          <div className="flex items-center gap-4 shrink-0 self-end sm:self-start sm:mt-1 pointer-events-auto" onClick={stop}>
+            {project.sourceHref && (
+              <a
+                href={project.sourceHref}
+                target="_blank"
+                rel="noreferrer noopener"
+                onClick={stop}
+                className="text-[12px] text-neutral-400 hover:text-white transition-colors"
+              >
+                Source
+              </a>
+            )}
+            <button
+              type="button"
+              onClick={(e) => { stop(e); setOpen(true) }}
+              className='text-[12px] text-neutral-400 hover:text-white transition-colors'
+            >
+              Details
+            </button>
+          </div>
         </div>
-      ))}
-    </div>
-
-    <div className="mt-7 grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
-      <div>
-        <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--color-aqua)]/80">01 · problem</div>
-        <p className="mt-2 text-sm sm:text-base text-neutral-300 leading-relaxed">
-          Bug bounty hunters bookmark 5+ platforms, each with its own UI and filters. Finding the highest-paying programs for a given asset type means stitching five dashboards together by hand.
-        </p>
       </div>
-      <div>
-        <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--color-aqua)]/80">02 · approach</div>
-        <p className="mt-2 text-sm sm:text-base text-neutral-300 leading-relaxed">
-          Authenticated Vercel cron pulls from <code className="font-mono text-[var(--color-aqua)]/90">arkadiyt/bounty-targets-data</code> daily, normalizes into Neon Postgres via Drizzle. Keyboard-first UI (<code className="font-mono text-[var(--color-aqua)]/90">/</code>, <code className="font-mono text-[var(--color-aqua)]/90">j</code>/<code className="font-mono text-[var(--color-aqua)]/90">k</code>, <code className="font-mono text-[var(--color-aqua)]/90">↵</code>) with URL-driven filters. Scope lookup resolves a domain to every program it appears in.
-        </p>
-      </div>
-      <div>
-        <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--color-aqua)]/80">03 · outcome</div>
-        <p className="mt-2 text-sm sm:text-base text-neutral-300 leading-relaxed">
-          Live product with 2,000+ weekly hunters. Reached the top of the funnel for scope research — hunters now share the index link in their write-ups instead of listing five platform URLs.
-        </p>
-      </div>
-    </div>
-
-    <div className="mt-6 flex flex-wrap gap-x-3 gap-y-1.5 border-t border-white/5 pt-4 font-mono text-[11px] text-neutral-500">
-      <span>Next.js 16</span><span className="opacity-40">·</span>
-      <span>TypeScript</span><span className="opacity-40">·</span>
-      <span>Drizzle + Neon</span><span className="opacity-40">·</span>
-      <span>Tailwind 4</span><span className="opacity-40">·</span>
-      <span>Vercel Cron</span>
-    </div>
-  </article>
-)
+      {open && (
+        <ProjectDetails
+          title={project.title}
+          description={project.description}
+          subDescription={project.subDescription}
+          image={project.image}
+          tags={project.tags}
+          href={project.href}
+          sourceHref={project.sourceHref}
+          closeModal={() => setOpen(false)}
+        />
+      )}
+    </>
+  )
+}
 
 export default Projects
