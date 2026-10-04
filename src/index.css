@@ -80,9 +80,6 @@ body {
   }
 }
 
-body.boot-lock {
-  overflow: hidden;
-}
 
 @keyframes float {
   0%, 100% { transform: translateY(-50%) rotate(-2deg); }
