@@ -7,9 +7,10 @@ import DossierModal from '../components/DossierModal'
 const RESUME_LINK = "https://drive.google.com/file/d/14fX7TGKZUr5l_bSzgPzfNryGpIvuoQUW/view?usp=sharing"
 
 const links = [
+    { label: "About", plain: "About", href: "#about" },
+    { label: "Experience", plain: "Experience", href: "#experience" },
     { label: "Work", plain: "Projects", href: "#work" },
     { label: "Logs", plain: "Build Logs", href: "/logs", route: true },
-    { label: "About", plain: "About", href: "#about" },
     { label: "Contact", plain: "Contact", href: "#contact" },
 ]
 
