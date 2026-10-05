@@ -138,7 +138,7 @@ const TerminalTyper = ({ onClose }) => {
 
     return (
         <div
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 backdrop-blur-sm p-4"
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 p-4"
             role="dialog"
             aria-modal="true"
             aria-label="Terminal Typer mini game"
@@ -146,13 +146,13 @@ const TerminalTyper = ({ onClose }) => {
             onKeyDown={onKeyDown}
         >
             <div
-                className="relative w-full max-w-2xl rounded-2xl border border-white/10 bg-[var(--color-midnight)] p-6 sm:p-8 shadow-[0_30px_120px_-20px_rgba(94,234,212,0.25)]"
+                className="relative w-full max-w-2xl rounded-sm border border-white/10 bg-[var(--color-midnight)] p-6 sm:p-8"
                 onClick={(e) => e.stopPropagation()}
             >
                 <div className="flex items-start justify-between gap-4">
                     <div>
                         <h3 className="text-xl sm:text-2xl font-semibold">Terminal Typer</h3>
-                        <p className="mt-1 text-xs sm:text-sm text-neutral-400">
+                        <p className="mt-1 text-xs sm:text-sm text-neutral-200">
                             Type the command before time runs out. Best: {highScore}
                         </p>
                     </div>
@@ -182,7 +182,7 @@ const TerminalTyper = ({ onClose }) => {
                         </div>
 
                         <div className="mt-6 rounded-xl border border-white/10 bg-black/40 px-5 py-6">
-                            <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-white/40">
+                            <div className="font-mono text-[11px] text-white/85">
                                 $ type the command
                             </div>
                             <div className="mt-3 font-mono text-lg sm:text-xl leading-relaxed break-words">
@@ -207,7 +207,7 @@ const TerminalTyper = ({ onClose }) => {
                 {phase === "idle" && (
                     <div className="mt-8 flex flex-col items-center gap-5 text-center">
                         <div className="rounded-xl border border-white/10 bg-black/30 px-5 py-6 w-full">
-                            <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-white/40">
+                            <div className="font-mono text-[11px] text-white/85">
                                 sample
                             </div>
                             <div className="mt-2 font-mono text-base text-white/80">
@@ -229,7 +229,7 @@ const TerminalTyper = ({ onClose }) => {
                 {phase === "done" && (
                     <div className="mt-8 flex flex-col items-center gap-4 text-center">
                         <p className="text-3xl sm:text-4xl font-display">{score}</p>
-                        <div className="flex gap-x-6 gap-y-1 flex-wrap justify-center text-xs text-white/55">
+                        <div className="flex gap-x-6 gap-y-1 flex-wrap justify-center text-xs text-white/85">
                             <span>cleared · <span className="text-white/85">{cleared}</span></span>
                             <span>accuracy · <span className="text-white/85">{accuracy}%</span></span>
                             <span>best · <span className="text-white/85">{Math.max(highScore, score)}</span></span>
@@ -257,7 +257,7 @@ const TerminalTyper = ({ onClose }) => {
 
 const Stat = ({ label, value, highlight }) => (
     <div className="rounded-md border border-white/5 bg-white/[0.02] px-3 py-2">
-        <div className="text-[10px] uppercase tracking-[0.18em] text-white/40">{label}</div>
+        <div className="text-[11px] text-white/85">{label}</div>
         <div className={`mt-0.5 font-display text-xl ${highlight ? "text-white" : "text-white/80"}`}>
             {value}
         </div>

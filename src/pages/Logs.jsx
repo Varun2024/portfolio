@@ -11,6 +11,37 @@ const formatDate = (iso) =>
 const Logs = () => {
     useEffect(() => {
         document.title = 'Build Logs — Varun'
+
+        // Blog + itemListElement so AI engines see every post from one hop
+        const scriptId = 'blog-list-ldjson'
+        let script = document.getElementById(scriptId)
+        if (!script) {
+            script = document.createElement('script')
+            script.type = 'application/ld+json'
+            script.id = scriptId
+            document.head.appendChild(script)
+        }
+        script.textContent = JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Blog',
+            '@id': 'https://varuncodes.tech/logs#blog',
+            url: 'https://varuncodes.tech/logs',
+            name: 'Build logs — Varun Shukla',
+            description: 'Engineering decisions, tradeoffs, and debugging stories from shipping real products.',
+            author: { '@id': 'https://varuncodes.tech/#person' },
+            publisher: { '@id': 'https://varuncodes.tech/#organization' },
+            blogPost: posts.map((p) => ({
+                '@type': 'BlogPosting',
+                '@id': `https://varuncodes.tech/logs/${p.slug}#post`,
+                url: `https://varuncodes.tech/logs/${p.slug}`,
+                headline: p.title,
+                description: p.excerpt,
+                datePublished: p.date,
+                author: { '@id': 'https://varuncodes.tech/#person' },
+            })),
+        })
+
+        return () => script?.remove()
     }, [])
 
     return (
@@ -23,7 +54,7 @@ const Logs = () => {
                         <h1 className="font-display text-4xl sm:text-5xl md:text-6xl text-white leading-none tracking-tight">
                             Build logs
                         </h1>
-                        <p className="mt-5 text-[15px] sm:text-base text-white/60 max-w-xl leading-relaxed">
+                        <p className="mt-5 text-[15px] sm:text-base text-white/85 max-w-xl leading-relaxed">
                             Notes from shipping real things. Decisions, tradeoffs, and the occasional
                             gotcha — one entry per feature or notable call.
                         </p>
@@ -41,7 +72,7 @@ const Logs = () => {
                                 >
                                     <time
                                         dateTime={post.date}
-                                        className="shrink-0 w-20 sm:w-24 pt-1 font-mono text-[11px] uppercase tracking-[0.12em] text-white/40"
+                                        className="shrink-0 w-20 sm:w-24 pt-1 font-mono text-[11px] text-white/85"
                                     >
                                         {formatDate(post.date)}
                                     </time>
@@ -49,7 +80,7 @@ const Logs = () => {
                                         <h2 className="text-base sm:text-lg font-medium text-white leading-snug">
                                             {post.title}
                                         </h2>
-                                        <p className="mt-1 text-[14px] text-white/55 leading-relaxed line-clamp-2">
+                                        <p className="mt-1 text-[14px] text-white/85 leading-relaxed line-clamp-2">
                                             {post.excerpt}
                                         </p>
                                         <div className="mt-2 flex items-center gap-3 text-[11px] text-white/35">

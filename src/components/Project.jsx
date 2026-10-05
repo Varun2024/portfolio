@@ -7,7 +7,7 @@ const Project = ({ title, description, subDescription, href, sourceHref, image, 
 
     return (
         <>
-            <div className='group relative py-6 sm:py-7 transition-colors duration-200 hover:bg-white/[0.02] -mx-3 sm:-mx-4 px-3 sm:px-4 rounded-lg'>
+            <div className='group relative py-6 sm:py-7 transition-colors duration-200 hover:bg-white/[0.02] -mx-3 sm:-mx-4 px-3 sm:px-4 rounded-lg before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:h-0 before:w-[2px] before:bg-white before:transition-all before:duration-300 hover:before:h-12'>
                 {href && (
                     <a
                         href={href}
@@ -24,7 +24,7 @@ const Project = ({ title, description, subDescription, href, sourceHref, image, 
                             alt=""
                             aria-hidden="true"
                             loading="lazy"
-                            className="h-32 w-full sm:h-16 sm:w-24 rounded-md border border-white/10 object-cover shrink-0"
+                            className="h-24 w-full sm:h-16 sm:w-24 rounded-md border border-white/10 object-cover shrink-0"
                         />
                     )}
 
@@ -44,12 +44,12 @@ const Project = ({ title, description, subDescription, href, sourceHref, image, 
                                 )}
                             </h3>
                             {role && (
-                                <span className="inline-flex items-center rounded-full border border-white/15 bg-white/5 px-2 py-0.5 text-[10px] uppercase tracking-[0.14em] text-neutral-300">
+                                <span className="inline-flex items-center rounded-sm border border-white/15 bg-white/5 px-2 py-0.5 text-[11px] text-neutral-200">
                                     {role}
                                 </span>
                             )}
                         </div>
-                        <div className="flex flex-wrap gap-x-2 gap-y-1 mt-1.5 text-[13px] text-white/55">
+                        <div className="flex flex-wrap gap-x-2 gap-y-1 mt-1.5 text-[13px] text-white/85">
                             {tags.map((tag, i) => (
                                 <span key={tag.id} className="inline-flex items-center">
                                     {i > 0 && <span className="mr-2 opacity-40">·</span>}
@@ -66,7 +66,7 @@ const Project = ({ title, description, subDescription, href, sourceHref, image, 
                                 target="_blank"
                                 rel="noreferrer noopener"
                                 onClick={stop}
-                                className="text-[12px] text-neutral-400 hover:text-white transition-colors"
+                                className="text-[12px] text-neutral-200 hover:text-white transition-colors"
                             >
                                 Source
                             </a>
@@ -74,7 +74,7 @@ const Project = ({ title, description, subDescription, href, sourceHref, image, 
                         <button
                             type="button"
                             onClick={(e) => { stop(e); setIsHidden(true) }}
-                            className='text-[12px] text-neutral-400 hover:text-white transition-colors'
+                            className='text-[12px] text-neutral-200 hover:text-white transition-colors'
                         >
                             Details
                         </button>

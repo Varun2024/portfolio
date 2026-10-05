@@ -17,7 +17,51 @@ const LogPost = () => {
 
     useEffect(() => {
         window.scrollTo(0, 0)
-        if (post) document.title = `${post.title} — Varun`
+        if (!post) return
+        document.title = `${post.title} — Varun`
+
+        // Per-post meta description for search snippets
+        const metaDescId = 'meta-description-dyn'
+        let metaDesc = document.getElementById(metaDescId)
+        if (!metaDesc) {
+            metaDesc = document.createElement('meta')
+            metaDesc.name = 'description'
+            metaDesc.id = metaDescId
+            document.head.appendChild(metaDesc)
+        }
+        metaDesc.content = post.excerpt || post.title
+
+        // BlogPosting JSON-LD so AI engines can cite the article
+        const scriptId = 'blogposting-ldjson'
+        let script = document.getElementById(scriptId)
+        if (!script) {
+            script = document.createElement('script')
+            script.type = 'application/ld+json'
+            script.id = scriptId
+            document.head.appendChild(script)
+        }
+        const url = `https://varuncodes.tech/logs/${post.slug}`
+        script.textContent = JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BlogPosting',
+            '@id': `${url}#post`,
+            headline: post.title,
+            description: post.excerpt,
+            url,
+            datePublished: post.date,
+            dateModified: post.date,
+            author: { '@id': 'https://varuncodes.tech/#person' },
+            publisher: { '@id': 'https://varuncodes.tech/#organization' },
+            mainEntityOfPage: url,
+            inLanguage: 'en',
+            keywords: post.project ? [post.project] : undefined,
+            isPartOf: { '@id': 'https://varuncodes.tech/logs#blog' },
+        })
+
+        return () => {
+            script?.remove()
+            metaDesc?.remove()
+        }
     }, [post])
 
     const html = useMemo(() => {

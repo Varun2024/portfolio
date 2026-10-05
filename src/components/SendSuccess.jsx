@@ -45,7 +45,7 @@ const SendSuccess = ({ onDone }) => {
                     animate={{ scale: 1.4, opacity: 0.7 }}
                     transition={{ duration: 0.6, delay: 0.1 }}
                 />
-                <span className="relative grid size-20 place-items-center rounded-full bg-gradient-to-br from-[var(--color-mint)] to-[var(--color-aqua)] shadow-[0_10px_40px_-10px_rgba(87,219,150,0.5)]">
+                <span className="relative grid size-20 place-items-center rounded-full bg-[var(--color-mint)]">
                     <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                         <motion.path
                             d="M5 12.5L10 17.5L19 7.5"

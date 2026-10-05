@@ -86,18 +86,29 @@
       name="googlebot"
       content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
     />
+    <!-- Structured data: Person (primary subject of this profile page) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Person",
+        "@id": "https://varuncodes.tech/#person",
         "name": "Varun Shukla",
+        "alternateName": ["Varun Builds", "Varun2024"],
         "url": "https://varuncodes.tech/",
         "image": "https://varuncodes.tech/icon/preview.png?v=2",
         "jobTitle": "Full-stack & AI Engineer",
+        "description": "Full-stack and AI engineer based in Raipur, India. Builds AI-native products end-to-end with React, Next.js, Node, Python, and applied machine learning. Currently at Flux Fortify; creator of Bounty Index.",
+        "mainEntityOfPage": {
+          "@type": "ProfilePage",
+          "@id": "https://varuncodes.tech/#profile"
+        },
         "worksFor": {
           "@type": "Organization",
           "name": "Flux Fortify"
         },
+        "alumniOf": [
+          { "@type": "Organization", "name": "Chainframe Product Team" }
+        ],
         "sameAs": [
           "https://github.com/Varun2024",
           "https://linkedin.com/in/varun-shukla-codes/",
@@ -114,23 +125,104 @@
           "Python",
           "Machine Learning",
           "LLM Integration",
+          "Computer Vision",
+          "PostgreSQL",
+          "SQLite",
           "Firebase",
-          "Tailwind CSS"
+          "Tailwind CSS",
+          "Drizzle ORM",
+          "Prisma"
         ],
         "address": {
           "@type": "PostalAddress",
           "addressLocality": "Raipur",
-          "addressCountry": "India"
+          "addressRegion": "Chhattisgarh",
+          "addressCountry": "IN"
+        },
+        "email": "mailto:varunshukla747@gmail.com"
+      }
+    </script>
+
+    <!-- Structured data: Organization (self-brand "Varun Builds") -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "@id": "https://varuncodes.tech/#organization",
+        "name": "Varun Builds",
+        "legalName": "Varun Shukla",
+        "url": "https://varuncodes.tech/",
+        "logo": "https://varuncodes.tech/icon/icon.png",
+        "image": "https://varuncodes.tech/icon/preview.png?v=2",
+        "founder": { "@id": "https://varuncodes.tech/#person" },
+        "member": { "@id": "https://varuncodes.tech/#person" },
+        "description": "Independent engineering practice run by Varun Shukla — building AI-native products, web apps, and developer tools.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Raipur",
+          "addressRegion": "Chhattisgarh",
+          "addressCountry": "IN"
+        },
+        "sameAs": [
+          "https://github.com/Varun2024",
+          "https://linkedin.com/in/varun-shukla-codes/",
+          "https://twitter.com/TheV_Stack"
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "email": "varunshukla747@gmail.com",
+          "contactType": "sales",
+          "areaServed": "Worldwide",
+          "availableLanguage": ["English", "Hindi"]
         }
       }
     </script>
+
+    <!-- Structured data: ProfilePage (this page is a profile for the Person above) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfilePage",
+        "@id": "https://varuncodes.tech/#profile",
+        "url": "https://varuncodes.tech/",
+        "name": "Varun Shukla — Full-stack & AI Engineer",
+        "mainEntity": { "@id": "https://varuncodes.tech/#person" },
+        "about": { "@id": "https://varuncodes.tech/#person" },
+        "author": { "@id": "https://varuncodes.tech/#person" },
+        "dateModified": "2026-10-05",
+        "inLanguage": "en-IN",
+        "isPartOf": { "@id": "https://varuncodes.tech/#website" }
+      }
+    </script>
+
+    <!-- Structured data: WebSite with search action and author -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "WebSite",
+        "@id": "https://varuncodes.tech/#website",
         "name": "Varun Shukla Portfolio",
+        "alternateName": "Varun Builds",
         "url": "https://varuncodes.tech/",
-        "description": "Portfolio of Varun Shukla — Full-stack & AI engineer featuring selected projects across web and applied ML."
+        "description": "Portfolio of Varun Shukla — Full-stack & AI engineer. Projects, build logs, and case studies.",
+        "author": { "@id": "https://varuncodes.tech/#person" },
+        "publisher": { "@id": "https://varuncodes.tech/#organization" },
+        "inLanguage": "en-IN"
+      }
+    </script>
+
+    <!-- Structured data: Blog (points crawlers at the build logs) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "@id": "https://varuncodes.tech/logs#blog",
+        "url": "https://varuncodes.tech/logs",
+        "name": "Build logs — Varun Shukla",
+        "description": "Engineering build logs: decisions, tradeoffs, debugging stories, and architecture notes from shipping real products.",
+        "author": { "@id": "https://varuncodes.tech/#person" },
+        "publisher": { "@id": "https://varuncodes.tech/#organization" },
+        "inLanguage": "en"
       }
     </script>
   </head>

@@ -2,14 +2,12 @@ import Navbar from './section/Navbar'
 import Hero from './section/Hero'
 import { lazy, Suspense, useRef } from 'react'
 import { ReactLenis } from 'lenis/react'
-import SectionLoader from './components/SectionLoader'
 import GameLauncher from './components/GameLauncher'
 import Starfield from './components/Starfield'
 import AstronautCompanion from './components/AstronautCompanion'
 import SystemsHUD from './components/SystemsHUD'
 import Konami from './components/Konami'
 import NotFoundBanner from './components/NotFoundBanner'
-import MetricsRibbon from './components/MetricsRibbon'
 
 const About = lazy(() => import('./section/About'))
 const Exp = lazy(() => import('./section/Exp'))
@@ -22,7 +20,6 @@ const Footer = lazy(() => import('./section/Footer'))
 
 const App = () => {
   const lenisRef = useRef()
-  const sectionFallback = <SectionLoader label="Loading experience" />
 
   return (
     <div className='container mx-auto max-w-7xl '>
@@ -38,8 +35,7 @@ const App = () => {
       <Navbar />
       {/* Hero */}
       <Hero />
-      <MetricsRibbon />
-      <Suspense fallback={sectionFallback}>
+      <Suspense fallback={null}>
         {/* about */}
         <About />
         {/* experience */}

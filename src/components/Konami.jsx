@@ -99,7 +99,7 @@ const Konami = () => {
         >
             <canvas ref={canvasRef} className="absolute inset-0" />
             <div className="absolute inset-x-0 top-[42%] flex flex-col items-center gap-2 font-mono text-white">
-                <div className="text-[11px] tracking-widest text-white/60">// hidden pilot detected</div>
+                <div className="text-[11px] tracking-widest text-white/85">// hidden pilot detected</div>
                 <div className="text-lg sm:text-2xl text-[var(--color-aqua)]">warp drive engaged</div>
             </div>
         </div>

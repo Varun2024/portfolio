@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Instrument+Serif:ital@0;1&display=swap");
+@import url("https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=clash-display@400,500,600&display=swap");
 @import "tailwindcss";
 
 :root {
@@ -54,10 +54,20 @@
 
 body {
   background: #030412;
-  font-family: "Funnel Display", sans-serif;
-  color: white;
+  font-family: "Satoshi", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #ededed;
   scroll-behavior: smooth;
   overflow-x: hidden;
+}
+
+section[id] {
+  scroll-margin-top: 96px;
+}
+
+/* Body prose contrast floor — paragraphs/list text on dark bg must meet L >= 0.85.
+   Tailwind utility `text-neutral-400` and low-opacity white classes default too dim. */
+p, li {
+  color: #e5e5e5;
 }
 
 
@@ -66,6 +76,10 @@ body {
   outline: 2px solid var(--color-aqua);
   outline-offset: 2px;
   border-radius: 4px;
+}
+/* solid white surfaces get a dark ring instead so the aqua doesn't clash */
+:where(.bg-white, [class*="bg-white "]):focus-visible {
+  outline-color: var(--color-midnight);
 }
 
 /* a11y: honour prefers-reduced-motion for any animation/transition that didn't already opt in */
@@ -114,8 +128,8 @@ body {
 }
 
 .c-space {
-  padding-left: 1.25rem; /* px-5 */
-  padding-right: 1.25rem; /* px-5 */
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 @media (min-width: 640px) {
   .c-space {
@@ -131,8 +145,8 @@ body {
 }
 
 .font-display {
-  font-family: "Instrument Serif", "Funnel Display", serif;
-  font-weight: 400;
+  font-family: "Clash Display", "Satoshi", sans-serif;
+  font-weight: 500;
   letter-spacing: -0.02em;
 }
 
@@ -170,9 +184,9 @@ body {
 }
 
 .subtext {
-  color: #a3a3a3; /* text-neutral-400 */
-  font-size: 0.875rem; /* text-sm */
-  text-wrap: pretty; /* text-pretty */
+  color: #e5e5e5; /* L ≈ 0.90 — safely above AA on dark */
+  font-size: 0.875rem;
+  text-wrap: pretty;
 }
 @media (min-width: 768px) {
   .subtext {
@@ -192,22 +206,27 @@ body {
 }
 .grid-1 {
   grid-row: span 2 / span 2;
-  height: 15rem;
+  min-height: 15rem;
+  height: auto;
 }
 .grid-2,
 .grid-3,
 .grid-4,
 .grid-5 {
   grid-row: span 1 / span 1;
-  height: 15rem;
+  min-height: 15rem;
+  height: auto;
 }
 @media (min-width: 768px) {
   .grid-1,
   .grid-2,
   .grid-3,
-  .grid-4,
-  .grid-5 {
+  .grid-4 {
     height: 100%;
+  }
+  .grid-5 {
+    height: auto;
+    min-height: 18rem;
   }
   .grid-1,
   .grid-2,
@@ -233,30 +252,28 @@ body {
   padding: 1.5rem;
   background: var(--color-midnight);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 0.75rem;
+  border-radius: 4px;
   position: relative;
   overflow: hidden;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
-  transition: border-color 200ms, box-shadow 200ms;
+  transition: border-color 200ms;
 }
 .grid-default-color:hover {
-  border-color: rgba(255, 255, 255, 0.14);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 12px 30px -20px rgba(125, 211, 252, 0.15);
+  border-color: rgba(255, 255, 255, 0.16);
 }
 
 .grid-special-color {
   padding: 1.5rem;
   background: var(--color-midnight);
-  border: 1px solid rgba(125, 211, 252, 0.18);
-  border-radius: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
   position: relative;
   overflow: hidden;
 }
 .grid-black-color {
   padding: 1.5rem;
   background: #0a0c14;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
   position: relative;
   overflow: hidden;
 }
@@ -264,16 +281,14 @@ body {
 .grid-deep-purple {
   padding: 1.5rem;
   background: var(--color-midnight);
-  border: 1px solid rgba(125, 211, 252, 0.22);
-  border-radius: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 4px;
   position: relative;
   overflow: hidden;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 20px 40px -30px rgba(125, 211, 252, 0.2);
-  transition: border-color 200ms, box-shadow 200ms;
+  transition: border-color 200ms;
 }
 .grid-deep-purple:hover {
-  border-color: rgba(125, 211, 252, 0.35);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 24px 50px -25px rgba(125, 211, 252, 0.3);
+  border-color: rgba(255, 255, 255, 0.24);
 }
 
 /* Contact Section*/

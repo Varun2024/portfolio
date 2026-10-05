@@ -42,7 +42,7 @@ const LogsTeaser = () => {
                             >
                                 <time
                                     dateTime={post.date}
-                                    className="shrink-0 w-20 sm:w-24 pt-1 font-mono text-[11px] uppercase tracking-[0.12em] text-white/40"
+                                    className="shrink-0 w-20 sm:w-24 pt-1 font-mono text-[11px] text-white/85"
                                 >
                                     {formatDate(post.date)}
                                 </time>
@@ -50,7 +50,7 @@ const LogsTeaser = () => {
                                     <h3 className="text-base sm:text-lg font-medium text-white leading-snug group-hover:text-white transition-colors">
                                         {post.title}
                                     </h3>
-                                    <p className="mt-1 text-[14px] text-white/55 leading-relaxed line-clamp-2">
+                                    <p className="mt-1 text-[14px] text-white/85 leading-relaxed line-clamp-2">
                                         {post.excerpt}
                                     </p>
                                     <div className="mt-2 flex items-center gap-3 text-[11px] text-white/35">

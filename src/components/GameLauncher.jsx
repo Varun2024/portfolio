@@ -61,9 +61,9 @@ const GameLauncher = () => {
 
     return (
         <>
-            <div className="fixed bottom-5 right-5 z-50 flex flex-col items-end gap-2 sm:bottom-7 sm:right-7">
+            <div className="hidden md:flex fixed bottom-5 right-5 z-50 flex-col items-end gap-2 sm:bottom-7 sm:right-7">
                 {showHint && (
-                    <div className="relative max-w-[14rem] rounded-xl border border-white/10 bg-[var(--color-midnight)]/95 px-3 py-2 text-xs text-neutral-200 shadow-lg backdrop-blur">
+                    <div className="relative max-w-[14rem] rounded-sm border border-white/10 bg-[var(--color-midnight)] px-3 py-2 text-xs text-neutral-200">
                         <button
                             onClick={dismissHint}
                             className="absolute -right-1.5 -top-1.5 grid size-5 place-items-center rounded-full bg-white/10 text-[10px] text-neutral-200 hover:bg-white/20"
@@ -76,7 +76,7 @@ const GameLauncher = () => {
                 )}
                 <button
                     onClick={handleOpen}
-                    className="group relative flex items-center gap-2 rounded-full border border-white/15 bg-[var(--color-midnight)]/90 px-4 py-2 text-sm text-white/85 backdrop-blur transition hover:border-white/40 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+                    className="group relative flex items-center gap-2 rounded-sm border border-white/15 bg-[var(--color-midnight)] px-4 py-2 text-sm text-white/85 transition hover:border-white/40 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
                     aria-label="Open typing speedrun"
 
                 >

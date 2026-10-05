@@ -4,9 +4,9 @@ import { motion } from "motion/react"
 
 const ProjectDetails = ({title , description ,subDescription ,image , tags , href , sourceHref , closeModal}) => {
   return (
-    <div className=" fixed inset-0 z-50 flex items-center justify-center w-full h-full overflow-hidden backdrop-blur-sm p-2 sm:p-4">
-        <motion.div 
-        className="relative sm:max-w-2xl max-w-[98%] max-h-[92vh] overflow-y-auto border shadow-sm rounded-2xl bg-gradient-to-l from-[var(--color-midnight) ] to-[var(--color-navy)]"
+    <div className=" fixed inset-0 z-50 flex items-center justify-center w-full h-full overflow-hidden bg-black/85 p-2 sm:p-4">
+        <motion.div
+        className="relative sm:max-w-2xl max-w-[98%] max-h-[92vh] overflow-y-auto border border-white/10 rounded-sm bg-[var(--color-midnight)]"
         initial={{opacity:0 ,scale:.5}}
         animate={{opacity:1 ,scale:1}}
         >
@@ -22,9 +22,9 @@ const ProjectDetails = ({title , description ,subDescription ,image , tags , hre
             </figure>
             <div className="p-4 sm:p-5">
                 <h5 className="mb-2 text-xl sm:text-2xl font-bold text-white ">{title}</h5>
-                <p className="mb-3 text-sm sm:text-base font-normal text-neutral-400">{description}</p>
+                <p className="mb-3 text-sm sm:text-base font-normal text-neutral-200">{description}</p>
                 {subDescription.map((subDesc,index)=>(
-                    <p key={index} className="mb-3 text-sm sm:text-base font-normal text-neutral-400">{subDesc}</p>
+                    <p key={index} className="mb-3 text-sm sm:text-base font-normal text-neutral-200">{subDesc}</p>
 
                 ))}
                 <div className="flex flex-wrap items-center justify-between gap-3 mt-4">
@@ -35,7 +35,7 @@ const ProjectDetails = ({title , description ,subDescription ,image , tags , hre
                     </div>
                     <div className="flex items-center gap-4">
                         {sourceHref && (
-                            <a href={sourceHref} target="_blank" rel="noreferrer noopener" className="inline-flex items-center gap-1 font-mono text-xs uppercase tracking-[0.14em] text-neutral-400 hover:text-[var(--color-aqua)] transition-colors">
+                            <a href={sourceHref} target="_blank" rel="noreferrer noopener" className="inline-flex items-center gap-1 text-[13px] text-neutral-300 hover:text-white transition-colors">
                                 Source ↗
                             </a>
                         )}
