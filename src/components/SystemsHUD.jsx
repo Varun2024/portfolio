@@ -46,7 +46,7 @@ const SystemsHUD = () => {
                 <span className={`inline-block size-1.5 rounded-full ${sys > 60 ? "bg-[var(--color-mint)]" : sys > 48 ? "bg-[var(--color-sand)]" : "bg-[var(--color-coral)]"} animate-pulse`} />
                 <span>SYS {sys}%</span>
             </div>
-            <div className="mt-1 text-white/30">IN-3 · 23.24°N</div>
+            <div className="mt-1 text-white/60">IN-3 · 23.24°N</div>
         </div>
     )
 }

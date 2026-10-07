@@ -114,7 +114,7 @@ const LogPost = () => {
                                 to={`/logs/${prev.slug}`}
                                 className="group flex-1 py-3 sm:py-4 -mx-3 px-3 rounded-md hover:bg-white/[0.02] transition-colors"
                             >
-                                <div className="text-[11px] text-white/40">← Older</div>
+                                <div className="text-[11px] text-white/60">← Older</div>
                                 <div className="mt-1 text-sm text-white/85 group-hover:text-white transition-colors line-clamp-1">
                                     {prev.title}
                                 </div>
@@ -125,7 +125,7 @@ const LogPost = () => {
                                 to={`/logs/${next.slug}`}
                                 className="group flex-1 py-3 sm:py-4 -mx-3 px-3 rounded-md hover:bg-white/[0.02] transition-colors sm:text-right"
                             >
-                                <div className="text-[11px] text-white/40">Newer →</div>
+                                <div className="text-[11px] text-white/60">Newer →</div>
                                 <div className="mt-1 text-sm text-white/85 group-hover:text-white transition-colors line-clamp-1">
                                     {next.title}
                                 </div>

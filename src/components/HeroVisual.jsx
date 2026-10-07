@@ -25,7 +25,7 @@ const HeroVisual = () => {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.9 + i * 0.12, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                         >
-                            <dt className="text-[12px] text-white/40">{r.k}</dt>
+                            <dt className="text-[12px] text-white/60">{r.k}</dt>
                             <dd className="mt-1 font-display text-[17px] leading-snug text-white/90 tracking-tight">
                                 {r.v}
                             </dd>
@@ -36,7 +36,7 @@ const HeroVisual = () => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 1.45, duration: 0.6 }}
-                    className="mt-7 font-display italic text-[13px] text-white/50"
+                    className="mt-7 font-display italic text-[13px] text-white/60"
                 >
                     Raipur, India
                 </motion.p>

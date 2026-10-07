@@ -145,7 +145,7 @@ const DossierModal = ({ open, onClose, downloadHref }) => {
                                     <path d="M7 17L17 7M9 7h8v8" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>
                             </a>
-                            <span className="font-mono text-[10px] text-white/30">esc to close · enter to skip typing</span>
+                            <span className="font-mono text-[10px] text-white/60">esc to close · enter to skip typing</span>
                         </div>
                     )}
                 </div>

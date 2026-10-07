@@ -124,7 +124,7 @@ const TerminalTyper = ({ onClose }) => {
     const renderedTarget = () => {
         const chars = target.split("")
         return chars.map((c, i) => {
-            let cls = "text-white/30"
+            let cls = "text-white/55"
             if (i < typed.length) cls = typed[i] === c ? "text-white" : "text-[var(--color-coral)] underline"
             return (
                 <span key={i} className={cls}>
@@ -197,7 +197,7 @@ const TerminalTyper = ({ onClose }) => {
                                 autoCapitalize="off"
                                 autoCorrect="off"
                                 autoComplete="off"
-                                className="mt-4 block w-full bg-transparent font-mono text-[15px] text-white placeholder:text-white/20 focus:outline-none border-b border-white/15 focus:border-[var(--color-aqua)]/60 pb-1.5"
+                                className="mt-4 block w-full bg-transparent font-mono text-[15px] text-white placeholder:text-white/55 focus:outline-none border-b border-white/15 focus:border-[var(--color-aqua)]/60 pb-1.5"
                                 placeholder="start typing…"
                             />
                         </div>

@@ -8,7 +8,7 @@ const Footer = () => {
     return (
         <footer className="c-space pt-24 md:pt-32 pb-8 mt-10">
             <div className="mx-auto w-full max-w-6xl">
-                <div className="border-t border-white/10 pt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between text-[12px] text-white/40">
+                <div className="border-t border-white/10 pt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between text-[12px] text-white/60">
                     <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
                         <span>© {new Date().getFullYear()} Varun Shukla</span>
                         <span className="text-white/15">·</span>

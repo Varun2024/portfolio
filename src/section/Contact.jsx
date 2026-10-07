@@ -5,7 +5,7 @@ import Alert from "../components/Alert"
 import SendSuccess from "../components/SendSuccess"
 
 const ConsoleField = ({ id, label, value, onChange, placeholder, autoComplete, type = "text", textarea = false }) => {
-    const inputCls = "block w-full bg-transparent text-[15px] text-white placeholder:text-white/25 focus:outline-none border-b border-white/15 focus:border-white/70 transition-colors py-2"
+    const inputCls = "block w-full bg-transparent text-[15px] text-white placeholder:text-white/55 focus:outline-none border-b border-white/15 focus:border-white/70 transition-colors py-2"
     return (
         <label htmlFor={id} className="block">
             <span className="mb-1 block text-[12px] text-white/85">{label}</span>
