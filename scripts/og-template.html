@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #08090c;
+    --aqua: #5eead4;
+    --mint: #4ade80;
+    --sand: #f5b35a;
+    --text: #f5f5f0;
+    --dim: rgba(245,245,240,0.6);
+    --faint: rgba(245,245,240,0.3);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1200px; height: 630px; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', system-ui, sans-serif;
+    position: relative;
+    overflow: hidden;
+  }
+  .scrim-top {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(60% 50% at 85% 10%, rgba(94,234,212,0.08), transparent 70%),
+      radial-gradient(40% 40% at 10% 90%, rgba(94,234,212,0.05), transparent 60%);
+  }
+  .wrap {
+    position: relative;
+    z-index: 2;
+    padding: 72px 80px;
+    width: 100%; height: 100%;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .header {
+    display: flex; align-items: center; gap: 12px;
+    font-family: 'Inter', monospace;
+    font-size: 15px; letter-spacing: 0.02em;
+    color: var(--dim);
+  }
+  .mark {
+    width: 10px; height: 10px; border-radius: 999px;
+    background: var(--aqua);
+    box-shadow: 0 0 12px rgba(94,234,212,0.6);
+  }
+  .dot { color: var(--faint); margin: 0 8px; }
+  .main {
+    display: flex; flex-direction: column; gap: 32px;
+  }
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 110px;
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+    color: var(--text);
+  }
+  h1 .accent {
+    font-style: italic;
+    color: var(--aqua);
+  }
+  .tagline {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 1.3;
+    color: rgba(245,245,240,0.85);
+    max-width: 920px;
+    letter-spacing: -0.01em;
+  }
+  .footer {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    font-size: 18px;
+    color: var(--dim);
+  }
+  .meta {
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .meta .role {
+    color: var(--text);
+    font-weight: 500;
+  }
+  .site {
+    font-family: 'Inter', monospace;
+    font-size: 15px;
+    color: var(--dim);
+    letter-spacing: 0.02em;
+  }
+  .site .url { color: var(--aqua); }
+  .divider {
+    position: absolute;
+    left: 80px; right: 80px;
+    bottom: 136px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(94,234,212,0.25) 20%, rgba(94,234,212,0.25) 80%, transparent);
+  }
+</style>
+</head>
+<body>
+  <div class="scrim-top"></div>
+  <div class="wrap">
+    <div class="header">
+      <span class="mark"></span>
+      <span>varuncodes.tech</span>
+      <span class="dot">·</span>
+      <span>Portfolio</span>
+    </div>
+
+    <div class="main">
+      <h1>I build <span class="accent">AI-native</span><br/>products that ship.</h1>
+      <div class="tagline">
+        Full-stack &amp; AI engineer. Currently at Flux Fortify. Creator of Bounty Index: 1,160+ programs indexed daily for 2,000+ weekly hunters.
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="footer">
+      <div class="meta">
+        <div class="role">Varun Shukla</div>
+        <div>Raipur, India · Available for work</div>
+      </div>
+      <div class="site">
+        <span class="url">varuncodes.tech</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
