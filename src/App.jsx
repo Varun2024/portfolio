@@ -1,7 +1,7 @@
 import Navbar from './section/Navbar'
 import Hero from './section/Hero'
 import Footer from './section/Footer'
-import { lazy, Suspense, useRef } from 'react'
+import { lazy, Suspense, useEffect, useState } from 'react'
 import { ReactLenis } from 'lenis/react'
 import GameLauncher from './components/GameLauncher'
 import Starfield from './components/Starfield'
@@ -17,9 +17,22 @@ const LogsTeaser = lazy(() => import('./section/LogsTeaser'))
 const Testimonials = lazy(() => import('./section/Testimonial'))
 const Contact = lazy(() => import('./section/Contact'))
 
+// Skip Lenis on touch devices (native scroll already smooth, Lenis fights
+// momentum) and when the user asked for reduced motion.
+const useSmoothScrollEnabled = () => {
+  const [enabled, setEnabled] = useState(false)
+  useEffect(() => {
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce), (hover: none) and (pointer: coarse)')
+    const update = () => setEnabled(!mq.matches)
+    update()
+    mq.addEventListener('change', update)
+    return () => mq.removeEventListener('change', update)
+  }, [])
+  return enabled
+}
 
 const App = () => {
-  const lenisRef = useRef()
+  const smoothScroll = useSmoothScrollEnabled()
 
   return (
     <div className='container mx-auto max-w-7xl '>
@@ -29,8 +42,7 @@ const App = () => {
       >
         Skip to content
       </a>
-      {/* navbar */}
-      <ReactLenis root ref={lenisRef} />
+      {smoothScroll && <ReactLenis root />}
       <Starfield />
       <Navbar />
       {/* Hero */}
