@@ -10,8 +10,8 @@ const ProjectDetails = ({title , description ,subDescription ,image , tags , hre
         initial={{opacity:0 ,scale:.5}}
         animate={{opacity:1 ,scale:1}}
         >
-            <button onClick={closeModal} className="absolute p-2 rounded-sm top-3 right-3 sm:top-5 sm:right-5 bg-[var(--color-midnight)]">
-                <img src="/assets/close.svg" alt="" className="w-5 h-5 sm:w-6 sm:h-6" />
+            <button onClick={closeModal} aria-label="Close project details" className="absolute p-2 rounded-sm top-3 right-3 sm:top-5 sm:right-5 bg-[var(--color-midnight)]">
+                <img src="/assets/close.svg" alt="" aria-hidden="true" className="w-5 h-5 sm:w-6 sm:h-6" />
             </button>
             <figure className="w-full overflow-hidden rounded-t-2xl border-b border-white/10 bg-black/20">
                 <img
