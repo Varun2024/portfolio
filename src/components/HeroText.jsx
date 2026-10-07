@@ -1,8 +1,8 @@
-/* eslint-disable no-unused-vars */
 import { FlipWords } from "./FlipWords"
+// eslint-disable-next-line no-unused-vars
 import { motion } from "motion/react"
 import AnimatedTooltip from "./AnimatedTooltip"
-import { fallbackTestimonials } from "../section/Testimonial"
+import { fallbackTestimonials } from "../constants"
 
 const HeroText = () => {
     const variance = {

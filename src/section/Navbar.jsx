@@ -1,5 +1,5 @@
-/* eslint-disable no-unused-vars */
 import { useEffect, useState } from 'react'
+// eslint-disable-next-line no-unused-vars
 import { AnimatePresence, motion } from 'motion/react'
 import { Link, useLocation } from 'react-router-dom'
 import DossierModal from '../components/DossierModal'
@@ -35,7 +35,7 @@ const useActiveSection = () => {
     return active
 }
 
-const NavLink = ({ link, isActive, onSelect, pathname, onHome }) => {
+const NavLink = ({ link, isActive, onSelect, onHome }) => {
     const href = link.route ? link.href : (onHome ? link.href : `/${link.href}`)
     const cls = `text-sm transition-colors ${isActive ? "text-white" : "text-white/85 hover:text-white"}`
     if (link.route) {
@@ -81,7 +81,7 @@ const Navbar = () => {
                         const isActive = l.route
                             ? pathname.startsWith(l.href)
                             : onHome && active === l.href.slice(1)
-                        return <NavLink key={l.href} link={l} isActive={isActive} pathname={pathname} onHome={onHome} />
+                        return <NavLink key={l.href} link={l} isActive={isActive} onHome={onHome} />
                     })}
                 </nav>
 
@@ -138,7 +138,6 @@ const Navbar = () => {
                                         key={l.href}
                                         link={l}
                                         isActive={isActive}
-                                        pathname={pathname}
                                         onHome={onHome}
                                         onSelect={() => setIsOpen(false)}
                                     />

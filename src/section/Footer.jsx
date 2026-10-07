@@ -1,5 +1,6 @@
 import { mySocials } from '../constants'
 
+/* global __BUILD_DATE__ */
 const BUILD_DATE = new Date(__BUILD_DATE__ || Date.now()).toLocaleDateString('en-US', {
     year: 'numeric', month: 'short', day: 'numeric',
 })

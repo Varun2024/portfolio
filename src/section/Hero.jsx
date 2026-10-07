@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import HeroText from "../components/HeroText"
 import ParallexBackground from "../components/ParallexBackground"
 import HeroVisual from "../components/HeroVisual"

@@ -1,4 +1,4 @@
-/* eslint-disable react-hooks/exhaustive-deps */
+// eslint-disable-next-line no-unused-vars
 import { motion, useScroll, useSpring, useTransform } from "motion/react"
 
 const ParallexBackground = () => {

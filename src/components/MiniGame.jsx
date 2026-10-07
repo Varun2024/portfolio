@@ -116,10 +116,12 @@ const TerminalTyper = ({ onClose }) => {
         }
     }
 
+    // score/cleared aren't read directly, but they signal round transitions
+    // so the ref-based read of charsTypedRef picks up its new value.
     const accuracy = useMemo(() => {
         if (charsTypedRef.current === 0) return 100
         return Math.max(0, Math.round(((charsTypedRef.current - errors) / charsTypedRef.current) * 100))
-    }, [errors, score, cleared])
+    }, [errors, score, cleared]) // eslint-disable-line react-hooks/exhaustive-deps
 
     const renderedTarget = () => {
         const chars = target.split("")
