@@ -33,7 +33,7 @@ const About = () => {
             <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-white/85">
                 <span>React · Next · Node · Python</span>
                 <span className="text-white/20">·</span>
-                <span>Raipur, IN <span className="text-white/35">(UTC+5:30)</span></span>
+                <span>Raipur, IN <span className="text-white/60">(UTC+5:30)</span></span>
                 <span className="text-white/20">·</span>
                 <span className="inline-flex items-center gap-2 text-[var(--color-mint)]">
                     <span className="size-1.5 rounded-full bg-[var(--color-mint)]" />

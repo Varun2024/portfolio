@@ -192,7 +192,7 @@ export default function Testimonials() {
 
         <div className="mt-6 flex items-center gap-4">
           <AnimatedTooltip items={testimonials.slice(0, 6)} />
-          <span className="text-[12px] text-white/40">
+          <span className="text-[12px] text-white/60">
             hover for names
           </span>
         </div>

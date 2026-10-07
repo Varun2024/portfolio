@@ -58,7 +58,7 @@ const Logs = () => {
                             Notes from shipping real things. Decisions, tradeoffs, and the occasional
                             gotcha. One entry per feature or notable call.
                         </p>
-                        <div className="mt-5 text-[12px] text-white/40">
+                        <div className="mt-5 text-[12px] text-white/60">
                             {posts.length} entries
                         </div>
                     </header>
@@ -83,7 +83,7 @@ const Logs = () => {
                                         <p className="mt-1 text-[14px] text-white/85 leading-relaxed line-clamp-2">
                                             {post.excerpt}
                                         </p>
-                                        <div className="mt-2 flex items-center gap-3 text-[11px] text-white/35">
+                                        <div className="mt-2 flex items-center gap-3 text-[11px] text-white/60">
                                             <span>{post.project}</span>
                                             <span aria-hidden="true" className="text-white/20">·</span>
                                             <span>{post.readMinutes} min read</span>
