@@ -1,6 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { MotionConfig } from 'motion/react'
 import './index.css'
 import App from './App.jsx'
 import Logs from './pages/Logs.jsx'
@@ -14,12 +15,14 @@ idle(() => { import('./lib/firebase.js') })
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/logs" element={<Logs />} />
-        <Route path="/logs/:slug" element={<LogPost />} />
-      </Routes>
-    </BrowserRouter>
+    <MotionConfig reducedMotion="user">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<App />} />
+          <Route path="/logs" element={<Logs />} />
+          <Route path="/logs/:slug" element={<LogPost />} />
+        </Routes>
+      </BrowserRouter>
+    </MotionConfig>
   </StrictMode>,
 )

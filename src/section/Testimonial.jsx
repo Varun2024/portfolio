@@ -89,13 +89,21 @@ export default function Testimonials() {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
+    const name = formData.name.trim()
+    const role = formData.role.trim()
+    const quote = formData.quote.trim()
+    const avatar = formData.avatar.trim()
+    if (!name || !role || !quote) {
+      showAlertMessage("danger", "Name, role, and your note are required.")
+      return
+    }
     setIsSubmitting(true)
     try {
       const newFeedbackRef = await push(ref(database, "testimonials"), {
-        name: formData.name.trim(),
-        role: formData.role.trim(),
-        quote: formData.quote.trim(),
-        avatar: formData.avatar.trim(),
+        name,
+        role,
+        quote,
+        avatar,
         createdAt: Date.now(),
       })
       const shareLink = `${window.location.origin}${window.location.pathname}?testimonial=${newFeedbackRef.key}#testimonials`
@@ -175,7 +183,7 @@ export default function Testimonials() {
                 <button
                   type="button"
                   onClick={openForm}
-                  className="group inline-flex items-center gap-2 rounded-md border border-white/20 bg-white/5 px-4 py-2 text-sm text-white/90 hover:border-white/50 hover:bg-white/10 transition"
+                  className="group inline-flex items-center gap-2 rounded-md border border-white/20 bg-white/5 px-4 py-3 text-sm text-white/90 hover:border-white/50 hover:bg-white/10 transition"
                 >
                   Share your take
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="transition-transform group-hover:translate-x-0.5">
@@ -214,6 +222,7 @@ export default function Testimonials() {
                     placeholder="Your name"
                     value={formData.name}
                     onChange={handleChange}
+                    maxLength={100}
                     required
                   />
                 </div>
@@ -227,6 +236,7 @@ export default function Testimonials() {
                     placeholder="e.g. Senior Engineer, or Head of Marketing · ex-SDE"
                     value={formData.role}
                     onChange={handleChange}
+                    maxLength={120}
                     required
                   />
                   <p className="mt-1 text-[11px] text-white/85">
@@ -245,6 +255,7 @@ export default function Testimonials() {
                     placeholder="Keep it specific. One honest paragraph beats five polite ones."
                     value={formData.quote}
                     onChange={handleChange}
+                    maxLength={600}
                     required
                   />
                 </div>

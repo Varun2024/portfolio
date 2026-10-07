@@ -67,7 +67,7 @@ const HeroText = () => {
                 >
                     <a
                         href="#work"
-                        className="group inline-flex items-center justify-center gap-1.5 sm:gap-2 rounded-md bg-white px-4 sm:px-5 py-2.5 text-sm font-semibold text-[var(--color-midnight)] transition hover:bg-white/90 whitespace-nowrap"
+                        className="group inline-flex items-center justify-center gap-1.5 sm:gap-2 rounded-md bg-white px-4 sm:px-5 py-3 text-sm font-semibold text-[var(--color-midnight)] transition hover:bg-white/90 whitespace-nowrap"
                     >
                         See projects
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="transition-transform group-hover:translate-x-0.5">
@@ -76,7 +76,7 @@ const HeroText = () => {
                     </a>
                     <a
                         href="#contact"
-                        className="inline-flex items-center justify-center gap-2 rounded-md border border-white/30 px-4 sm:px-5 py-2.5 text-sm text-white transition hover:border-white/60 whitespace-nowrap"
+                        className="inline-flex items-center justify-center gap-2 rounded-md border border-white/30 px-4 sm:px-5 py-3 text-sm text-white transition hover:border-white/60 whitespace-nowrap"
                     >
                         Get in touch
                     </a>
