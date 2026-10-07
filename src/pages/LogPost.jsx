@@ -18,7 +18,7 @@ const LogPost = () => {
     useEffect(() => {
         window.scrollTo(0, 0)
         if (!post) return
-        document.title = `${post.title} — Varun`
+        document.title = `${post.title} · Varun`
 
         // Per-post meta description for search snippets
         const metaDescId = 'meta-description-dyn'

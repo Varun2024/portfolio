@@ -10,7 +10,7 @@ const formatDate = (iso) =>
 
 const Logs = () => {
     useEffect(() => {
-        document.title = 'Build Logs — Varun'
+        document.title = 'Build Logs · Varun'
 
         // Blog + itemListElement so AI engines see every post from one hop
         const scriptId = 'blog-list-ldjson'
@@ -26,7 +26,7 @@ const Logs = () => {
             '@type': 'Blog',
             '@id': 'https://varuncodes.tech/logs#blog',
             url: 'https://varuncodes.tech/logs',
-            name: 'Build logs — Varun Shukla',
+            name: 'Build logs by Varun Shukla',
             description: 'Engineering decisions, tradeoffs, and debugging stories from shipping real products.',
             author: { '@id': 'https://varuncodes.tech/#person' },
             publisher: { '@id': 'https://varuncodes.tech/#organization' },
@@ -56,7 +56,7 @@ const Logs = () => {
                         </h1>
                         <p className="mt-5 text-[15px] sm:text-base text-white/85 max-w-xl leading-relaxed">
                             Notes from shipping real things. Decisions, tradeoffs, and the occasional
-                            gotcha — one entry per feature or notable call.
+                            gotcha. One entry per feature or notable call.
                         </p>
                         <div className="mt-5 text-[12px] text-white/40">
                             {posts.length} entries

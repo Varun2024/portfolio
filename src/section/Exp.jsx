@@ -75,7 +75,7 @@ const Exp = () => {
         <section id="experience" className="c-space section-spacing">
             <SectionHeading right={`${experiences.length} roles`}>Experience</SectionHeading>
             <p className="mt-5 max-w-xl text-sm text-white/85 md:text-base">
-                Where I've worked across product, research, and freelance — most recent first.
+                Where I've worked across product, research, and freelance. Most recent first.
             </p>
 
             <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-6 md:auto-rows-[18rem]">

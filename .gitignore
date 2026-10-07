@@ -31,3 +31,4 @@ dist-ssr
 
 # firebase deploy cache (regenerated on every deploy)
 .firebase/
+.claude/

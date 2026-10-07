@@ -157,9 +157,9 @@ export default function Testimonials() {
       const shareLink = `${window.location.origin}${window.location.pathname}?testimonial=${newFeedbackRef.key}#testimonials`
       setFormData({ name: "", role: "", quote: "", avatar: "" })
       setFeedbackOpen(false)
-      showAlertMessage("success", `Thanks — your note is in. Share link: ${shareLink}`)
+      showAlertMessage("success", `Thanks, your note is in. Share link: ${shareLink}`)
     } catch {
-      showAlertMessage("danger", "Could not send — try again shortly.")
+      showAlertMessage("danger", "Could not send. Try again shortly.")
     } finally {
       setIsSubmitting(false)
     }
