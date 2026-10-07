@@ -32,7 +32,7 @@ const CopyEmailButton = () => {
                         exit={{ opacity: 0, y: -10 }}
                         transition={{ duration: 0.1, ease: "easeInOut" }}
                     >
-                        <img src="assets/copy-done.svg" className="w-4" alt="copy icon" />
+                        <img src="assets/copy-done.svg" className="w-4" alt="" aria-hidden="true" />
                         [ locked ]
                     </motion.p>
                 ) : (
