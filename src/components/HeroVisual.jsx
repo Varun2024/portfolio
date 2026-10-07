@@ -2,7 +2,7 @@ import { motion } from "motion/react"
 import { posts } from "../content/logs"
 
 const rows = [
-    { k: "Currently", v: "Bounty Index — 1,160+ programs, daily refresh" },
+    { k: "Currently", v: "Bounty Index · 1,160+ programs, daily refresh" },
     { k: "Writing", v: posts[0].title },
     { k: "Stack", v: "next · ts · neon · python" },
 ]
@@ -38,7 +38,7 @@ const HeroVisual = () => {
                     transition={{ delay: 1.45, duration: 0.6 }}
                     className="mt-7 font-display italic text-[13px] text-white/50"
                 >
-                    — Raipur, India
+                    Raipur, India
                 </motion.p>
             </div>
         </motion.aside>

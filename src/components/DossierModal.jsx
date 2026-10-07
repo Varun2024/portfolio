@@ -106,7 +106,7 @@ const DossierModal = ({ open, onClose, downloadHref }) => {
                     <span className="size-2.5 rounded-full bg-white/15" />
                     <span className="size-2.5 rounded-full bg-white/15" />
                     <span className="size-2.5 rounded-full bg-white/15" />
-                    <span className="ml-2 font-mono text-[11px] text-white/85">dossier.exe — /var/varun</span>
+                    <span className="ml-2 font-mono text-[11px] text-white/85">dossier.exe · /var/varun</span>
                     <button
                         onClick={onClose}
                         aria-label="Close dossier"

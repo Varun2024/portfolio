@@ -13,7 +13,7 @@ import SectionHeading from '../components/SectionHeading'
 const CommitGraph = ({ user }) => (
     <img
         src={`https://ghchart.rshah.org/822c03/${user}`}
-        alt={`GitHub contribution graph for ${user} — last 12 months`}
+        alt={`GitHub contribution graph for ${user}, last 12 months`}
         loading="lazy"
         className="w-full [filter:invert(1)_hue-rotate(0deg)_saturate(1.05)_brightness(1)_drop-shadow(0_0_10px_rgba(125,211,252,0.2))]"
     />

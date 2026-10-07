@@ -18,18 +18,18 @@ const HeroText = () => {
                     initial="hidden"
                     animate="visible"
                     transition={{ delay: 0.4, duration: 0.7 }}
-                    aria-label="Varun Shukla — full-stack and AI engineer in Raipur, India. I build AI-native products that ship, scale, and earn."
+                    aria-label="Varun Shukla, full-stack and AI engineer in Raipur, India. I build AI-native products that ship, hold up, and earn."
                     className="font-semibold text-4xl sm:text-5xl md:text-6xl leading-[1.05] tracking-tight"
                 >
                     <span className="sr-only">
-                        Varun Shukla — full-stack and AI engineer in Raipur, India. I build AI-native products that ship, scale, and earn.
+                        Varun Shukla, full-stack and AI engineer in Raipur, India. I build AI-native products that ship, hold up, and earn.
                     </span>
                     <span aria-hidden="true">
                         I build <span className="italic font-display">AI-native</span><br />
                         product that{" "}
                         <span className="inline-flex min-w-[5.5ch] sm:min-w-[6ch] align-baseline">
                             <FlipWords
-                                words={["ships", "scales", "earns"]}
+                                words={["ships", "holds up", "earns"]}
                                 className="font-semibold text-white"
                             />
                         </span><br />
@@ -55,7 +55,7 @@ const HeroText = () => {
                     >
                         Bounty Index
                     </a>
-                    <span className="hidden sm:inline"> — 2,000+ weekly hunters, 1,160+ programs across 5 platforms</span>.
+                    <span className="hidden sm:inline">: 2,000+ weekly hunters, 1,160+ programs across 5 platforms</span>.
                 </motion.p>
 
                 <motion.div
@@ -93,7 +93,7 @@ const HeroText = () => {
                 >
                     <AnimatedTooltip items={fallbackTestimonials.slice(0, 6)} />
                     <span className="text-[12px] text-white/50 group-hover:text-white/80 transition-colors">
-                        Trusted by teams and solo founders
+                        Read what people say
                     </span>
                 </motion.a>
             </div>

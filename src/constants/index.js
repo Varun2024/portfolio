@@ -129,7 +129,7 @@ export const myProjects = [
     description:
       "A live Shopify-style storefront I built for sashastore.in. Takes real orders every week.",
     subDescription: [
-      "Freelance client. Catalog, cart, Stripe checkout, order emails — the full loop.",
+      "Freelance client. Catalog, cart, Stripe checkout, order emails: the full loop.",
       "Firebase auth + realtime DB so the owner sees new orders without a refresh.",
       "Admin page where she can add products and update inventory without touching code.",
     ],
@@ -234,11 +234,11 @@ export const mySocials = [
 
 export const experiences = [
   {
-    title: "SDE — Full-stack & AI Engineer",
+    title: "SDE · Full-stack & AI Engineer",
     job: "Flux Fortify",
     date: "Apr 2026 - Present",
     contents: [
-      "Shipping features on an AI-native product — spec through deploy, backend to UI.",
+      "Shipping features on an AI-native product: spec through deploy, backend to UI.",
       "Backend in TypeScript on Postgres. LLM calls earn their cost against a cheap fallback, or they get ripped out.",
       "Frontend on React + the team's design system. I write the loading, empty, and error states nobody designs on round one.",
       "Rolling features behind flags, watching the dashboard, then promoting. Easier than apologising for a rollback.",
