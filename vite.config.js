@@ -49,4 +49,14 @@ export default defineConfig({
   define: {
     __BUILD_DATE__: JSON.stringify(new Date().toISOString()),
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor-motion': ['motion', 'motion/react'],
+          'vendor-router': ['react-router-dom'],
+        },
+      },
+    },
+  },
 })
