@@ -102,7 +102,8 @@ export default function Testimonials() {
       setFormData({ name: "", role: "", quote: "", avatar: "" })
       setFeedbackOpen(false)
       showAlertMessage("success", `Thanks, your note is in. Share link: ${shareLink}`)
-    } catch {
+    } catch (error) {
+      console.error("Testimonial submit failed:", error)
       showAlertMessage("danger", "Could not send. Try again shortly.")
     } finally {
       setIsSubmitting(false)
