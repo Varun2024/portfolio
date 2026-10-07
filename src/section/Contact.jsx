@@ -4,7 +4,7 @@ import { AnimatePresence } from "motion/react"
 import Alert from "../components/Alert"
 import SendSuccess from "../components/SendSuccess"
 
-const ConsoleField = ({ id, label, value, onChange, placeholder, autoComplete, type = "text", textarea = false }) => {
+const ConsoleField = ({ id, label, value, onChange, placeholder, autoComplete, type = "text", textarea = false, maxLength }) => {
     const inputCls = "block w-full bg-transparent text-[15px] text-white placeholder:text-white/55 focus:outline-none border-b border-white/15 focus:border-white/70 transition-colors py-2"
     return (
         <label htmlFor={id} className="block">
@@ -19,6 +19,7 @@ const ConsoleField = ({ id, label, value, onChange, placeholder, autoComplete, t
                     autoComplete={autoComplete}
                     value={value}
                     onChange={onChange}
+                    maxLength={maxLength}
                     required
                 />
             ) : (
@@ -31,6 +32,7 @@ const ConsoleField = ({ id, label, value, onChange, placeholder, autoComplete, t
                     autoComplete={autoComplete}
                     value={value}
                     onChange={onChange}
+                    maxLength={maxLength}
                     required
                 />
             )}
@@ -64,18 +66,25 @@ const Contact = () => {
     }
     const handleSubmit = async (e) => {
         e.preventDefault()
+        const name = formData.name.trim()
+        const email = formData.email.trim()
+        const message = formData.message.trim()
+        if (!name || !email || !message) {
+            showAlertMessage("danger", "All fields are required.")
+            return
+        }
         setIsLoading(true)
         try {
             await emailjs.send(
                 "service_s82efv6",
                 "template_dxtsiva",
                 {
-                    from_name: formData.name,
+                    from_name: name,
                     to_name: "Varun",
-                    from_email: formData.email,
-                    reply_to: formData.email,
+                    from_email: email,
+                    reply_to: email,
                     to_email: "varunshukla747@gmail.com",
-                    message: formData.message,
+                    message,
                 },
                 { publicKey: "4_L5n38NNzezqZfrA" }
             )
@@ -116,6 +125,7 @@ const Contact = () => {
                                 placeholder="Your name"
                                 autoComplete="name"
                                 type="text"
+                                maxLength={100}
                             />
                             <ConsoleField
                                 id="email"
@@ -125,6 +135,7 @@ const Contact = () => {
                                 placeholder="you@example.com"
                                 autoComplete="email"
                                 type="email"
+                                maxLength={200}
                             />
                             <ConsoleField
                                 id="message"
@@ -134,6 +145,7 @@ const Contact = () => {
                                 placeholder="What are you building?"
                                 autoComplete="off"
                                 textarea
+                                maxLength={2000}
                             />
 
                             <button
