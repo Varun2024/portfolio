@@ -66,7 +66,7 @@ const AstronautCompanion = () => {
     return (
         <div
             aria-hidden="true"
-            className="pointer-events-none fixed bottom-5 left-5 z-40 sm:bottom-7 sm:left-7"
+            className="pointer-events-none hidden md:block fixed bottom-5 left-5 z-40 sm:bottom-7 sm:left-7"
             style={{
                 opacity: visible ? 1 : 0,
                 transition: "opacity 500ms cubic-bezier(0.16, 1, 0.3, 1)",
@@ -74,10 +74,10 @@ const AstronautCompanion = () => {
         >
             <div
                 ref={wrapRef}
-                className="relative grid size-12 place-items-center rounded-full border border-white/10 bg-[var(--color-midnight)]/70 backdrop-blur shadow-[0_10px_40px_-10px_rgba(0,0,0,0.7)] sm:size-14"
+                className="relative grid size-12 place-items-center rounded-full border border-white/10 bg-[var(--color-midnight)] sm:size-14"
                 style={{ willChange: "transform" }}
             >
-                <span className="pointer-events-none absolute inset-0 -z-10 rounded-full bg-[var(--color-aqua)]/20 blur-lg animate-pulse" />
+                <span className="pointer-events-none absolute inset-0 -z-10 rounded-full bg-[var(--color-aqua)]/15 blur-lg" />
                 <AstronautGlyph />
             </div>
         </div>

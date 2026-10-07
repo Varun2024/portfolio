@@ -3,10 +3,7 @@ const SectionLoader = ({ label = "Loading sections" }) => {
     <div className="c-space py-10 sm:py-14">
       <div className="rounded-2xl border border-white/10 bg-gradient-to-b from-[var(--color-midnight)] to-[var(--color-primary)] p-5 sm:p-7">
         <div className="flex items-center gap-3">
-          <div className="relative h-3 w-3">
-            <span className="absolute inset-0 rounded-full bg-[var(--color-aqua)] animate-ping opacity-75" />
-            <span className="absolute inset-0 rounded-full bg-[var(--color-aqua)]" />
-          </div>
+          <span className="size-2 rounded-full bg-[var(--color-aqua)]" />
           <p className="text-sm sm:text-base text-neutral-300">{label}</p>
         </div>
 

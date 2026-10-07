@@ -23,13 +23,6 @@ const ExperienceCard = ({ exp, className, accentClass = "grid-default-color", hi
     <div className={`${accentClass} ${className} relative flex flex-col justify-between overflow-hidden`}>
         {isCurrent && (
             <>
-                <span className="absolute right-5 top-5 z-20 inline-flex items-center gap-1.5 rounded-full border border-[var(--color-aqua)]/40 bg-[var(--color-aqua)]/10 px-2.5 py-1 text-[10px] font-mono uppercase tracking-[0.18em] text-[var(--color-aqua)]">
-                    <span className="relative flex size-1.5">
-                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--color-aqua)] opacity-75" />
-                        <span className="relative inline-flex size-1.5 rounded-full bg-[var(--color-aqua)]" />
-                    </span>
-                    Currently here
-                </span>
                 {/* Personal identity anchor in the empty middle — the notionists
                     portrait doubles as "here's the human behind the role". */}
                 <img
@@ -42,21 +35,30 @@ const ExperienceCard = ({ exp, className, accentClass = "grid-default-color", hi
                 />
                 <div
                     aria-hidden="true"
-                    className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-r from-black/85 via-black/55 to-black/20"
+                    className="pointer-events-none absolute inset-0 z-[1] bg-black/70"
                 />
             </>
         )}
         <div className="relative z-10 flex flex-col gap-1.5">
-            <div className="flex flex-wrap items-center gap-x-2 text-xs uppercase tracking-[0.18em] text-neutral-400">
+            <div className="flex flex-wrap items-center gap-x-2 gap-y-2 text-[12px] text-white/85">
                 <span>{formatDate(exp.date, isCurrent)}</span>
                 {tenureMo != null && <span className="text-[var(--color-aqua)]/70">· {tenureMo} mo</span>}
+                {isCurrent && (
+                    <span className="inline-flex items-center gap-1.5 rounded-sm border border-[var(--color-aqua)]/40 bg-[var(--color-aqua)]/10 px-2 py-0.5 text-[11px] text-[var(--color-aqua)]">
+                        <span className="inline-flex size-1.5 rounded-full bg-[var(--color-aqua)]" />
+                        Currently here
+                    </span>
+                )}
             </div>
             <p className="text-xl md:text-2xl font-medium leading-tight">{exp.title}</p>
             <p className="text-sm text-[var(--color-sand)]">{exp.job}</p>
         </div>
-        <ul className="z-10 mt-4 flex flex-col gap-1.5 text-sm text-neutral-300/90">
+        <ul className="z-10 mt-4 flex flex-col gap-1.5 text-sm text-neutral-200">
             {exp.contents.slice(0, highlights).map((line, i) => (
-                <li key={i} className="flex gap-2 leading-snug">
+                <li
+                    key={i}
+                    className={`flex gap-2 leading-snug ${i >= 2 ? "hidden md:flex" : ""}`}
+                >
                     <span className="mt-1.5 inline-block size-1 shrink-0 rounded-full bg-[var(--color-aqua)]" />
                     <span>{line}</span>
                 </li>
@@ -71,8 +73,8 @@ const Exp = () => {
 
     return (
         <section id="experience" className="c-space section-spacing">
-            <SectionHeading>Experience</SectionHeading>
-            <p className="mt-3 max-w-xl text-sm text-neutral-400 md:text-base">
+            <SectionHeading right={`${experiences.length} roles`}>Experience</SectionHeading>
+            <p className="mt-5 max-w-xl text-sm text-white/85 md:text-base">
                 Where I've worked across product, research, and freelance — most recent first.
             </p>
 
