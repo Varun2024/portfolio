@@ -11,6 +11,22 @@ const formatDate = (iso) =>
 
 marked.setOptions({ gfm: true, breaks: false })
 
+// Strip XSS surfaces from rendered markdown. Logs are trusted static files
+// today, but this closes the door if we ever accept user-submitted content.
+const sanitize = (html) => {
+    const doc = new DOMParser().parseFromString(html, 'text/html')
+    doc.querySelectorAll('script, iframe, object, embed, link, meta, style').forEach((el) => el.remove())
+    doc.querySelectorAll('*').forEach((el) => {
+        for (const attr of [...el.attributes]) {
+            const name = attr.name.toLowerCase()
+            const value = attr.value.trim().toLowerCase()
+            if (name.startsWith('on')) el.removeAttribute(attr.name)
+            else if ((name === 'href' || name === 'src') && value.startsWith('javascript:')) el.removeAttribute(attr.name)
+        }
+    })
+    return doc.body.innerHTML
+}
+
 const LogPost = () => {
     const { slug } = useParams()
     const post = getPostBySlug(slug)
@@ -68,7 +84,7 @@ const LogPost = () => {
         if (!post) return ''
         // Strip leading '# Title' since the page header already renders it.
         const stripped = post.content.replace(/^#\s+.*\n+/, '')
-        return marked.parse(stripped)
+        return sanitize(marked.parse(stripped))
     }, [post])
 
     if (!post) return <Navigate to="/logs" replace />
