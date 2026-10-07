@@ -1,5 +1,6 @@
 import Navbar from './section/Navbar'
 import Hero from './section/Hero'
+import Footer from './section/Footer'
 import { lazy, Suspense, useRef } from 'react'
 import { ReactLenis } from 'lenis/react'
 import GameLauncher from './components/GameLauncher'
@@ -15,7 +16,6 @@ const Projects = lazy(() => import('./section/Projects'))
 const LogsTeaser = lazy(() => import('./section/LogsTeaser'))
 const Testimonials = lazy(() => import('./section/Testimonial'))
 const Contact = lazy(() => import('./section/Contact'))
-const Footer = lazy(() => import('./section/Footer'))
 
 
 const App = () => {
@@ -48,9 +48,9 @@ const App = () => {
         <Testimonials />
         {/* contact */}
         <Contact />
-        {/* footer */}
-        <Footer />
       </Suspense>
+      {/* footer */}
+      <Footer />
       <GameLauncher />
       <AstronautCompanion />
       <SystemsHUD />

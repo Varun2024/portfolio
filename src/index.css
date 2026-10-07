@@ -167,16 +167,6 @@ p, li {
   }
 }
 
-.text-heading {
-  font-weight: bold;
-  font-size: 1.875rem; /* text-3xl */
-}
-@media (min-width: 768px) {
-  .text-heading {
-    font-size: 2.25rem; /* md:text-4xl */
-  }
-}
-
 .headtext {
   margin-top: 0.5rem; /* mt-2 */
   margin-bottom: 0.5rem; /* mb-2 */

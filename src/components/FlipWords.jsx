@@ -1,6 +1,6 @@
-/* eslint-disable no-unused-vars */
 "use client";
 import React, { useCallback, useEffect, useState } from "react";
+// eslint-disable-next-line no-unused-vars
 import { AnimatePresence, motion } from "motion/react";
 import { twMerge } from "tailwind-merge";
 

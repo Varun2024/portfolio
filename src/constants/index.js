@@ -290,3 +290,60 @@ export const experiences = [
     ],
   },
 ];
+
+export const fallbackTestimonials = [
+  {
+    id: "fallback-vishnu",
+    name: "Vishnu S.",
+    role: "Owner, Sasha",
+    quote:
+      "Ecom made easy work of what used to be a tedious process. The support is top-notch.",
+    avatar: "/assets/sasha.webp",
+    createdAt: 1,
+  },
+  {
+    id: "fallback-thomson",
+    name: "Thomson",
+    role: "Event Organiser, TEDxBITD",
+    quote:
+      "Real-time updates during peak traffic saved us hours. The admin UX is minimal but powerful.",
+    avatar: "/assets/tedx.webp",
+    createdAt: 2,
+  },
+  {
+    id: "fallback-anshul",
+    name: "Anshul Satone",
+    role: "Developer",
+    quote:
+      "Integration was painless. Clean code, sensible defaults, and thoughtful animations.",
+    avatar: "/assets/logos/user.svg",
+    createdAt: 3,
+  },
+  {
+    id: "fallback-abhishek",
+    name: "Abhishek Kashyap",
+    role: "Robotics Engineer",
+    quote:
+      "Varun works with enthusiasm and perfection. He created what our project needed and matches exactly with our requirements.",
+    avatar: "",
+    createdAt: 4,
+  },
+  {
+    id: "fallback-vansh",
+    name: "Vansh",
+    role: "Developer",
+    quote:
+      "The best team player. The best person to work with.",
+    avatar: "",
+    createdAt: 5,
+  },
+  {
+    id: "fallback-vatsal",
+    name: "Vatsal Awasthi",
+    role: "Retailer",
+    quote:
+      "Very meticulous and enthusiastic with discipline. Created an e-commerce platform with high conversion rate.",
+    avatar: "",
+    createdAt: 6,
+  },
+];
