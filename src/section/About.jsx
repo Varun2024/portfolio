@@ -20,7 +20,7 @@ const CommitGraph = ({ user }) => (
 )
 
 const PanelTag = ({ children }) => (
-    <div className="mb-3 text-[10px] uppercase tracking-[0.18em] text-white/45">
+    <div className="mb-3 text-[11px] text-white/85">
         {children}
     </div>
 )
@@ -28,11 +28,9 @@ const PanelTag = ({ children }) => (
 const About = () => {
     return (
         <section id="about" className='c-space mt-16 md:mt-24'>
-            <SectionHeading>About</SectionHeading>
+            <SectionHeading right="2+ yr shipping">About</SectionHeading>
 
-            <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-white/60">
-                <span>2+ yr shipping</span>
-                <span className="text-white/20">·</span>
+            <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-white/85">
                 <span>React · Next · Node · Python</span>
                 <span className="text-white/20">·</span>
                 <span>Raipur, IN <span className="text-white/35">(UTC+5:30)</span></span>
@@ -46,34 +44,43 @@ const About = () => {
             <div className="grid grid-cols-1 gap-4 md:grid-cols-6 md:auto-rows-[18rem] mt-8">
 
                 {/* grid 1 — PILOT ID */}
-                <div className="flex flex-col grid-default-color grid-1">
+                <div className="flex flex-col grid-default-color grid-1 overflow-hidden">
                     <PanelTag>profile</PanelTag>
-                    <img
-                        src="assets/971.webp"
-                        alt=""
-                        aria-hidden="true"
-                        className='absolute scale-[1.75] -right-[5rem] -top-[1rem] md:scale-[3] md:left-50 md:inset-y-10 lg:scale-[2.5rem] opacity-80'
-                    />
-                    <div className="z-10 mt-auto">
-                        <p className='headtext'>Hi, I'm Varun Shukla</p>
-                        <p className='subtext'>Full-stack engineer fluent in React, Next.js, and machine learning. I ship fast, user-friendly product surfaces backed by smart, data-driven systems.</p>
+                    <div className="relative z-10 flex items-start gap-4 sm:gap-5 md:flex-col md:items-start md:h-full">
+                        <div className="relative shrink-0 size-20 sm:size-24 md:size-32 rounded-full border border-white/15 bg-[var(--color-indigo)] overflow-hidden">
+                            <img
+                                src="/assets/avatar-varun.svg"
+                                alt="Varun Shukla"
+                                loading="lazy"
+                                className="absolute inset-0 h-full w-full object-cover scale-[1.15] translate-y-[6%]"
+                            />
+                        </div>
+                        <div className="min-w-0 md:mt-auto">
+                            <p className='headtext'>Hi, I'm Varun Shukla</p>
+                            <p className='subtext md:hidden'>Full-stack engineer. React, Next, ML.</p>
+                            <p className='subtext hidden md:block'>Full-stack engineer fluent in React, Next.js, and machine learning. I ship fast, user-friendly product surfaces backed by smart, data-driven systems.</p>
+                        </div>
                     </div>
-                    <div className="absolute inset-x-0 pointer-events-none -bottom-4 h-1/2 sm:h-1/3 bg-gradient-to-t from-[var(--color-midnight)]"></div>
                 </div>
 
                 {/* grid 2 — OPINIONS */}
                 <div className="grid-default-color grid-2 flex flex-col">
                     <PanelTag>opinions</PanelTag>
-                    <div className="flex flex-col gap-4 text-[14px] leading-relaxed">
-                        <p className="text-white/85">
-                            Ship it rough, then make it good. The second version is cheaper when there's a user complaining about the first.
+                    <div className="flex-1 flex flex-col justify-center md:justify-start">
+                        <p className="font-display text-[1.75rem] md:text-[1.75rem] leading-[1.15] text-white tracking-tight">
+                            Ship it rough,<br className="md:hidden" /> then make it good.
                         </p>
-                        <p className="text-white/70">
-                            A specific error message beats a <code className="font-mono text-[12px] text-white/80">try/catch</code> that swallows the problem. If I can't name what failed, I can't fix it.
+                        <p className="mt-3 text-[13px] text-white/85 md:hidden">
+                            Three engineering opinions I actually hold.
                         </p>
-                        <p className="text-white/70">
-                            Delete more code than you add. Dead branches are where bugs sleep.
-                        </p>
+                        <div className="hidden md:flex mt-5 flex-col gap-3 text-[13.5px] leading-relaxed text-white/85">
+                            <p>
+                                A specific error message beats a <code className="font-mono text-[12px] text-white/85">try/catch</code> that swallows the problem.
+                            </p>
+                            <p>
+                                Delete more code than you add. Dead branches are where bugs sleep.
+                            </p>
+                        </div>
                     </div>
                 </div>
 
@@ -107,16 +114,15 @@ const About = () => {
                 {/* grid 5 — LOADOUT */}
                 <div className="grid-default-color grid-5">
                     <PanelTag>stack</PanelTag>
-                    <div className="z-10 w-[55%]">
-                        <p className="headtext">Stack</p>
+                    <div className="z-10 w-full md:w-[55%]">
                         <div className="mt-3 space-y-1.5 font-mono text-[11px] leading-relaxed">
-                            <div><span className="text-white/55">frontend</span>  <span className="text-white/30">·</span> <span className="text-white/90">React · Next · TS · Tailwind · Motion</span></div>
-                            <div><span className="text-white/55">backend</span>   <span className="text-white/30">·</span> <span className="text-white/90">Node · Python · Postgres · Drizzle · Neon</span></div>
-                            <div><span className="text-white/55">ai/ml</span>     <span className="text-white/30">·</span> <span className="text-white/90">LLM APIs · YOLO · OpenCV · PyTorch</span></div>
-                            <div><span className="text-white/55">cloud</span>     <span className="text-white/30">·</span> <span className="text-white/90">Firebase · Vercel · Serverless</span></div>
+                            <div><span className="text-white/85">frontend</span>  <span className="text-white/30">·</span> <span className="text-white/90">React · Next · TS · Tailwind · Motion</span></div>
+                            <div><span className="text-white/85">backend</span>   <span className="text-white/30">·</span> <span className="text-white/90">Node · Python · Postgres · Prisma</span></div>
+                            <div><span className="text-white/85">ai</span>        <span className="text-white/30">·</span> <span className="text-white/90">OpenAI · AI SDK · LangChain · PyTorch</span></div>
+                            <div><span className="text-white/85">cloud</span>     <span className="text-white/30">·</span> <span className="text-white/90">Firebase · Vercel · Stripe</span></div>
                         </div>
                     </div>
-                    <div className="absolute inset-0 md:inset-y-9 w-full h-full start-[50%] md:scale-125 ">
+                    <div className="hidden md:block absolute inset-0 md:inset-y-9 w-full h-full start-[50%] md:scale-125 ">
                         <FrameWorks />
                     </div>
                 </div>
@@ -125,16 +131,6 @@ const About = () => {
 
             {/* Commit graph — real proof-of-work strip below the bento */}
             <div className="grid-default-color relative mt-4 md:col-span-6 overflow-hidden">
-                <div
-                    aria-hidden="true"
-                    className="pointer-events-none absolute inset-0 opacity-40"
-                    style={{
-                        backgroundImage:
-                            "linear-gradient(rgba(125,211,252,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(125,211,252,0.05) 1px, transparent 1px)",
-                        backgroundSize: "24px 24px",
-                        maskImage: "radial-gradient(ellipse at center, black 55%, transparent 90%)",
-                    }}
-                />
                 <div className="relative">
                     <div className="flex items-center justify-between gap-3">
                         <PanelTag>activity</PanelTag>
@@ -142,26 +138,25 @@ const About = () => {
                             href="https://github.com/Varun2024"
                             target="_blank"
                             rel="noreferrer"
-                            className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--color-aqua)]/80 hover:text-[var(--color-aqua)]"
+                            className="text-[12px] text-white/85 hover:text-white"
                         >
                             @Varun2024 ↗
                         </a>
                     </div>
-                    <p className="mt-1 font-mono text-[11px] text-white/60">
+                    <p className="mt-1 font-mono text-[11px] text-white/85">
                         {'>'} last 12 months of public commits
                     </p>
-                    <div className="relative mt-4 rounded-md border border-[var(--color-aqua)]/15 bg-black/30 p-3 shadow-[0_0_40px_-20px_rgba(125,211,252,0.6)_inset]">
-                        <span aria-hidden="true" className="pointer-events-none absolute left-3 right-3 top-0 h-px bg-gradient-to-r from-transparent via-[var(--color-aqua)]/60 to-transparent" />
+                    <div className="relative mt-4 rounded-sm border border-white/10 bg-black/30 p-3">
                         <CommitGraph user="Varun2024" />
                     </div>
-                    <div className="mt-3 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.18em] text-white/50">
+                    <div className="mt-3 flex items-center justify-between text-[11px] text-white/85">
                         <span>less</span>
                         <div className="flex items-center gap-1">
                             {[0.12, 0.28, 0.5, 0.75, 1].map((a) => (
                                 <span
                                     key={a}
                                     className="inline-block size-2.5 rounded-[2px]"
-                                    style={{ backgroundColor: `rgba(125, 211, 252, ${a})`, boxShadow: `0 0 8px rgba(125,211,252,${a * 0.4})` }}
+                                    style={{ backgroundColor: `rgba(125, 211, 252, ${a})` }}
                                 />
                             ))}
                         </div>

@@ -8,7 +8,7 @@ const ConsoleField = ({ id, label, value, onChange, placeholder, autoComplete, t
     const inputCls = "block w-full bg-transparent text-[15px] text-white placeholder:text-white/25 focus:outline-none border-b border-white/15 focus:border-white/70 transition-colors py-2"
     return (
         <label htmlFor={id} className="block">
-            <span className="mb-1 block text-[11px] uppercase tracking-[0.14em] text-white/50">{label}</span>
+            <span className="mb-1 block text-[12px] text-white/85">{label}</span>
             {textarea ? (
                 <textarea
                     id={id}
@@ -94,8 +94,7 @@ const Contact = () => {
             {/* testimonials */}
             {showAlert && <Alert type={alertType} text={alertMessage} />}
             <div className="relative mx-auto w-full max-w-xl">
-                <div className="pointer-events-none absolute -inset-px rounded-xl bg-gradient-to-br from-[var(--color-aqua)]/20 via-white/5 to-[var(--color-aqua)]/5 opacity-60 blur-[1px]" />
-                <div className="relative rounded-xl border border-white/10 bg-[#04070f]/95 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.8)] min-h-[520px]">
+                <div className="relative rounded-sm border border-white/10 bg-[#04070f] min-h-[520px]">
                     <AnimatePresence>
                         {justSent && <SendSuccess onDone={() => setJustSent(false)} />}
                     </AnimatePresence>
@@ -103,7 +102,7 @@ const Contact = () => {
                     <div className="px-5 py-6 sm:px-7 sm:py-8">
                         <div className="mb-6">
                             <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-white">Get in touch</h2>
-                            <p className="mt-2 text-sm text-white/60">
+                            <p className="mt-2 text-sm text-white/85">
                                 Open to interesting problems. Typical reply within 24h.
                             </p>
                         </div>
@@ -145,7 +144,7 @@ const Contact = () => {
                             >
                                 {isLoading ? "Sending…" : "Send message"}
                             </button>
-                            <p className="mt-4 text-center text-[12px] text-white/50">
+                            <p className="mt-4 text-center text-[12px] text-white/85">
                                 Or email directly:{" "}
                                 <a
                                     href="mailto:varunshukla747@gmail.com"

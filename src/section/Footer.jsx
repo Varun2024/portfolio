@@ -1,24 +1,39 @@
-import React from 'react'
 import { mySocials } from '../constants'
 
+const BUILD_DATE = new Date(__BUILD_DATE__ || Date.now()).toLocaleDateString('en-US', {
+    year: 'numeric', month: 'short', day: 'numeric',
+})
+
 const Footer = () => {
-  return (
-    <section className='flex flex-wrap items-center justify-between gap-5 pt-20 md:pt-32 pb-6 mt-10 text-sm text-neutral-400 c-space'>
-        <div className="bg-gradient-to-r from-transparent via-neutral-700 to to-transparent h-[1px] w-full" />
-        <div className="flex gap-2"> 
-            <p>Term & Condition</p>
-            <p>|</p>
-            <p>Privacy Policy</p>
-        </div>
-        <div className="flex gap-3">
-            {mySocials.map((social,index)=> 
-                (<a href={social.href} key={index}>
-                    <img src={social.icon} className='w-5 h-5' alt={social.name}  />
-                </a>))}
-        </div>
-        <p>©️ {new Date().getFullYear()} Varun. All rights reserved</p>
-    </section>
-  )
+    return (
+        <footer className="c-space pt-24 md:pt-32 pb-8 mt-10">
+            <div className="mx-auto w-full max-w-6xl">
+                <div className="border-t border-white/10 pt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between text-[12px] text-white/40">
+                    <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                        <span>© {new Date().getFullYear()} Varun Shukla</span>
+                        <span className="text-white/15">·</span>
+                        <span>React · Vite · Tailwind · Firebase</span>
+                        <span className="text-white/15">·</span>
+                        <span>Last shipped {BUILD_DATE}</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                        {mySocials.map((social, i) => (
+                            <a
+                                key={i}
+                                href={social.href}
+                                target="_blank"
+                                rel="noreferrer"
+                                aria-label={social.name}
+                                className="opacity-50 hover:opacity-100 transition-opacity"
+                            >
+                                <img src={social.icon} className="w-4 h-4" alt="" />
+                            </a>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </footer>
+    )
 }
 
 export default Footer

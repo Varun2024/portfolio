@@ -2,10 +2,11 @@ import { useEffect, useMemo, useRef, useState } from "react"
 import { AnimatePresence, motion as Motion } from "motion/react"
 import { onValue, push, query, ref, limitToLast } from "firebase/database"
 import Alert from "../components/Alert"
+import AnimatedTooltip from "../components/AnimatedTooltip"
 import { database } from "../lib/firebase"
 import { buildDefaultAvatar, resolveAvatar } from "../lib/avatar"
 
-const fallbackTestimonials = [
+export const fallbackTestimonials = [
   {
     id: "fallback-vishnu",
     name: "Vishnu S.",
@@ -26,12 +27,39 @@ const fallbackTestimonials = [
   },
   {
     id: "fallback-anshul",
-    name: "Anshul",
-    role: "SDE Intern",
+    name: "Anshul Satone",
+    role: "Developer",
     quote:
       "Integration was painless. Clean code, sensible defaults, and thoughtful animations.",
     avatar: "/assets/logos/user.svg",
     createdAt: 3,
+  },
+  {
+    id: "fallback-abhishek",
+    name: "Abhishek Kashyap",
+    role: "Robotics Engineer",
+    quote:
+      "Varun works with enthusiasm and perfection. He created what our project needed and matches exactly with our requirements.",
+    avatar: "",
+    createdAt: 4,
+  },
+  {
+    id: "fallback-vansh",
+    name: "Vansh",
+    role: "Developer",
+    quote:
+      "The best team player. The best person to work with.",
+    avatar: "",
+    createdAt: 5,
+  },
+  {
+    id: "fallback-vatsal",
+    name: "Vatsal Awasthi",
+    role: "Retailer",
+    quote:
+      "Very meticulous and enthusiastic with discipline. Created an e-commerce platform with high conversion rate.",
+    avatar: "",
+    createdAt: 6,
   },
 ]
 
@@ -41,7 +69,7 @@ const asWord = (n) => COUNT_WORDS[n] ? `${COUNT_WORDS[n][0].toUpperCase()}${COUN
 // Marquee: horizontal infinite scroll using keyframes from index.css
 // (--animate-marquee + --gap custom prop). Repeats children so the loop
 // stays filled on wide viewports. pauseOnHover halts the whole track.
-const Marquee = ({ children, reverse = false, repeat = 3, pauseOnHover = true, className = "" }) => (
+const Marquee = ({ children, reverse = false, repeat = 3, duration = 48, pauseOnHover = true, className = "" }) => (
   <div
     className={`group flex overflow-hidden [--gap:1.25rem] ${className}`}
     style={{ gap: "var(--gap)" }}
@@ -52,7 +80,7 @@ const Marquee = ({ children, reverse = false, repeat = 3, pauseOnHover = true, c
         className={`flex shrink-0 justify-around ${pauseOnHover ? "group-hover:[animation-play-state:paused]" : ""}`}
         style={{
           gap: "var(--gap)",
-          animation: `marquee 48s linear infinite${reverse ? " reverse" : ""}`,
+          animation: `marquee ${duration}s linear infinite${reverse ? " reverse" : ""}`,
         }}
       >
         {children}
@@ -157,23 +185,26 @@ export default function Testimonials() {
           <h2 className="font-display text-3xl sm:text-4xl md:text-5xl text-white leading-none tracking-tight">
             What people say
           </h2>
-          <div className="text-[11px] uppercase tracking-[0.22em] text-white/40 pb-1">
-            {asWord(testimonials.length)} so far
+          <div className="text-[12px] text-white/85 pb-1">
+            {asWord(testimonials.length).toLowerCase()} so far
           </div>
         </div>
 
-        <div className="relative mt-10">
-          {/* Edge fades */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 sm:w-32 bg-gradient-to-r from-[var(--color-primary)] to-transparent" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 sm:w-32 bg-gradient-to-l from-[var(--color-primary)] to-transparent" />
+        <div className="mt-6 flex items-center gap-4">
+          <AnimatedTooltip items={testimonials.slice(0, 6)} />
+          <span className="text-[12px] text-white/40">
+            hover for names
+          </span>
+        </div>
 
+        <div className="relative mt-8">
           <div className="flex flex-col gap-5 sm:gap-6">
-            <Marquee>
+            <Marquee duration={48}>
               {firstTrack.map((t) => (
                 <QuoteCard key={`a-${t.id}`} t={t} />
               ))}
             </Marquee>
-            <Marquee reverse>
+            <Marquee reverse duration={62}>
               {secondTrack.map((t) => (
                 <QuoteCard key={`b-${t.id}`} t={t} />
               ))}
@@ -192,7 +223,7 @@ export default function Testimonials() {
                 transition={{ duration: 0.25 }}
                 className="flex flex-wrap items-center justify-between gap-4"
               >
-                <p className="text-sm text-white/55">
+                <p className="text-sm text-white/85">
                   Worked with me?{" "}
                   <span className="text-white/80">Add your line.</span>
                 </p>
@@ -253,7 +284,7 @@ export default function Testimonials() {
                     onChange={handleChange}
                     required
                   />
-                  <p className="mt-1 text-[11px] text-white/40">
+                  <p className="mt-1 text-[11px] text-white/85">
                     If your current title doesn't show your tech background, add it here.
                   </p>
                 </div>
@@ -303,14 +334,14 @@ export default function Testimonials() {
 }
 
 const QuoteCard = ({ t }) => (
-  <figure className="relative w-[18rem] sm:w-[22rem] shrink-0 rounded-xl border border-white/10 bg-[var(--color-midnight)]/70 px-5 py-6 backdrop-blur-sm hover:border-white/25 hover:bg-[var(--color-midnight)] transition-colors">
+  <figure className="relative w-[72vw] max-w-[18rem] sm:w-[22rem] sm:max-w-[22rem] shrink-0 rounded-sm border border-white/10 bg-[var(--color-midnight)] px-4 py-5 sm:px-5 sm:py-6 hover:border-white/25 transition-colors">
     <span
       aria-hidden="true"
       className="pointer-events-none absolute left-3 top-0 font-display text-[4.5rem] leading-none text-white/[0.08] select-none"
     >
       &ldquo;
     </span>
-    <blockquote className="relative text-[14px] leading-relaxed text-white/85 line-clamp-5">
+    <blockquote className="relative text-[13px] sm:text-[14px] leading-relaxed text-white/85 line-clamp-5">
       {t.quote}
     </blockquote>
     <figcaption className="mt-5 flex items-center gap-3 border-t border-white/5 pt-3">

@@ -1,13 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 
-// Section-title reveal: heading fades in from a subtle blur+y offset while
-// a thin scanner line sweeps from left to right underneath. One-shot per
-// section; skips animation entirely on prefers-reduced-motion.
-
-const SectionHeading = ({ children, className = "", size = "default" }) => {
-    const sizeCls = size === "hero"
-        ? "font-display text-4xl sm:text-5xl md:text-6xl leading-[1]"
-        : "text-heading"
+const SectionHeading = ({ children, right = null, className = "" }) => {
     const ref = useRef(null)
     const [revealed, setRevealed] = useState(false)
 
@@ -39,26 +32,26 @@ const SectionHeading = ({ children, className = "", size = "default" }) => {
     }, [])
 
     return (
-        <div ref={ref} className={`inline-flex flex-col items-start ${className}`}>
+        <div
+            ref={ref}
+            className={`flex items-end justify-between gap-6 border-b border-white/10 pb-4 ${className}`}
+        >
             <h2
-                className={sizeCls}
+                className="font-display text-3xl sm:text-4xl md:text-5xl text-white leading-none tracking-tight"
                 style={{
                     opacity: revealed ? 1 : 0,
-                    transform: revealed ? "translateY(0) blur(0)" : "translateY(8px)",
+                    transform: revealed ? "translateY(0)" : "translateY(8px)",
                     filter: revealed ? "blur(0)" : "blur(6px)",
                     transition: "opacity 500ms cubic-bezier(0.16, 1, 0.3, 1), transform 500ms cubic-bezier(0.16, 1, 0.3, 1), filter 500ms",
                 }}
             >
                 {children}
             </h2>
-            <span
-                aria-hidden="true"
-                className="mt-2 block h-px bg-gradient-to-r from-transparent via-[var(--color-aqua)]/70 to-transparent"
-                style={{
-                    width: revealed ? "100%" : "0%",
-                    transition: "width 700ms cubic-bezier(0.16, 1, 0.3, 1) 120ms",
-                }}
-            />
+            {right && (
+                <div className="pb-1 text-[12px] text-white/85">
+                    {right}
+                </div>
+            )}
         </div>
     )
 }
