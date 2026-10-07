@@ -46,7 +46,7 @@ const HeroText = () => {
                     transition={{ delay: 0.75, duration: 0.6 }}
                     className="max-w-md text-base sm:text-lg text-white leading-relaxed [text-shadow:0_1px_12px_rgba(0,0,0,0.65)]"
                 >
-                    Currently at Flux Fortify. On the side, I run{" "}
+                    Currently remote at Flux Fortify (Oman). On the side, I run{" "}
                     <a
                         href="https://bountyindex.in"
                         target="_blank"

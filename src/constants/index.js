@@ -235,7 +235,7 @@ export const mySocials = [
 export const experiences = [
   {
     title: "SDE · Full-stack & AI Engineer",
-    job: "Flux Fortify",
+    job: "Flux Fortify · Oman · Remote from Raipur",
     date: "Apr 2026 - Present",
     contents: [
       "Shipping features on an AI-native product: spec through deploy, backend to UI.",
