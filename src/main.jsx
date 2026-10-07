@@ -7,18 +7,8 @@ import App from './App.jsx'
 import Logs from './pages/Logs.jsx'
 import LogPost from './pages/LogPost.jsx'
 
-// SEO: force the Firebase default domain onto the canonical one so Google
-// stops indexing both. Also inserts noindex for crawler-only runs that may
-// not follow JS redirects.
-const CANONICAL = 'https://varuncodes.tech'
-const host = window.location.hostname
-if (host.endsWith('.web.app') || host.endsWith('.firebaseapp.com')) {
-  const meta = document.createElement('meta')
-  meta.name = 'robots'
-  meta.content = 'noindex, nofollow'
-  document.head.appendChild(meta)
-  window.location.replace(CANONICAL + window.location.pathname + window.location.search + window.location.hash)
-}
+// Note: the firebase.app -> varuncodes.tech redirect lives inline in
+// index.html <head> so crawlers see it before any JS bundle loads.
 
 // Defer firebase (and its analytics side-effect) off the critical path.
 // ~100kb chunk stays out of the initial bundle; testimonials will pull it
