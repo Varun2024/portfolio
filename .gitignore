@@ -32,3 +32,11 @@ dist-ssr
 # firebase deploy cache (regenerated on every deploy)
 .firebase/
 .claude/
+
+# local tooling
+.reticle/
+.reticle.json
+AGENTS.md
+CLAUDE.md
+RETICLE.md
+src/reticle-dev.ts
