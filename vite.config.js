@@ -4,6 +4,7 @@ import tailwindcss from '@tailwindcss/vite'
 import { writeFileSync, readdirSync, readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 
+import { reticle } from '@reticlehq/vite-plugin';
 const SITE = 'https://varuncodes.tech'
 
 // Read log slugs from src/content/logs/*.md so sitemap stays in sync without a build step.
@@ -45,7 +46,7 @@ Sitemap: ${SITE}/sitemap.xml
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), tailwindcss(), seoAssetsPlugin()],
+  plugins: [reticle(), react(), tailwindcss(), seoAssetsPlugin()],
   define: {
     __BUILD_DATE__: JSON.stringify(new Date().toISOString()),
   },
