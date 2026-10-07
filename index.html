@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- SEO: redirect firebase.app visits to the canonical domain + noindex. Runs before any bundle. -->
+    <script>(function(){var h=location.hostname;if(h.endsWith(".web.app")||h.endsWith(".firebaseapp.com")){var m=document.createElement("meta");m.name="robots";m.content="noindex, nofollow";document.head.appendChild(m);location.replace("https://varuncodes.tech"+location.pathname+location.search+location.hash)}})();</script>
     <!-- Charset & Viewport -->
     <meta
       name="google-site-verification"
