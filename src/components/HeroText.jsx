@@ -82,6 +82,17 @@ const HeroText = () => {
                     </a>
                 </motion.div>
 
+                <motion.p
+                    variants={variance}
+                    initial="hidden"
+                    animate="visible"
+                    transition={{ delay: 1.1, duration: 0.6 }}
+                    className="flex items-center gap-2 text-[13px] text-white/70 [text-shadow:0_1px_12px_rgba(0,0,0,0.65)]"
+                >
+                    <span className="size-1.5 rounded-full bg-[var(--color-mint)]" />
+                    Open to full-time roles and freelance, remote or Raipur.
+                </motion.p>
+
                 <motion.a
                     href="#testimonials"
                     variants={variance}

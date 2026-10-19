@@ -1,8 +1,6 @@
-import { useEffect, useRef, useState } from "react"
+import { useRef, useState } from "react"
 import { experiences } from "../constants"
 import SectionHeading from "../components/SectionHeading"
-
-const PAGE_BG = "#030412" // body background — nodes sit on this so the rail line doesn't show through
 
 const isOngoing = (dateStr) => /present/i.test(dateStr)
 
@@ -10,8 +8,8 @@ const formatDate = (dateStr) =>
     isOngoing(dateStr) ? dateStr.replace(/\s*-\s*present/i, " → Present") : dateStr
 
 const monthsSincePresent = (dateStr) => {
-    // Months elapsed since an ongoing role began. Returns null when the start
-    // has no parseable month (e.g. "2025-Present"), so only dated roles show tenure.
+    // Months elapsed since an ongoing role began; null when the start has no
+    // parseable month, so only dated ongoing roles show a tenure.
     if (!isOngoing(dateStr)) return null
     const [start] = dateStr.split(/\s*-\s*/)
     const startDate = new Date(`${start.trim()} 1`)
@@ -21,150 +19,122 @@ const monthsSincePresent = (dateStr) => {
     return Math.max(1, m)
 }
 
-const Node = ({ isCurrent }) => {
-    if (isCurrent) {
-        // The current role's node is the portrait itself: "here's the human behind
-        // the role" as the you-are-here marker, not a watermark behind the text.
-        return (
-            <span
-                className="relative z-10 block size-8 shrink-0 overflow-hidden rounded-full ring-2 ring-[var(--color-aqua)]"
-                style={{ background: PAGE_BG }}
-            >
-                <img
-                    src="/assets/avatar-varun.svg"
-                    alt=""
-                    aria-hidden="true"
-                    loading="lazy"
-                    className="h-full w-full object-cover"
-                    style={{ objectPosition: "66% 26%", transform: "scale(1.2)" }}
-                />
-            </span>
-        )
-    }
-    return (
-        <span
-            className="relative z-10 mt-1.5 flex size-3.5 shrink-0 items-center justify-center rounded-full ring-1 ring-white/25"
-            style={{ background: PAGE_BG }}
-        >
-            <span className="size-1.5 rounded-full bg-white/40" />
-        </span>
-    )
-}
+// Company label for the index column: first segment of the job string.
+const companyOf = (exp) => exp.job.split("·")[0].split("·")[0].trim()
 
-const TimelineRow = ({ exp, isCurrent, isLast, shown, delay }) => {
+const Detail = ({ exp, isCurrent }) => {
     const tenureMo = monthsSincePresent(exp.date)
-    const highlights = isCurrent ? exp.contents : exp.contents.slice(0, 3)
-
     return (
-        <li
-            className="relative grid grid-cols-[2rem_1fr] gap-x-4 md:grid-cols-[2.5rem_1fr] md:gap-x-6"
-            style={{
-                opacity: shown ? 1 : 0,
-                transform: shown ? "translateY(0)" : "translateY(14px)",
-                transition: `opacity 520ms cubic-bezier(0.16,1,0.3,1) ${delay}ms, transform 520ms cubic-bezier(0.16,1,0.3,1) ${delay}ms`,
-            }}
-        >
-            {/* Rail: the connecting spine plus this row's node, centered in the column. */}
-            <div className="relative flex justify-center">
-                <span
-                    aria-hidden="true"
-                    className="absolute left-1/2 top-0 w-px -translate-x-1/2 bg-white/10"
-                    style={{
-                        height: isLast ? "1.75rem" : "100%",
-                        transformOrigin: "top",
-                        transform: shown ? "scaleY(1)" : "scaleY(0)",
-                        transition: `transform 600ms cubic-bezier(0.16,1,0.3,1) ${delay}ms`,
-                    }}
-                />
-                <Node isCurrent={isCurrent} />
+        <div>
+            <div className="flex flex-wrap items-center gap-x-2 gap-y-1.5 text-[12px] text-white/70">
+                <time>{formatDate(exp.date)}</time>
+                {tenureMo != null && <span className="text-[var(--color-aqua)]/80">· {tenureMo} mo</span>}
+                {isCurrent && (
+                    <span className="inline-flex items-center gap-1.5 rounded-sm border border-[var(--color-aqua)]/40 bg-[var(--color-aqua)]/10 px-2 py-0.5 text-[11px] text-[var(--color-aqua)]">
+                        <span className="inline-flex size-1.5 rounded-full bg-[var(--color-aqua)]" />
+                        Currently here
+                    </span>
+                )}
             </div>
-
-            {/* Content: meta line, role, company, highlights. */}
-            <div className={isLast ? "pb-2" : "pb-10 md:pb-12"}>
-                <div className="flex flex-wrap items-center gap-x-2 gap-y-1.5 text-[12px] text-white/70">
-                    <time>{formatDate(exp.date)}</time>
-                    {tenureMo != null && (
-                        <span className="text-[var(--color-aqua)]/80">· {tenureMo} mo</span>
-                    )}
-                    {isCurrent && (
-                        <span className="inline-flex items-center gap-1.5 rounded-sm border border-[var(--color-aqua)]/40 bg-[var(--color-aqua)]/10 px-2 py-0.5 text-[11px] text-[var(--color-aqua)]">
-                            <span className="inline-flex size-1.5 rounded-full bg-[var(--color-aqua)]" />
-                            Currently here
-                        </span>
-                    )}
-                </div>
-
-                <h3
-                    className={`mt-1.5 font-medium leading-tight text-white ${
-                        isCurrent ? "text-xl md:text-2xl" : "text-lg md:text-xl"
-                    }`}
-                >
-                    {exp.title.trim()}
-                </h3>
-                <p className="mt-0.5 text-sm text-[var(--color-sand)]">{exp.job}</p>
-
-                <ul className="mt-3 flex flex-col gap-2 text-sm leading-snug text-neutral-200">
-                    {highlights.map((line, i) => (
-                        <li key={i} className={`flex gap-2.5 ${i >= 2 ? "hidden md:flex" : ""}`}>
-                            <span className="mt-[0.45rem] inline-block h-px w-2.5 shrink-0 bg-[var(--color-aqua)]/70" />
-                            <span>{line}</span>
-                        </li>
-                    ))}
-                </ul>
-            </div>
-        </li>
+            <h3 className="mt-2 text-2xl font-medium leading-tight text-white md:text-[1.75rem]">
+                {exp.title.trim()}
+            </h3>
+            <p className="mt-1 text-sm text-[var(--color-sand)]">{exp.job}</p>
+            <ul className="mt-5 flex max-w-2xl flex-col gap-2.5 text-sm leading-relaxed text-neutral-200">
+                {exp.contents.map((line, i) => (
+                    <li key={i} className="flex gap-3">
+                        <span className="mt-[0.5rem] inline-block h-px w-3 shrink-0 bg-[var(--color-aqua)]/70" />
+                        <span>{line}</span>
+                    </li>
+                ))}
+            </ul>
+        </div>
     )
 }
 
 const Exp = () => {
-    const ref = useRef(null)
-    const [shown, setShown] = useState(false)
+    const [selected, setSelected] = useState(0)
+    const btnRefs = useRef([])
 
-    useEffect(() => {
-        const node = ref.current
-        if (!node) return
-        const reduce =
-            typeof window !== "undefined" &&
-            window.matchMedia?.("(prefers-reduced-motion: reduce)").matches
-        if (reduce || typeof IntersectionObserver === "undefined") {
-            setShown(true)
-            return
-        }
-        const io = new IntersectionObserver(
-            (entries) => {
-                for (const e of entries) {
-                    if (e.isIntersecting) {
-                        setShown(true)
-                        io.disconnect()
-                        return
-                    }
-                }
-            },
-            { threshold: 0.15, rootMargin: "0px 0px -10% 0px" },
-        )
-        io.observe(node)
-        return () => io.disconnect()
-    }, [])
+    const onKeyDown = (e) => {
+        if (e.key !== "ArrowDown" && e.key !== "ArrowUp") return
+        e.preventDefault()
+        const dir = e.key === "ArrowDown" ? 1 : -1
+        const next = (selected + dir + experiences.length) % experiences.length
+        setSelected(next)
+        btnRefs.current[next]?.focus()
+    }
+
+    const active = experiences[selected]
 
     return (
         <section id="experience" className="c-space section-spacing">
             <SectionHeading right={`${experiences.length} roles`}>Experience</SectionHeading>
             <p className="mt-5 max-w-xl text-sm text-white/85 md:text-base">
-                Where I've worked across product, research, and freelance. Most recent first.
+                Where I've worked across product, research, and freelance. Pick a role.
             </p>
 
-            <ol ref={ref} className="mt-12 md:mt-14">
-                {experiences.map((exp, i) => (
-                    <TimelineRow
-                        key={`${exp.job}-${i}`}
-                        exp={exp}
-                        isCurrent={i === 0}
-                        isLast={i === experiences.length - 1}
-                        shown={shown}
-                        delay={i * 90}
-                    />
-                ))}
-            </ol>
+            <div className="mt-10 grid gap-y-2 md:mt-12 md:grid-cols-[minmax(0,19rem)_1fr] md:gap-x-12">
+                {/* Index: selectable list of roles. Fills the left; drives the detail panel. */}
+                <div
+                    role="tablist"
+                    aria-label="Roles"
+                    aria-orientation="vertical"
+                    onKeyDown={onKeyDown}
+                    className="flex flex-col md:self-start md:sticky md:top-24"
+                >
+                    {experiences.map((exp, i) => {
+                        const isSel = i === selected
+                        const isCurrent = i === 0
+                        return (
+                            <div key={`${exp.job}-${i}`}>
+                                <button
+                                    ref={(el) => (btnRefs.current[i] = el)}
+                                    role="tab"
+                                    type="button"
+                                    aria-selected={isSel}
+                                    tabIndex={isSel ? 0 : -1}
+                                    onClick={() => setSelected(i)}
+                                    className={`group relative w-full cursor-pointer rounded-sm py-3.5 pl-4 pr-3 text-left transition-colors ${
+                                        isSel ? "bg-white/[0.04]" : "hover:bg-white/[0.02]"
+                                    }`}
+                                >
+                                    <span
+                                        aria-hidden="true"
+                                        className={`absolute left-0 top-1.5 bottom-1.5 w-0.5 rounded-full transition-colors ${
+                                            isSel ? "bg-[var(--color-aqua)]" : "bg-white/10 group-hover:bg-white/25"
+                                        }`}
+                                    />
+                                    <span className="flex items-center justify-between gap-3">
+                                        <span className={`text-[15px] font-medium leading-tight transition-colors ${isSel ? "text-white" : "text-white/70"}`}>
+                                            {companyOf(exp)}
+                                        </span>
+                                        {isCurrent && (
+                                            <span className="inline-flex items-center gap-1.5 text-[11px] text-[var(--color-aqua)]">
+                                                <span className="size-1.5 rounded-full bg-[var(--color-aqua)]" />
+                                                Now
+                                            </span>
+                                        )}
+                                    </span>
+                                    <span className="mt-0.5 block text-[12px] text-white/50">{formatDate(exp.date)}</span>
+                                </button>
+
+                                {/* Mobile: the selected role expands inline (accordion). */}
+                                <div className={`md:hidden ${isSel ? "block" : "hidden"} px-4 pb-6 pt-2`}>
+                                    {isSel && <Detail exp={exp} isCurrent={isCurrent} />}
+                                </div>
+                            </div>
+                        )
+                    })}
+                </div>
+
+                {/* Detail: full role on the right, filling the canvas. Re-animates on change. */}
+                <div className="hidden md:block">
+                    <div key={selected} className="exp-reveal">
+                        <Detail exp={active} isCurrent={selected === 0} />
+                    </div>
+                </div>
+            </div>
         </section>
     )
 }

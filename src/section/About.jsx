@@ -47,7 +47,7 @@ const About = () => {
                 <div className="flex flex-col grid-default-color grid-1 overflow-hidden">
                     <PanelTag>profile</PanelTag>
                     <div className="relative z-10 flex items-start gap-4 sm:gap-5 md:flex-col md:items-start md:h-full">
-                        <div className="relative shrink-0 size-20 sm:size-24 md:size-32 rounded-full border border-white/15 bg-[var(--color-indigo)] overflow-hidden">
+                        <div className="relative shrink-0 size-20 sm:size-24 md:size-28 rounded-full border border-white/15 bg-[var(--color-indigo)] overflow-hidden">
                             <img
                                 src="/assets/avatar-varun.svg"
                                 alt="Varun Shukla"
@@ -55,11 +55,21 @@ const About = () => {
                                 className="absolute inset-0 h-full w-full object-cover scale-[1.15] translate-y-[6%]"
                             />
                         </div>
-                        <div className="min-w-0 md:mt-auto">
+                        <div className="min-w-0 md:mt-4">
                             <p className='headtext'>Hi, I'm Varun Shukla</p>
                             <p className='subtext md:hidden'>Full-stack engineer. React, Next, ML.</p>
                             <p className='subtext hidden md:block'>Full-stack engineer fluent in React, Next.js, and machine learning. I ship fast, user-friendly product surfaces backed by smart, data-driven systems.</p>
                         </div>
+                        {/* Quick facts fill the lower half of this tall card (was dead space) with real,
+                            scannable status — doubles as a hire signal. Desktop only; mobile card stays compact. */}
+                        <dl className="hidden md:grid md:mt-auto w-full grid-cols-[auto_1fr] gap-x-4 gap-y-2.5 pt-5 text-[13px] leading-snug">
+                            <dt className="text-white/60">Now</dt>
+                            <dd className="text-white/85">SDE at Flux Fortify, Oman · remote</dd>
+                            <dt className="text-white/60">Side</dt>
+                            <dd className="text-white/85">Bounty Index · 2k weekly hunters</dd>
+                            <dt className="text-white/60">Focus</dt>
+                            <dd className="text-white/85">AI-native product, spec to deploy</dd>
+                        </dl>
                     </div>
                 </div>
 
@@ -122,7 +132,7 @@ const About = () => {
                             <div><span className="text-white/85">cloud</span>     <span className="text-white/30">·</span> <span className="text-white/90">Firebase · Vercel · Stripe</span></div>
                         </div>
                     </div>
-                    <div className="hidden md:block absolute inset-0 md:inset-y-9 w-full h-full start-[50%] md:scale-125 ">
+                    <div className="hidden md:block absolute inset-0 md:inset-y-9 w-full h-full start-[50%] md:scale-125 opacity-50">
                         <FrameWorks />
                     </div>
                 </div>
