@@ -43,7 +43,7 @@ const Detail = ({ exp, isCurrent }) => {
             <ul className="mt-5 flex max-w-2xl flex-col gap-2.5 text-sm leading-relaxed text-neutral-200">
                 {exp.contents.map((line, i) => (
                     <li key={i} className="flex gap-3">
-                        <span className="mt-[0.5rem] inline-block h-px w-3 shrink-0 bg-[var(--color-aqua)]/70" />
+                        <span className="mt-[0.5rem] inline-block size-1.5 shrink-0 rounded-full bg-[var(--color-aqua)]/70" />
                         <span>{line}</span>
                     </li>
                 ))}
