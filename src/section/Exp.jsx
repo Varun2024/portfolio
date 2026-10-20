@@ -2,6 +2,7 @@ import { useRef, useState } from "react"
 import { experiences } from "../constants"
 import SectionHeading from "../components/SectionHeading"
 import MriDemo from "../components/MriDemo"
+import LlmCostDemo from "../components/LlmCostDemo"
 
 const isOngoing = (dateStr) => /present/i.test(dateStr)
 
@@ -26,6 +27,7 @@ const companyOf = (exp) => exp.job.split("·")[0].split("·")[0].trim()
 const Detail = ({ exp, isCurrent }) => {
     const tenureMo = monthsSincePresent(exp.date)
     const showMri = /IIT Bhilai/i.test(exp.job) // the ML / Canny edge-detection role
+    const showLlm = /Flux Fortify/i.test(exp.job) // the current AI-native role
     return (
         <div>
             <div className="flex flex-wrap items-center gap-x-2 gap-y-1.5 text-[12px] text-white/70">
@@ -50,6 +52,7 @@ const Detail = ({ exp, isCurrent }) => {
                     </li>
                 ))}
             </ul>
+            {showLlm && <LlmCostDemo />}
             {showMri && <MriDemo />}
         </div>
     )
