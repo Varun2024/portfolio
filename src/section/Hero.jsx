@@ -1,6 +1,5 @@
 import HeroText from "../components/HeroText"
 import ParallexBackground from "../components/ParallexBackground"
-import HeroVisual from "../components/HeroVisual"
 
 const Hero = () => {
     return (
@@ -9,9 +8,16 @@ const Hero = () => {
             className="relative mx-[calc(50%-50vw)] w-screen min-h-screen overflow-hidden flex items-center"
         >
             <ParallexBackground />
-            <div className="relative z-10 w-full max-w-7xl mx-auto c-space grid grid-cols-1 md:grid-cols-[1fr_24rem] lg:grid-cols-[1fr_26rem] gap-10 lg:gap-16 items-center">
+
+            {/* One cinematic aqua scanner pass across the scene on load. */}
+            <span
+                aria-hidden="true"
+                className="hero-scan pointer-events-none absolute inset-x-0 z-[2] h-px bg-[var(--color-aqua)]"
+                style={{ boxShadow: "0 0 18px rgba(94,234,212,0.5)" }}
+            />
+
+            <div className="relative z-10 w-full max-w-7xl mx-auto c-space">
                 <HeroText />
-                <HeroVisual />
             </div>
         </section>
     )

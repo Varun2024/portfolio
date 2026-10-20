@@ -143,6 +143,16 @@ p, li {
   to   { transform: scaleX(1); }
 }
 
+/* One cinematic scanner pass down the hero on load (instrument identity). */
+@keyframes hero-scan {
+  0%   { top: 0; opacity: 0; }
+  12%  { opacity: 0.35; }
+  88%  { opacity: 0.35; }
+  100% { top: 100%; opacity: 0; }
+}
+.hero-scan { animation: hero-scan 2.6s cubic-bezier(0.4, 0, 0.2, 1) 0.6s both; }
+@media (prefers-reduced-motion: reduce) { .hero-scan { display: none; } }
+
 @keyframes radar-sweep {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
