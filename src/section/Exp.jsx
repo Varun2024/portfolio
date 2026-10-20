@@ -4,14 +4,14 @@ import SectionHeading from "../components/SectionHeading"
 import MriDemo from "../components/MriDemo"
 import LlmCostDemo from "../components/LlmCostDemo"
 
+const DWELL = 4200 // ms each role stays on screen while auto-cycling
+
 const isOngoing = (dateStr) => /present/i.test(dateStr)
 
 const formatDate = (dateStr) =>
     isOngoing(dateStr) ? dateStr.replace(/\s*-\s*present/i, " → Present") : dateStr
 
 const monthsSincePresent = (dateStr) => {
-    // Months elapsed since an ongoing role began; null when the start has no
-    // parseable month, so only dated ongoing roles show a tenure.
     if (!isOngoing(dateStr)) return null
     const [start] = dateStr.split(/\s*-\s*/)
     const startDate = new Date(`${start.trim()} 1`)
@@ -21,13 +21,12 @@ const monthsSincePresent = (dateStr) => {
     return Math.max(1, m)
 }
 
-// Company label for the index column: first segment of the job string.
 const companyOf = (exp) => exp.job.split("·")[0].split("·")[0].trim()
 
 const Detail = ({ exp, isCurrent }) => {
     const tenureMo = monthsSincePresent(exp.date)
-    const showMri = /IIT Bhilai/i.test(exp.job) // the ML / Canny edge-detection role
-    const showLlm = /Flux Fortify/i.test(exp.job) // the current AI-native role
+    const showMri = /IIT Bhilai/i.test(exp.job)
+    const showLlm = /Flux Fortify/i.test(exp.job)
     return (
         <div>
             <div className="flex flex-wrap items-center gap-x-2 gap-y-1.5 text-[12px] text-white/70">
@@ -60,11 +59,26 @@ const Detail = ({ exp, isCurrent }) => {
 
 const Exp = () => {
     const [selected, setSelected] = useState(0)
+    const [tookOver, setTookOver] = useState(false) // user clicked/arrowed → stop auto
+    const [paused, setPaused] = useState(false) // hovering → hold current role
     const btnRefs = useRef([])
+    const reduce = useRef(
+        typeof window !== "undefined" &&
+            window.matchMedia?.("(prefers-reduced-motion: reduce)").matches,
+    ).current
+
+    const auto = !tookOver && !reduce && experiences.length > 1
+    const advance = () => setSelected((s) => (s + 1) % experiences.length)
+
+    const pick = (i) => {
+        setTookOver(true)
+        setSelected(i)
+    }
 
     const onKeyDown = (e) => {
         if (e.key !== "ArrowDown" && e.key !== "ArrowUp") return
         e.preventDefault()
+        setTookOver(true)
         const dir = e.key === "ArrowDown" ? 1 : -1
         const next = (selected + dir + experiences.length) % experiences.length
         setSelected(next)
@@ -77,11 +91,14 @@ const Exp = () => {
         <section id="experience" className="c-space section-spacing">
             <SectionHeading right={`${experiences.length} roles`}>Experience</SectionHeading>
             <p className="mt-5 max-w-xl text-sm text-white/85 md:text-base">
-                Where I've worked across product, research, and freelance. Pick a role.
+                Where I've worked across product, research, and freelance. It cycles on its own; click any role to take over.
             </p>
 
-            <div className="mt-10 grid gap-y-2 md:mt-12 md:grid-cols-[minmax(0,19rem)_1fr] md:gap-x-12">
-                {/* Index: selectable list of roles. Fills the left; drives the detail panel. */}
+            <div
+                className="mt-10 grid gap-y-2 md:mt-12 md:grid-cols-[minmax(0,19rem)_1fr] md:gap-x-12"
+                onMouseEnter={() => setPaused(true)}
+                onMouseLeave={() => setPaused(false)}
+            >
                 <div
                     role="tablist"
                     aria-label="Roles"
@@ -100,8 +117,8 @@ const Exp = () => {
                                     type="button"
                                     aria-selected={isSel}
                                     tabIndex={isSel ? 0 : -1}
-                                    onClick={() => setSelected(i)}
-                                    className={`group relative w-full cursor-pointer rounded-sm py-3.5 pl-4 pr-3 text-left transition-colors ${
+                                    onClick={() => pick(i)}
+                                    className={`group relative w-full cursor-pointer overflow-hidden rounded-sm py-3.5 pl-4 pr-3 text-left transition-colors ${
                                         isSel ? "bg-white/[0.04]" : "hover:bg-white/[0.02]"
                                     }`}
                                 >
@@ -123,9 +140,22 @@ const Exp = () => {
                                         )}
                                     </span>
                                     <span className="mt-0.5 block text-[12px] text-white/50">{formatDate(exp.date)}</span>
+
+                                    {auto && isSel && (
+                                        <span
+                                            key={selected}
+                                            aria-hidden="true"
+                                            onAnimationEnd={advance}
+                                            className="absolute bottom-0 left-0 h-0.5 w-full origin-left bg-[var(--color-aqua)]/70"
+                                            style={{
+                                                transform: "scaleX(0)",
+                                                animation: `tab-progress ${DWELL}ms linear forwards`,
+                                                animationPlayState: paused ? "paused" : "running",
+                                            }}
+                                        />
+                                    )}
                                 </button>
 
-                                {/* Mobile: the selected role expands inline (accordion). */}
                                 <div className={`md:hidden ${isSel ? "block" : "hidden"} px-4 pb-6 pt-2`}>
                                     {isSel && <Detail exp={exp} isCurrent={isCurrent} />}
                                 </div>
@@ -134,7 +164,6 @@ const Exp = () => {
                     })}
                 </div>
 
-                {/* Detail: full role on the right, filling the canvas. Re-animates on change. */}
                 <div className="hidden md:block">
                     <div key={selected} className="exp-reveal">
                         <Detail exp={active} isCurrent={selected === 0} />
