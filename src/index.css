@@ -122,6 +122,21 @@ p, li {
 .pipe-dot-x { animation: pipe-dot-x 2.4s linear infinite; }
 .pipe-dot-y { animation: pipe-dot-y 1.8s linear infinite; }
 
+/* Hover scanner sweep across a project thumbnail. */
+@keyframes scan-line {
+  0%   { top: -2px; opacity: 0; }
+  20%  { opacity: 0.9; }
+  100% { top: 100%; opacity: 0; }
+}
+.group:hover .scan-on-hover { animation: scan-line 0.9s ease-out; }
+
+/* One-time aqua sweep under a section heading as it reveals (instrument motif). */
+@keyframes heading-scan {
+  0%   { left: 0; opacity: 0; }
+  15%  { opacity: 0.85; }
+  100% { left: 100%; opacity: 0; }
+}
+
 @keyframes radar-sweep {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }

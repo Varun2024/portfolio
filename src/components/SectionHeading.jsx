@@ -34,8 +34,14 @@ const SectionHeading = ({ children, right = null, className = "" }) => {
     return (
         <div
             ref={ref}
-            className={`flex items-end justify-between gap-6 border-b border-white/10 pb-4 ${className}`}
+            className={`relative flex items-end justify-between gap-6 border-b border-white/10 pb-4 ${className}`}
         >
+            {/* instrument motif: a single aqua scanner pass along the divider on reveal */}
+            <span
+                aria-hidden="true"
+                className="pointer-events-none absolute bottom-[-1px] left-0 h-px w-12 bg-[var(--color-aqua)]"
+                style={{ opacity: 0, animation: revealed ? "heading-scan 900ms ease-out 200ms" : "none" }}
+            />
             <h2
                 className="font-display text-3xl sm:text-4xl md:text-5xl text-white leading-none tracking-tight"
                 style={{

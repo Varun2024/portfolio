@@ -1,6 +1,6 @@
 import { Globe } from '../components/Globe'
 import CopyEmailButton from '../components/CopyEmailButton'
-import { FrameWorks } from '../components/FrameWorks'
+import BuildStrip from '../components/BuildStrip'
 import SectionHeading from '../components/SectionHeading'
 
 // ghchart.rshah.org gives us one color param (contribution cells) but bakes
@@ -132,8 +132,8 @@ const About = () => {
                             <div><span className="text-white/85">cloud</span>     <span className="text-white/30">·</span> <span className="text-white/90">Firebase · Vercel · Stripe</span></div>
                         </div>
                     </div>
-                    <div className="hidden md:block absolute inset-0 md:inset-y-9 w-full h-full start-[50%] md:scale-125 opacity-50">
-                        <FrameWorks />
+                    <div className="hidden md:block absolute inset-y-5 right-5 w-[38%]">
+                        <BuildStrip />
                     </div>
                 </div>
 
