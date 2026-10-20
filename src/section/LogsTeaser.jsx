@@ -1,11 +1,44 @@
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { posts } from '../content/logs/index.js'
 
 const formatDate = (iso) =>
     new Date(iso).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
 
+const useReveal = () => {
+    const ref = useRef(null)
+    const [shown, setShown] = useState(false)
+    useEffect(() => {
+        const node = ref.current
+        if (!node) return
+        const reduce =
+            typeof window !== 'undefined' &&
+            window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+        if (reduce || typeof IntersectionObserver === 'undefined') {
+            setShown(true)
+            return
+        }
+        const io = new IntersectionObserver(
+            (entries) => {
+                for (const e of entries) {
+                    if (e.isIntersecting) {
+                        setShown(true)
+                        io.disconnect()
+                        return
+                    }
+                }
+            },
+            { threshold: 0.2 },
+        )
+        io.observe(node)
+        return () => io.disconnect()
+    }, [])
+    return [ref, shown]
+}
+
 const LogsTeaser = () => {
     const latest = posts.slice(0, 3)
+    const [listRef, shown] = useReveal()
     if (!latest.length) return null
 
     return (
@@ -33,9 +66,16 @@ const LogsTeaser = () => {
                     </Link>
                 </div>
 
-                <ul className="mt-6 divide-y divide-white/[0.06]">
-                    {latest.map((post) => (
-                        <li key={post.slug}>
+                <ul ref={listRef} className="mt-6 divide-y divide-white/[0.06]">
+                    {latest.map((post, i) => (
+                        <li
+                            key={post.slug}
+                            style={{
+                                opacity: shown ? 1 : 0,
+                                transform: shown ? 'translateY(0)' : 'translateY(10px)',
+                                transition: `opacity 480ms cubic-bezier(0.16,1,0.3,1) ${i * 90}ms, transform 480ms cubic-bezier(0.16,1,0.3,1) ${i * 90}ms`,
+                            }}
+                        >
                             <Link
                                 to={`/logs/${post.slug}`}
                                 className="group flex items-start gap-5 sm:gap-6 py-5 -mx-3 sm:-mx-4 px-3 sm:px-4 rounded-lg transition-colors duration-200 hover:bg-white/[0.02]"

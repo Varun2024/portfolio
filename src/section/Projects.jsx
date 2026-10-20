@@ -34,13 +34,20 @@ const FeaturedRow = ({ project }) => {
           className="absolute inset-0 z-0 rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-white/60"
         />
         <div className="relative z-10 flex flex-col sm:flex-row items-start gap-5 sm:gap-7 pointer-events-none">
-          <img
-            src={project.image}
-            alt=""
-            aria-hidden="true"
-            loading="lazy"
-            className="h-32 w-full sm:h-28 sm:w-40 rounded-md border border-white/10 object-cover shrink-0"
-          />
+          <div className="relative h-32 w-full shrink-0 overflow-hidden rounded-md border border-white/10 sm:h-28 sm:w-40">
+            <img
+              src={project.image}
+              alt=""
+              aria-hidden="true"
+              loading="lazy"
+              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+            />
+            <span
+              aria-hidden="true"
+              className="scan-on-hover pointer-events-none absolute inset-x-0 h-px bg-[var(--color-aqua)]/80"
+              style={{ top: "-2px", opacity: 0 }}
+            />
+          </div>
           <div className="flex-1 min-w-0">
             <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
               <h3 className="text-xl sm:text-2xl font-medium leading-snug text-white inline-flex items-center gap-1.5">

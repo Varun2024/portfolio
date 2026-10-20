@@ -290,7 +290,7 @@ export default function Testimonials() {
 }
 
 const QuoteCard = ({ t }) => (
-  <figure className="relative w-[72vw] max-w-[18rem] sm:w-[22rem] sm:max-w-[22rem] shrink-0 rounded-sm border border-white/10 bg-[var(--color-midnight)] px-4 py-5 sm:px-5 sm:py-6 hover:border-white/25 transition-colors">
+  <figure className="relative w-[72vw] max-w-[18rem] sm:w-[22rem] sm:max-w-[22rem] shrink-0 rounded-sm border border-white/10 bg-[var(--color-midnight)] px-4 py-5 sm:px-5 sm:py-6 transition duration-200 hover:-translate-y-1 hover:border-white/25">
     <span
       aria-hidden="true"
       className="pointer-events-none absolute left-3 top-0 font-display text-[4.5rem] leading-none text-white/[0.08] select-none"
