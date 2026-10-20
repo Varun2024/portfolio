@@ -1,6 +1,7 @@
 import { useState } from "react"
 import Project from "../components/Project"
 import ProjectDetails from "../components/ProjectDetails"
+import BountyPipeline from "../components/BountyPipeline"
 import { myProjects } from "../constants"
 import SectionHeading from "../components/SectionHeading"
 
@@ -69,6 +70,7 @@ const FeaturedRow = ({ project }) => {
                 </span>
               ))}
             </div>
+            <BountyPipeline />
           </div>
           <div className="flex items-center gap-4 shrink-0 self-end sm:self-start sm:mt-1 pointer-events-auto" onClick={stop}>
             {project.sourceHref && (
