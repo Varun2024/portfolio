@@ -48,10 +48,10 @@ const App = () => {
       {/* Hero */}
       <Hero />
       <Suspense fallback={null}>
-        {/* about */}
-        <About />
         {/* experience */}
         <Exp />
+        {/* about */}
+        <About />
         {/* projects */}
         <Projects />
         {/* build logs teaser */}

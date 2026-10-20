@@ -238,11 +238,9 @@ export const experiences = [
     job: "Flux Fortify · Oman · Remote from Raipur",
     date: "Apr 2026 - Present",
     contents: [
-      "Shipping features on an AI-native product: spec through deploy, backend to UI.",
-      "Backend in TypeScript on Postgres. LLM calls earn their cost against a cheap fallback, or they get ripped out.",
-      "Frontend on React + the team's design system. I write the loading, empty, and error states nobody designs on round one.",
-      "Rolling features behind flags, watching the dashboard, then promoting. Easier than apologising for a rollback.",
-      "A test suite I'd trust at 2am and docs the next engineer actually reads.",
+      "Ship an AI-native product end to end: spec through deploy, backend to UI.",
+      "LLM calls earn their cost against a cheap fallback, or they get ripped out.",
+      "Flags, a dashboard I watch, and a test suite I'd trust at 2am.",
     ],
   },
   {
@@ -250,11 +248,9 @@ export const experiences = [
     job: "Chainframe Product Team",
     date: "Jan 2026 - Apr 2026",
     contents: [
-      "Shipped one production-ready feature module behind a feature flag.",
-      "Built backend APIs with validation, auth checks, and basic audit logging.",
-      "Integrated responsive frontend UI aligned with the product design system.",
-      "Added unit and integration tests with developer documentation.",
-      "Delivered a demo walkthrough and technical handoff write-up.",
+      "Shipped a production feature module behind a flag, end to end.",
+      "Backend APIs with validation, auth checks, and audit logging.",
+      "Tests and docs clean enough to hand off without a meeting.",
     ],
   },
   {
@@ -262,9 +258,9 @@ export const experiences = [
     job: "Self-Employed",
     date: "2025-Present",
     contents: [
-      "Built a P2P ecommerce platform for rental services across a wide variety of goods.",
-      "Built a portfolio site for an interior designer with a clean, modern layout.",
-      "Added a clothing ecommerce section with GSAP and Framer Motion interactions.",
+      "Built a P2P rental marketplace spanning a wide range of goods.",
+      "Shipped a clean portfolio site for an interior designer.",
+      "A clothing storefront with GSAP and Framer Motion interactions.",
     ],
   },
   {
@@ -272,10 +268,9 @@ export const experiences = [
     job: "IIT Bhilai",
     date: "Feb-Aug,2025",
     contents: [
-      "Worked on deep learning for brain tumor detection from MRI scans.",
-      "Used Canny edge detection for boundary extraction and preprocessing.",
-      "Trained a DenseNet CNN for multiclass tumor classification.",
-      "Applied normalization and augmentation to improve generalization.",
+      "Deep learning for brain-tumor detection from MRI scans.",
+      "Canny edge detection for boundary extraction and preprocessing.",
+      "DenseNet CNN for multiclass tumor classification, with augmentation.",
     ],
   },
   {
@@ -283,10 +278,9 @@ export const experiences = [
     job: "Grainscope",
     date: "May-Aug,2025",
     contents: [
-      "Built a React app to manage grain quality reports with clear visual workflows.",
-      "Implemented canvas tools, pagination, and Plotly.js grain plotting.",
-      "Added WhatsApp sharing plus filtering, zooming, and labeling features.",
-      "Improved UX and data readability through dynamic interfaces.",
+      "React app for grain-quality reports with clear visual workflows.",
+      "Canvas tools, pagination, and Plotly.js grain plotting.",
+      "WhatsApp sharing, filtering, zoom, and labeling.",
     ],
   },
 ];
