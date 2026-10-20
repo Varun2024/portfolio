@@ -18,11 +18,11 @@ const HeroText = () => {
                     initial="hidden"
                     animate="visible"
                     transition={{ delay: 0.4, duration: 0.7 }}
-                    aria-label="Varun Shukla, full-stack and AI engineer in Raipur, India. I build AI-native products that ship, hold up, and earn."
-                    className="font-semibold text-4xl sm:text-5xl md:text-6xl leading-[1.05] tracking-tight"
+                    aria-label="I build AI-native products that ship, hold up, and earn."
+                    className="font-semibold text-5xl sm:text-6xl md:text-7xl leading-[1.02] tracking-tight"
                 >
                     <span className="sr-only">
-                        Varun Shukla, full-stack and AI engineer in Raipur, India. I build AI-native products that ship, hold up, and earn.
+                        I build AI-native products that ship, hold up, and earn.
                     </span>
                     <span aria-hidden="true">
                         I build <span className="italic font-display">AI-native</span><br />
@@ -32,12 +32,20 @@ const HeroText = () => {
                                 words={["ships", "holds up", "earns"]}
                                 className="font-semibold text-white"
                             />
-                        </span><br />
-                        <span className="text-white/85 text-xl sm:text-2xl md:text-3xl font-normal tracking-normal">
-                            Varun Shukla · full-stack engineer, Raipur IN.
                         </span>
                     </span>
                 </motion.h1>
+
+                <motion.p
+                    variants={variance}
+                    initial="hidden"
+                    animate="visible"
+                    transition={{ delay: 0.6, duration: 0.6 }}
+                    className="text-lg sm:text-xl text-white [text-shadow:0_1px_12px_rgba(0,0,0,0.65)]"
+                >
+                    Varun Shukla <span className="text-white/35">·</span>{" "}
+                    <span className="text-white/70">full-stack &amp; AI engineer, Raipur IN</span>
+                </motion.p>
 
                 <motion.p
                     variants={variance}
